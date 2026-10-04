@@ -1,0 +1,1250 @@
+=== d4K9 (D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s
+  splu 53.37s nnzLU=50.7M rss=1204.4MB
+  eigsh 164.2s | <r>=0.5417+-0.0139 | sigma_ETH=0.292 | PR/D=0.2512 | microRMSE=0.48241225730169224
+  evolve 105s (dt=0.155, tau<=250) | timeavg=0.119 vs micro=2.730 (|dev|=2.612) | residfluct=0.0117 | normdrift=8.4e-01
+=== d6K4 (D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.04s
+=== d4K9 (D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s
+  splu 54.58s nnzLU=50.7M rss=1205.5MB
+  eigsh 171.5s | <r>=0.5417+-0.0139 | sigma_ETH=0.292 | PR/D=0.2512 | microRMSE=0.48241225730169224
+    [krylov] deadline reached at step 1025/1611 (tau_max=159)
+  evolve 239s (dt=0.155, tau<=159) | timeavg=3.685 vs micro=2.730 (|dev|=0.955) | residfluct=0.0388 | normdrift=3.3e-14
+=== d6K4 (D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.04s
+skip d4K9 (done)
+=== d6K4 (D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.04s
+Traceback (most recent call last):
+  File "/home/z/my-project/scripts/c4_scaled_eth.py", line 443, in <module>
+    main()
+  File "/home/z/my-project/scripts/c4_scaled_eth.py", line 438, in main
+    run(a.tag, a.d, a.K, a.g0, a.h0, a.U, a.seed, k, ncv, a.evolve,
+  File "/home/z/my-project/scripts/c4_scaled_eth.py", line 343, in run
+    nnz_lu = lu.L.nnz + lu.U.nnz
+             ^^^^
+numpy._core._exceptions._ArrayMemoryError: Unable to allocate 676. MiB for an array with shape (88626352,) and data type float64
+=== d5K6 (D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.04s
+skip d4K9 (done)
+=== d6K4 (D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.03s
+  splu 290.85s nnzLU=nanM rss=2163.7MB
+  eigsh 254.1s | <r>=0.5377+-0.0177 | sigma_ETH=0.031 | PR/D=0.3085 | microRMSE=0.18680658456480775
+    [krylov] deadline reached at step 0/2447 (tau_max=0)
+  evolve 0s (dt=0.102, tau<=0) | timeavg=4.000 vs micro=0.700 (|dev|=3.300) | residfluct=0.0000 | normdrift=0.0e+00
+=== d5K6 (D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.04s
+=== d4K9 (window, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=window)
+  window stage already done (r_mean present)
+=== d4K9 (evolve, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=evolve)
+  evolve stage already done
+=== d6K4 (window, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.04s (stage=window)
+  window stage already done (r_mean present)
+=== d6K4 (evolve, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.03s (stage=evolve)
+    [krylov] deadline reached at step 1575/2447 (tau=161)
+  evolve 434s (dt=0.102, tau<=161) | timeavg=1.649 vs micro=0.700 (|dev|=0.949) | residfluct=0.0151 | normdrift=9.1e-15
+=== d5K6 (window, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.03s (stage=window)
+=== d4K9 (window, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=window)
+  window stage already done (r_mean present)
+=== d4K9 (evolve, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=evolve)
+  evolve stage already done
+=== d6K4 (window, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.03s (stage=window)
+  window stage already done (r_mean present)
+=== d6K4 (evolve, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d5K6 (window, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.03s (stage=window)
+Can't expand MemType 1: jcol 16746
+  FAILED splu: gstrf was called with invalid arguments
+=== d5K6 (evolve, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.04s (stage=evolve)
+=== d4K9 (window, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=window)
+  window stage already done (r_mean present)
+=== d4K9 (evolve, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=evolve)
+  evolve stage already done
+=== d6K4 (window, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.04s (stage=window)
+  window stage already done (r_mean present)
+=== d6K4 (evolve, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.08s (stage=evolve)
+  evolve stage already done
+=== d5K6 (window, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.04s (stage=window)
+Can't expand MemType 1: jcol 16746
+  FAILED splu: gstrf was called with invalid arguments
+=== d5K6 (evolve, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.03s (stage=evolve)
+=== d4K9 (window, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K9 (evolve, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.03s (stage=evolve)
+  evolve stage already done
+=== d6K4 (window, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.04s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d6K4 (evolve, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d5K6 (window, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.06s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d5K6 (evolve, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.04s (stage=evolve)
+    [krylov] deadline reached at step 1675/2350 (tau=178)
+  evolve 434s (dt=0.106, tau<=178) | timeavg=2.573 vs micro=1.374 (|dev|=1.198) | residfluct=0.0220 | normdrift=1.6e-14
+=== d4K11 (window, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.03s (stage=window)
+=== d4K9 (window, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K9 (evolve, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=evolve)
+  evolve stage already done
+=== d6K4 (window, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.05s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d6K4 (evolve, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d5K6 (window, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.06s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d5K6 (evolve, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d4K11 (window, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.03s (stage=window)
+Can't expand MemType 1: jcol 19526
+  FAILED splu: gstrf was called with invalid arguments
+=== d4K11 (evolve, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.04s (stage=evolve)
+=== d4K9 (window, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K9 (evolve, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=evolve)
+  evolve stage already done
+=== d6K4 (window, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.04s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d6K4 (evolve, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d5K6 (window, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.05s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d5K6 (evolve, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.03s (stage=evolve)
+  evolve stage already done
+=== d4K11 (window, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.03s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K11 (evolve, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.04s (stage=evolve)
+    [krylov] deadline reached at step 1575/1945 (tau=202)
+  evolve 436s (dt=0.129, tau<=202) | timeavg=4.483 vs micro=3.351 (|dev|=1.131) | residfluct=0.0335 | normdrift=3.8e-14
+=== d3K28 (window, D=24389 ) ===
+[d3K28] D=24389 nnz=302093 build 0.02s (stage=window)
+=== d4K9 (window, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K9 (evolve, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=evolve)
+  evolve stage already done
+=== d6K4 (window, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.04s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d6K4 (evolve, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.05s (stage=evolve)
+  evolve stage already done
+=== d5K6 (window, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.03s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d5K6 (evolve, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d4K11 (window, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.03s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K11 (evolve, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.03s (stage=evolve)
+  evolve stage already done
+=== d3K28 (window, D=24389 ) ===
+[d3K28] D=24389 nnz=302093 build 0.02s (stage=window)
+  splu 257.0s nnzLU=nanM rss=2081.4MB
+  eigsh 241.0s | <r>=0.5140+-0.0179 | sigma_ETH=1.788 | PR/D=0.1821 | microRMSE=0.9292867386867859
+=== d3K28 (evolve, D=24389 ) ===
+[d3K28] D=24389 nnz=302093 build 0.02s (stage=evolve)
+=== d4K9 (window, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K9 (evolve, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=evolve)
+  evolve stage already done
+=== d6K4 (window, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.03s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d6K4 (evolve, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.03s (stage=evolve)
+  evolve stage already done
+=== d5K6 (window, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.03s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d5K6 (evolve, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.03s (stage=evolve)
+  evolve stage already done
+=== d4K11 (window, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.03s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K11 (evolve, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.03s (stage=evolve)
+  evolve stage already done
+=== d3K28 (window, D=24389 ) ===
+[d3K28] D=24389 nnz=302093 build 0.02s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d3K28 (evolve, D=24389 ) ===
+[d3K28] D=24389 nnz=302093 build 0.02s (stage=evolve)
+    [krylov] deadline reached at step 1375/2159 (tau=159)
+  evolve 434s (dt=0.116, tau<=159) | timeavg=14.330 vs micro=12.712 (|dev|=1.618) | residfluct=0.1735 | normdrift=1.1e-13
+=== d4K12 (evolve, D=28561 ) ===
+[d4K12] D=28561 nnz=531505 build 0.05s (stage=evolve)
+=== d4K9 (window, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K9 (evolve, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.02s (stage=evolve)
+  evolve stage already done
+=== d6K4 (window, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.04s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d6K4 (evolve, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d5K6 (window, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.05s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d5K6 (evolve, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d4K11 (window, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.05s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K11 (evolve, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.03s (stage=evolve)
+  evolve stage already done
+=== d3K28 (window, D=24389 ) ===
+[d3K28] D=24389 nnz=302093 build 0.02s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d3K28 (evolve, D=24389 ) ===
+[d3K28] D=24389 nnz=302093 build 0.02s (stage=evolve)
+  evolve stage already done
+=== d4K12 (evolve, D=28561 ) ===
+[d4K12] D=28561 nnz=531505 build 0.05s (stage=evolve)
+    [krylov] deadline reached at step 1525/1644 (tau=139)
+  evolve 435s (dt=0.091, tau<=139) | timeavg=4.858 vs micro=3.658 (|dev|=1.200) | residfluct=0.0307 | normdrift=1.8e-13
+=== d3K35 (evolve, D=46656 ) ===
+[d3K35] D=46656 nnz=583416 build 0.03s (stage=evolve)
+=== d4K9 (window, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K9 (evolve, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.02s (stage=evolve)
+  evolve stage already done
+=== d6K4 (window, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.04s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d6K4 (evolve, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d5K6 (window, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.04s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d5K6 (evolve, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d4K11 (window, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.05s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K11 (evolve, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.03s (stage=evolve)
+  evolve stage already done
+=== d3K28 (window, D=24389 ) ===
+[d3K28] D=24389 nnz=302093 build 0.02s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d3K28 (evolve, D=24389 ) ===
+[d3K28] D=24389 nnz=302093 build 0.02s (stage=evolve)
+  evolve stage already done
+=== d4K12 (evolve, D=28561 ) ===
+[d4K12] D=28561 nnz=531505 build 0.05s (stage=evolve)
+  evolve stage already done
+=== d3K35 (evolve, D=46656 ) ===
+[d3K35] D=46656 nnz=583416 build 0.04s (stage=evolve)
+    [krylov] deadline reached at step 1000/2076 (tau=72)
+  evolve 436s (dt=0.072, tau<=72) | timeavg=19.683 vs micro=15.906 (|dev|=3.777) | residfluct=0.5312 | normdrift=9.1e-14
+=== d6K5 (evolve, D=46656 ) ===
+[d6K5] D=46656 nnz=1485216 build 0.14s (stage=evolve)
+=== d4K9 (window, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K9 (evolve, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=evolve)
+  evolve stage already done
+=== d6K4 (window, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.05s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d6K4 (evolve, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d5K6 (window, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.04s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d5K6 (evolve, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.05s (stage=evolve)
+  evolve stage already done
+=== d4K11 (window, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.04s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K11 (evolve, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.03s (stage=evolve)
+  evolve stage already done
+=== d3K28 (window, D=24389 ) ===
+[d3K28] D=24389 nnz=302093 build 0.04s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d3K28 (evolve, D=24389 ) ===
+[d3K28] D=24389 nnz=302093 build 0.02s (stage=evolve)
+  evolve stage already done
+=== d4K12 (evolve, D=28561 ) ===
+[d4K12] D=28561 nnz=531505 build 0.05s (stage=evolve)
+  evolve stage already done
+=== d3K35 (evolve, D=46656 ) ===
+[d3K35] D=46656 nnz=583416 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d6K5 (evolve, D=46656 ) ===
+[d6K5] D=46656 nnz=1485216 build 0.15s (stage=evolve)
+    [krylov] deadline reached at step 750/2397 (tau=47)
+  evolve 433s (dt=0.063, tau<=47) | timeavg=2.057 vs micro=0.875 (|dev|=1.182) | residfluct=0.0118 | normdrift=8.0e-14
+=== d4K14 (evolve, D=50625 ) ===
+[d4K14] D=50625 nnz=957825 build 0.08s (stage=evolve)
+=== d4K9 (window, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K9 (evolve, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=evolve)
+  evolve stage already done
+=== d6K4 (window, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.05s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d6K4 (evolve, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d5K6 (window, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.06s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d5K6 (evolve, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d4K11 (window, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.03s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K11 (evolve, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.03s (stage=evolve)
+  evolve stage already done
+=== d3K28 (window, D=24389 ) ===
+[d3K28] D=24389 nnz=302093 build 0.04s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d3K28 (evolve, D=24389 ) ===
+[d3K28] D=24389 nnz=302093 build 0.02s (stage=evolve)
+  evolve stage already done
+=== d4K12 (evolve, D=28561 ) ===
+[d4K12] D=28561 nnz=531505 build 0.05s (stage=evolve)
+  evolve stage already done
+=== d3K35 (evolve, D=46656 ) ===
+[d3K35] D=46656 nnz=583416 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d6K5 (evolve, D=46656 ) ===
+[d6K5] D=46656 nnz=1485216 build 0.14s (stage=evolve)
+  evolve stage already done
+=== d4K14 (evolve, D=50625 ) ===
+[d4K14] D=50625 nnz=957825 build 0.07s (stage=evolve)
+    [krylov] deadline reached at step 925/1904 (tau=73)
+  evolve 434s (dt=0.079, tau<=73) | timeavg=5.645 vs micro=4.274 (|dev|=1.371) | residfluct=0.0244 | normdrift=2.8e-14
+=== d5K8 (evolve, D=59049 ) ===
+[d5K8] D=59049 nnz=1517049 build 0.11s (stage=evolve)
+=== d4K9 (window, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.02s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K9 (evolve, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.02s (stage=evolve)
+  evolve stage already done
+=== d6K4 (window, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.05s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d6K4 (evolve, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.05s (stage=evolve)
+  evolve stage already done
+=== d5K6 (window, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.05s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d5K6 (evolve, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d4K11 (window, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.04s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K11 (evolve, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.03s (stage=evolve)
+  evolve stage already done
+=== d3K28 (window, D=24389 ) ===
+[d3K28] D=24389 nnz=302093 build 0.02s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d3K28 (evolve, D=24389 ) ===
+[d3K28] D=24389 nnz=302093 build 0.02s (stage=evolve)
+  evolve stage already done
+=== d4K12 (evolve, D=28561 ) ===
+[d4K12] D=28561 nnz=531505 build 0.05s (stage=evolve)
+  evolve stage already done
+=== d3K35 (evolve, D=46656 ) ===
+[d3K35] D=46656 nnz=583416 build 0.05s (stage=evolve)
+  evolve stage already done
+=== d6K5 (evolve, D=46656 ) ===
+[d6K5] D=46656 nnz=1485216 build 0.14s (stage=evolve)
+  evolve stage already done
+=== d4K14 (evolve, D=50625 ) ===
+[d4K14] D=50625 nnz=957825 build 0.08s (stage=evolve)
+  evolve stage already done
+=== d5K8 (evolve, D=59049 ) ===
+[d5K8] D=59049 nnz=1517049 build 0.14s (stage=evolve)
+    [krylov] deadline reached at step 625/2436 (tau=38)
+  evolve 433s (dt=0.062, tau<=38) | timeavg=3.391 vs micro=1.840 (|dev|=1.552) | residfluct=0.0258 | normdrift=9.9e-14
+=== d3K45 (evolve, D=97336 ) ===
+[d3K45] D=97336 nnz=1227556 build 0.07s (stage=evolve)
+=== d4K9 (window, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K9 (evolve, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=evolve)
+  evolve stage already done
+=== d6K4 (window, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.04s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d6K4 (evolve, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.05s (stage=evolve)
+  evolve stage already done
+=== d5K6 (window, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.04s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d5K6 (evolve, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d4K11 (window, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.03s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K11 (evolve, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.03s (stage=evolve)
+  evolve stage already done
+=== d3K28 (window, D=24389 ) ===
+[d3K28] D=24389 nnz=302093 build 0.02s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d3K28 (evolve, D=24389 ) ===
+[d3K28] D=24389 nnz=302093 build 0.02s (stage=evolve)
+  evolve stage already done
+=== d4K12 (evolve, D=28561 ) ===
+[d4K12] D=28561 nnz=531505 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d3K35 (evolve, D=46656 ) ===
+[d3K35] D=46656 nnz=583416 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d6K5 (evolve, D=46656 ) ===
+[d6K5] D=46656 nnz=1485216 build 0.12s (stage=evolve)
+  evolve stage already done
+=== d4K14 (evolve, D=50625 ) ===
+[d4K14] D=50625 nnz=957825 build 0.09s (stage=evolve)
+  evolve stage already done
+=== d5K8 (evolve, D=59049 ) ===
+[d5K8] D=59049 nnz=1517049 build 0.11s (stage=evolve)
+  evolve stage already done
+=== d3K45 (evolve, D=97336 ) ===
+[d3K45] D=97336 nnz=1227556 build 0.07s (stage=evolve)
+    [krylov] deadline reached at step 425/1320 (tau=24)
+  evolve 436s (dt=0.057, tau<=24) | timeavg=27.784 vs micro=20.460 (|dev|=7.324) | residfluct=3.3086 | normdrift=3.0e-14
+=== d4K16 (evolve, D=83521 ) ===
+[d4K16] D=83521 nnz=1600193 build 0.14s (stage=evolve)
+=== d4K9 (window, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K9 (evolve, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=evolve)
+  evolve stage already done
+=== d6K4 (window, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.04s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d6K4 (evolve, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d5K6 (window, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.04s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d5K6 (evolve, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d4K11 (window, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.03s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K11 (evolve, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.03s (stage=evolve)
+  evolve stage already done
+=== d3K28 (window, D=24389 ) ===
+[d3K28] D=24389 nnz=302093 build 0.02s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d3K28 (evolve, D=24389 ) ===
+[d3K28] D=24389 nnz=302093 build 0.02s (stage=evolve)
+  evolve stage already done
+=== d4K12 (evolve, D=28561 ) ===
+[d4K12] D=28561 nnz=531505 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d3K35 (evolve, D=46656 ) ===
+[d3K35] D=46656 nnz=583416 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d6K5 (evolve, D=46656 ) ===
+[d6K5] D=46656 nnz=1485216 build 0.12s (stage=evolve)
+  evolve stage already done
+=== d4K14 (evolve, D=50625 ) ===
+[d4K14] D=50625 nnz=957825 build 0.07s (stage=evolve)
+  evolve stage already done
+=== d5K8 (evolve, D=59049 ) ===
+[d5K8] D=59049 nnz=1517049 build 0.12s (stage=evolve)
+  evolve stage already done
+=== d3K45 (evolve, D=97336 ) ===
+[d3K45] D=97336 nnz=1227556 build 0.07s (stage=evolve)
+  evolve stage already done
+=== d4K16 (evolve, D=83521 ) ===
+[d4K16] D=83521 nnz=1600193 build 0.12s (stage=evolve)
+    [krylov] deadline reached at step 500/1082 (tau=35)
+  evolve 442s (dt=0.069, tau<=35) | timeavg=6.401 vs micro=4.889 (|dev|=1.512) | residfluct=0.1922 | normdrift=9.5e-14
+=== d4K17 (evolve, D=104976 ) ===
+[d4K17] D=104976 nnz=2021760 build 0.13s (stage=evolve)
+=== d4K9 (window, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K9 (evolve, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=evolve)
+  evolve stage already done
+=== d6K4 (window, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.04s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d6K4 (evolve, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d5K6 (window, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.04s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d5K6 (evolve, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d4K11 (window, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.05s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K11 (evolve, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.03s (stage=evolve)
+  evolve stage already done
+=== d3K28 (window, D=24389 ) ===
+[d3K28] D=24389 nnz=302093 build 0.02s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d3K28 (evolve, D=24389 ) ===
+[d3K28] D=24389 nnz=302093 build 0.03s (stage=evolve)
+  evolve stage already done
+=== d4K12 (evolve, D=28561 ) ===
+[d4K12] D=28561 nnz=531505 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d3K35 (evolve, D=46656 ) ===
+[d3K35] D=46656 nnz=583416 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d6K5 (evolve, D=46656 ) ===
+[d6K5] D=46656 nnz=1485216 build 0.13s (stage=evolve)
+  evolve stage already done
+=== d4K14 (evolve, D=50625 ) ===
+[d4K14] D=50625 nnz=957825 build 0.07s (stage=evolve)
+  evolve stage already done
+=== d5K8 (evolve, D=59049 ) ===
+[d5K8] D=59049 nnz=1517049 build 0.12s (stage=evolve)
+  evolve stage already done
+=== d3K45 (evolve, D=97336 ) ===
+[d3K45] D=97336 nnz=1227556 build 0.08s (stage=evolve)
+  evolve stage already done
+=== d4K16 (evolve, D=83521 ) ===
+[d4K16] D=83521 nnz=1600193 build 0.12s (stage=evolve)
+  evolve stage already done
+=== d4K17 (evolve, D=104976 ) ===
+[d4K17] D=104976 nnz=2021760 build 0.16s (stage=evolve)
+    [krylov] deadline reached at step 350/1147 (tau=23)
+  evolve 439s (dt=0.065, tau<=23) | timeavg=6.815 vs micro=5.194 (|dev|=1.621) | residfluct=0.4826 | normdrift=1.9e-13
+=== d4K9U (window, D=10000 ) ===
+[d4K9U] D=10000 nnz=179200 build 0.03s (stage=window)
+  splu 14.57s nnzLU=27.5M rss=722.6MB
+=== d4K9 (window, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K9 (evolve, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=evolve)
+  evolve stage already done
+=== d6K4 (window, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.04s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d6K4 (evolve, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.03s (stage=evolve)
+  evolve stage already done
+=== d5K6 (window, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.03s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d5K6 (evolve, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.03s (stage=evolve)
+  evolve stage already done
+=== d4K11 (window, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.03s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K11 (evolve, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.03s (stage=evolve)
+  evolve stage already done
+=== d3K28 (window, D=24389 ) ===
+[d3K28] D=24389 nnz=302093 build 0.02s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d3K28 (evolve, D=24389 ) ===
+[d3K28] D=24389 nnz=302093 build 0.02s (stage=evolve)
+  evolve stage already done
+=== d4K12 (evolve, D=28561 ) ===
+[d4K12] D=28561 nnz=531505 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d3K35 (evolve, D=46656 ) ===
+[d3K35] D=46656 nnz=583416 build 0.03s (stage=evolve)
+  evolve stage already done
+=== d6K5 (evolve, D=46656 ) ===
+[d6K5] D=46656 nnz=1485216 build 0.11s (stage=evolve)
+  evolve stage already done
+=== d4K14 (evolve, D=50625 ) ===
+[d4K14] D=50625 nnz=957825 build 0.06s (stage=evolve)
+  evolve stage already done
+=== d5K8 (evolve, D=59049 ) ===
+[d5K8] D=59049 nnz=1517049 build 0.1s (stage=evolve)
+  evolve stage already done
+=== d3K45 (evolve, D=97336 ) ===
+[d3K45] D=97336 nnz=1227556 build 0.06s (stage=evolve)
+  evolve stage already done
+=== d4K16 (evolve, D=83521 ) ===
+[d4K16] D=83521 nnz=1600193 build 0.1s (stage=evolve)
+  evolve stage already done
+=== d4K17 (evolve, D=104976 ) ===
+[d4K17] D=104976 nnz=2021760 build 0.12s (stage=evolve)
+  evolve stage already done
+=== d4K9U (window, D=10000 ) ===
+[d4K9U] D=10000 nnz=179200 build 0.01s (stage=window)
+  splu 14.96s nnzLU=27.5M rss=724.1MB
+  eigsh 111.6s | <r>=0.4023+-0.0144 | sigma_ETH=2.020 | PR/D=0.0022 | microRMSE=0.7886174984985482
+=== d4K9U (evolve, D=10000 ) ===
+[d4K9U] D=10000 nnz=179200 build 0.01s (stage=evolve)
+=== d4K9 (window, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K9 (evolve, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=evolve)
+  evolve stage already done
+=== d6K4 (window, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.04s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d6K4 (evolve, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.05s (stage=evolve)
+  evolve stage already done
+=== d5K6 (window, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.03s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d5K6 (evolve, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d4K11 (window, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.05s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K11 (evolve, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.03s (stage=evolve)
+  evolve stage already done
+=== d3K28 (window, D=24389 ) ===
+[d3K28] D=24389 nnz=302093 build 0.02s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d3K28 (evolve, D=24389 ) ===
+[d3K28] D=24389 nnz=302093 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d4K12 (evolve, D=28561 ) ===
+[d4K12] D=28561 nnz=531505 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d3K35 (evolve, D=46656 ) ===
+[d3K35] D=46656 nnz=583416 build 0.05s (stage=evolve)
+  evolve stage already done
+=== d6K5 (evolve, D=46656 ) ===
+[d6K5] D=46656 nnz=1485216 build 0.13s (stage=evolve)
+  evolve stage already done
+=== d4K14 (evolve, D=50625 ) ===
+[d4K14] D=50625 nnz=957825 build 0.07s (stage=evolve)
+  evolve stage already done
+=== d5K8 (evolve, D=59049 ) ===
+[d5K8] D=59049 nnz=1517049 build 0.12s (stage=evolve)
+  evolve stage already done
+=== d3K45 (evolve, D=97336 ) ===
+[d3K45] D=97336 nnz=1227556 build 0.07s (stage=evolve)
+  evolve stage already done
+=== d4K16 (evolve, D=83521 ) ===
+[d4K16] D=83521 nnz=1600193 build 0.11s (stage=evolve)
+  evolve stage already done
+=== d4K17 (evolve, D=104976 ) ===
+[d4K17] D=104976 nnz=2021760 build 0.14s (stage=evolve)
+  evolve stage already done
+=== d4K9U (window, D=10000 ) ===
+[d4K9U] D=10000 nnz=179200 build 0.01s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K9U (evolve, D=10000 ) ===
+[d4K9U] D=10000 nnz=179200 build 0.01s (stage=evolve)
+    [krylov] deadline reached at step 2925/21117 (tau=35)
+  evolve 434s (dt=0.012, tau<=35) | timeavg=8.147 vs micro=1.239 (|dev|=6.908) | residfluct=0.3627 | normdrift=1.7e-14
+=== d4K11U (window, D=20736 ) ===
+[d4K11U] D=20736 nnz=381888 build 0.04s (stage=window)
+=== d4K9 (window, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K9 (evolve, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=evolve)
+  evolve stage already done
+=== d6K4 (window, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.04s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d6K4 (evolve, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d5K6 (window, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.03s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d5K6 (evolve, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.05s (stage=evolve)
+  evolve stage already done
+=== d4K11 (window, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.03s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K11 (evolve, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.03s (stage=evolve)
+  evolve stage already done
+=== d3K28 (window, D=24389 ) ===
+[d3K28] D=24389 nnz=302093 build 0.02s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d3K28 (evolve, D=24389 ) ===
+[d3K28] D=24389 nnz=302093 build 0.02s (stage=evolve)
+  evolve stage already done
+=== d4K12 (evolve, D=28561 ) ===
+[d4K12] D=28561 nnz=531505 build 0.06s (stage=evolve)
+  evolve stage already done
+=== d3K35 (evolve, D=46656 ) ===
+[d3K35] D=46656 nnz=583416 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d6K5 (evolve, D=46656 ) ===
+[d6K5] D=46656 nnz=1485216 build 0.13s (stage=evolve)
+  evolve stage already done
+=== d4K14 (evolve, D=50625 ) ===
+[d4K14] D=50625 nnz=957825 build 0.07s (stage=evolve)
+  evolve stage already done
+=== d5K8 (evolve, D=59049 ) ===
+[d5K8] D=59049 nnz=1517049 build 0.13s (stage=evolve)
+  evolve stage already done
+=== d3K45 (evolve, D=97336 ) ===
+[d3K45] D=97336 nnz=1227556 build 0.07s (stage=evolve)
+  evolve stage already done
+=== d4K16 (evolve, D=83521 ) ===
+[d4K16] D=83521 nnz=1600193 build 0.11s (stage=evolve)
+  evolve stage already done
+=== d4K17 (evolve, D=104976 ) ===
+[d4K17] D=104976 nnz=2021760 build 0.14s (stage=evolve)
+  evolve stage already done
+=== d4K9U (window, D=10000 ) ===
+[d4K9U] D=10000 nnz=179200 build 0.01s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K9U (evolve, D=10000 ) ===
+[d4K9U] D=10000 nnz=179200 build 0.01s (stage=evolve)
+  evolve stage already done
+=== d4K11U (window, D=20736 ) ===
+[d4K11U] D=20736 nnz=381888 build 0.03s (stage=window)
+  splu 141.23s nnzLU=nanM rss=1756.5MB
+  eigsh 198.7s | <r>=0.3868+-0.0182 | sigma_ETH=2.613 | PR/D=0.0011 | microRMSE=0.98728868452196
+=== d4K11U (evolve, D=20736 ) ===
+[d4K11U] D=20736 nnz=381888 build 0.03s (stage=evolve)
+=== d4K9 (window, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K9 (evolve, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=evolve)
+  evolve stage already done
+=== d6K4 (window, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.04s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d6K4 (evolve, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d5K6 (window, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.04s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d5K6 (evolve, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d4K11 (window, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.04s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K11 (evolve, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.03s (stage=evolve)
+  evolve stage already done
+=== d3K28 (window, D=24389 ) ===
+[d3K28] D=24389 nnz=302093 build 0.04s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d3K28 (evolve, D=24389 ) ===
+[d3K28] D=24389 nnz=302093 build 0.02s (stage=evolve)
+  evolve stage already done
+=== d4K12 (evolve, D=28561 ) ===
+[d4K12] D=28561 nnz=531505 build 0.05s (stage=evolve)
+  evolve stage already done
+=== d3K35 (evolve, D=46656 ) ===
+[d3K35] D=46656 nnz=583416 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d6K5 (evolve, D=46656 ) ===
+[d6K5] D=46656 nnz=1485216 build 0.15s (stage=evolve)
+  evolve stage already done
+=== d4K14 (evolve, D=50625 ) ===
+[d4K14] D=50625 nnz=957825 build 0.08s (stage=evolve)
+  evolve stage already done
+=== d5K8 (evolve, D=59049 ) ===
+[d5K8] D=59049 nnz=1517049 build 0.13s (stage=evolve)
+  evolve stage already done
+=== d3K45 (evolve, D=97336 ) ===
+[d3K45] D=97336 nnz=1227556 build 0.08s (stage=evolve)
+  evolve stage already done
+=== d4K16 (evolve, D=83521 ) ===
+[d4K16] D=83521 nnz=1600193 build 0.12s (stage=evolve)
+  evolve stage already done
+=== d4K17 (evolve, D=104976 ) ===
+[d4K17] D=104976 nnz=2021760 build 0.17s (stage=evolve)
+  evolve stage already done
+=== d4K9U (window, D=10000 ) ===
+[d4K9U] D=10000 nnz=179200 build 0.01s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K9U (evolve, D=10000 ) ===
+[d4K9U] D=10000 nnz=179200 build 0.02s (stage=evolve)
+  evolve stage already done
+=== d4K11U (window, D=20736 ) ===
+[d4K11U] D=20736 nnz=381888 build 0.03s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K11U (evolve, D=20736 ) ===
+[d4K11U] D=20736 nnz=381888 build 0.04s (stage=evolve)
+    [krylov] deadline reached at step 1375/31305 (tau=11)
+  evolve 435s (dt=0.008, tau<=11) | timeavg=10.185 vs micro=1.425 (|dev|=8.760) | residfluct=0.3660 | normdrift=8.9e-16
+=== d4K11U05 (window, D=20736 ) ===
+[d4K11U05] D=20736 nnz=381888 build 0.03s (stage=window)
+=== d4K9 (window, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K9 (evolve, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=evolve)
+  evolve stage already done
+=== d6K4 (window, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.04s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d6K4 (evolve, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d5K6 (window, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.04s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d5K6 (evolve, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.03s (stage=evolve)
+  evolve stage already done
+=== d4K11 (window, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.03s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K11 (evolve, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.03s (stage=evolve)
+  evolve stage already done
+=== d3K28 (window, D=24389 ) ===
+[d3K28] D=24389 nnz=302093 build 0.02s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d3K28 (evolve, D=24389 ) ===
+[d3K28] D=24389 nnz=302093 build 0.02s (stage=evolve)
+  evolve stage already done
+=== d4K12 (evolve, D=28561 ) ===
+[d4K12] D=28561 nnz=531505 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d3K35 (evolve, D=46656 ) ===
+[d3K35] D=46656 nnz=583416 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d6K5 (evolve, D=46656 ) ===
+[d6K5] D=46656 nnz=1485216 build 0.13s (stage=evolve)
+  evolve stage already done
+=== d4K14 (evolve, D=50625 ) ===
+[d4K14] D=50625 nnz=957825 build 0.07s (stage=evolve)
+  evolve stage already done
+=== d5K8 (evolve, D=59049 ) ===
+[d5K8] D=59049 nnz=1517049 build 0.13s (stage=evolve)
+  evolve stage already done
+=== d3K45 (evolve, D=97336 ) ===
+[d3K45] D=97336 nnz=1227556 build 0.08s (stage=evolve)
+  evolve stage already done
+=== d4K16 (evolve, D=83521 ) ===
+[d4K16] D=83521 nnz=1600193 build 0.12s (stage=evolve)
+  evolve stage already done
+=== d4K17 (evolve, D=104976 ) ===
+[d4K17] D=104976 nnz=2021760 build 0.17s (stage=evolve)
+  evolve stage already done
+=== d4K9U (window, D=10000 ) ===
+[d4K9U] D=10000 nnz=179200 build 0.02s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K9U (evolve, D=10000 ) ===
+[d4K9U] D=10000 nnz=179200 build 0.02s (stage=evolve)
+  evolve stage already done
+=== d4K11U (window, D=20736 ) ===
+[d4K11U] D=20736 nnz=381888 build 0.05s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K11U (evolve, D=20736 ) ===
+[d4K11U] D=20736 nnz=381888 build 0.03s (stage=evolve)
+  evolve stage already done
+=== d4K11U05 (window, D=20736 ) ===
+[d4K11U05] D=20736 nnz=381888 build 0.04s (stage=window)
+  splu 204.41s nnzLU=nanM rss=1816.0MB
+  eigsh 223.9s | <r>=0.5020+-0.0185 | sigma_ETH=0.781 | PR/D=0.0292 | microRMSE=0.934010466829017
+=== d4K11U05 (evolve, D=20736 ) ===
+[d4K11U05] D=20736 nnz=381888 build 0.03s (stage=evolve)
+=== d4K9 (window, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K9 (evolve, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=evolve)
+  evolve stage already done
+=== d6K4 (window, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.04s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d6K4 (evolve, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d5K6 (window, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.03s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d5K6 (evolve, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.03s (stage=evolve)
+  evolve stage already done
+=== d4K11 (window, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.03s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K11 (evolve, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.03s (stage=evolve)
+  evolve stage already done
+=== d3K28 (window, D=24389 ) ===
+[d3K28] D=24389 nnz=302093 build 0.02s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d3K28 (evolve, D=24389 ) ===
+[d3K28] D=24389 nnz=302093 build 0.02s (stage=evolve)
+  evolve stage already done
+=== d4K12 (evolve, D=28561 ) ===
+[d4K12] D=28561 nnz=531505 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d3K35 (evolve, D=46656 ) ===
+[d3K35] D=46656 nnz=583416 build 0.03s (stage=evolve)
+  evolve stage already done
+=== d6K5 (evolve, D=46656 ) ===
+[d6K5] D=46656 nnz=1485216 build 0.1s (stage=evolve)
+  evolve stage already done
+=== d4K14 (evolve, D=50625 ) ===
+[d4K14] D=50625 nnz=957825 build 0.06s (stage=evolve)
+  evolve stage already done
+=== d5K8 (evolve, D=59049 ) ===
+[d5K8] D=59049 nnz=1517049 build 0.11s (stage=evolve)
+  evolve stage already done
+=== d3K45 (evolve, D=97336 ) ===
+[d3K45] D=97336 nnz=1227556 build 0.07s (stage=evolve)
+  evolve stage already done
+=== d4K16 (evolve, D=83521 ) ===
+[d4K16] D=83521 nnz=1600193 build 0.1s (stage=evolve)
+  evolve stage already done
+=== d4K17 (evolve, D=104976 ) ===
+[d4K17] D=104976 nnz=2021760 build 0.13s (stage=evolve)
+  evolve stage already done
+=== d4K9U (window, D=10000 ) ===
+[d4K9U] D=10000 nnz=179200 build 0.01s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K9U (evolve, D=10000 ) ===
+[d4K9U] D=10000 nnz=179200 build 0.01s (stage=evolve)
+  evolve stage already done
+=== d4K11U (window, D=20736 ) ===
+[d4K11U] D=20736 nnz=381888 build 0.03s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K11U (evolve, D=20736 ) ===
+[d4K11U] D=20736 nnz=381888 build 0.03s (stage=evolve)
+  evolve stage already done
+=== d4K11U05 (window, D=20736 ) ===
+[d4K11U05] D=20736 nnz=381888 build 0.03s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K11U05 (evolve, D=20736 ) ===
+[d4K11U05] D=20736 nnz=381888 build 0.03s (stage=evolve)
+    [krylov] deadline reached at step 1500/8579 (tau=44)
+  evolve 432s (dt=0.029, tau<=44) | timeavg=3.564 vs micro=1.885 (|dev|=1.679) | residfluct=0.2350 | normdrift=4.1e-14
+=== d4K12U (evolve, D=28561 ) ===
+[d4K12U] D=28561 nnz=531505 build 0.04s (stage=evolve)
+=== d4K9 (window, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K9 (evolve, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=evolve)
+  evolve stage already done
+=== d6K4 (window, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.04s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d6K4 (evolve, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d5K6 (window, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.05s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d5K6 (evolve, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d4K11 (window, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.03s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K11 (evolve, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.03s (stage=evolve)
+  evolve stage already done
+=== d3K28 (window, D=24389 ) ===
+[d3K28] D=24389 nnz=302093 build 0.04s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d3K28 (evolve, D=24389 ) ===
+[d3K28] D=24389 nnz=302093 build 0.02s (stage=evolve)
+  evolve stage already done
+=== d4K12 (evolve, D=28561 ) ===
+[d4K12] D=28561 nnz=531505 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d3K35 (evolve, D=46656 ) ===
+[d3K35] D=46656 nnz=583416 build 0.03s (stage=evolve)
+  evolve stage already done
+=== d6K5 (evolve, D=46656 ) ===
+[d6K5] D=46656 nnz=1485216 build 0.1s (stage=evolve)
+  evolve stage already done
+=== d4K14 (evolve, D=50625 ) ===
+[d4K14] D=50625 nnz=957825 build 0.06s (stage=evolve)
+  evolve stage already done
+=== d5K8 (evolve, D=59049 ) ===
+[d5K8] D=59049 nnz=1517049 build 0.11s (stage=evolve)
+  evolve stage already done
+=== d3K45 (evolve, D=97336 ) ===
+[d3K45] D=97336 nnz=1227556 build 0.06s (stage=evolve)
+  evolve stage already done
+=== d4K16 (evolve, D=83521 ) ===
+[d4K16] D=83521 nnz=1600193 build 0.1s (stage=evolve)
+  evolve stage already done
+=== d4K17 (evolve, D=104976 ) ===
+[d4K17] D=104976 nnz=2021760 build 0.12s (stage=evolve)
+  evolve stage already done
+=== d4K9U (window, D=10000 ) ===
+[d4K9U] D=10000 nnz=179200 build 0.01s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K9U (evolve, D=10000 ) ===
+[d4K9U] D=10000 nnz=179200 build 0.01s (stage=evolve)
+  evolve stage already done
+=== d4K11U (window, D=20736 ) ===
+[d4K11U] D=20736 nnz=381888 build 0.03s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K11U (evolve, D=20736 ) ===
+[d4K11U] D=20736 nnz=381888 build 0.03s (stage=evolve)
+  evolve stage already done
+=== d4K11U05 (window, D=20736 ) ===
+[d4K11U05] D=20736 nnz=381888 build 0.03s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K11U05 (evolve, D=20736 ) ===
+[d4K11U05] D=20736 nnz=381888 build 0.03s (stage=evolve)
+  evolve stage already done
+=== d4K12U (evolve, D=28561 ) ===
+[d4K12U] D=28561 nnz=531505 build 0.04s (stage=evolve)
+    [krylov] deadline reached at step 1500/28930 (tau=8)
+  evolve 436s (dt=0.005, tau<=8) | timeavg=11.240 vs micro=1.534 (|dev|=9.706) | residfluct=0.2495 | normdrift=3.5e-14
+=== d4K14U (evolve, D=50625 ) ===
+[d4K14U] D=50625 nnz=957825 build 0.09s (stage=evolve)
+=== d4K9 (window, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K9 (evolve, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=evolve)
+  evolve stage already done
+=== d6K4 (window, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.04s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d6K4 (evolve, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.05s (stage=evolve)
+  evolve stage already done
+=== d5K6 (window, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.04s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d5K6 (evolve, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d4K11 (window, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.03s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K11 (evolve, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.03s (stage=evolve)
+  evolve stage already done
+=== d3K28 (window, D=24389 ) ===
+[d3K28] D=24389 nnz=302093 build 0.02s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d3K28 (evolve, D=24389 ) ===
+[d3K28] D=24389 nnz=302093 build 0.02s (stage=evolve)
+  evolve stage already done
+=== d4K12 (evolve, D=28561 ) ===
+[d4K12] D=28561 nnz=531505 build 0.06s (stage=evolve)
+  evolve stage already done
+=== d3K35 (evolve, D=46656 ) ===
+[d3K35] D=46656 nnz=583416 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d6K5 (evolve, D=46656 ) ===
+[d6K5] D=46656 nnz=1485216 build 0.15s (stage=evolve)
+  evolve stage already done
+=== d4K14 (evolve, D=50625 ) ===
+[d4K14] D=50625 nnz=957825 build 0.08s (stage=evolve)
+  evolve stage already done
+=== d5K8 (evolve, D=59049 ) ===
+[d5K8] D=59049 nnz=1517049 build 0.13s (stage=evolve)
+  evolve stage already done
+=== d3K45 (evolve, D=97336 ) ===
+[d3K45] D=97336 nnz=1227556 build 0.08s (stage=evolve)
+  evolve stage already done
+=== d4K16 (evolve, D=83521 ) ===
+[d4K16] D=83521 nnz=1600193 build 0.13s (stage=evolve)
+  evolve stage already done
+=== d4K17 (evolve, D=104976 ) ===
+[d4K17] D=104976 nnz=2021760 build 0.17s (stage=evolve)
+  evolve stage already done
+=== d4K9U (window, D=10000 ) ===
+[d4K9U] D=10000 nnz=179200 build 0.02s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K9U (evolve, D=10000 ) ===
+[d4K9U] D=10000 nnz=179200 build 0.01s (stage=evolve)
+  evolve stage already done
+=== d4K11U (window, D=20736 ) ===
+[d4K11U] D=20736 nnz=381888 build 0.04s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K11U (evolve, D=20736 ) ===
+[d4K11U] D=20736 nnz=381888 build 0.03s (stage=evolve)
+  evolve stage already done
+=== d4K11U05 (window, D=20736 ) ===
+[d4K11U05] D=20736 nnz=381888 build 0.03s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K11U05 (evolve, D=20736 ) ===
+[d4K11U05] D=20736 nnz=381888 build 0.03s (stage=evolve)
+  evolve stage already done
+=== d4K12U (evolve, D=28561 ) ===
+[d4K12U] D=28561 nnz=531505 build 0.05s (stage=evolve)
+  evolve stage already done
+=== d4K14U (evolve, D=50625 ) ===
+[d4K14U] D=50625 nnz=957825 build 0.08s (stage=evolve)
+    [krylov] deadline reached at step 800/39210 (tau=3)
+  evolve 430s (dt=0.004, tau<=3) | timeavg=13.459 vs micro=1.616 (|dev|=11.842) | residfluct=0.2572 | normdrift=3.9e-15
+=== d3K28weak (window, D=24389 ) ===
+[d3K28weak] D=24389 nnz=302093 build 0.02s (stage=window)
+  splu 22.08s nnzLU=44.4M rss=1070.8MB
+  eigsh 87.8s | <r>=0.5274+-0.0155 | sigma_ETH=8.164 | PR/D=0.0001 | microRMSE=1.387785147561958
+=== d3K28weak (evolve, D=24389 ) ===
+[d3K28weak] D=24389 nnz=302093 build 0.03s (stage=evolve)
+=== d4K9 (window, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K9 (evolve, D=10000 ) ===
+[d4K9] D=10000 nnz=179200 build 0.01s (stage=evolve)
+  evolve stage already done
+=== d6K4 (window, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.04s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d6K4 (evolve, D=15625 ) ===
+[d6K4] D=15625 nnz=465625 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d5K6 (window, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.04s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d5K6 (evolve, D=16807 ) ===
+[d5K6] D=16807 nnz=407827 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d4K11 (window, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.03s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K11 (evolve, D=20736 ) ===
+[d4K11] D=20736 nnz=381888 build 0.05s (stage=evolve)
+  evolve stage already done
+=== d3K28 (window, D=24389 ) ===
+[d3K28] D=24389 nnz=302093 build 0.02s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d3K28 (evolve, D=24389 ) ===
+[d3K28] D=24389 nnz=302093 build 0.02s (stage=evolve)
+  evolve stage already done
+=== d4K12 (evolve, D=28561 ) ===
+[d4K12] D=28561 nnz=531505 build 0.05s (stage=evolve)
+  evolve stage already done
+=== d3K35 (evolve, D=46656 ) ===
+[d3K35] D=46656 nnz=583416 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d6K5 (evolve, D=46656 ) ===
+[d6K5] D=46656 nnz=1485216 build 0.15s (stage=evolve)
+  evolve stage already done
+=== d4K14 (evolve, D=50625 ) ===
+[d4K14] D=50625 nnz=957825 build 0.08s (stage=evolve)
+  evolve stage already done
+=== d5K8 (evolve, D=59049 ) ===
+[d5K8] D=59049 nnz=1517049 build 0.14s (stage=evolve)
+  evolve stage already done
+=== d3K45 (evolve, D=97336 ) ===
+[d3K45] D=97336 nnz=1227556 build 0.08s (stage=evolve)
+  evolve stage already done
+=== d4K16 (evolve, D=83521 ) ===
+[d4K16] D=83521 nnz=1600193 build 0.12s (stage=evolve)
+  evolve stage already done
+=== d4K17 (evolve, D=104976 ) ===
+[d4K17] D=104976 nnz=2021760 build 0.16s (stage=evolve)
+  evolve stage already done
+=== d4K9U (window, D=10000 ) ===
+[d4K9U] D=10000 nnz=179200 build 0.01s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K9U (evolve, D=10000 ) ===
+[d4K9U] D=10000 nnz=179200 build 0.03s (stage=evolve)
+  evolve stage already done
+=== d4K11U (window, D=20736 ) ===
+[d4K11U] D=20736 nnz=381888 build 0.03s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K11U (evolve, D=20736 ) ===
+[d4K11U] D=20736 nnz=381888 build 0.05s (stage=evolve)
+  evolve stage already done
+=== d4K11U05 (window, D=20736 ) ===
+[d4K11U05] D=20736 nnz=381888 build 0.03s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K11U05 (evolve, D=20736 ) ===
+[d4K11U05] D=20736 nnz=381888 build 0.03s (stage=evolve)
+  evolve stage already done
+=== d4K12U (evolve, D=28561 ) ===
+[d4K12U] D=28561 nnz=531505 build 0.05s (stage=evolve)
+  evolve stage already done
+=== d4K14U (evolve, D=50625 ) ===
+[d4K14U] D=50625 nnz=957825 build 0.08s (stage=evolve)
+  evolve stage already done
+=== d3K28weak (window, D=24389 ) ===
+[d3K28weak] D=24389 nnz=302093 build 0.02s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d3K28weak (evolve, D=24389 ) ===
+[d3K28weak] D=24389 nnz=302093 build 0.02s (stage=evolve)
+  evolve 309s (dt=0.237, tau<=250) | timeavg=27.964 vs micro=12.712 (|dev|=15.253) | residfluct=0.0206 | normdrift=6.7e-16
+ALL_DONE

@@ -116,9 +116,12 @@ Each $M_{p}$ is bounded with norm $1$ (Proposition~\ref{prop:monoidrep}); a fini
 bounded self-adjoint operators is bounded self-adjoint. $a_{p}^{\dagger}a_{q}$ is bounded
 (particle-number preserving hop). $H_{\mathrm{tot}}$ is a bounded perturbation of the
 self-adjoint $H_{P}$, hence self-adjoint on $D(H_{P})$. Non-commutation:
-$M_{p}$ changes the eigenvalue of $\Nhat$ from $n$ to $np$, and
-$[H_{W},\Nhat]\ket{n}=\sum_{p}g_{p}(p-1)n(\ket{np}-\mathbf{1}_{p\mid n}\ket{n/p})\neq0$ for
-$n\geq1$ and nonzero $g$.
+$M_{p}$ changes the eigenvalue of $\Nhat$ from $n$ to $np$, and a direct computation gives
+\begin{equation}
+[H_{W},\Nhat]\ket{n}=\sum_{p}g_{p}\,n\Bigl(-(p-1)\ket{np}+\bigl(1-\tfrac{1}{p}\bigr)\,\mathbf{1}_{p\mid n}\ket{n/p}\Bigr)\neq0
+\end{equation}
+for $n\geq1$ and nonzero $g$: the two coefficients are different in both sign and magnitude
+($-(p-1)$ versus $1-1/p$), so the terms cannot cancel.
 \end{proof}
 
 Three remarks interpret these objects.
@@ -134,13 +137,23 @@ slogan of the source becomes the statement that the Standard Model's force secto
 to structured sub-lattices (Conjecture~$\mathsf{C9}$).
 \end{remark}
 
-\begin{remark}[Conservation structure]
-$H_{W}$ conserves the \emph{total primon number} $\Nhat_{\mathrm{tot}}=\sum\hat n_{p}$ (each
-$M_{p}$ changes one occupation by $\pm1$), while $H_{\mathrm{hop}}$ conserves $\Nhat_{\mathrm{tot}}$
-but not $\Nhat$; $H_{P}$ conserves everything. Thus the full theory has a graded conservation
-hierarchy: $\Nhat_{\mathrm{tot}}$ is exactly conserved, $\Nhat$ is not. The additive and
-multiplicative structures of $\Nn$ thereby acquire distinct dynamical roles, which is the
-sharp form of the source's contrast between ``spectral order'' and ``arithmetic cascade.''
+\begin{remark}[Conservation structure, corrected]\label{rem:conservation}
+The three sectors carry a strict conservation hierarchy. $H_{P}$ is diagonal in the occupation
+basis and conserves everything. $H_{\mathrm{hop}}$ moves single primons between modes
+($a_{p}^{\dagger}a_{q}$: one occupation up, one down), so it conserves the \emph{total primon
+number} $\Nhat_{\mathrm{tot}}=\sum_{p}\hat n_{p}$ exactly, but not $\Nhat$ (it rescales $n$ by
+$q/p$). $H_{W}$ conserves \emph{neither}: each $M_{p}$ raises the occupation of the $p$-mode by
+one and hence raises $\Nhat_{\mathrm{tot}}$ by one, while each $M_{p}^{\dagger}$ lowers it---the
+walk is the nucleation sector, the engine of entropy growth in the precise quantitative sense
+of Proposition~\ref{prop:nucleation} ($d\langle\Nhat_{\mathrm{tot}}\rangle/d\tau>0$ from
+$\ket{1}$ whenever $H_{W}\neq0$). The full theory therefore has a graded conservation
+hierarchy: $H_{P}$ conserves $\Nhat$ and $\Nhat_{\mathrm{tot}}$; $H_{\mathrm{hop}}$ conserves
+$\Nhat_{\mathrm{tot}}$ only; $H_{W}$ conserves neither and is the only source of net primon
+creation. The additive and multiplicative structures of $\Nn$ thereby acquire distinct
+dynamical roles---spectral order ($H_{P}$), transport ($H_{\mathrm{hop}}$), creation
+($H_{W}$)---which is the sharp form of the source's contrast between ``spectral order'' and
+``arithmetic cascade.'' Register note: the CP ratchet of $\mathsf{C10}$ lives entirely in this
+non-conserving $H_{W}$ sector.
 \end{remark}
 
 \begin{remark}[Relation to the reported physics]
@@ -189,13 +202,16 @@ kin, are exponentially atypical). Thus the source's ``cascade into composite sta
 correct as a description of where the measure lives, and the Erd\H{o}s--Kac Gaussian is the
 precise fluctuation law of the cascade. What remains open is the dynamical version:
 
-\begin{conjecture}[Cascade/thermalization on the prime lattice]\label{conj:cascade}
-Let $H_{\mathrm{tot}}=H_{P}+H_{W}+H_{\mathrm{hop}}$ on $\Hil_{\mathcal{A}}$ with generic
-couplings, restricted to the energy window $[E,E+\Delta]$. Then the dynamics
-$e^{-i\tau H_{\mathrm{tot}}/\hbar}$ equilibrates in the sense of the eigenstate thermalization
-hypothesis: time-averaged local observables converge, as $E\to\infty$, to their values in the
-microcanonical ensemble of Theorem~\ref{thm:erdoskac}, and the relaxation time scale is
-polynomial in $E$.
+\begin{conjecture}[Cascade/thermalization on the prime lattice, interacting completion]\label{conj:cascade}
+Let $H_{\mathrm{tot}}^{(U)}=H_{P}+H_{W}+H_{\mathrm{hop}}+U\sum_{p<q}\hat n_{p}\hat n_{q}$ on
+$\Hil_{\mathcal{A}}$ with generic couplings and $U\neq0$ (or any equivalent quartic
+completion), restricted to the energy window $[E,E+\Delta]$. Then along any truncation
+sequence with truncation dimension $D\to\infty$: (i) eigenstate expectation values of local
+occupation observables are smooth in $E$ with within-window fluctuations
+$\sigma_{\mathrm{ETH}}(D)\to0$; (ii) diagonal-ensemble values converge to the microcanonical
+values of Theorem~\ref{thm:erdoskac}; and (iii) the relaxation time scale is polynomial in
+$E$. The bare $H_{\mathrm{tot}}$ ($U=0$) is \emph{excluded}: it is a quasi-quadratic object
+(see below) for which the thermalization conjecture is mis-typed.
 \end{conjecture}
 
 Conjecture~\ref{conj:cascade} (register entry $\mathsf{C4}$) is the repaired engine for every
@@ -203,7 +219,43 @@ arrow-of-time claim in the source: entropy growth, decoherence, record formation
 emergence of the second law are all downstream of it. It is a well-posed, hard, and
 conventional-sounding problem of quantum statistical mechanics, which is exactly the point:
 the source's most sweeping physical claims, once repaired, reduce to questions that experts
-know how to attack. Falsifiers and attack routes are listed in
+know how to attack. The retyping matters and was forced by computation:
+
+\begin{remark}[Numerical status of the cascade conjecture]\label{rem:numerics}
+Three attack programs have been run on this exact system: dense diagonalization at
+$D\leq4096$; then a scaled sparse program---shift-invert Lanczos eigen-windows to
+$D\approx2.4\times10^{4}$ (the $LU$ fill of the interior factorization exhausts
+laptop RAM beyond that), and restarted-Lanczos Krylov equilibration to
+$D\approx10^{5}$ (code and data accompany the paper). They establish:
+(a) \emph{Level statistics}: generic couplings give GOE ratio statistics
+$\langle r\rangle=0.51$--$0.54$ at every scale computed from $D=625$ to
+$2.4\times10^{4}$; the weak-coupling control collapses the participation ratio to
+$\mathrm{PR}/D\approx10^{-4}$ with $\sigma_{\mathrm{ETH}}$ inflated by an order of
+magnitude (its $\langle r\rangle$ is window-placement-sensitive, $0.44$--$0.53$,
+because weak off-diagonal couplings split the near-degenerate clusters of the
+diagonal lattice). (b) \emph{ETH fails for the bare $H_{\mathrm{tot}}$
+structurally}: $H_{P}$ is a separable ramp, $H_{W}$ is a per-axis adjacency
+(Wannier--Stark chains; propagation along the $p$-axis is Stark-suppressed when
+$g_{p}\lesssim\log p$), and $H_{\mathrm{hop}}$ is quadratic---no quartic term exists
+anywhere in $H_{\mathrm{tot}}$, so the system is essentially single-particle on the
+exponent lattice $\Zz^{d}$. The scaled data make this quantitative: the normalized
+eigenstate fluctuation $\sigma_{\mathrm{ETH}}/\mathrm{std}(a_{j})$ of local
+occupations sits at $0.94$--$0.99$---fluctuations as large as the observable's full
+spread---flat in $D$ at every coupling; and the diagonal ensemble retains
+$6$--$24\%$ of the initial mode's occupation
+($|\mathrm{diag}-\mathrm{micro}|/K$) at every scale from $D=10^{4}$ to $10^{5}$,
+with no downward trend. (c) \emph{The diagonal quartic completion does not rescue
+thermalization at any accessible scale}: the dose--response is monotone
+localization ($\langle r\rangle$: $0.514$ at $U=0$, $0.502$ at $U=0.5$, $0.387$ at
+$U=2$, all at $D\approx2\times10^{4}$; $\mathrm{PR}/D$: $0.18\to0.03\to0.001$;
+frozen-mode memory $|\mathrm{diag}-\mathrm{micro}|/K\approx0.8$). A kinetic
+(density-assisted hopping) completion is the natural next candidate. An
+$E\to\infty$ statement cannot be falsified by any finite-$D$ simulation; a
+\emph{scaling} criterion can be---and on the present evidence every scaling
+diagnostic is flat.
+\end{remark}
+
+Falsifiers and attack routes are listed in
 Section~\ref{sec:register}.
 
 \subsection{The Janus state, corrected}

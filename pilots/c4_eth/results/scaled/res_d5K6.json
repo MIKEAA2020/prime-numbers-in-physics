@@ -1,0 +1,42 @@
+{
+ "tag": "d5K6",
+ "d": 5,
+ "K": 6,
+ "g0": 1.5,
+ "h0": 1.0,
+ "U": 0.0,
+ "seed": 7,
+ "k": 350,
+ "ncv": 430,
+ "D": 16807,
+ "nnz_H": 407827,
+ "t_build": 0.04,
+ "g": [
+  1.6126,
+  1.8575,
+  1.7481,
+  1.2527,
+  1.3201
+ ],
+ "sigma": 23.235008410547515,
+ "error": "splu failed: SystemError: gstrf was called with invalid arguments",
+ "peak_rss_mb": 92.1,
+ "tier": "evolve-only (SuperLU internal allocation failure at this fill; C-level, not catchable as MemoryError)",
+ "window": null,
+ "evolution": {
+  "E0": 14.387371636790224,
+  "delta": 0.5,
+  "n_micro_states": 470,
+  "micro_d": 1.374468085106383,
+  "time_avg": 2.5726821319606823,
+  "resid_fluct": 0.021965197554212872,
+  "norm_drift": 1.5654144647214707e-14,
+  "t_evolve": 434.2,
+  "diag_vs_micro": 1.1982140468542992,
+  "m": 48,
+  "dt": 0.10638968950718748,
+  "hnorm": 112.28638198916042,
+  "tau_reached": 178.20272992453903,
+  "truncated": true
+ }
+}

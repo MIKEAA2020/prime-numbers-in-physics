@@ -45,3 +45,25 @@ Stage Summary:
 - Mirror: github.com/MIKEAA2020/prime-numbers-in-physics (transcript + paper sources + outputs)
 - PAT persisted: .github_pat + .backup/github_pat (root workspace)
 - Framework status: 16 theorems/propositions proved or cited exactly, 3 major repairs (frozen Hamiltonian, composite!=entangled, recurrence trichotomy), 21-row corrections audit, 12 conjectures (C1-C12) with grades, dependencies, falsifiers
+
+---
+Task ID: 4
+Agent: Main agent (Super Z)
+Task: Fold register-review repairs into the paper; scale the ETH program to D~10^4-10^5; push pilots + review + updated paper
+
+Work Log:
+- Folded repairs into sec_dynamics.tex: commutator coefficients corrected ([-(p-1) |np> + (1-1/p)|n/p>]); conservation-structure remark corrected (H_P conserves all; H_hop conserves N_tot; H_W conserves neither - nucleation sector); Conjecture cascade retyped to interacting completion H_tot^(U) with finite-size scaling falsifier; added Remark "Numerical status of the cascade conjecture" (rem:numerics)
+- Folded repairs into sec_register.tex: dependencies column added (12 rows, "(int.)" qualifier); C2 placed in layer 2; two-plane DAG paragraph (physical dependency vs mathematical attackability, cross-layer edges C11<-C3, C10<-C4); C4 falsifier restated as scaling criterion; C9 falsifier restated as calibrated common-N divisor protocol; C1/C3 grade-evidence honesty; section 11.1 item 2 calibrated; section 11.2 attack paths 1-2 updated with executed-program verdicts
+- sec_appendix.tex: 5 self-audit rows appended to the corrections log
+- SCALED ETH PROGRAM (scripts/c4_scaled_eth.py + run_c4_scaled.sh, 25 configs):
+  * Window tier: sparse CSR assembly + shift-invert Lanczos (splu MMD_AT_PLUS_A + eigsh), interior windows k=300-600 at sigma=median(eps); LU-fill-capped at D~2.4e4 on 4GB (RLIMIT_AS makes allocation failure catchable; SuperLU C-level failures auto-classified evolve-only)
+  * Evolve tier: restarted complex Lanczos Krylov propagation from |K e_d>, adaptive dt from Gershgorin norm ((||H||dt)^(m+1)/(m+1)! <= 1e-10), one full reorth pass; validated vs dense expm to 1e-13; D reached = 104,976 (d4K17)
+  * Bugs found and fixed en route: (1) psi.real broke unitarity - complex Lanczos required; (2) LU nnz materialization OOM; (3) stage separation so window+evolve fit wall-clock chunks; (4) background execution does not survive the harness - foreground chunked driver with skip-if-done
+  * RESULTS: <r> = 0.51-0.54 GOE at generic coupling D=625 to 2.4e4 (window tier); sigma_ETH/std(a_j) = 0.94-0.99 FLAT in D at all couplings; |diag-micro|/K = 6-24% flat from 1e4 to 1e5; quartic dose-response monotone localization (<r> 0.514 -> 0.502 -> 0.387; PR/D 0.18 -> 0.03 -> 0.001); weak control PR/D ~ 1e-4, |dev|/K ~ 0.5-1 (frozen); dense 8s @ 4096 vs sparse minutes @ 1e5
+- c4_scaled_figures.py: 6-panel figure (r, sigma_rel, PR/D, |diag-micro|, U dose, cost) + merged JSON + summary table
+- Paper recompiled (Tectonic): 40 pp body, 0 overfull, 0 undefined refs; cover merged via pypdf -> 41-page final
+- Repo staged: pilots/c4_eth (scripts + results + results/scaled + figures), pilots/c9_chebotarev, pilots/README.md, review/conjecture_register_review.md, README.md updated
+
+Stage Summary:
+- Verdict of the scaled program: C5 proxy positive at every scale; C4's scaling falsifier is armed and every scaling diagnostic is flat - the diagonal quartic completion localizes (does not thermalize); kinetic (density-assisted hopping) completion identified as the next candidate
+- Final deliverables: download/prime_spectral_framework_rigorous_reconstruction.pdf (41 pp), download/pilot_c4_eth_scaled/ (figure, JSON, summary, per-config res + npz), repo-push mirror ready for commit
