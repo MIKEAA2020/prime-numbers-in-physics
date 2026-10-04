@@ -1,0 +1,88 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{adjustbox}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{tcolorbox}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[
+    colorlinks=true,
+    linkcolor=blue!55!black,
+    citecolor=blue!45!black,
+    urlcolor=blue!55!black,
+    bookmarks=true,
+    bookmarksnumbered=true,
+    unicode=true
+]{hyperref}
+
+\geometry{a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+
+\widowpenalty=10000
+\clubpenalty=10000
+\emergencystretch=3em
+
+% ---------- theorem environments ----------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}{Conjecture}[section]
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{axiom}[theorem]{Axiom}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% ---------- macros ----------
+\newcommand{\ket}[1]{\lvert #1\rangle}
+\newcommand{\bra}[1]{\langle #1\rvert}
+\newcommand{\braket}[2]{\langle #1\rvert #2\rangle}
+\newcommand{\Pz}{\mathbb{P}}
+\newcommand{\Nn}{\mathbb{N}}
+\newcommand{\Zz}{\mathbb{Z}}
+\newcommand{\Qq}{\mathbb{Q}}
+\newcommand{\Rr}{\mathbb{R}}
+\newcommand{\Cc}{\mathbb{C}}
+\newcommand{\Fock}{\mathcal{F}}
+\newcommand{\Hil}{\mathcal{H}}
+\newcommand{\Nhat}{\widehat{N}}
+\newcommand{\Hmax}{\widehat{\mathcal{H}}}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\spec}{spec}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\Frob}{Frob}
+
+\begin{document}
+
+% Body starts with TOC; cover is merged separately as page 0.
+\tableofcontents
+\newpage
+
+\input{sec_intro}
+\input{sec_dynamics}
+\input{sec_time}
+\input{sec_entangle}
+\input{sec_galois}
+\input{sec_philosophy}
+\input{sec_register}
+\input{sec_appendix}
+
+\bibliographystyle{unsrtnat}
+\bibliography{refs}
+
+\hypersetup{
+    pdftitle={The Prime-Spectral Framework: A Rigorous Reconstruction},
+    pdfauthor={MIKEAA2020},
+    pdfsubject={Mathematical physics; quantum gravity; analytic number theory; philosophy of time},
+    pdfkeywords={primon gas, Riemann zeta function, Hagedorn temperature, Page-Wootters, arrow of time, Langlands, black hole entropy}
+}
+
+\end{document}

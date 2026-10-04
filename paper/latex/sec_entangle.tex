@@ -1,0 +1,210 @@
+% =====================================================================
+% SECTION 7: Entanglement: the repaired arithmetic holism
+% =====================================================================
+
+\section{Entanglement: The Repaired Arithmetic Holism}\label{sec:entangle}
+
+\subsection{The false premise}
+
+Across many turns, the source identifies quantum entanglement with multiplicative
+composition: ``a composite number is mathematically entangled: it cannot be described
+independently of its prime factors''; ``entanglement is not non-local communication, it is
+multiplicative inseparability''; ``a composite number like $n=p_{A}\cdot p_{B}$ is a single,
+inseparable mathematical entity.'' As quantum theory this is false, and the falsehood matters
+because this mechanism is the load-bearing wall of the source's resolution of Bell's
+trilemma, its rejection of superdeterminism, and its account of decoherence. The repair
+relocates arithmetic entanglement to where it genuinely lives---superpositions across
+prime-mode bipartitions---and in doing so makes all three arguments work in the standard,
+correct way, with the arithmetic content preserved as structure rather than as a false
+identification.
+
+\begin{theorem}[Product structure of the occupation basis]\label{prop:productstructure}
+Let $P_{A},P_{B}\subset\Pr$ be disjoint with $P_{A}\cup P_{B}=\Pr$, and let
+$\mathcal{F}_{A},\mathcal{F}_{B}$ be the submonoids of $\mathcal{F}$ supported on
+$P_{A},P_{B}$. The monoid isomorphism $\mathcal{F}\cong\mathcal{F}_{A}\times\mathcal{F}_{B}$
+(unique factorization: $k\mapsto(k|_{P_{A}},k|_{P_{B}})$) induces a unitary
+\begin{equation}
+\Hil_{\mathcal{A}}\;\cong\;\Hil_{A}\otimes\Hil_{B},
+\qquad
+\ket{k}\;\mapsto\;\ket{k_{A}}\otimes\ket{k_{B}},
+\end{equation}
+under which every occupation basis vector is a \emph{product state}. In particular
+$\ket{pq}=\ket{p}_{A}\otimes\ket{q}_{B}$ for $p\in P_{A}$, $q\in P_{B}$: a composite integer
+is an \emph{unentangled} configuration of its prime factors. Entanglement across the
+bipartition is a property of \emph{superpositions}
+$\psi=\sum c_{ij}\ket{i}_{A}\ket{j}_{B}$ of rank $>1$ in the coefficient tensor, exactly as
+in ordinary quantum mechanics, and of nothing else.
+\end{theorem}
+
+\begin{proof}
+The restriction map is a bijection of free commutative monoids by unique factorization; the
+induced map on $\ell^{2}$ bases is a bijection of orthonormal bases preserving inner
+products; extend linearly. Product structure of each basis vector is the definition of the
+tensor identification.
+\end{proof}
+
+The source's composite-as-entangled picture is thus repaired into a precise dichotomy: the
+integer $n$ \emph{labels} a product configuration; \emph{arithmetic entanglement} is
+superpositional. The corrected statement is stronger than the original because it carries
+quantitative content the original lacked: entanglement entropies, Schmidt ranks, and Bell
+inequalities.
+
+\begin{definition}[Arithmetic entanglement]\label{def:arithmeticent}
+For a bipartition $\Pr=P_{A}\sqcup P_{B}$ and a pure state
+$\psi\in\Hil_{A}\otimes\Hil_{B}$, the \emph{arithmetic entanglement entropy}
+$S_{\mathrm{ent}}(\psi)$ is the von Neumann entropy of
+$\rho_{A}=\Tr_{B}\ket{\psi}\bra{\psi}$. $\psi$ is entangled iff
+$S_{\mathrm{ent}}(\psi)>0$, iff the coefficient tensor
+$(c_{ij})$ in the occupation basis has rank $>1$ when reshaped as a matrix.
+\end{definition}
+
+\begin{example}[The six--thirty-six Bell pair]\label{ex:bellpair}
+Take $P_{A}=\{2\}$, $P_{B}=\{3\}$. Then
+\begin{equation}
+\frac{1}{\sqrt2}\bigl(\ket{6}+\ket{36}\bigr)
+=\frac{1}{\sqrt2}\bigl(\ket{2}_{A}\ket{3}_{B}+\ket{4}_{A}\ket{9}_{B}\bigr)
+\end{equation}
+is maximally entangled across the bipartition: Schmidt rank $2$, equal Schmidt values
+$1/\sqrt2$, $S_{\mathrm{ent}}=\log2$. The superposition of the integers $6$ and $36$ \emph{is}
+an arithmetic Bell pair. More generally
+$\frac{1}{\sqrt2}(\ket{ab}+\ket{cd})$ with $a,c$ powers of distinct primes of $P_{A}$ and
+$b,d$ of $P_{B}$, $(a,b)\neq(c,d)$, is maximally entangled.
+\end{example}
+
+\begin{proposition}[Bell violation in the arithmetic sector]\label{prop:chsh}
+Restrict local measurements to the two-dimensional subspaces
+$V_{A}=\mathrm{span}\{\ket{2},\ket{4}\}\cong\Cc^{2}$ and
+$V_{B}=\mathrm{span}\{\ket{3},\ket{9}\}\cong\Cc^{2}$, identified with qubits. On the Bell
+state of Example~\ref{ex:bellpair}, the standard spin settings along the $xz$-plane achieve
+the CHSH value $2\sqrt2$, the Tsirelson bound \cite{chsh1969,bell1964}. Hence the arithmetic
+sector, equipped with superpositional states, exhibits exactly standard quantum
+non-locality of correlations; the violation is destroyed if the superposition is replaced by
+either basis vector, i.e. by any definite integer.
+\end{proposition}
+
+\begin{proof}
+The restriction of the state to $V_{A}\otimes V_{B}$ is the standard Bell state
+$(\ket{00}+\ket{11})/\sqrt2$; the CHSH computation is the textbook one.
+\end{proof}
+
+\subsection{Splitting primes as natural entanglement resources}
+
+The Gaussian sector supplies a construction the rational sector lacks, and it tightens two
+of the source's images at once (the ``complex primon overlay'' of the five-dimensional
+picture and the claim that symmetry breaking is prime splitting).
+
+\begin{proposition}[Splitting-prime EPR pairs]\label{prop:splitting}
+Let $p\equiv1\ (\mathrm{mod}\ 4)$ be a rational prime, so that
+$p=\pi\bar\pi=N(\pi)$ in $\Zz[i]$ with $\pi$ a Gaussian prime, $\pi\sim\bar\pi$ conjugate and
+non-associate. Define the \emph{splitting state}
+\begin{equation}
+\ket{p}_{\mathrm{split}}
+\;=\;\frac{1}{\sqrt2}\Bigl(\ket{\pi}\otimes\ket{\bar\pi}
++\ket{\bar\pi}\otimes\ket{\pi}\Bigr)
+\end{equation}
+on the two Gaussian modes generated by $\pi$ and $\bar\pi$. Then:
+\begin{enumerate}[leftmargin=1.6em]
+\item $\ket{p}_{\mathrm{split}}$ is maximally entangled across the
+$(\pi,\bar\pi)$ bipartition ($S_{\mathrm{ent}}=\log2$);
+\item it is invariant under the conjugation involution $C$ (which swaps the two tensor
+factors), so it is even under the arithmetic charge conjugation of
+Section~\ref{sec:galois};
+\item it is the natural correlate, inside the arithmetic Hilbert space, of the splitting of
+$p$ in $\Zz[i]$---the phenomenon whose statistical frequency is exactly $1/2$ by
+Chebotarev/Dirichlet (Section~\ref{sec:galois}).
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(1) The two tensor factors are qubit-spaces $\mathrm{span}\{\ket{\pi},\ket{\bar\pi}\}$; the
+state is the symmetric Bell state. (2) $C$ exchanges $\ket{\pi}\leftrightarrow
+\ket{\bar\pi}$ in each factor, and the state is manifestly symmetric. (3) The correspondence
+$p\mapsto\{\pi,\bar\pi\}$ is the Dedekind--Kummer splitting theorem for $\Zz[i]$
+\cite{neukirch1999}.
+\end{proof}
+
+Proposition~\ref{prop:splitting} is the repaired version of the source's ``phantom layer of
+Gaussian primes weaving through the solid prime nodes''; the weaving is entanglement between
+conjugate prime modes, quantitatively $\log2$ per split integer, and it exists only for the
+splitting class $p\equiv1\ (4)$, which by Dirichlet's theorem has natural density $1/2$. The
+inert class $p\equiv3\ (4)$ contributes \emph{no} entanglement resource: those primes remain
+prime in $\Zz[i]$. The arithmetic sector thus possesses an intrinsic, algebraically defined
+binary---split versus inert---with exact statistics. Section~\ref{sec:galois} builds the
+force-sector dictionary on it; it is also the natural habitat for the source's idea that the
+weak (chiral) interaction lives in the complex sector.
+
+\subsection{Measurement, decoherence, and records}
+
+With entanglement repaired, the source's measurement theory---``a measurement is an
+interaction that creates a thermodynamically irreversible, decohered record in the prime
+spectrum''---translates into standard quantum mechanics with an arithmetic
+state space, and the standard strengths \emph{and} standard weaknesses apply.
+
+\begin{remark}[Measurement as record formation]
+In the reconstructed framework a measurement is an interaction between a system and a
+macroscopic apparatus/environment whose net effect is to entangle the system's
+superposition across the bipartition ``apparatus modes versus system modes'' so strongly
+that the reduced state of the system is, to observational accuracy, diagonal in the
+pointer basis (einselection) \cite{zurek2003}. The arrow enters through the thermodynamic
+cost of stabilization (Landauer's principle \cite{landauer1961}): records can be written
+reliably only in the direction of increasing multiplicity of environmental states, i.e. along
+the cascade of Conjecture $\mathsf{C4}$. Rocks measure rocks, photons measure dust grains,
+and consciousness is a consumer of records, not a precondition for them---each clause of
+the source's account survives, now attached to the correct mechanism (superposition
+entanglement, Theorem~\ref{prop:productstructure}) rather than the incorrect one
+(composite inseparability).
+\end{remark}
+
+\begin{remark}[The improper-mixture problem, honestly]
+Decoherence diagonalizes reduced density matrices; it does not, by itself, select one
+outcome. The source's conversation acknowledges this and elects an Everettian resolution
+\cite{wallace2012}; the reconstruction registers the election as interpretive
+(Conjecture $\mathsf{C12}$) rather than theorem-grade. What the arithmetic sector adds is
+structural, not probabilistic: branching in $\Hil_{\mathcal{A}}$ is branching of
+\emph{factorization histories}---worldlines through the divisibility graph---and the
+Born-rule weights are the squared amplitudes of superposed integers. The 2019 reversal
+experiments on small qubit registers \cite{lesovik2019} are consistent with this picture in
+the same sense as with standard decoherence: small closed systems can be
+complex-conjugated back; macroscopic entangled cascades cannot, because the required
+inverse unitary acts on $\sim10^{80}$ correlated modes and its probability is beyond every
+Poincar\'e time. The source's reading of the experiment survives; its attribution
+(``IBM experiment''/``Russian experiment'' used interchangeably) is corrected in
+Appendix~\ref{app:corrections}.
+\end{remark}
+
+\subsection{Bell's trilemma and the rejection of superdeterminism, repaired}
+
+The source rejects superdeterminism with the argument that Bell correlations arise from
+``multiplicative inseparability'' of composites. Since that mechanism is false
+(Theorem~\ref{prop:productstructure}), the rejection must be re-argued. The repaired
+argument is the standard Everettian one, plus the arithmetic sector's own contribution:
+
+\begin{enumerate}[leftmargin=1.6em]
+\item \emph{Realism, global not local.} The arithmetic Hilbert space and the universal
+state are observer-independent; individual prime modes carry no pre-existing local values
+(the occupation basis is a basis, not a value assignment). This is exactly the quantum
+theory's own position, and it is faithful to the source's ``realism preserved globally,
+rejected locally.''
+\item \emph{Locality, no-signaling not local action.} Arithmetic-entangled states
+(Examples~\ref{ex:bellpair}, Proposition~\ref{prop:splitting}) exhibit Bell correlations
+across spacelike separation (Proposition~\ref{prop:chsh}) while the reduced states are
+untouched by distant operations: $\rho_{B}=\Tr_{A}\rho_{AB}$ is invariant under local
+unitaries on $A$. No usable signal, energy, or conserved quantity propagates
+superluminally; the no-signaling theorem is a theorem of the tensor structure that
+Theorem~\ref{prop:productstructure} now correctly exhibits.
+\item \emph{Statistical independence, preserved.} Measurement settings and hidden variables
+are not pre-correlated by a cosmic conspiracy. The correlations of the Bell state are
+\emph{created} by the state's preparation (a superposition), not imposed on separate
+local beables. Superdeterminism saves locality only by denying independence; the arithmetic
+framework keeps independence and gives up local realism of modes, exactly as
+loophole-free experiments \cite{hensen2015} force \cite{bell1964,chsh1969}.
+\end{enumerate}
+
+The repaired position coincides in content with the source's conclusion, but the road is
+now sound. The philosophical residue---that ``space'' itself is emergent from entanglement
+structure, so that demands for local causal explanation between entangled modes are a
+category error---remains available as an interpretation (register $\mathsf{C12}$), in the
+same epistemic tier as the ER$=$EPR-type conjectures it echoes. What is theorem-grade is
+narrower and cleaner: in the arithmetic sector, \emph{non-locality of correlations is a
+property of superposed integers, local realism of prime modes is false, and no-signaling is
+exact}.

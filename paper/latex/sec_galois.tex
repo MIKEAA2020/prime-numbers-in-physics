@@ -1,0 +1,212 @@
+% =====================================================================
+% SECTION 8: The arithmetic gauge sector
+% =====================================================================
+
+\section{The Arithmetic Gauge Sector: A Corrected GUT}\label{sec:galois}
+
+\subsection{From Lie unification to Galois unification}
+
+The source proposes that the Standard Model gauge group
+$\mathrm{U}(1)\times\mathrm{SU}(2)\times\mathrm{SU}(3)$ is the ``macroscopic, continuous
+shadow'' of the Absolute Galois group $G_{\Qq}=\Gal(\bar\Qq/\Qq)$, with the Langlands
+program as the dictionary, prime splitting as symmetry breaking, and Gaussian primes as the
+chiral (weak) sector. As physics this is speculation; as mathematics it can be anchored on
+all fours, because each ingredient of the analogy corresponds to an actual theorem. The
+reconstruction therefore proceeds in two layers: a \emph{theorem layer} that fixes what is
+true about splitting statistics and symmetry structure, and a \emph{dictionary layer} that
+is demoted in its entirety (Conjecture $\mathsf{C9}$).
+
+The theorem layer rests on three classical results, which we state in the form the analogy
+uses them.
+
+\begin{theorem}[Kronecker--Weber]\label{thm:kw}
+Every finite abelian extension $K/\Qq$ is contained in a cyclotomic field
+$\Qq(\zeta_{m})$; conversely every cyclotomic field is abelian over $\Qq$
+\cite{neukirch1999}. Combined with Dirichlet's theorem on primes in arithmetic
+progressions \cite{dirichlet1837} and the splitting criterion
+\begin{equation}\label{eq:splittingcriterion}
+p\nmid m,\ p\ \text{splits completely in}\ \Qq(\zeta_{m})
+\iff p\equiv1\ (\mathrm{mod}\ m),
+\end{equation}
+the abelian sector of $G_{\Qq}$ is completely described by residue classes of primes: the
+reciprocity map of class field theory is, explicitly, $p\mapsto p\ (\mathrm{mod}\ m)$.
+\end{theorem}
+
+\begin{theorem}[Dedekind--Kummer splitting]\label{thm:kummer}
+Let $K=\Qq(\theta)$ with $\theta$ an algebraic integer of minimal polynomial $f$, and $p$ a
+rational prime not dividing the index $[\mathcal{O}_{K}:\Zz[\theta]]$. Then the factorization
+pattern of $f$ modulo $p$ into irreducibles of degrees $d_{1},\dots,d_{r}$ coincides with
+the splitting pattern of $p$ in $\mathcal{O}_{K}$: $p\mathcal{O}_{K}
+=\mathfrak{p}_{1}\cdots\mathfrak{p}_{r}$ with residue degrees $d_{1},\dots,d_{r}$
+\cite{neukirch1999}. Symmetry breaking and prime splitting are the same operation.
+\end{theorem}
+
+\begin{theorem}[Chebotarev density]\label{thm:chebotarev}
+Let $K/\Qq$ be a finite Galois extension with group $G$, and $\sigma\in G$ any element. The
+set of rational primes $p$ (unramified in $K$) whose Frobenius class
+$\Frob_{p}\subset G$ equals the conjugacy class of $\sigma$ has natural density
+$|\mathrm{cl}(\sigma)|/|G|$ \cite{chebotarev1926}. In particular: splitting statistics are
+group statistics. Dirichlet's theorem is the abelian case (with
+Theorem~\ref{thm:kw}).
+\end{theorem}
+
+For the working example that carries the whole source dictionary, specialize to
+$K=\Qq(i)$, $G=\Gal(\Qq(i)/\Qq)=\{1,\sigma\}$ with $\sigma$ the complex conjugation
+$a+bi\mapsto a-bi$:
+
+\begin{center}
+\begin{tabular}{@{}llll@{}}
+\toprule
+Class of $p$ & Condition & Behavior in $\Zz[i]$ & Density (Chebotarev)\\
+\midrule
+Split & $p\equiv1\ (4)$ & $p=\pi\bar\pi$, two conjugate primes & $1/2$\\
+Inert & $p\equiv3\ (4)$ & $p$ remains prime & $1/2$\\
+Ramified & $p=2$ & $2=-i(1+i)^{2}$, one prime squared & $0$ (finite)\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{The repaired dictionary}
+
+With the theorem layer fixed, the source's force-to-field dictionary can be restated so that
+every arithmetic entry is backed and every physical equation is demoted:
+
+\begin{center}
+\begin{tabular}{@{}p{0.30\textwidth}p{0.34\textwidth}p{0.30\textwidth}@{}}
+\toprule
+Standard Model object & Arithmetic object & Status of the pairing\\
+\midrule
+$\mathrm{U}(1)$ gauge structure &
+Abelian extensions, cyclotomic fields $\Qq(\zeta_{m})$; the ``photon'' is the reciprocity
+map $p\mapsto p\ (\mathrm{mod}\ m)$ &
+Theorem layer: KW, Dirichlet (Thm~\ref{thm:kw}); pairing demoted ($\mathsf{C9}$)\\
+Chiral $\mathrm{SU}(2)_{L}$, parity violation &
+Quadratic/non-abelian extensions; the non-trivial automorphism $\sigma$ (conjugation) acts
+as the arithmetic $C$; split/inert dichotomy as handedness &
+Theorem layer: splitting table above; pairing demoted ($\mathsf{C9}$, $\mathsf{C10}$)\\
+$\mathrm{SU}(3)$ color, confinement &
+Inert primes ($p\equiv3\ (4)$ and their non-abelian analogues); higher-degree splitting
+patterns with non-commuting Frobenius classes &
+Theorem layer: Chebotarev (Thm~\ref{thm:chebotarev}); pairing demoted ($\mathsf{C9}$)\\
+Higgs mechanism, spontaneous symmetry breaking &
+Ramification and splitting: the unified base $\Qq$ extends to $K$; primes then
+\emph{choose} splitting patterns, with exact group-valued statistics &
+Theorem layer: Kummer (Thm~\ref{thm:kummer}); pairing demoted ($\mathsf{C9}$)\\
+Coupling unification, charge quantization &
+Langlands functoriality: transfer of automorphic representations between $L$-groups;
+the dictionary itself &
+Mathematics: deep conjecture, proven for $\mathrm{GL}_{n}$ over function fields
+\cite{lafforgue2002}; physics: demoted ($\mathsf{C9}$)\\
+CP violation, CKM phase &
+The $\sigma$-odd interaction sector: asymmetric couplings
+$w(\pi)\neq w(\bar\pi)$; the non-vanishing $L(1,\chi_{-4})=\pi/4$ as the arithmetic
+asymmetry functional &
+Theorem layer: factorization \eqref{eq:factorization}; model demoted ($\mathsf{C10}$)\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Each row now has the same structure: a true theorem about number fields, an honest
+conjecture about the pairing. Two entries deserve expansion because they carry the source's
+most distinctive claims.
+
+\subsection{Arithmetic charge conjugation, parity, and time reversal}
+
+The source's arithmetic model of the discrete symmetries can be defined exactly on the
+Gaussian sector.
+
+\begin{definition}[Arithmetic $C$, $P$, $T$]\label{def:cpt}
+On $\Hil_{\Zz[i]}$ (Definition~\ref{def:gaussian}):
+\begin{enumerate}[leftmargin=1.6em]
+\item $C$ is the unitary implementing $\Gal(\Qq(i)/\Qq)$: $C\ket{\pi}=\ket{\bar\pi}$ on
+Gaussian-prime modes, extended multiplicatively. It is an involution,
+$C^{2}=I$.
+\item $P$ is any order-two relabeling of modes that plays the role of spatial inversion
+(e.g.\ a fixed-point-free involution of a finite mode set).
+\item $T$ is the antiunitary complex conjugation $K$ in the occupation basis: it reverses
+all phases, $K\,n^{-i\omega_{0}\tau}K=n^{+i\omega_{0}\tau}$.
+\end{enumerate}
+\end{definition}
+
+\begin{proposition}[Symmetry structure of the Gaussian sector]\label{prop:cpt}
+\begin{enumerate}[leftmargin=1.6em]
+\item $[C,H_{\Zz[i]}]=0$ and $[K,H_{\Zz[i]}]=0$: the \emph{free} Gaussian Hamiltonian is
+exactly $C$-, $T$-, and $CPT$-symmetric, because it is built from norms $N(\pi)$, which are
+conjugation-invariant, with real coefficients.
+\item Consequently any arithmetic model of CP violation must reside in the
+\emph{interaction} sector: couplings $w(\pi)$ with
+$w(\pi)\neq w(\bar\pi)$ in the walk/hop Hamiltonians of Section~\ref{sec:walk}. The
+$\sigma$-even/$\sigma$-odd decomposition
+$H=H_{+}+H_{-}$ (eigenparts under $C$) is an orthogonal splitting of the interaction space,
+and the ``amount of CP violation'' is the norm ratio $\|H_{-}\|/\|H_{+}\|$ together with the
+relative phases of the $w$'s.
+\item The composition $CPT=CP\cdot K$ is antiunitary; if $w(\pi)=\overline{w(\bar\pi)}$
+(the natural hermiticity condition), the full $H_{\mathrm{tot}}$ is $CPT$-symmetric,
+the arithmetic echo of the CPT theorem holding by construction rather than by axiomatic
+field theory.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(1) $N(\bar\pi)=N(\pi)$; diagonal operators with real eigenvalues commute with the
+occupation-basis conjugation $K$. (2) The even/odd split under an involutive unitary is
+standard. (3) Direct computation: $CP$ exchanges the couplings $w(\pi)\leftrightarrow
+w(\bar\pi)$; combined with $K$ (which conjugates the phases), hermiticity in the stated
+form is exactly the invariance condition.
+\end{proof}
+
+The parallel with the Standard Model is exact in structure and honest in status: in both
+theories, the free (kinetic) sector is CP-symmetric; the violation lives in the charged
+interaction sector (the CKM phase there, the asymmetric weights $w(\pi)$ here); and CPT
+holds by the hermiticity structure. The source's claim that ``the weak interaction maps to
+the complex sector and its rare CP violation to complex phases'' becomes Conjecture
+$\mathsf{C10}$: \emph{the CKM phase and baryon asymmetry are the arithmetic index of the
+$\sigma$-odd interaction sector, accumulated along the cascade.} Its falsifiable edge is
+sharp: the model predicts that CP-violating and T-violating observables couple to
+\emph{split-versus-inert} statistics (the only binary the Gaussian sector possesses), so
+any derived branching asymmetry must be expressible through $L$-function ratios at
+saddles---a constraint precise enough to check and to fail.
+
+\subsection{Vaccaro's program, translated}
+
+Vaccaro proposes that T-violation is not a curiosity of the weak sector but the
+microphysical origin of dynamics itself: with exactly T-symmetric laws, the universe would
+be a static block without localized happening \cite{vaccaro2016}. The arithmetic translation
+is natural in the repaired framework: the $\sigma$-odd couplings
+$H_{-}$ are precisely what distinguishes the interacting block from the frozen block. Under
+$H_{P}$ alone the universe is frozen (Proposition~\ref{prop:frozen}); under
+$H_{P}+H_{+}$ it evolves but with exactly reciprocal processes (detailed balance holds, and
+the walk is unbiased); under $H_{P}+H_{+}+H_{-}$ there is a microscopic bias, a ratchet,
+and the direction of the cascade acquires a microphysical anchor in addition to the
+boundary condition. Conjecture $\mathsf{C10}$ subsumes this: the ratchet, compounded by the
+exponential state growth (Theorem~\ref{thm:hagedorn}), is the framework's candidate engine
+for baryogenesis---the source's ``chiral arithmetic cascade'' with a mechanism that now
+exists.
+
+\subsection{What Langlands does and does not supply}
+
+Finally, the honest boundary of the unification layer. The Langlands program
+(\cite{lafforgue2002} for the proven function-field $\mathrm{GL}_{n}$ case) supplies a
+conjectural correspondence between Galois representations and automorphic forms: in the
+framework's language, between the arithmetic sector's symmetry data and the analytic
+(eigenmode) data of adelic groups. The source's slogan---``the continuous gauge symmetries
+are the low-energy shadows of discrete Galois symmetries''---requires, at minimum, that
+such correspondences survive specialization to the finite set of splits that the Standard
+Model actually uses. Nothing currently known implies this; nothing currently known forbids
+it. The reconstruction's contribution is to isolate the minimal well-posed core:
+
+\begin{conjecture}[Galois--gauge dictionary, minimal form]\label{conj:gut}
+There exists an assignment from the Standard Model's gauge and flavor data to number fields
+and their Galois representations such that: (i) the observed charge lattice corresponds to a
+lattice of splitting restrictions of the form \eqref{eq:splittingcriterion}; (ii) branching
+ratios of force sectors equal Chebotarev densities of the associated Frobenius classes; and
+(iii) the hierarchy of coupling strengths corresponds to the ramification hierarchy of the
+fields involved.
+\end{conjecture}
+
+Condition (ii) is the conjecture's empirical hook: Chebotarev densities are rational
+numbers with denominator $|G|$---the arithmetic GUT predicts that observed branching
+statistics, at the unification scale, organize into ratios of small integers divided by
+group orders. That is a checkable structural signature, quite unlike the free parameters of
+Lie-group GUTs, and it is the kind of prediction that would falsify $\mathsf{C9}$ outright
+if the statistics came out transcendental or unsplittable.

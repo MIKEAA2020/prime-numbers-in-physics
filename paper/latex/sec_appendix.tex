@@ -1,0 +1,163 @@
+% =====================================================================
+% APPENDICES
+% =====================================================================
+
+\appendix
+
+\section{Corrections Log}\label{app:corrections}
+
+The table below is the audit trail promised in Section~\ref{sec:method}: each substantive
+claim of the source conversation, its disposition in this reconstruction, and the pointer.
+``Theorem'' means proved here or cited exactly; ``Repaired'' means the claim survives with a
+replaced mechanism; ``Demoted'' means restated as a register conjecture; ``Rejected'' means
+argued against.
+
+\begin{longtable}{@{}p{0.42\textwidth}p{0.14\textwidth}p{0.38\textwidth}@{}}
+\toprule
+\textbf{Source claim} & \textbf{Disposition} & \textbf{Where / why}\\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Source claim} & \textbf{Disposition} & \textbf{Where / why}\\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+Primon Fock space is the infinite tensor product $\bigotimes_{p}\Fock_{p}$. &
+Repaired &
+$\ell^{2}(\mathcal{F})$, separable, with finite-mode factorization on demand
+(Def.~\ref{def:hilbert}, Thm~\ref{prop:productstructure}). Infinite tensor products are
+nonseparable.\\
+$H_{P}=\hbar\omega_{0}\log\Nhat$ ``drives transitions into composite states''; ``the
+Hamiltonian drives the state away from $n=1$.'' &
+Rejected (mechanism); Repaired (claim) &
+$H_{P}$ is diagonal: all states stationary (Prop.~\ref{prop:frozen}). Cascade re-founded on
+the interaction sector $H_{W}+H_{\mathrm{hop}}$
+(Props~\ref{prop:monoidrep}, \ref{prop:wellposed}, \ref{prop:nucleation}).\\
+``A composite number is mathematically entangled; entanglement is multiplicative
+inseparability.'' &
+Rejected; Repaired &
+Occupation basis vectors are product states across every bipartition
+(Thm~\ref{prop:productstructure}). Arithmetic entanglement is superpositional
+(Def.~\ref{def:arithmeticent}, Ex.~\ref{ex:bellpair}, Prop.~\ref{prop:splitting}).\\
+State counting $\Omega(E)\sim e^{E/\hbar\omega_{0}}$; ``the state space is profoundly
+asymmetric; the laws are symmetric but the landscape is a mountain.'' &
+Elevated &
+Hagedorn density of states; $T_{H}=\hbar\omega_{0}/k_{B}$; exact asymptotics
+(Prop.~\ref{prop:partition}, Thm~\ref{thm:hagedorn}); exact counting
+$\log N(E)=E/\hbar\omega_{0}+O(1)$ (Thm~\ref{thm:logcount}). ``Asymmetry'' is an
+$E\mapsto S$ slope, not a time asymmetry (Sec.~\ref{sec:philosophy}).\\
+``Logarithms of primes are linearly independent, so phases never realign: the universe
+cannot repeat; Poincar\'e recurrence is rigorously broken.'' &
+Repaired (split into three) &
+Exact periodicity forbidden for generic supports (Thm~\ref{thm:noperiod}, via
+Lem.~\ref{lem:independence}); $\varepsilon$-recurrence is universal for the free flow with
+non-uniform return times (Thm~\ref{cor:nopoincare}); classical walk transient for
+$\geq3$ modes (Prop.~\ref{prop:polya}); all irreversibility relocated to the interaction
+sector.\\
+Clock states $\ket{\tau}$ with overlap governed by $\zeta$; ``time differences become
+encoded in analytic number theory.'' &
+Elevated &
+Two-time kernel, covariance, positive-definiteness (Prop.~\ref{prop:kernel});
+energy--time duality (Prop.~\ref{prop:uncertainty}); new result: kernel is Bohr
+almost-periodic, hence the clock carries no arrow (Thm~\ref{thm:bohr}).\\
+``At $n=1$ the phase is trivial; time literally does not exist at the Past Hypothesis.'' &
+Repaired &
+True but empty under $H_{P}$ (Prop.~\ref{prop:frozen}); quantified in the clock degeneration
+limit (Prop.~\ref{prop:uncertainty}(4)); nucleation requires the interaction sector
+(Prop.~\ref{prop:nucleation}).\\
+``The universe began at $n=1$ because $1$ is the only number with no prime factors; the
+Past Hypothesis is an arithmetic necessity, not a brute fact.'' &
+Demoted (split) &
+Theorem: uniqueness and zero entropy of $\ket{1}$
+(Thm~\ref{thm:spectrum}); conjectures $\mathsf{C7}$ (history touches the floor),
+$\mathsf{C8}$ (two-sided profile). ``Dissolves'' downgraded to ``localizes''
+(Sec.~\ref{sec:philosophy}).\\
+$Z_{\mathrm{grav}}^{\mathrm{ren}}(s)=\zeta(s)$; the thermodynamics of the singular field
+is arithmetic. &
+Demoted &
+Register $\mathsf{C1}$ (root entry), with the 2025--2026 developments
+\cite{hartnollyang2026} as evidence and BKL statistics as the attack route.\\
+Gaussian primes ``stabilize the singularity'' in 5D; complex sector locks harmonic
+resonance. &
+Repaired + Demoted &
+Dedekind factorization $\zeta_{\Qq(i)}=\zeta L(\chi_{-4})$ (Thm~\ref{thm:dedekind});
+splitting-prime EPR pairs (Prop.~\ref{prop:splitting}); physical identification within
+$\mathsf{C1}$.\\
+``The framework rigorously breaks cyclical time''; ``mathematically forbids exact cyclic
+cosmology.'' &
+Repaired &
+Corrected trichotomy (Sec.~\ref{sec:recurrence}); verdict retained in
+cutoff-independent form only (Sec.~\ref{sec:philosophy}).\\
+Bell trilemma resolved by ``arithmetic holism: composite numbers are inseparable''; hence
+superdeterminism rejected without conspiracy. &
+Repaired (mechanism) &
+Holism relocated to superposed integers (Prop.~\ref{prop:chsh}); no-signaling exact;
+independence preserved (Sec.~\ref{sec:entangle}).\\
+``The arrow cannot reverse in a Big Crunch; state-space volume is independent of physical
+volume.'' &
+Repaired (conditional) &
+Arrow persists iff the cascade ($\mathsf{C4}$) persists and the cutoff is
+non-geometric; the holographic bound $\mathsf{C3}$ \emph{decides} the question
+(Sec.~\ref{sec:philosophy}).\\
+GUT: forces unified by $G_{\Qq}$ and Langlands; symmetry breaking is prime splitting;
+CP violation from complex phases in the Gaussian sector. &
+Elevated + Demoted &
+Theorem layer: Kronecker--Weber, Dedekind--Kummer, Chebotarev
+(Thms~\ref{thm:kw}--\ref{thm:chebotarev}); arithmetic $C/P/T$ and the $\sigma$-odd sector
+(Def.~\ref{def:cpt}, Prop.~\ref{prop:cpt}); dictionary as $\mathsf{C9}$, CPV as
+$\mathsf{C10}$.\\
+Hierarchy problem: gravity $1/N$-suppressed, entropic; strong force is the fundamental
+chemistry. &
+Demoted &
+$\mathsf{C11}$ with explicit arithmetic content: the hierarchy becomes
+$E_{\mathrm{cut}}\asymp74\,\hbar\omega_{0}$, a cutoff question with one number to explain
+(Conj.~\ref{conj:hierarchy}).\\
+``Singularities do not exist; the integers have no infinities.'' &
+Repaired &
+Tension with early turns resolved by the effective-theory reading
+(Remark~\ref{rem:singularity}); the Hagedorn wall replaces the singular point
+($\mathsf{C6}$).\\
+``The 2019 Russian experiment / IBM experiment reversed the quantum arrow.'' &
+Corrected (attribution) &
+Lesovik et al., implemented on an IBM quantum computer \cite{lesovik2019}; reading of the
+experiment retained (Sec.~\ref{sec:entangle}).\\
+Bekenstein--Hawking entropy from prime counting (listed as open problem). &
+Elevated (conditional) &
+Theorem~\ref{thm:bh}: $S_{\mathrm{BH}}$ follows from the exact log-count theorem plus the
+single registered input $\mathsf{C3}$; factor-of-two ambiguity made explicit.\\
+``RH is a spectral stability condition; RH $\Rightarrow$ stable oscillatory corrections.'' &
+Elevated &
+von Koch's equivalence: RH $\iff\psi(x)=x+O(\sqrt x\log^{2}x)$
+\cite{vonkoch1901}; ``optimal suppression of quantum fluctuations about the classical
+term'' (Sec.~\ref{sec:thermo}).\\
+\end{longtable}
+
+\section{Notation}\label{app:notation}
+
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Symbol & Meaning\\
+\midrule
+$\Pr$ & rational primes; $\mathcal{P}_{\Zz[i]}$ Gaussian primes modulo units\\
+$\mathcal{F}$ & free commutative monoid on $\Pr$ (occupation vectors)\\
+$\Hil_{\mathcal{A}}=\ell^{2}(\mathcal{F})$ & arithmetic Hilbert space (Def.~\ref{def:hilbert})\\
+$\ket{n}$ & occupation state of the integer $n=\prod p^{k_{p}}$\\
+$\hat n_{p}$, $\Nhat_{\mathrm{tot}}$, $\Nhat$ & mode occupation; total primon number; multiplicative number operator\\
+$H_{P}=\hbar\omega_{0}\log\Nhat$ & primon Hamiltonian (Def.~\ref{def:hamiltonian})\\
+$T_{H}=\hbar\omega_{0}/k_{B}$ & Hagedorn temperature\\
+$M_{n}$ & multiplication operator, $\ket{k}\mapsto\ket{nk}$ (Def.~\ref{def:multiplication})\\
+$H_{W}$, $H_{\mathrm{hop}}$ & walk and hop Hamiltonians; the prime lattice
+(Sec.~\ref{sec:walk})\\
+$\zeta$, $L(\chi_{-4})$, $\zeta_{\Qq(i)}$ & Riemann zeta; Dirichlet $L$ (mod 4); Dedekind zeta of $\Qq(i)$\\
+$\omega(n)$, $\Omega(n)$ & number of distinct / total prime factors\\
+$N(E)=\lfloor e^{E/\hbar\omega_{0}}\rfloor$ & state counting function (Thm~\ref{thm:logcount})\\
+$\ket{\tau;\beta}$, $K(\Delta\tau)$ & zeta clock family and two-time kernel
+(Def.~\ref{def:clock}, Prop.~\ref{prop:kernel})\\
+$C$, $P$, $T$ & arithmetic charge conjugation, parity, time reversal
+(Def.~\ref{def:cpt})\\
+$\mathsf{C1}$--$\mathsf{C12}$ & the conjecture register (Sec.~\ref{sec:register})\\
+\bottomrule
+\end{tabular}
+\end{center}

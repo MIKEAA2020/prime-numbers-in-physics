@@ -1,0 +1,398 @@
+% =====================================================================
+% SECTION 3: Dynamics  +  SECTION 4: Recurrence and the block
+% =====================================================================
+
+\section{Dynamics: Repairing the Frozen Hamiltonian}\label{sec:dynamics}
+
+\subsection{The problem}
+
+The source conversation asserts repeatedly that ``the Hamiltonian $H_{P}$ drives transitions
+into composite integer states'' and that ``as the universe evolves, the state factorizes into
+highly composite integers.'' As stated, this is false, and the falsehood is instructive.
+
+\begin{proposition}[Frozen spectrum]\label{prop:frozen}
+$[H_{P},\Nhat]=0$ and $[H_{P},\hat n_{p}]=0$ for every $p$. Consequently every basis vector
+$\ket{n}$ is a stationary state: $e^{-i\tau H_{P}/\hbar}\ket{n}=e^{-i\omega_{0}\tau\log
+n}\ket{n}$ never leaves the ray $\Cc\ket{n}$. In particular the vacuum $\ket{1}$ is an
+eigenstate with eigenvalue $0$ and evolves trivially, $e^{-i\tau H_{P}/\hbar}\ket{1}=\ket{1}$
+for all $\tau$.
+\end{proposition}
+
+\begin{proof}
+Both operators are diagonal in the same basis (Theorem~\ref{thm:spectrum}).
+\end{proof}
+
+A diagonal Hamiltonian cannot create primons, destroy them, or entangle anything. The
+``arithmetic cascade,'' the entanglement growth, and the emergence of a thermodynamic arrow
+all require dynamics \emph{off} the diagonal of $\Nhat$. The repair is to give the arithmetic
+Hilbert space its natural interaction sector. This is the single largest structural gap in
+the source framework, and closing it produces, as a byproduct, the objects that make the
+repaired framework exceed the original: the multiplicative shift operators, the prime
+lattice, and a well-posed thermalization problem.
+
+\subsection{Multiplicative shift operators}
+
+\begin{definition}[Multiplication operator]\label{def:multiplication}
+For $n\in\Nn_{\geq1}$ define $M_{n}\colon\Hil_{\mathcal{A}}\to\Hil_{\mathcal{A}}$ on basis
+vectors by
+\begin{equation}
+M_{n}\ket{k}=\ket{nk},
+\end{equation}
+extended linearly, with adjoint $M_{n}^{\dagger}\ket{k}=\ket{k/n}$ if $n\mid k$ (i.e.
+$k_{p}\geq a_{p}$ for all $p$ with $n=\prod p^{a_{p}}$) and $M_{n}^{\dagger}\ket{k}=0$
+otherwise.
+\end{definition}
+
+\begin{proposition}[Monoid representation]\label{prop:monoidrep}
+The assignment $n\mapsto M_{n}$ is an isometric representation of the multiplicative monoid
+$(\Nn_{\geq1},\times)$ on $\Hil_{\mathcal{A}}$:
+\begin{enumerate}[leftmargin=1.6em]
+\item $M_{m}M_{n}=M_{mn}=M_{n}M_{m}$ (the representation is abelian);
+\item $M_{n}^{\dagger}M_{n}=I$ (each $M_{n}$ is an isometry);
+\item $M_{n}M_{n}^{\dagger}=I-P(\,n\mid k\,)$, where $P(\,n\mid k\,)$ is the projection onto
+$\overline{\mathrm{span}}\{\ket{k}: n\mid k\}$, a product over the modes $p^{a_{p}}\| n$ of
+the projections onto $\{\hat n_{p}\geq a_{p}\}$;
+\item $\|M_{n}\|=\|M_{n}^{\dagger}\|=1$, and $M_{1}=I$.
+\end{enumerate}
+Moreover, for each prime $p$,
+\begin{equation}\label{eq:shiftladder}
+M_{p}=a_{p}^{\dagger}\,(\hat n_{p}+1)^{-1/2},
+\end{equation}
+so $M_{p}$ is the \emph{unilateral shift} of the $p$-mode tensored with the identity on all
+other modes.
+\end{proposition}
+
+\begin{proof}
+(1) $M_{m}M_{n}\ket{k}=\ket{mnk}$ by associativity and commutativity of multiplication in
+$\Nn$. (2) $M_{n}$ maps the orthonormal basis $\{\ket{k}\}$ to the orthonormal family
+$\{\ket{nk}\}$ (distinct $k$ give distinct $nk$ by cancellation in $\Nn$), hence is an
+isometry. (3) The initial space of $M_{n}^{\dagger}$ is the range of $M_{n}$, i.e. the closed
+span of $\ket{k}$ with $n\mid k$; this condition factorizes across modes because divisibility
+does. (4) is immediate. For \eqref{eq:shiftladder}: on $\ket{k}$,
+$a_{p}^{\dagger}(\hat n_{p}+1)^{-1/2}\ket{k}=\sqrt{k_{p}+1}\,(k_{p}+1)^{-1/2}\ket{k+e_{p}}
+=\ket{k+e_{p}}=M_{p}\ket{k}$.
+\end{proof}
+
+The operators $M_{n}$ are the arithmetic analogues of the Weyl shifts, and
+Proposition~\ref{prop:monoidrep} is the exact statement behind the source's poetic phrase that
+composites are ``correlated multi-prime states'': multiplication \emph{creates} occupation,
+division \emph{annihilates} it, and the two are adjoints. Note also the co-isometric defect
+$M_{n}M_{n}^{\dagger}=I-P(n\mid k)$: multiplication by $n$ is invertible precisely on states
+already divisible by $n$. The failure of unitarity of each individual $M_{n}$ is the
+operator-theoretic fingerprint of the irreversibility that the source attributes to
+arithmetic, and it is the honest version of that attribution: the semigroup $(\Nn,\times)$ is
+free, hence has cancellation but no inverses, and the quantum representation inherits exactly
+that structure.
+
+\subsection{The walk Hamiltonian and the prime lattice}\label{sec:walk}
+
+Define, for a finite set $P_{f}\subset\Pr$ of active modes and real couplings
+$g=(g_{p})_{p\in P_{f}}$, the \emph{multiplicative walk Hamiltonian}
+\begin{equation}\label{eq:walkH}
+H_{W}(P_{f},g)\;=\;\sum_{p\in P_{f}}g_{p}\bigl(M_{p}+M_{p}^{\dagger}\bigr),
+\end{equation}
+and the \emph{hopping Hamiltonian}
+\begin{equation}\label{eq:hopH}
+H_{\mathrm{hop}}(P_{f},h)\;=\;\sum_{p\neq q\in P_{f}}h_{pq}
+\bigl(a_{p}^{\dagger}a_{q}+a_{q}^{\dagger}a_{p}\bigr).
+\end{equation}
+
+\begin{proposition}[Well-posed interacting dynamics]\label{prop:wellposed}
+For finite $P_{f}$, $H_{W}$ and $H_{\mathrm{hop}}$ are bounded and self-adjoint. The full
+Hamiltonian
+\begin{equation}\label{eq:fullH}
+H_{\mathrm{tot}}=H_{P}+H_{W}+H_{\mathrm{hop}}
+\end{equation}
+is self-adjoint on the domain of $H_{P}$ (Kato--Rellich), and
+$[H_{\mathrm{tot}},\Nhat]\neq0$: the dynamics generates genuine transitions
+\begin{equation}
+\bra{m}H_{W}\ket{k}\neq 0 \iff m/k\in\{p,p^{-1}\}\ \text{for some }p\in P_{f},
+\end{equation}
+i.e. precisely the edges of the \emph{divisibility graph} of $\Nn$ restricted to $P_{f}$.
+\end{proposition}
+
+\begin{proof}
+Each $M_{p}$ is bounded with norm $1$ (Proposition~\ref{prop:monoidrep}); a finite sum of
+bounded self-adjoint operators is bounded self-adjoint. $a_{p}^{\dagger}a_{q}$ is bounded
+(particle-number preserving hop). $H_{\mathrm{tot}}$ is a bounded perturbation of the
+self-adjoint $H_{P}$, hence self-adjoint on $D(H_{P})$. Non-commutation:
+$M_{p}$ changes the eigenvalue of $\Nhat$ from $n$ to $np$, and
+$[H_{W},\Nhat]\ket{n}=\sum_{p}g_{p}(p-1)n(\ket{np}-\mathbf{1}_{p\mid n}\ket{n/p})\neq0$ for
+$n\geq1$ and nonzero $g$.
+\end{proof}
+
+Three remarks interpret these objects.
+
+\begin{remark}[The prime lattice]
+$H_{\mathrm{hop}}$ is a Bose--Hubbard-type tight-binding Hamiltonian on a lattice whose
+\emph{sites} are the primes, with on-site energies $\varepsilon_{p}=\hbar\omega_{0}\log p$ and
+hopping $h_{pq}$. We call this graph the \emph{prime lattice}. It is the natural home for
+every ``interaction'' claim in the source: interactions among prime modes are hops along the
+lattice; the chaotic sector conjectured in Conjecture~$\mathsf{C5}$ is a spectral-statistics
+statement about $H_{\mathrm{tot}}$ on the prime lattice; and the ``chemistry of the primes''
+slogan of the source becomes the statement that the Standard Model's force sectors correspond
+to structured sub-lattices (Conjecture~$\mathsf{C9}$).
+\end{remark}
+
+\begin{remark}[Conservation structure]
+$H_{W}$ conserves the \emph{total primon number} $\Nhat_{\mathrm{tot}}=\sum\hat n_{p}$ (each
+$M_{p}$ changes one occupation by $\pm1$), while $H_{\mathrm{hop}}$ conserves $\Nhat_{\mathrm{tot}}$
+but not $\Nhat$; $H_{P}$ conserves everything. Thus the full theory has a graded conservation
+hierarchy: $\Nhat_{\mathrm{tot}}$ is exactly conserved, $\Nhat$ is not. The additive and
+multiplicative structures of $\Nn$ thereby acquire distinct dynamical roles, which is the
+sharp form of the source's contrast between ``spectral order'' and ``arithmetic cascade.''
+\end{remark}
+
+\begin{remark}[Relation to the reported physics]
+The conformal primon gas reported near black-hole singularities~\cite{hartnollyang2026}
+corresponds in this language to the claim that \emph{some} sector of
+near-singularity gravity is governed by $H_{P}$ (or its Gaussian analogue) with the conformal
+$\mathfrak{sl}(2,\Rr)$ symmetry of the source's Axiom set acting on the $\omega_{0}$ scale.
+The interacting extension \eqref{eq:fullH} is the reconstruction's addition; its necessity
+was latent in the source's own arrow-of-time claims, which (by
+Proposition~\ref{prop:frozen}) are impossible under $H_{P}$ alone.
+\end{remark}
+
+\subsection{The cascade: from a false dynamical claim to a true static one}
+
+The source's strongest repeated image is the ``thermodynamic cascade'' from sparse prime
+states into dense composite states. As dynamics under $H_{P}$ this is impossible
+(Proposition~\ref{prop:frozen}); as a statement about the \emph{microcanonical ensemble},
+however, it is a classical theorem. The repair therefore splits the cascade into a theorem
+(statics) and a conjecture (dynamics).
+
+\begin{theorem}[Normal order and Erd\H{o}s--Kac for the primon ensemble]\label{thm:erdoskac}
+Fix $E>0$ and let $x=e^{E/\hbar\omega_{0}}$. Equip
+$\{n\leq x\}$ with the uniform measure, i.e. the microcanonical ensemble of $H_{P}$ at energy
+$E$. Let $\omega(n)$ be the number of distinct prime factors of $n$. Then:
+\begin{enumerate}[leftmargin=1.6em]
+\item (Hardy--Ramanujan \cite{hardyramanujan1917}; Tur{\'a}n \cite{turan1934}.)
+$\omega(n)$ has normal order $\log\log n$: for every $\varepsilon>0$ the proportion of
+$n\leq x$ with $|\omega(n)-\log\log x|>\varepsilon\log\log x$ tends to $0$ as $x\to\infty$.
+\item (Erd\H{o}s--Kac \cite{erdoskac1940}.) The distribution of
+$(\omega(n)-\log\log x)/\sqrt{\log\log x}$ converges to the standard Gaussian: for all $t$,
+\begin{equation}
+\lim_{x\to\infty}\frac{1}{x}\#\Bigl\{n\leq x:
+\frac{\omega(n)-\log\log x}{\sqrt{\log\log x}}\leq t\Bigr\}=\Phi(t).
+\end{equation}
+\end{enumerate}
+\end{theorem}
+
+The interpretation is exact. The number of states at energy $E$ is $\lfloor e^{E/\hbar\omega_{0}}\rfloor$
+(Section~\ref{sec:thermo}), and Theorem~\ref{thm:erdoskac} describes the \emph{typical} member
+of that ensemble: a composite integer with about $\log\log x$ distinct prime factors,
+$\log\log x=\log(E/\hbar\omega_{0})$ growing only logarithmically in the energy. The entropy
+$\log N(E)=E/\hbar\omega_{0}+O(1)$ is astronomically larger than the typical complexity
+$\log\log N(E)$: the ensemble is dominated by integers that are composite but \emph{far from
+maximally} composite (the maximally composite integers, the powers of two and their smooth
+kin, are exponentially atypical). Thus the source's ``cascade into composite states'' is
+correct as a description of where the measure lives, and the Erd\H{o}s--Kac Gaussian is the
+precise fluctuation law of the cascade. What remains open is the dynamical version:
+
+\begin{conjecture}[Cascade/thermalization on the prime lattice]\label{conj:cascade}
+Let $H_{\mathrm{tot}}=H_{P}+H_{W}+H_{\mathrm{hop}}$ on $\Hil_{\mathcal{A}}$ with generic
+couplings, restricted to the energy window $[E,E+\Delta]$. Then the dynamics
+$e^{-i\tau H_{\mathrm{tot}}/\hbar}$ equilibrates in the sense of the eigenstate thermalization
+hypothesis: time-averaged local observables converge, as $E\to\infty$, to their values in the
+microcanonical ensemble of Theorem~\ref{thm:erdoskac}, and the relaxation time scale is
+polynomial in $E$.
+\end{conjecture}
+
+Conjecture~\ref{conj:cascade} (register entry $\mathsf{C4}$) is the repaired engine for every
+arrow-of-time claim in the source: entropy growth, decoherence, record formation, and the
+emergence of the second law are all downstream of it. It is a well-posed, hard, and
+conventional-sounding problem of quantum statistical mechanics, which is exactly the point:
+the source's most sweeping physical claims, once repaired, reduce to questions that experts
+know how to attack. Falsifiers and attack routes are listed in
+Section~\ref{sec:register}.
+
+\subsection{The Janus state, corrected}
+
+The source claims that ``at the past hypothesis the phase $1^{-i\omega_{0}\tau}=1$: time does
+not exist at $n=1$; time turns on when the universe transitions to composite states.''
+Proposition~\ref{prop:frozen} shows that under $H_{P}$ \emph{nothing} ever transitions, so the
+claim as stated is empty; under $H_{\mathrm{tot}}$ the vacuum $\ket{1}$ is \emph{not} an
+eigenstate (because $H_{W}\ket{1}=\sum_{p}g_{p}\ket{p}$), and the corrected statement
+becomes substantive and true:
+
+\begin{proposition}[Nucleation from the Janus state]\label{prop:nucleation}
+For $H_{\mathrm{tot}}$ with $H_{W}\neq0$ and initial state $\psi(0)=\ket{1}$:
+\begin{equation}
+\psi(\tau)=\ket{1}-\frac{i\tau}{\hbar}\sum_{p\in P_{f}}g_{p}\ket{p}+O(\tau^{2}),
+\end{equation}
+so the \emph{total primon number} grows initially at rate
+$d\langle\Nhat_{\mathrm{tot}}\rangle/d\tau=2\,\mathrm{Im}\,\langle\psi|H_{W}|\psi\rangle
+/\hbar+O(\tau)=\frac{2\tau}{\hbar^{2}}\sum_{p}g_{p}^{2}+O(\tau^{2})>0$. The unique
+zero-entropy state $\ket{1}$ is a regular point of the dynamics, not a fixed point; under
+$H_{P}$ alone it is a fixed point (Proposition~\ref{prop:frozen}).
+\end{proposition}
+
+\begin{proof}
+First-order time-dependent perturbation theory around the eigenstate $\ket{1}$ of $H_{P}$
+(the Dyson series in $H_{W}+H_{\mathrm{hop}}$; $H_{\mathrm{hop}}$ annihilates the vacuum).
+\end{proof}
+
+Time, in the reconstructed framework, is thus switched on by the interaction sector, exactly
+as in the source's narrative, but now with a mechanism that exists. The stronger claims that
+the actual history of the universe \emph{begins} at $\ket{1}$, and that the entropy profile is
+two-sided (Janus-shaped) about that event, are boundary-condition statements and are demoted
+to Conjectures $\mathsf{C7}$ and $\mathsf{C8}$; what survives as theorem is only the
+uniqueness and zero entropy of the floor (Theorem~\ref{thm:spectrum} and
+Section~\ref{sec:thermo}).
+
+\section{Recurrence, Periodicity, and the Fate of Eternal Return}\label{sec:recurrence}
+
+The source derives a strong verdict: ``prime arithmetic rigorously forbids exact cyclical
+time; the universe cannot repeat.'' The mathematics behind this verdict contains a beautiful
+theorem, one correct application, and two overstatements. This section separates them. The
+corrected result is in fact \emph{stronger} than the original claim, because it identifies
+exactly which recurrence phenomena are forbidden, which are unavoidable, and what the
+boundary between them depends on.
+
+\subsection{Linear independence of the prime logarithms}
+
+\begin{lemma}[Fundamental-theorem independence]\label{lem:independence}
+The set $\{\log p:p\in\Pr\}$ is $\Qq$-linearly independent. In particular, for distinct primes
+$p,q$, the ratio $\log p/\log q$ is irrational.
+\end{lemma}
+
+\begin{proof}
+Suppose $\sum_{i=1}^{r}q_{i}\log p_{i}=0$ with $q_{i}=a_{i}/b_{i}\in\Qq$ and distinct primes
+$p_{i}$. Let $B=\mathrm{lcm}(b_{i})$ and $c_{i}=Bq_{i}\in\Zz$. Then
+$0=\sum_{i}c_{i}\log p_{i}=\log\prod_{i}p_{i}^{c_{i}}$ (negative exponents handled by clearing
+signs into the other side), so $\prod_{i}p_{i}^{c_{i}}=1$. Unique factorization forces
+$c_{i}=0$ for all $i$, hence $q_{i}=0$.
+\end{proof}
+
+\subsection{Exact periodicity is forbidden}
+
+\begin{theorem}[No exact return for generic states]\label{thm:noperiod}
+Let $\psi=\sum_{n}c_{n}\ket{n}$ and let $S(\psi)=\{n:c_{n}\neq0\}$ be its support. The
+following are equivalent:
+\begin{enumerate}[leftmargin=1.6em]
+\item There exists $\tau>0$ with $e^{-i\tau H_{P}/\hbar}\psi=\psi$;
+\item There exists $T>0$ such that $\omega_{0}T\log n\in2\pi\Zz$ for every $n\in S(\psi)$;
+\item The set $\{\log n:n\in S(\psi)\}$ is contained in $\alpha\,\Zz$ for some $\alpha>0$
+(all supports are integer multiples of a common logarithmic unit; equivalently all $n\in
+S(\psi)$ are powers of a single integer).
+\end{enumerate}
+In particular, if $S(\psi)$ contains any two integers $m,n$ that are not powers of a common
+integer---for example any pair among $\{2,3\}$, $\{6,10\}$, $\{2,6\}$---then $\psi$ is
+aperiodic: $e^{-i\tau H_{P}/\hbar}\psi\neq\psi$ for every $\tau>0$. The same holds for
+$H_{\mathrm{tot}}$ whenever its spectrum is simple and contains two levels whose difference is
+irrational in units of $\hbar/\omega_{0}$, which holds generically.
+\end{theorem}
+
+\begin{proof}
+$e^{-i\tau H_{P}/\hbar}\psi=\sum_{n}c_{n}e^{-i\omega_{0}\tau\log n}\ket{n}$ equals $\psi$ iff
+$e^{-i\omega_{0}\tau\log n}=1$ for all $n\in S(\psi)$, i.e. iff
+$\omega_{0}\tau\log n\in2\pi\Zz$ for all such $n$. Setting $\alpha=2\pi/(\omega_{0}\tau)$,
+this says every $\log n$ in the support lies in $\alpha\Zz$. If $m,n\in S$ and
+$\log m,\log n\in\alpha\Zz$ with $\log m/\log n\notin\Qq$, the condition fails for every
+$\tau$; by Lemma~\ref{lem:independence}, $\log 2/\log 3\notin\Qq$ etc.
+\end{proof}
+
+This is the rigorous core of the anti-cyclic verdict: \emph{eternal return in the exact sense
+requires the support of the universal state to lie in a single geometric progression of
+integers}, and no physically motivated state does.
+
+\subsection{What is \emph{not} forbidden: three honest corrections}
+
+\begin{corollary}[Truncated systems recur]\label{cor:truncatedrecurrence}
+Fix a finite truncation: primes $p\leq X$ and occupations $k_{p}\leq K$, so the Hilbert space
+is finite-dimensional and the spectrum $\{E_{j}\}$ of $H_{P}$ (or of any self-adjoint
+extension) is finite. Then the evolution $U(\tau)=e^{-i\tau H/\hbar}$ is a quasi-periodic
+rotation, and for every state $\psi$ and every $\varepsilon>0$ the set
+$\{\tau>0:\|U(\tau)\psi-\psi\|<\varepsilon\}$ is \emph{relatively dense} (there exists
+$L=L(\varepsilon,\psi)$ such that every interval of length $L$ contains such a $\tau$). In
+particular Poincar\'e recurrence holds in its strongest (uniform, Bohr almost-periodic) form.
+This is the finite-dimensional special case of Theorem~\ref{cor:nopoincare} below, recorded
+separately because it is the form in which recurrence appears in any \emph{computation}.
+\end{corollary}
+
+\begin{proof}
+On a finite-dimensional space $U(\tau)=e^{-i\tau\Lambda}$ with
+$\Lambda=\mathrm{diag}(E_{1},\dots,E_{d})/\hbar$; the map $\tau\mapsto
+(e^{-i\tau E_{1}/\hbar},\dots,e^{-i\tau E_{d}/\hbar})$ is a continuous one-parameter
+subgroup of the compact torus $\mathbb{T}^{d}$, and every orbit of a compact group rotation is
+uniformly recurrent: the return times to any neighborhood of the identity are syndetic. This
+is Kronecker's theorem in its group form \cite{hardywright2008}.
+\end{proof}
+
+\begin{theorem}[Uniform recurrence of the free flow, infinite system]\label{cor:nopoincare}
+For \emph{every} state $\psi\in\Hil_{\mathcal{A}}$ and every $\varepsilon>0$, the set of
+$\varepsilon$-return times
+\begin{equation}
+\Bigl\{\tau>0:\ \bigl\|e^{-i\tau H_{P}/\hbar}\psi-\psi\bigr\|<\varepsilon\Bigr\}
+\end{equation}
+is \emph{relatively dense} in $\Rr$. The free arithmetic flow is Bohr almost periodic for
+all states, with no finite invariant measure required and no truncation assumed. What fails
+is not $\varepsilon$-recurrence but its \emph{uniformity in the state}: the return-time
+scale $L(\varepsilon,\psi)$ is unbounded as a function of $\psi$ (it grows with the
+Diophantine complexity of the finite supports approximating $\psi$), and exact return
+remains forbidden by Theorem~\ref{thm:noperiod}.
+\end{theorem}
+
+\begin{proof}
+Fix $\varepsilon>0$ and $\psi=\sum_{n}c_{n}\ket{n}\in\ell^{2}$. Choose a finite support set
+$F\subset\Nn_{\geq1}$ with $\sum_{n\notin F}|c_{n}|^{2}<\varepsilon^{2}/4$. The truncated
+flow $\tau\mapsto\bigl(e^{-i\omega_{0}\tau\log n}\bigr)_{n\in F}$ is a continuous
+one-parameter subgroup $h\colon\Rr\to\mathbb{T}^{F}$; let
+$H=\overline{h(\Rr)}$, a compact connected subgroup of the torus. The $\Rr$-orbit of the
+identity under left translation by $h(\tau)$ is dense in $H$ by construction, and a dense
+orbit of an equicontinuous (group) action on a compact space is minimal; minimal
+equicontinuous flows are uniformly recurrent, so
+$T(\delta)=\{\tau:d(h(\tau),e_{H})<\delta\}$ is relatively dense for every $\delta>0$.
+Taking $\delta$ small enough that all phases on $F$ deviate by less than $\varepsilon/2$
+in the $\ell^{2}$ sense (finitely many constraints), we obtain
+$\|U(\tau)\psi-\psi\|\leq\varepsilon/2+\varepsilon/2$ for every $\tau\in T(\delta)$, a
+relatively dense set. The non-uniformity in $\psi$ follows because $F$ must grow as the
+tails of $\psi$ shrink, and the Diophantine return times on $F$ are unbounded in $|F|$ (for
+supports with rationally independent generators, Kronecker's theorem gives relative density
+but no uniform bound: the minimal return time for $F=\{2,3,\dots,p_{|F|}\}$ grows at least
+exponentially in $|F|$, since the frequencies $\log n$ are rationally independent by
+Lemma~\ref{lem:independence} and simultaneous approximation of independent frequencies is
+slow).
+\end{proof}
+
+The third correction concerns the \emph{classical} multiplicative walk, and it sharpens the
+boundary of the no-cycle verdict in an unexpected direction.
+
+\begin{proposition}[P\'olya transience of the multiplicative walk]\label{prop:polya}
+Consider the classical random walk on the divisibility graph of
+Definition~\ref{def:multiplication} restricted to $d=|P_{f}|$ active primes: from
+$k=(k_{1},\dots,k_{d})\in\Zz_{\geq0}^{d}$ step to $k+e_{j}$ with probability $1/(2d)$ and to
+$k-e_{j}$ (when $k_{j}>0$) with probability $1/(2d)$, staying otherwise. Then the walk is
+recurrent for $d\leq2$ and transient for $d\geq3$ \cite{polya1921}. In particular for
+$d\geq3$ the walk returns to the vacuum $k=0$ (the Janus state) only finitely many times,
+almost surely.
+\end{proposition}
+
+Proposition~\ref{prop:polya} has a striking interpretive reading the source missed: whether
+the arithmetic universe ``cycles back to its origin'' depends on the \emph{number of active
+prime modes}. With one or two primes, the multiplicative universe is recurrent---a rigorous
+echo of cyclical cosmology. With three or more, it is transient, and the Janus point is a
+genuinely singular origin. This converts the source's absolute prohibition into a structural,
+checkable dichotomy, which is exactly the kind of refinement that ``meets or exceeds'' the
+original claim while remaining honest.
+
+\subsection{The corrected verdict on cyclical time}
+
+Assembling the three legs: exact eternal return is impossible for states whose support spans
+incommensurable integers (Theorem~\ref{thm:noperiod}); $\varepsilon$-approximate recurrence is
+universal for the \emph{free} flow, at every state, with return times relatively dense but
+astronomically non-uniform (Theorem~\ref{cor:nopoincare}, and
+Corollary~\ref{cor:truncatedrecurrence} for the trivial finite case); and the \emph{cascading}
+(or classical walk) dynamics is transient for $d\geq3$ modes (Proposition~\ref{prop:polya}),
+with the interacting quantum system conjecturally non-recurrent on every physical scale
+(Conjecture $\mathsf{C4}$). The philosophical consequences
+are drawn in Section~\ref{sec:philosophy}; the essential point is that the framework's
+anti-cyclical verdict survives as a \emph{layered} statement---exact return forbidden as a
+genuine theorem, practical return driven out of reach by Diophantine slowness, transience
+of the cascade for three or more active modes---rather than as an absolute metaphysical
+prohibition. The free arithmetic sector, left to itself, is the \emph{most} recurrent object
+in the theory (Bohr almost periodicity for all states, Theorem~\ref{cor:nopoincare}); all
+irreversibility is therefore manufactured by the interaction sector and the boundary
+condition, never by the spectrum. This is the sharpest available form of the source's
+intuition that ``the river never circles back,'' and it is also the form most useful to
+the arrow-of-time analysis of Sections~\ref{sec:time} and~\ref{sec:philosophy}.
