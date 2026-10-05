@@ -61,9 +61,19 @@ pattern** of the primary ensemble. The false-positive rate at the registered
 threshold $\chi^2_{0.95}(k-1)$ and the empirical null distribution of $T$
 are calibrated from these trials.
 
-Decision rule (frozen):
+Decision rule (frozen, as corrected below):
 * *signature present* iff the observed $T_{\mathrm{obs}}$ satisfies
-  $p_{\mathrm{pres}} = \mathrm{Prob}(T_{\mathrm{null}} \le T_{\mathrm{obs}}) \ge 0.05$;
+  $p = \mathrm{Prob}(T_{\mathrm{null}} \le T_{\mathrm{obs}}) \le 0.05$,
+  i.e. the constrained fit is at least as good as the null's best 5\%
+  (an unusually good fit for structureless data);
+
+**Correction (2026-10-05, prior to execution).** The first committed
+version of this rule inverted the inequality ("$\ge 0.05$"); the direction
+above is the operative one and was corrected before the confirmatory fit
+was run. The $Z$-pole verdict ("absent") is the same under either
+direction; the correction matters only for hypothetical future "present"
+verdicts.
+
 * otherwise *signature absent* at the primary ensemble, reported together
   with (i) the power of the test at the actual precision, and (ii) the
   precision inflation factor $\lambda = \sqrt{T_{\mathrm{obs}}/\chi^2_{0.95}}$,
