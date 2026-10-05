@@ -14,11 +14,13 @@ same truncations), so every number is reproducible from these scripts.
 |---|---|---|---|
 | Pilot | `c4_eth_pilot.py`, `c4_eth_pilot2.py`, `c4_pilot3_pr.py` | D = 625–4096 | dense `eigh` |
 | **Scaled** | `c4_scaled_eth.py` (+ `run_c4_scaled.sh` driver) | **D ≈ 10⁴–10⁵** | sparse CSR assembly, shift-invert Lanczos interior windows (`splu` + `eigsh`), restarted-Lanczos Krylov time evolution |
+| **Kinetic completion** | same worker, `--V` flag (+ `run_c4_kinetic.sh`, `c4_kinetic_selftest.py`, `c4_kinetic_figures.py`) | D ≈ 10⁴–10⁵ | one-term density-assisted hopping; diagonal-pivot shift-invert (residual-certified) |
 
 Diagnostics: level-spacing ratio ⟨r⟩ (Poisson 0.3863 / GOE 0.5359 — the **C5 proxy**),
 ETH fluctuation σ_ETH of local occupation observables with microcanonical reference,
 participation ratios, diagonal-ensemble vs microcanonical equilibration, quartic
-completion `U·Σ n_i n_j` (dose–response and D-scaling), weak-coupling control.
+completion `U·Σ n_i n_j` and kinetic completion `V·Σ (n_i+n_j)(a_i†a_j + h.c.)`
+(dose–response and D-scaling), weak-coupling control with σ-quantile sweep.
 
 The sparse pipeline was validated against the dense pilot (extreme-eigenvalue agreement
 2·10⁻¹⁴; ⟨r⟩ = 0.537 vs 0.538 at D = 4096; PR/D 0.26 vs 0.27).
@@ -37,8 +39,51 @@ and the paper's Remark on numerical status):
 
 The bare `H_tot` is quasi-single-particle on the exponent lattice (no quartic sector):
 delocalized but not ergodic. The diagonal quartic completion does **not** rescue
-thermalization — it localizes. Next candidate: kinetic (density-assisted hopping)
-completions, testable with the same infrastructure.
+thermalization — it localizes. The kinetic completion was tested next (below) and is
+the first to equilibrate.
+
+### Kinetic (density-assisted hopping) completion — `--V`
+
+**Term**: `H_kin = V Σ_{p<q} (n̂_p + n̂_q)(a_p† a_q + a_q† a_p)` — quartic yet
+off-diagonal, `N̂_tot`-preserving; validated against a first-principles dense assembly
+to 10⁻¹⁵ (`c4_kinetic_selftest.py`: identity, Hermiticity, commutator, non-quadratic
+effective coefficients). Effective dose is occupation-weighted, ~ `V·K²`.
+
+**Dose-response at the U-family platform (d4K11, D = 20736, seed 7):**
+
+| coupling | ⟨r⟩ | σ_ETH/std | PR/D | evolve \|diag−micro\|/K (τ) |
+|---|---|---|---|---|
+| V = 0 (anchor) | 0.581 | 0.90 | 0.238 | 0.103 (202)¹ |
+| V = 0.1 | 0.493 | 0.94 | 0.218 | 0.178 (63) |
+| **V = 0.3** | **0.518** | 0.96 | **0.136** | **0.004 (22)** |
+| V = 1.0 | 0.412 | 0.97 | 0.046 | 0.032 (7) |
+| U = 0.5 | 0.502 | 0.94 | 0.029 | 0.153 (44) |
+| U = 2.0 | 0.387 | 0.97 | 0.001 | 0.796 (11) |
+
+¹ bare d4K11 evolve from the scaled program (V = U = 0).
+
+**Findings** (details and per-config JSONs in `results/scaled/`;
+`c4_kinetic_results.json`, `fig_c4_kinetic.png`):
+
+1. **First equilibration in the program** — at V ≈ 0.3 the Krylov trace from
+   `|K e_d⟩` settles at the microcanonical value (\|dev\|/K = 0.0039; bare 0.10,
+   quartic 0.81) with residual fluctuations 0.064.
+2. **Dose phenomenon** — V = 0.1 plateaus away from micro (0.178, the bare value);
+   equilibration is optimal near V·K² ≈ 36; V = 1 localizes (⟨r⟩ → 0.41, PR/D → 0.05).
+3. **σ-quantile sweep (weak coupling, d3K28)**: ⟨r⟩ spans 0.42–0.56, non-monotone
+   (q = 0.15 dip 0.4361 reproduced exactly on re-run); generic coupling is flat
+   0.505–0.514 across quantiles; the weak median is direction-dependent (d = 3:
+   0.527; d = 4: 0.441). PR/D ≈ 10⁻⁴ is the robust weak diagnostic.
+4. **Strong-ETH leg still flat** — σ_ETH/std = 0.94–0.99 at every kinetic dose and
+   scale; the scaling falsifier remains unfalsified on the eigenstate leg while the
+   equilibration leg now has positive evidence.
+
+**Numerical note**: kinetic couplings destroy SuperLU diagonal dominance (default
+partial pivoting triples fill: generic d3K28 257 s → timeout). The fix —
+`diag_pivot_thresh = 0` (`--pivot diag`) — factors the same matrices in seconds
+(3.1 s) and lifts the old LU ceiling; every window is certified by eigenpair
+residuals ≤ 1.2·10⁻⁷, cross-checked against auto pivoting (d4K10: 0.5157 vs
+0.5134, within SEM).
 
 ## `c9_chebotarev/` — C9 (Galois–gauge dictionary) protocol calibration
 
@@ -61,12 +106,17 @@ built and its discriminating regime quantified (≥ 5 channels, σ ≤ 0.3%,
 ```bash
 # C4 pilots (dense, < 1 min total)
 python3 c4_eth/c4_eth_pilot.py
+# kinetic-term validation (4 platforms, seconds)
+python3 c4_eth/c4_kinetic_selftest.py
 # C4 scaled (sparse; ~2 h total on 4 GB / 2 cores). The driver is resumable:
 # each configuration runs as its own process with a wall-clock deadline, so it
 # can be run in foreground chunks (re-invoke until scan.log ends with ALL_DONE).
 bash c4_eth/run_c4_scaled.sh
+# kinetic completion + sigma-quantile sweep (~2 h; resumable the same way)
+bash c4_eth/run_c4_kinetic.sh
 # merge + figures
 python3 c4_eth/c4_scaled_figures.py
+python3 c4_eth/c4_kinetic_figures.py
 # C9 (< 30 s)
 python3 c9_chebotarev/c9_chebotarev_pilot.py
 ```

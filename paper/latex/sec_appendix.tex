@@ -160,6 +160,25 @@ Recalibrated &
 Underspecified (rationals are dense: the weak form is vacuous). Restated as the calibrated
 common-$N$ divisor protocol ($\geq5$ channels, $\sigma\leq0.3\%$, $|G|\lesssim$ few
 $\times10^{2}$, false-positive rate $<1\%$; Sec.~\ref{sec:falsify}).\\
+\emph{Second self-audit rows (kinetic-completion pass).} The one-term kinetic program
+also audited the register text itself; two entries logged. & & \\
+Weak-coupling level statistics reported as ``window-placement-sensitive,
+$0.44$--$0.53$'' (Remark~\ref{rem:numerics}(a), two-point estimate). &
+Sharpened &
+Superseded by a full $\sigma$-quantile sweep at fixed configuration ($d=3$, $K=28$,
+$D=24389$): $\langle r\rangle$ spans $0.42$--$0.56$, non-monotone, dip at the
+$15\%$ quantile exactly reproduced on re-run; the weak median is direction-dependent
+($d=4$: $0.44$); generic coupling is flat ($0.505$--$0.514$). Protocol claims must
+pin quantile and direction; $\mathrm{PR}/D$ is the robust weak diagnostic.\\
+Interior-eigensolver ceiling described as an absolute $LU$-fill bound
+(``exhausts laptop RAM beyond $D\approx2.4\times10^{4}$'',
+Remark~\ref{rem:numerics}). &
+Corrected &
+The bound is pivoting-dependent, not absolute: the kinetic couplings destroy diagonal
+dominance and default partial pivoting triples fill, but diagonal pivoting
+($\mathrm{diag\_pivot\_thresh}=0$) factors the same matrices in seconds
+($257\,\mathrm{s}\to3\,\mathrm{s}$ at $d=3$, $K=28$) with eigenpair residuals
+$\leq1.2\times10^{-7}$; ceiling restated as effective, not RAM-hard.\\
 \end{longtable}
 
 \section{Notation}\label{app:notation}
@@ -179,6 +198,8 @@ $T_{H}=\hbar\omega_{0}/k_{B}$ & Hagedorn temperature\\
 $M_{n}$ & multiplication operator, $\ket{k}\mapsto\ket{nk}$ (Def.~\ref{def:multiplication})\\
 $H_{W}$, $H_{\mathrm{hop}}$ & walk and hop Hamiltonians; the prime lattice
 (Sec.~\ref{sec:walk})\\
+$H_{\mathrm{kin}}(V)$ & kinetic completion $V\sum_{p<q}(\hat n_{p}+\hat n_{q})
+(a_{p}^{\dagger}a_{q}+a_{q}^{\dagger}a_{p})$ (Conj.~\ref{conj:cascade})\\
 $\zeta$, $L(\chi_{-4})$, $\zeta_{\Qq(i)}$ & Riemann zeta; Dirichlet $L$ (mod 4); Dedekind zeta of $\Qq(i)$\\
 $\omega(n)$, $\Omega(n)$ & number of distinct / total prime factors\\
 $N(E)=\lfloor e^{E/\hbar\omega_{0}}\rfloor$ & state counting function (Thm~\ref{thm:logcount})\\

@@ -203,14 +203,22 @@ correct as a description of where the measure lives, and the Erd\H{o}s--Kac Gaus
 precise fluctuation law of the cascade. What remains open is the dynamical version:
 
 \begin{conjecture}[Cascade/thermalization on the prime lattice, interacting completion]\label{conj:cascade}
-Let $H_{\mathrm{tot}}^{(U)}=H_{P}+H_{W}+H_{\mathrm{hop}}+U\sum_{p<q}\hat n_{p}\hat n_{q}$ on
-$\Hil_{\mathcal{A}}$ with generic couplings and $U\neq0$ (or any equivalent quartic
-completion), restricted to the energy window $[E,E+\Delta]$. Then along any truncation
+Let
+\begin{equation}\label{eq:completions}
+H_{\mathrm{tot}}^{(U,V)}=H_{P}+H_{W}+H_{\mathrm{hop}}
++U\!\sum_{p<q}\hat n_{p}\hat n_{q}
++V\!\sum_{p<q}(\hat n_{p}+\hat n_{q})\bigl(a_{p}^{\dagger}a_{q}+a_{q}^{\dagger}a_{p}\bigr)
+\end{equation}
+on $\Hil_{\mathcal{A}}$ with generic couplings and $U\neq0$ or $V\neq0$ (diagonal or kinetic
+interacting completion; both are quartic in the ladder operators, and the kinetic one is
+off-diagonal and $\Nhat_{\mathrm{tot}}$-preserving, with matrix elements
+$V(k_{p}+k_{q})\sqrt{(k_{p}+1)\,k_{q}}$ on the hops of the prime lattice), restricted to the
+energy window $[E,E+\Delta]$. Then along any truncation
 sequence with truncation dimension $D\to\infty$: (i) eigenstate expectation values of local
 occupation observables are smooth in $E$ with within-window fluctuations
 $\sigma_{\mathrm{ETH}}(D)\to0$; (ii) diagonal-ensemble values converge to the microcanonical
 values of Theorem~\ref{thm:erdoskac}; and (iii) the relaxation time scale is polynomial in
-$E$. The bare $H_{\mathrm{tot}}$ ($U=0$) is \emph{excluded}: it is a quasi-quadratic object
+$E$. The bare $H_{\mathrm{tot}}$ ($U=V=0$) is \emph{excluded}: it is a quasi-quadratic object
 (see below) for which the thermalization conjecture is mis-typed.
 \end{conjecture}
 
@@ -219,21 +227,36 @@ arrow-of-time claim in the source: entropy growth, decoherence, record formation
 emergence of the second law are all downstream of it. It is a well-posed, hard, and
 conventional-sounding problem of quantum statistical mechanics, which is exactly the point:
 the source's most sweeping physical claims, once repaired, reduce to questions that experts
-know how to attack. The retyping matters and was forced by computation:
+know how to attack. The two completions in \eqref{eq:completions} are not equivalent and the
+difference matters: the $U$ term is a diagonal potential on the exponent lattice (a
+Wannier--Stark-type renderer, as the data below confirm), while the $V$ term is the
+Bose--Hubbard-type \emph{density-assisted hopping} known from the interacting-boson
+literature---quartic yet kinetic. The retyping was forced by computation:
 
 \begin{remark}[Numerical status of the cascade conjecture]\label{rem:numerics}
-Three attack programs have been run on this exact system: dense diagonalization at
+Four attack programs have been run on this exact system: dense diagonalization at
 $D\leq4096$; then a scaled sparse program---shift-invert Lanczos eigen-windows to
-$D\approx2.4\times10^{4}$ (the $LU$ fill of the interior factorization exhausts
-laptop RAM beyond that), and restarted-Lanczos Krylov equilibration to
-$D\approx10^{5}$ (code and data accompany the paper). They establish:
+$D\approx2.4\times10^{4}$ (with default partial pivoting the $LU$ fill of the interior
+factorization exhausts laptop RAM beyond that; the diagonal pivoting introduced for the
+kinetic family in (d) lifts the effective ceiling at no cost in accuracy),
+and restarted-Lanczos Krylov equilibration to
+$D\approx10^{5}$---and, reusing both sparse tiers, the kinetic completion of item (d)
+(code and data accompany the paper). They establish:
 (a) \emph{Level statistics}: generic couplings give GOE ratio statistics
-$\langle r\rangle=0.51$--$0.54$ at every scale computed from $D=625$ to
-$2.4\times10^{4}$; the weak-coupling control collapses the participation ratio to
+$\langle r\rangle=0.51$--$0.58$ at every scale computed from $D=625$ to
+$2.4\times10^{4}$ (the upper end of that band, $0.58$, is the $d=4$, $K=11$, $D=20736$
+window); the weak-coupling control collapses the participation ratio to
 $\mathrm{PR}/D\approx10^{-4}$ with $\sigma_{\mathrm{ETH}}$ inflated by an order of
-magnitude (its $\langle r\rangle$ is window-placement-sensitive, $0.44$--$0.53$,
-because weak off-diagonal couplings split the near-degenerate clusters of the
-diagonal lattice). (b) \emph{ETH fails for the bare $H_{\mathrm{tot}}$
+magnitude, and its $\langle r\rangle$ is \emph{window-placement-dependent in a way the
+generic regime is not}: a $\sigma$-quantile sweep of the same weak configuration
+($d=3$, $K=28$, $D=24389$) at quantiles $\{0.02,0.10,0.15,0.25,0.5,0.75,0.9,0.98\}$
+gives $0.42$--$0.56$, non-monotone (the dip at the $15\%$ quantile, $0.436$, is reproduced
+exactly on independent re-run---density-of-states cluster structure, not solver noise),
+while the generic control is flat ($0.505$--$0.514$ at quantiles $0.05/0.5/0.95$); the
+weak median value is additionally direction-dependent ($0.53$ at $d=3$ versus $0.44$ at
+$d=4$, $D=20736$). Any protocol claim about weak-coupling statistics must therefore pin
+the quantile and the direction; the robust weak-coupling diagnostic is $\mathrm{PR}/D$,
+not $\langle r\rangle$. (b) \emph{ETH fails for the bare $H_{\mathrm{tot}}$
 structurally}: $H_{P}$ is a separable ramp, $H_{W}$ is a per-axis adjacency
 (Wannier--Stark chains; propagation along the $p$-axis is Stark-suppressed when
 $g_{p}\lesssim\log p$), and $H_{\mathrm{hop}}$ is quadratic---no quartic term exists
@@ -248,8 +271,33 @@ with no downward trend. (c) \emph{The diagonal quartic completion does not rescu
 thermalization at any accessible scale}: the dose--response is monotone
 localization ($\langle r\rangle$: $0.514$ at $U=0$, $0.502$ at $U=0.5$, $0.387$ at
 $U=2$, all at $D\approx2\times10^{4}$; $\mathrm{PR}/D$: $0.18\to0.03\to0.001$;
-frozen-mode memory $|\mathrm{diag}-\mathrm{micro}|/K\approx0.8$). A kinetic
-(density-assisted hopping) completion is the natural next candidate. An
+frozen-mode memory $|\mathrm{diag}-\mathrm{micro}|/K\approx0.8$). (d) \emph{The
+kinetic (density-assisted hopping) completion has now been tested}---as a one-term
+addition to the same code, validated against a first-principles dense assembly to
+$10^{-15}$, Hermitian and exactly $\Nhat_{\mathrm{tot}}$-preserving---on the identical
+platform ($d=4$, $K=11$, $D=20736$, seed 7). It is the first completion that produces
+genuine equilibration: at $V=0.3$ the Krylov trace from $\ket{Ke_{d}}$ settles on a
+plateau at the microcanonical value ($|\mathrm{diag}-\mathrm{micro}|/K=0.004$, against
+$0.10$ bare and $0.81$ quartic; residual fluctuations $0.06$ over the plateau), and the
+eigenstates stay delocalized with GOE statistics ($\mathrm{PR}/D=0.14$; $\langle
+r\rangle=0.52$), where the quartic had collapsed to $0.001$--$0.03$. Two
+qualifications, both honest: the equilibration is a dose phenomenon, not a monotone
+onset---at $V=0.1$ (longer Krylov horizon, $\tau\leq63$) the plateau sits \emph{away}
+from microcanonical ($|\mathrm{diag}-\mathrm{micro}|/K=0.18$, the bare value), and at
+strong dose the kinetic term localizes too, as its occupation-weighted matrix elements
+predict (effective coupling $VK^{2}$: at $V=1$, $\langle r\rangle\to0.41$ and
+$\mathrm{PR}/D\to0.05$; at fixed $V=0.3$ on the $d=3$, $K=28$ grid, where
+$VK^{2}\approx235$, $\langle r\rangle=0.36$ with $\mathrm{PR}/D=0.016$); and the
+\emph{eigenstate} fluctuation $\sigma_{\mathrm{ETH}}/\mathrm{std}(a_{j})$ remains
+$0.94$--$0.99$ at every kinetic dose and every scale computed ($D=10^{4}$ to
+$2.4\times10^{4}$ across four truncation directions), so the equilibration leg of the
+cascade conjecture now has positive accessible-scale evidence while the strong-ETH leg
+has none. (Numerically, the kinetic couplings destroy the diagonal dominance that had
+made the shift-invert factorization tractable; diagonal pivoting
+($\mathrm{diag\_pivot\_thresh}=0$) restores it---the generic $d=3$, $K=28$ factorization
+drops from $257$\,s to $3$\,s---with every eigen-window certified by eigenpair residuals
+$\leq1.2\times10^{-7}$ and a pivoting cross-check at $D=14641$ agreeing to
+$0.002$ in $\langle r\rangle$.) An
 $E\to\infty$ statement cannot be falsified by any finite-$D$ simulation; a
 \emph{scaling} criterion can be---and on the present evidence every scaling
 diagnostic is flat.

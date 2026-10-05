@@ -1,0 +1,79 @@
+=== d4K11V0 (window, D=20736 ) ===
+[d4K11V0] D=20736 nnz=381888 build 0.03s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K11V01 (window, D=20736 ) ===
+[d4K11V01] D=20736 nnz=381888 build 0.06s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K11V03 (window, D=20736 ) ===
+[d4K11V03] D=20736 nnz=381888 build 0.06s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K11V10 (window, D=20736 ) ===
+[d4K11V10] D=20736 nnz=381888 build 0.06s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K11V01 (evolve, D=20736 ) ===
+[d4K11V01] D=20736 nnz=381888 build 0.07s (stage=evolve)
+  evolve stage already done
+=== d4K11V03 (evolve, D=20736 ) ===
+[d4K11V03] D=20736 nnz=381888 build 0.06s (stage=evolve)
+  evolve stage already done
+=== d4K11V10 (evolve, D=20736 ) ===
+[d4K11V10] D=20736 nnz=381888 build 0.06s (stage=evolve)
+  evolve stage already done
+=== d4K10diag (window, D=14641 ) ===
+[d4K10diag] D=14641 nnz=266321 build 0.02s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K9V03 (window, D=10000 ) ===
+[d4K9V03] D=10000 nnz=179200 build 0.02s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d6K4V03 (window, D=15625 ) ===
+[d6K4V03] D=15625 nnz=465625 build 0.09s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d3K28V03 (window, D=24389 ) ===
+[d3K28V03] D=24389 nnz=302093 build 0.05s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d3K28V03 (evolve, D=24389 ) ===
+[d3K28V03] D=24389 nnz=302093 build 0.04s (stage=evolve)
+  evolve stage already done
+=== d3K28V005 (window, D=24389 ) ===
+[d3K28V005] D=24389 nnz=302093 build 0.04s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K12V03 (evolve, D=28561 ) ===
+[d4K12V03] D=28561 nnz=531505 build 0.08s (stage=evolve)
+  evolve stage already done
+=== d4K14V03 (evolve, D=50625 ) ===
+[d4K14V03] D=50625 nnz=957825 build 0.14s (stage=evolve)
+  evolve stage already done
+=== d4K17V03 (evolve, D=104976 ) ===
+[d4K17V03] D=104976 nnz=2021760 build 0.31s (stage=evolve)
+  evolve stage already done
+=== d3K28wq002 (window, D=24389 ) ===
+[d3K28wq002] D=24389 nnz=302093 build 0.02s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d3K28wq010 (window, D=24389 ) ===
+[d3K28wq010] D=24389 nnz=302093 build 0.04s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d3K28wq015 (window, D=24389 ) ===
+[d3K28wq015] D=24389 nnz=302093 build 0.02s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d3K28wq025 (window, D=24389 ) ===
+[d3K28wq025] D=24389 nnz=302093 build 0.02s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d3K28wq075 (window, D=24389 ) ===
+[d3K28wq075] D=24389 nnz=302093 build 0.02s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d3K28wq090 (window, D=24389 ) ===
+[d3K28wq090] D=24389 nnz=302093 build 0.04s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d3K28wq098 (window, D=24389 ) ===
+[d3K28wq098] D=24389 nnz=302093 build 0.02s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d3K28q005 (window, D=24389 ) ===
+[d3K28q005] D=24389 nnz=302093 build 0.02s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d3K28q095 (window, D=24389 ) ===
+[d3K28q095] D=24389 nnz=302093 build 0.02s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+=== d4K11weak (window, D=20736 ) ===
+[d4K11weak] D=20736 nnz=381888 build 0.03s (stage=window)
+  window stage already done (r_mean present or classified evolve-only)
+KINETIC_DONE

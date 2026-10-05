@@ -2,6 +2,11 @@
 """
 C4 (Cascade/ETH) SCALED attack -- sparse methods on the prime lattice, D ~ 10^4-10^5.
 
+Couplings: g0 (H_W box drive), h0 (H_hop quadratic hops), U (diagonal quartic
+U sum_{p<q} n_p n_q -- localizes), V (KINETIC completion: density-assisted
+hopping V sum_{p<q} (n_p + n_q)(a_p^dag a_q + h.c.) -- off-diagonal quartic,
+N_tot-preserving; the one-term addition that tests the kinetic candidate).
+
 Extends the dense pilot (D <= 4096, c4_eth_pilot.py) in two tiers:
   * WINDOW tier: sparse CSR assembly + interior eigen-windows via shift-invert
     Lanczos (scipy splu + eigsh, MMD_AT_PLUS_A). LU fill caps this tier at
@@ -56,7 +61,7 @@ def peak_rss_mb():
 # ----------------------------------------------------------------------------
 # sparse assembly (faithful replica of the pilot's dense build)
 # ----------------------------------------------------------------------------
-def build_sparse(d, K, g0, h0, U, seed):
+def build_sparse(d, K, g0, h0, U, seed, V=0.0):
     rng = np.random.default_rng(seed)
     shape = (K + 1,) * d
     D = (K + 1) ** d
@@ -109,6 +114,26 @@ def build_sparse(d, K, g0, h0, U, seed):
             v = hij * np.sqrt((ki + 1.0) * kj)
             rows.append(src); cols.append(tgt); vals.append(v)
             rows.append(tgt); cols.append(src); vals.append(v)
+
+    # ---- H_kin: density-assisted hopping  V (n_i + n_j)(a_i^dag a_j + h.c.) ----
+    # (n_i + n_j) commutes with a_i^dag a_j (one quantum up, one down), so the
+    # hop |k> -> |k + e_i - e_j> carries amplitude (k_i + k_j) sqrt((k_i+1) k_j)
+    # regardless of operator ordering.  Ordered-pair loop + both directions
+    # double-counts each unordered pair; the 0.5 prefactor cancels it, so the
+    # effective operator is exactly V sum_{p<q} (n_p + n_q)(a_p^dag a_q + h.c.).
+    if V != 0.0:
+        for i in range(d):
+            for j in range(d):
+                if i == j:
+                    continue
+                mask = (coords[j] >= 1) & (coords[i] <= K - 1)
+                src = idx_grid[mask].ravel()
+                tgt = src + strides[i] - strides[j]
+                ki = coords[i][mask].ravel()
+                kj = coords[j][mask].ravel()
+                v = 0.5 * V * (ki + kj) * np.sqrt((ki + 1.0) * kj)
+                rows.append(src); cols.append(tgt); vals.append(v)
+                rows.append(tgt); cols.append(src); vals.append(v)
 
     # ---- H_P (+ U) diagonal ----
     rows.append(np.arange(D)); cols.append(np.arange(D)); vals.append(eps)
@@ -285,8 +310,19 @@ def evolve_stage(res, H, eps, coords, d, K, D, tag, deadline):
 
 
 def window_stage(res, H, eps, coords, d, K, D, tag, k, ncv, seed,
-                 sigma_quantile=0.5):
-    """Interior eigen-window via shift-invert Lanczos (LU-based)."""
+                 sigma_quantile=0.5, pivot="auto"):
+    """Interior eigen-window via shift-invert Lanczos (LU-based).
+
+    pivot='diag' passes diag_pivot_thresh=0.0 to SuperLU (always take the
+    diagonal pivot).  For these symmetric-pattern matrices the default
+    partial pivoting is VALUE-dependent and explodes on the kinetic (V)
+    family -- off-diagonal row sums comparable to the diagonal destroy
+    diagonal dominance, and SuperLU expands pivots, tripling+ the fill
+    (generic d3K28: 257 s -> 3 s with diag pivots; solve residuals 1e-8).
+    Diagonal pivoting can be unstable for indefinite matrices, so every
+    window now records eigenpair residuals  max_j ||H v_j - w_j v_j||
+    (certification; Rayleigh-Ritz in eigsh projects onto H itself).
+    """
     import gc
     obs1 = coords[0].ravel().astype(float)
     obsd = coords[d - 1].ravel().astype(float)
@@ -297,7 +333,11 @@ def window_stage(res, H, eps, coords, d, K, D, tag, k, ncv, seed,
     A = (H - sigma * sp.identity(D, format="csr")).tocsc()
     try:
         try:
-            lu = spl.splu(A, permc_spec="MMD_AT_PLUS_A")
+            if pivot == "diag":
+                lu = spl.splu(A, permc_spec="MMD_AT_PLUS_A",
+                              diag_pivot_thresh=0.0)
+            else:
+                lu = spl.splu(A, permc_spec="MMD_AT_PLUS_A")
         except MemoryError:
             res["tier"] = "evolve-only (LU fill exceeded RAM guard)"
             res["window"] = None
@@ -342,8 +382,13 @@ def window_stage(res, H, eps, coords, d, K, D, tag, k, ncv, seed,
     t_eigsh = time.perf_counter() - t0
     order = np.argsort(w)
     w = w[order]; V = V[:, order]
+    # eigenpair residual certification (max/median column norms of Hv - wv)
+    R = H @ V - V * w[None, :]
+    rj = np.linalg.norm(R, axis=0)
     res.update(t_eigsh=round(t_eigsh, 2), window=[float(w[0]), float(w[-1])],
-               band_est=[float(eps.min()), float(eps.max())])
+               band_est=[float(eps.min()), float(eps.max())],
+               eig_resid_max=float(rj.max()), eig_resid_med=float(np.median(rj)),
+               pivot=pivot)
 
     r_mean, r_err = ratio_statistic(w)
     res["r_mean"], res["r_sem"] = r_mean, r_err
@@ -387,13 +432,13 @@ def _load(tag):
 # main per-config driver
 # ----------------------------------------------------------------------------
 def run(tag, d, K, g0, h0, U, seed, k, ncv, stage, no_window, deadline,
-        selftest=False, sigma_quantile=0.5):
+        selftest=False, sigma_quantile=0.5, V=0.0, pivot="auto"):
     os.makedirs(OUT, exist_ok=True)
     res = _load(tag) or dict(tag=tag, d=d, K=K, g0=g0, h0=h0, U=U, seed=seed,
-                             k=k, ncv=ncv)
+                             k=k, ncv=ncv, V=V)
 
     t0 = time.perf_counter()
-    H, eps, g, hmat, coords = build_sparse(d, K, g0, h0, U, seed)
+    H, eps, g, hmat, coords = build_sparse(d, K, g0, h0, U, seed, V=V)
     D = H.shape[0]
     res.update(D=D, nnz_H=int(H.nnz), t_build=round(time.perf_counter() - t0, 2),
                g=[round(x, 4) for x in g])
@@ -416,7 +461,7 @@ def run(tag, d, K, g0, h0, U, seed, k, ncv, stage, no_window, deadline,
             print("  --no-window: evolve tier", flush=True)
         else:
             window_stage(res, H, eps, coords, d, K, D, tag, k, ncv, seed,
-                         sigma_quantile)
+                         sigma_quantile, pivot)
         _save(tag, res)
 
     if stage in ("evolve", "both"):
@@ -438,11 +483,17 @@ def main():
     p.add_argument("--g0", type=float, default=1.5)
     p.add_argument("--h0", type=float, default=1.0)
     p.add_argument("--U", type=float, default=0.0)
+    p.add_argument("--V", type=float, default=0.0,
+                   help="kinetic completion: density-assisted hopping "
+                        "V sum_{p<q} (n_p+n_q)(a_p^dag a_q + h.c.)")
     p.add_argument("--seed", type=int, default=7)
     p.add_argument("--k", type=int, default=0)
     p.add_argument("--stage", choices=("window", "evolve", "both"), default="both")
     p.add_argument("--no-window", action="store_true")
     p.add_argument("--sigma-quantile", type=float, default=0.5)
+    p.add_argument("--pivot", choices=("auto", "diag"), default="auto",
+                   help="splu pivoting: 'diag' = diag_pivot_thresh 0 (fast,"
+                        " symmetric-pattern; needed for the V-kinetic family)")
     p.add_argument("--deadline", type=float, default=430.0,
                    help="wall-clock budget in seconds from process start")
     p.add_argument("--selftest", action="store_true")
@@ -456,7 +507,8 @@ def main():
     else:
         k, ncv = a.k, a.k + 100
     run(a.tag, a.d, a.K, a.g0, a.h0, a.U, a.seed, k, ncv, a.stage,
-        a.no_window, a.deadline, a.selftest, sigma_quantile=a.sigma_quantile)
+        a.no_window, a.deadline, a.selftest, sigma_quantile=a.sigma_quantile,
+        V=a.V, pivot=a.pivot)
 
 
 if __name__ == "__main__":

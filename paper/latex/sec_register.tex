@@ -56,20 +56,31 @@ $O(1)$ term's oscillation structure (sawtooth, non-convergent); mismatch with co
 corrections (e.g.\ known $-\tfrac32\log A$ terms) falsifies the pure model.\\
 $\mathsf{C4}$ &
 \emph{Cascade/ETH, retyped.} The \emph{interacting} completion
-$H_{\mathrm{tot}}^{(U)}=H_{P}+H_{W}+H_{\mathrm{hop}}+U\sum_{p<q}\hat n_{p}\hat n_{q}$ (or
-equivalent quartic) thermalizes on the prime lattice:
+$H_{\mathrm{tot}}^{(U,V)}=H_{P}+H_{W}+H_{\mathrm{hop}}+U\sum_{p<q}\hat n_{p}\hat n_{q}
++V\sum_{p<q}(\hat n_{p}+\hat n_{q})(a_{p}^{\dagger}a_{q}+a_{q}^{\dagger}a_{p})$
+(diagonal or kinetic) thermalizes on the prime lattice:
 $\sigma_{\mathrm{ETH}}(D)\to0$ and diagonal $\to$ microcanonical along truncation
 sequences (Conj.~\ref{conj:cascade}). The bare $H_{\mathrm{tot}}$ is excluded as
 mis-typed (Remark~\ref{rem:numerics}). &
 A &
 C1 (int.) &
 \emph{Scaling criterion} (restated): ETH diagnostics along truncation sequences with
-$D\to\infty$ ---sparse eigen-windows to $D\approx2.4\times10^{4}$ (LU-fill-limited
-on laptop RAM) and Krylov equilibration diagnostics to $D\approx10^{5}$;
+$D\to\infty$ ---sparse eigen-windows to $D\approx2.4\times10^{4}$ (the diagonal-pivot
+factorization introduced for the kinetic family lifts the old $LU$-fill ceiling) and
+Krylov equilibration diagnostics to $D\approx10^{5}$;
 falsified if $\sigma_{\mathrm{ETH}}(D)$ never decays and $|\mathrm{diag}-\mathrm{micro}|$
-stays $O(1)$ for every interacting completion. The bare system is already decided:
-structurally non-ergodic at all scales computed (Remark~\ref{rem:numerics}). Level
-statistics come free and positive (GOE at generic coupling, $\mathsf{C5}$).\\
+stays $O(1)$ for every interacting completion. Executed to date: the bare system is
+decided---structurally non-ergodic at all scales computed; the \emph{diagonal} quartic
+localizes monotonically ($\mathrm{PR}/D\to10^{-3}$); the \emph{kinetic} completion
+(\emph{tested}: one-term addition, validated to $10^{-15}$) is the first to equilibrate
+($|\mathrm{diag}-\mathrm{micro}|/K=0.004$ at $V\approx0.3$, $D\approx2\times10^{4}$,
+versus $0.10$ bare and $0.81$ quartic) with GOE statistics and delocalized eigenstates,
+but its $\sigma_{\mathrm{ETH}}/\mathrm{std}$ is flat at $0.94$--$0.99$ at every dose and
+scale, and strong dose ($VK^{2}\gtrsim80$) localizes it too. Level
+statistics come free and positive (GOE at generic coupling, $\mathsf{C5}$); the
+weak-coupling $\langle r\rangle$ is quantile- and direction-dependent
+($0.42$--$0.56$; Remark~\ref{rem:numerics}(a)), so $\mathrm{PR}/D$ is the robust
+weak-coupling diagnostic.\\
 $\mathsf{C5}$ &
 \emph{Arithmetic--chaos correspondence.} The spectral statistics of the quantized
 near-singularity (BKL-type) Hamiltonian match GUE, and its spectral determinant is
@@ -160,7 +171,7 @@ mathematical plane, $\mathsf{C4}$, $\mathsf{C5}$, and the computational content 
 $\mathsf{C9}$ (find a number field matching a branching table) are autonomous problems
 that survive any verdict on $\mathsf{C1}$---which is precisely why they carry the register's
 cheapest attacks. $\mathsf{C4}$'s listed dependency on $\mathsf{C1}$ is interpretive, not
-logical: the arithmetic sector and $H_{\mathrm{tot}}^{(U)}$ exist unconditionally, so the
+logical: the arithmetic sector and $H_{\mathrm{tot}}^{(U,V)}$ exist unconditionally, so the
 thermalization problem is well-posed even if the spectral-identification program collapses.
 Second, four entries ($\mathsf{C1}$, $\mathsf{C3}$, $\mathsf{C4}$, $\mathsf{C5}$) have
 \emph{purely mathematical} attack routes: they can be advanced or refuted without any
@@ -212,19 +223,26 @@ mechanism cannot be indifferent.
 
 Four problems, in increasing order of depth, would each move multiple register entries:
 \begin{enumerate}[leftmargin=1.6em]
-\item \emph{Prove or refute thermalization for $H_{\mathrm{tot}}^{(U)}$ on finite
+\item \emph{Prove or refute thermalization for $H_{\mathrm{tot}}^{(U,V)}$ on finite
 truncations} ($\mathsf{C4}$): a numerical program of ETH tests along the prime
 lattice, directly analogous to established kicked-rotor and Bose--Hubbard studies;
 every ingredient is finite-dimensional and computable. The program has now been run
-at three scales: dense diagonalization to $D=4096$, sparse shift-invert eigen-windows
-to $D=2.4\times10^{4}$, and Krylov equilibration to $D\approx10^{5}$---all
-laptop-scale (minutes per configuration; the interior eigensolver tier is bounded by
-$LU$ fill, the evolution tier only by $D\tau$). Verdict so far: level statistics
-GOE at generic coupling throughout; every ETH diagnostic flat in $D$
-($\sigma_{\mathrm{ETH}}/\mathrm{std}\approx0.95$; $|\mathrm{diag}-\mathrm{micro}|/K\approx0.06$--$0.24$);
-the diagonal quartic completion localizes monotonically in $U$. The scaling
-falsifier is armed: the next move is a \emph{kinetic} completion
-(density-assisted hopping), which the present infrastructure can test unchanged.
+at three scales and for both completions: dense diagonalization to $D=4096$, sparse
+shift-invert eigen-windows to $D=2.4\times10^{4}$, and Krylov equilibration to
+$D\approx10^{5}$---all laptop-scale (minutes per configuration; the interior
+eigensolver tier is bounded by $LU$ fill, the evolution tier only by $D\tau$; diagonal
+pivoting, needed for the kinetic family, cut the generic factorization from $257$\,s
+to $3$\,s with eigenpair residuals $\leq1.2\times10^{-7}$). Verdict so far: level
+statistics GOE at generic coupling throughout; every \emph{eigenstate} ETH diagnostic
+flat in $D$ ($\sigma_{\mathrm{ETH}}/\mathrm{std}\approx0.95$ for the bare, quartic, and
+kinetic systems alike); the diagonal quartic completion localizes monotonically in
+$U$; the kinetic completion (density-assisted hopping, tested as a one-term addition
+validated to $10^{-15}$) is the first to equilibrate---$|\mathrm{diag}-
+\mathrm{micro}|/K=0.004$ at $V\approx0.3$, $D\approx2\times10^{4}$, with GOE
+statistics and delocalized eigenstates---though it is dose-limited (localizing at
+$VK^{2}\gtrsim80$) and its equilibration leg is horizon-limited beyond
+$D\approx5\times10^{4}$. The scaling falsifier is armed on the strong-ETH leg and
+still unfalsified there; the equilibration leg now has its first positive evidence.
 \item \emph{Compute the level statistics of the interacting arithmetic Hamiltonian and
 compare with GUE} ($\mathsf{C5}$): the prime lattice with log-spaced on-site energies is a
 banded, incommensurate system; its statistics are accessible by dense-diagonalization

@@ -165,3 +165,109 @@ c4_results.json, c4_results_interacting.json, per-config npz),
 `download/pilot_c9_chebotarev/` (fig_c9_chebotarev.png, c9_results.json),
 scripts in `/home/z/my-project/scripts/` (c4_eth_pilot.py, c4_eth_pilot2.py,
 c4_pilot3_pr.py, c4_figures.py, c9_chebotarev_pilot.py, c9_figures.py).
+
+---
+
+# Addendum: Task 5 — the kinetic completion pass (C4) and the σ-quantile sweep
+
+*Session date: 2026-10-05. One-term addition to `c4_scaled_eth.py`, executed at the
+same laptop scale; all artifacts in `download/pilot_c4_eth_scaled/` (tags below),
+figures `fig_c4_kinetic.png` (new, 4 panels) and `fig_c4_scaled.png` (regenerated,
+dose panel extended), machine summary `c4_kinetic_results.json`.*
+
+## A. The kinetic (density-assisted hopping) completion — C4's real candidate, tested
+
+**Term**: `H_kin = V Σ_{p<q} (n̂_p + n̂_q)(a_p† a_q + a_q† a_p)` — quartic yet
+off-diagonal, `N̂_tot`-preserving, matrix elements `V(k_p+k_q)√((k_p+1)k_q)`.
+Validated against a first-principles dense assembly to 10⁻¹⁵ (Hermitian,
+`[H_kin, N̂_tot] = 0` exactly, non-quadratic effective coefficients —
+`c4_kinetic_selftest.py`, 4 platforms, all PASS).
+
+**Dose-response, identical platform as the U-family (d4K11, D = 20736, seed 7):**
+
+| coupling | ⟨r⟩ | σ_rel | PR/D | evolve: \|dev\|/K (τ) |
+|---|---|---|---|---|
+| V = 0 (anchor) | 0.581 | 0.898 | 0.238 | 0.103 (202)* |
+| V = 0.1 | 0.493 | 0.942 | 0.218 | 0.178 (63) |
+| **V = 0.3** | **0.518** | 0.962 | **0.136** | **0.004 (22)** |
+| V = 1.0 | 0.412 | 0.971 | 0.046 | 0.032 (7) |
+| U = 0.5 | 0.502 | 0.944 | 0.029 | 0.153 (44) |
+| U = 2.0 | 0.387 | 0.974 | 0.001 | 0.796 (11) |
+
+\* bare d4K11 evolve (V = U = 0), recorded in the scaled program.
+
+**Findings**
+
+1. **First equilibration in the program.** At V ≈ 0.3 the Krylov trace from
+   `|K e_d⟩` settles on a plateau *at* the microcanonical value: |diag−micro|/K =
+   0.0039 (vs 0.10 bare, 0.81 quartic), residual fluctuations 0.064 over the
+   plateau, norm drift 2.7·10⁻¹⁴. The equilibration leg of C4 now has positive
+   accessible-scale evidence — the arrow-of-time engine works for this completion.
+2. **Dose phenomenon, not monotone onset.** V = 0.1 (longer horizon, τ ≤ 63)
+   plateaus *away* from micro (0.178 ≈ bare); V = 1.0 is transient/truncated.
+   Equilibration-to-microcanonical is optimal near V·K² ≈ 36.
+3. **Occupation-weighted coupling.** Effective dose is V·K²: fixed V = 0.3 is mild
+   on d4K11 (K = 11) but strong on d3K28 (K = 28, V·K² ≈ 235) where it localizes
+   (⟨r⟩ = 0.364, PR/D = 0.016, frozen evolve). The matched-dose 3D point (V = 0.05,
+   V·K² ≈ 39) is intermediate: ⟨r⟩ = 0.474, PR/D = 0.123.
+4. **Strong-ETH leg still flat.** σ_rel = 0.94–0.99 at every kinetic dose and every
+   scale (D = 10⁴–2.4·10⁴, four truncation directions; evolve tier to 10⁵
+   horizon-limited by the Gershgorin-inflated step size: τ = 22 → 15 → 6 → 2 as
+   D = 2·10⁴ → 10⁵). The scaling falsifier rejects nothing yet: eigenstate
+   fluctuations do not decay for bare, quartic, or kinetic.
+5. **Localization contrast.** PR/D: kinetic decays monotonically in V but stays
+   10–100× above the quartic family; strong dose localizes both, the quartic at
+   10⁻³, the kinetic at 5·10⁻².
+
+**Engineering discovered en route (now in the corrections log):** the kinetic
+couplings destroy diagonal dominance, and SuperLU's default partial pivoting
+triples the shift-invert fill (generic d3K28: 257 s → >240 s timeout at V = 0.3).
+`diag_pivot_thresh = 0` (diagonal pivoting on the symmetric pattern) restores
+factorization in seconds (d3K28: 3.1 s) — this also lifts the old LU ceiling
+(the d4K11 U = 0 window, previously impossible, now factors in 56 s). Every window
+is certified by eigenpair residuals ≤ 1.2·10⁻⁷, with a pivot-mode cross-check
+(d4K10: auto 0.5157 vs diag 0.5134, within SEM).
+
+## B. The σ-quantile sweep — the weak-coupling ⟨r⟩ protocol note, sharpened
+
+Weak control (g₀ = 0.05, h₀ = 0.03, d = 3, K = 28, D = 24389, k = 350 levels per
+window), σ-quantile swept over the whole DOS:
+
+| q | 0.02 | 0.10 | 0.15 | 0.25 | 0.50 | 0.75 | 0.90 | 0.98 |
+|---|---|---|---|---|---|---|---|---|
+| ⟨r⟩ | 0.488 | 0.531 | 0.436 | 0.556 | 0.527 | 0.422 | 0.421 | 0.418 |
+
+- **Non-monotone, DOS-structured**: the q = 0.15 dip (0.4361) is reproduced exactly
+  on independent re-run (same seed/k/ncv) — density-of-states cluster gaps, not
+  solver noise. The earlier "0.44–0.53 window-placement-sensitive" note is
+  superseded: the full curve spans 0.42–0.56.
+- **Generic control is flat**: d3K28 at q = 0.05/0.50/0.95 → 0.511/0.514/0.505.
+  Window-robustness at generic coupling, window-*dependence* at weak coupling.
+- **Direction dependence**: the weak *median* value itself is d-dependent
+  (d = 3: 0.527; d = 4 at D = 20736: 0.441).
+- **Register consequence**: any protocol claim about weak-coupling statistics must
+  pin quantile and direction; PR/D ≈ 10⁻⁴ (frozen) is the only robust
+  weak-coupling diagnostic. Folded into the C4 falsifier cell and
+  Remark rem:numerics(a); self-audit row appended to the corrections log.
+
+## C. Paper changes (recompiled, 41 pp body + cover, 0 overfull, 0 undefined refs)
+
+- `conj:cascade` restated with both completions (eq:completions): diagonal
+  `U Σ n̂_p n̂_q` and kinetic `V Σ (n̂_p+n̂_q)(a_p†a_q + h.c.)`.
+- `rem:numerics`: four attack programs; (a) sweep-folded level statistics; new (d)
+  with the full kinetic verdict and the honest dose/horizon qualifications; pivot
+  note with residual certification.
+- Register C4 row: H_tot^(U,V), executed kinetic evidence, quantile protocol note;
+  §11.2 attack path 1 rewritten with the executed verdict.
+- Corrections log: two new self-audit rows (sweep supersession; LU-ceiling
+  restatement). Notation table: H_kin(V) added.
+
+## D. What remains cheapest, now
+
+1. **Strong-ETH leg**: the kinetic completion at matched dose (V·K² ≈ 36) across a
+   *wider D ladder* (d4K9 → d4K13 windows; the diag-pivot path makes this
+   minutes-per-config) — does σ_rel ever bend down?
+2. **Horizon extension for the equilibration leg**: longer-deadline Krylov traces
+   (or Chebyshev trace filtering) at V ≈ 0.3 to confirm the plateau is the diagonal
+   ensemble, not a transient.
+3. C9 dictionary check unchanged (no new physics input this pass).

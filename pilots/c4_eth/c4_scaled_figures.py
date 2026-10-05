@@ -42,11 +42,16 @@ R_GOE, R_POIS = 0.5359, 2 * np.log(2) - 1
 
 GENERIC = ["d4K7sp", "d6K3sp", "d4K8", "d3K25", "d4K10", "d4K9", "d6K4",
            "d3K28", "d4K12", "d3K35", "d6K5", "d4K14", "d5K8", "d3K45",
-           "d4K16", "d4K17"]
+           "d4K16", "d4K17", "d4K10diag", "d4K11V0"]
 U_CONF = ["d4K9U", "d4K11U", "d4K11U05", "d4K12U", "d4K14U"]
-WEAK = ["d3K28weak", "d3K28weakedge"]
+WEAK = ["d3K28weak", "d3K28weakedge", "d4K11weak"]
+KIN = ["d4K11V01", "d4K11V03", "d4K11V10", "d4K9V03", "d6K4V03",
+       "d3K28V03", "d3K28V005", "d4K12V03", "d4K14V03", "d4K17V03"]
+SWEEP_W = ["d3K28wq002", "d3K28wq010", "d3K28wq015", "d3K28wq025",
+           "d3K28wq075", "d3K28wq090", "d3K28wq098"]
+SWEEP_G = ["d3K28q005", "d3K28q095"]
 EVOLVE_ONLY = {"d5K6", "d4K11"}   # window failed (SuperLU C-level alloc)
-ALL = GENERIC + U_CONF + WEAK + sorted(EVOLVE_ONLY)
+ALL = GENERIC + U_CONF + WEAK + KIN + SWEEP_W + SWEEP_G + sorted(EVOLVE_ONLY)
 
 
 def load(tag):
@@ -87,11 +92,12 @@ def main():
 
     fig, axes = plt.subplots(2, 3, figsize=(16.5, 9), constrained_layout=True)
     ax_r, ax_s, ax_p, ax_d, ax_u, ax_t = axes.flat
-    col_g, col_u, col_w = "#1a6faa", "#c2512d", "#7a7a7a"
+    col_g, col_u, col_w, col_v = "#1a6faa", "#c2512d", "#7a7a7a", "#6a3d9a"
 
     def grp(tag):
         if tag in U_CONF: return "u"
-        if tag in WEAK: return "w"
+        if tag in KIN or tag == "d4K11V0": return "v"
+        if tag in WEAK or tag in SWEEP_W: return "w"
         return "g"
 
     # (a) ratio statistic vs D
@@ -105,8 +111,8 @@ def main():
     for tag, r in results.items():
         if "r_mean" not in r:
             continue
-        c = {"g": col_g, "u": col_u, "w": col_w}[grp(tag)]
-        mk = {"g": "o", "u": "^", "w": "s"}[grp(tag)]
+        c = {"g": col_g, "u": col_u, "w": col_w, "v": col_v}[grp(tag)]
+        mk = {"g": "o", "u": "^", "w": "s", "v": "v"}[grp(tag)]
         ax_r.errorbar(r["D"], r["r_mean"], yerr=r.get("r_sem", 0), fmt=mk, ms=6,
                       color=c, ecolor=c, capsize=2)
     ax_r.axhline(R_GOE, color="k", ls="--", lw=1)
@@ -121,8 +127,8 @@ def main():
     # (b) normalized ETH fluctuation vs D
     for tag, r in results.items():
         if "sigma_rel" in r:
-            c = {"g": col_g, "u": col_u, "w": col_w}[grp(tag)]
-            mk = {"g": "o", "u": "^", "w": "s"}[grp(tag)]
+            c = {"g": col_g, "u": col_u, "w": col_w, "v": col_v}[grp(tag)]
+            mk = {"g": "o", "u": "^", "w": "s", "v": "v"}[grp(tag)]
             ax_s.plot(r["D"], r["sigma_rel"], mk, ms=6, color=c)
     for r in pil_rows:
         t = r["tag"]
@@ -138,8 +144,8 @@ def main():
     # (c) participation ratio
     for tag, r in results.items():
         if "pr_over_D" in r:
-            c = {"g": col_g, "u": col_u, "w": col_w}[grp(tag)]
-            mk = {"g": "o", "u": "^", "w": "s"}[grp(tag)]
+            c = {"g": col_g, "u": col_u, "w": col_w, "v": col_v}[grp(tag)]
+            mk = {"g": "o", "u": "^", "w": "s", "v": "v"}[grp(tag)]
             ax_p.plot(r["D"], r["pr_over_D"], mk, ms=6, color=c)
     for r in pil_rows:
         if r.get("pr_over_D"):
@@ -155,9 +161,8 @@ def main():
         ev = r.get("evolution")
         if not ev:
             continue
-        c = col_w if tag in WEAK else (col_u if tag in U_CONF else col_g)
-        mk = {"g": "o", "u": "^", "w": "s"}[grp(tag)] if grp(tag) != "g" else "o"
-        if tag in WEAK: mk = "s"
+        c = col_w if (tag in WEAK or tag in SWEEP_W) else (col_u if tag in U_CONF else (col_v if tag in KIN else col_g))
+        mk = {"g": "o", "u": "^", "w": "s", "v": "v"}[grp(tag)]
         trunc = ev.get("truncated", False)
         ax_d.errorbar(r["D"], ev["diag_vs_micro"], yerr=ev.get("resid_fluct", 0),
                       fmt=mk, ms=6, color=c, ecolor=c, capsize=2,
@@ -176,25 +181,34 @@ def main():
     ax_d.annotate("weak: frozen (no equilibration)", (2.4e4, 15.0), fontsize=7,
                   color=col_w, ha="center")
 
-    # (e) quartic dose-response at D ~ 2e4 (pilot family at 3125 for contrast)
+    # (e) completion dose-response at D ~ 2e4 (kinetic V family added; pilot pale points)
     fam = [("d4K11U05", 0.5), ("d4K11U", 2.0)]
+    kin = [("d4K11V01", 0.1), ("d4K11V03", 0.3), ("d4K11V10", 1.0)]
     ax_u.plot([0.0], [results["d3K28"]["r_mean"]], "o", ms=7, color=col_g)
     ax_u.annotate("U=0 (d3K28, D=24389)", (0.02, results["d3K28"]["r_mean"] + .006),
                   fontsize=7, color=col_g)
+    if "d4K11V0" in results:
+        ax_u.plot([0.0], [results["d4K11V0"]["r_mean"]], "v", ms=7, color=col_v)
     for tag, uval in fam:
         r = results[tag]
         ax_u.plot([uval], [r["r_mean"]], "^", ms=7, color=col_u)
     ax_u.plot([0.5, 2.0], [results["d4K11U05"]["r_mean"], results["d4K11U"]["r_mean"]],
               "-", lw=1, color=col_u, alpha=.6)
+    for tag, vval in kin:
+        if tag in results:
+            ax_u.plot([vval], [results[tag]["r_mean"]], "v", ms=7, color=col_v)
+    if all(t in results for t, _ in kin):
+        ax_u.plot([0.1, 0.3, 1.0], [results[t]["r_mean"] for t, _ in kin],
+                  "-", lw=1, color=col_v, alpha=.6)
     for r in pil_rows:
         if "U" in r["tag"] and r["tag"][0] == "d" and "U" in r["tag"]:
             uval = float(r["tag"].split("U")[1]) / 10.0
             ax_u.plot([uval], [r["r_mean"]], "^", ms=4, color="#e0a090", alpha=.8)
     ax_u.axhline(R_GOE, color="k", ls="--", lw=1)
     ax_u.axhline(R_POIS, color="k", ls=":", lw=1)
-    ax_u.set_xlabel(r"quartic coupling $U$  ($U\sum_{p<q}\hat n_p\hat n_q$)")
+    ax_u.set_xlabel(r"completion coupling (U diagonal quartic / V kinetic)")
     ax_u.set_ylabel(r"$\langle r\rangle$")
-    ax_u.set_title("(e) quartic completion: monotone localization\n(scaled $D\\approx2\\times10^4$; pale: pilot $D=3125$)", fontsize=10)
+    ax_u.set_title("(e) completions: quartic localizes monotonically; kinetic\nholds GOE then localizes at strong dose ($D\\approx2\\times10^4$)", fontsize=10)
 
     # (f) cost: dense vs sparse
     for r in pil_rows:
@@ -221,11 +235,12 @@ def main():
         mlines.Line2D([], [], color=col_g, marker="o", ls="", label="generic $H_{tot}^{(U=0)}$"),
         mlines.Line2D([], [], color=col_u, marker="^", ls="", label="quartic completion"),
         mlines.Line2D([], [], color=col_w, marker="s", ls="", label="weak coupling"),
+        mlines.Line2D([], [], color=col_v, marker="v", ls="", label="kinetic completion"),
         mlines.Line2D([], [], color="#444", marker="s", ls="", ms=4, label="dense pilot"),
         mlines.Line2D([], [], color="k", marker="o", ls="", mfc="none",
                       label="Krylov trace truncated by deadline"),
     ]
-    fig.legend(handles=handles, loc="upper center", ncol=5, frameon=False, fontsize=9)
+    fig.legend(handles=handles, loc="upper center", ncol=6, frameon=False, fontsize=9)
     fig.suptitle("C4 scaled attack: ETH on the prime lattice, $D \\leq 10^5$ "
                  "(sparse interior eigensolvers + Krylov equilibration; 4 GB / 2 cores)",
                  fontsize=12)
@@ -240,6 +255,9 @@ def main():
             evolution="restarted complex Lanczos from |K e_d>; diag proxy = 2nd-half time average; micro = adaptive window at E0 (>=300 states)",
             pilot_note="dense pilot used middle 50% of full spectrum; trends are the datum",
             weakedge="d3K28weakedge uses sigma at the 15% quantile (sparse edge of the DOS)",
+            kinetic=r"H_kin = V sum_{p<q} (n_p+n_q)(a_p^dag a_q + h.c.) -- one-term addition, validated to 1e-15 (c4_kinetic_selftest.py); effective dose is V*K^2",
+            pivot="diag-pivot splu (diag_pivot_thresh=0) for V-family windows: generic d3K28 257s->3s; eigenpair residuals <= 1.2e-7 certify; d4K10 cross-check auto 0.5157 vs diag 0.5134",
+            sweep="weak <r> across sigma-quantiles {0.02..0.98}: 0.42-0.56 non-monotone; generic flat 0.505-0.514; q=0.15 dip reproduced exactly on re-run",
         ),
         results=results,
     )
