@@ -81,7 +81,16 @@ already divisible by $n$. The failure of unitarity of each individual $M_{n}$ is
 operator-theoretic fingerprint of the irreversibility that arithmetic carries:
 the semigroup $(\Nn,\times)$ is
 free, hence has cancellation but no inverses, and the quantum representation inherits exactly
-that structure.
+that structure. The commutator with the free Hamiltonian is exact and arithmetic: on the
+finite-support domain,
+\begin{equation}\label{eq:commMm}
+[H_{P},M_{m}]\;=\;\hbar\omega_{0}(\log m)\,M_{m},
+\end{equation}
+so each multiplicative shift is an eigenoperator of the derivation $[H_{P},\cdot]$ with
+eigenvalue exactly $\hbar\omega_{0}\log m$: multiplication by $m$ costs $\hbar\omega_{0}\log m$
+in energy, and nothing else. This identity is the resonance structure that the interaction
+sector must work with (and the origin of the Wannier--Stark suppression analyzed in
+Remark~\ref{rem:numerics}).
 
 \subsection{The walk Hamiltonian and the prime lattice}\label{sec:walk}
 
@@ -133,7 +142,15 @@ every interaction claim in the framework: interactions among prime modes are hop
 lattice; the chaotic sector conjectured in Conjecture~$\mathsf{C5}$ is a spectral-statistics
 statement about $H_{\mathrm{tot}}$ on the prime lattice; and the ``chemistry of the
 primes'' becomes the statement that the Standard Model's force sectors correspond
-to structured sub-lattices (Conjecture~$\mathsf{C9}$).
+to structured sub-lattices (Conjecture~$\mathsf{C9}$). A boundary note on provenance: the
+Hamiltonians \eqref{eq:walkH}--\eqref{eq:hopH} and the interacting completions of
+Conjecture~\ref{conj:cascade} are \emph{selected}, not derived. What the $M_{n}$ algebra
+supplies is the exact energy bookkeeping \eqref{eq:commMm} and the graph (the divisibility
+edges of $H_{W}$, the exponent-lattice edges of $H_{\mathrm{hop}}$); the choice of couplings
+and of the quartic completions is fixed by symmetry requirements---boundedness,
+self-adjointness, $\Nhat_{\mathrm{tot}}$-preservation, and the breaking of the free
+integrability---and each candidate is then a conjecture's object whose thermalization is an
+empirical question, decided numerically in Remark~\ref{rem:numerics}.
 \end{remark}
 
 \begin{remark}[Conservation structure]\label{rem:conservation}
@@ -175,8 +192,11 @@ however, it is a classical theorem. The dichotomy therefore splits the cascade i
 
 \begin{theorem}[Normal order and Erd\H{o}s--Kac for the primon ensemble]\label{thm:erdoskac}
 Fix $E>0$ and let $x=e^{E/\hbar\omega_{0}}$. Equip
-$\{n\leq x\}$ with the uniform measure, i.e. the microcanonical ensemble of $H_{P}$ at energy
-$E$. Let $\omega(n)$ be the number of distinct prime factors of $n$. Then:
+$\{n\leq x\}$ with the uniform measure---the \emph{cumulative} microcanonical ensemble of
+$H_{P}$ at energy $E$ (the shell ensemble on $\{x(1-\delta)<n\leq x\}$ has the same normal
+order for every fixed $\delta\in(0,1)$, since the normal-order bound holds on every dyadic
+range; the Gaussian limit is stated for the cumulative measure). Let $\omega(n)$ be the
+number of distinct prime factors of $n$. Then:
 \begin{enumerate}[leftmargin=1.6em]
 \item (Hardy--Ramanujan \cite{hardyramanujan1917}; Tur{\'a}n \cite{turan1934}.)
 $\omega(n)$ has normal order $\log\log n$: for every $\varepsilon>0$ the proportion of
@@ -242,7 +262,8 @@ restarted-Lanczos Krylov equilibration to $D\approx10^{5}$, with restart steps s
 Lanczos-estimated spectral radius (validated against exact eigendecomposition propagation
 to $10^{-12}$, state-vector norm drift $\leq10^{-13}$). The kinetic family is examined at
 matched effective dose $VK^{2}\approx36$, the occupation-weighted coupling, so that the dose
-is fixed while the truncation widens; code and data accompany the paper. The evidence:
+is fixed while the truncation widens; code, seeds, parameter grids, and all result files
+accompany the paper (repository \texttt{MIKEAA2020/prime-numbers-in-physics}). The evidence:
 (a) \emph{Level statistics}: generic couplings give GOE ratio statistics
 $\langle r\rangle=0.45$--$0.58$ at every scale computed from $D=625$ to
 $5.9\times10^{4}$ (the upper end of the band is the $d=4$, $K=11$, $D=20736$ window; the
@@ -256,7 +277,11 @@ generic regime is not}: a $\sigma$-quantile sweep of the same weak configuration
 gives $0.42$--$0.56$, non-monotone (the dip at the $15\%$ quantile, $0.436$, is reproduced
 exactly in an independent repetition---density-of-states cluster structure, not solver
 noise),
-while the generic control is flat ($0.505$--$0.514$ at quantiles $0.05/0.5/0.95$); the
+while the generic coupling at the same platform is window-dependent too, with half the
+amplitude: the full eight-quantile sweep of the same generic configuration
+($g_{0}=1.5$, $d=3$, $K=28$, $D=24389$) gives $0.464$--$0.540$, the compression sitting at
+the band edges ($0.464$ at the $98\%$ quantile)---an earlier three-interior-quantile check
+($0.505$--$0.514$ at $0.05/0.5/0.95$) sampled only the flat middle and is superseded;
 weak median value is additionally direction-dependent ($0.53$ at $d=3$ versus $0.44$ at
 $d=4$, $D=20736$). Any protocol claim about weak-coupling statistics must therefore pin
 the quantile and the direction; the robust weak-coupling diagnostic is $\mathrm{PR}/D$,
@@ -322,7 +347,52 @@ eigenpair residuals $\leq6\times10^{-8}$ and a pivoting cross-check at $D=14641$
 to $0.002$ in $\langle r\rangle$.) An $E\to\infty$ statement cannot be falsified by any
 finite-$D$ simulation; a \emph{scaling} criterion can be---and on the present evidence
 every scaling diagnostic is flat.
+(f) \emph{Label-scrambled controls: what is arithmetic and what is graph-generic.} The
+null hypothesis ``the diagonal's arithmetic arrangement is irrelevant once the density of
+states and the graph are fixed'' is tested directly: permute the on-site energies
+$\sum_{p}k_{p}\hbar\omega_{0}\log p$ among the vertices of the \emph{same} graph (same
+couplings, same adjacency and hop amplitudes, same eigenwindow seed), which preserves the
+exact multiset of diagonal energies and every off-diagonal matrix element and destroys only
+the step structure---the fixed increment $\hbar\omega_{0}\log p$ per occupation quantum
+along each axis, incommensurate across axes. Four window pairs at $D=20736$--$24389$ decide
+(Figure~\ref{fig:controls}). At matched kinetic dose the level statistics are
+\emph{scramble-insensitive} ($\langle r\rangle$ $0.518\to0.512$ at $V=0.3$;
+$0.509\to0.502$ at matched dose): the GOE band of item (a) is a property of the graph, not
+of the primes. The generic ($V=0$) family is not: scrambling moves $\langle r\rangle$ from
+$0.581$ (above GOE) to $0.510$ at $d=4$, $K=11$, and collapses the participation ratio by
+$2\times$ there and by $12\times$ at $d=3$, $K=28$ ($\mathrm{PR}/D$ $0.182\to0.015$,
+$\sigma_{\mathrm{ETH}}$ $1.8\to4.5$). The arithmetic diagonal is thus a \emph{transport
+organizer}: its fixed incommensurate steps support resonance manifolds---near-degenerate
+site families produced by multiplicative near-relations among the primes---that a random
+assignment of the same energies does not. What the diagonal's arithmetic structure buys, at
+these scales, is delocalization and eigenstate smoothness, not level repulsion.
+(g) \emph{Finite-size scaling and asymptotic distance.} Along the matched-dose ladders the
+deviation $\langle r\rangle-r_{\mathrm{GOE}}$ runs from $-0.082$ ($D=4096$; $-0.076$ at $D=3375$) to $-0.002$
+($D=19683$) with scatter, and linear fits in $1/\log D$ have large residuals: the computed
+range neither confirms nor excludes the GOE limit (Figure~\ref{fig:controls}(a)). The
+distance to the asymptotic regime is itself fixed and reportable: the largest truncation
+computed ($d=4$, $K=17$) has $E/\hbar\omega_{0}\leq17\log210\approx91$ and typical
+prime-factor counts near $\log n\approx91$ of $\approx4.5$, whereas the
+Erd\H{o}s--Kac statistics of the cascade require $\log\log x\to\infty$: every
+finite-$D$ diagnostic in this paper is a statement about a pre-asymptotic window.
 \end{remark}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{fig_c4_controls.png}
+\caption{Audit-response controls for the $\mathsf{C4}$/$\mathsf{C5}$ numerics
+(Remark~\ref{rem:numerics}(f)--(g)). (a)~Finite-size scaling of the level-statistics
+deviation $\langle r\rangle-r_{\mathrm{GOE}}$ against $1/\log D$ along the matched-dose
+ladders ($d=3$ circles, $d=4$ squares; fits as lines): deviations shrink with $D$ but the
+computed range does not settle the limiting value. (b)~Arithmetic versus label-scrambled
+diagonal at four platforms ($\langle r\rangle$ with standard errors; inset:
+$\mathrm{PR}/D$ on a log scale): matched-dose $\langle r\rangle$ is
+scramble-insensitive; the generic family is not, and the participation ratio collapses
+under scrambling. (c)~Window-placement sweeps at $d=3$, $K=28$: the weak-coupling band
+($0.42$--$0.56$) and the generic band ($0.46$--$0.54$) are both quantile-dependent; the
+generic compression sits at the band edges.}
+\label{fig:controls}
+\end{figure}
 
 \begin{figure}[t]
 \centering
@@ -390,7 +460,9 @@ boundary between them depends on.
 \subsection{Linear independence of the prime logarithms}
 
 \begin{lemma}[Fundamental-theorem independence]\label{lem:independence}
-The set $\{\log p:p\in\Pr\}$ is $\Qq$-linearly independent. In particular, for distinct primes
+Every \emph{finite} $\Qq$-linear relation among the $\log p$ is trivial: the set
+$\{\log p:p\in\Pr\}$ is $\Qq$-linearly independent in the finite-support sense. In
+particular, for distinct primes
 $p,q$, the ratio $\log p/\log q$ is irrational.
 \end{lemma}
 
@@ -432,7 +504,13 @@ $\tau$; by Lemma~\ref{lem:independence}, $\log 2/\log 3\notin\Qq$ etc.
 
 This is the rigorous core of the anti-cyclic verdict: \emph{eternal return in the exact sense
 requires the support of the universal state to lie in a single geometric progression of
-integers}, and no physically motivated state does.
+integers}, and no physically motivated state does. The ray version (periodicity up to a global
+phase, i.e.\ for physical states rather than vectors) relaxes the condition to: all ratios
+$n/m$ with $n,m\in S(\psi)$ are powers of a single rational---the support lies in one
+multiplicative coset $\{c\,a^{j}\}$. This too fails for any support with two
+multiplicatively independent ratios (e.g.\ $S=\{6,12,18\}$: the ratios $2$ and $\tfrac32$
+are independent by unique factorization), so the aperiodicity verdict is unchanged at the
+level of rays.
 
 \subsection{What is \emph{not} forbidden: three qualifications}
 
@@ -485,13 +563,73 @@ Taking $\delta$ small enough that all phases on $F$ deviate by less than $\varep
 in the $\ell^{2}$ sense (finitely many constraints), we obtain
 $\|U(\tau)\psi-\psi\|\leq\varepsilon/2+\varepsilon/2$ for every $\tau\in T(\delta)$, a
 relatively dense set. The non-uniformity in $\psi$ follows because $F$ must grow as the
-tails of $\psi$ shrink, and the Diophantine return times on $F$ are unbounded in $|F|$ (for
-supports with rationally independent generators, Kronecker's theorem gives relative density
-but no uniform bound: the minimal return time for $F=\{2,3,\dots,p_{|F|}\}$ grows at least
-exponentially in $|F|$, since the frequencies $\log n$ are rationally independent by
-Lemma~\ref{lem:independence} and simultaneous approximation of independent frequencies is
-slow).
+tails of $\psi$ shrink, and the Diophantine return times on $F$ are unbounded in $|F|$; the
+quantitative form is Proposition~\ref{prop:returnbound} below.
 \end{proof}
+
+\begin{proposition}[Quantitative return-time bound]\label{prop:returnbound}
+Let $\psi=\sum_{n}c_{n}\ket{n}$ be supported on a finite set $F\subset\Nn_{\geq1}$, let
+$m_{F}=\#\{p: p\mid n \text{ for some } n\in F\}$ be the number of distinct prime
+frequencies active in $F$, and let $K_{F}=\max_{n\in F}\max_{p}k_{p}(n)$. Then for every
+$\varepsilon>0$ there exists an $\varepsilon$-return time
+\begin{equation}\label{eq:returnbound}
+\tau\;\leq\;\Bigl(\frac{2\pi C_{F}}{\varepsilon}\Bigr)^{m_{F}}
+\qquad\text{with}\qquad C_{F}:=2+K_{F}m_{F},
+\end{equation}
+and the set of $\varepsilon$-return times is relatively dense with gaps of the same order
+(Bohr's theorem \cite{besicovitch1932}).
+\end{proposition}
+
+\begin{proof}
+Dirichlet's pigeonhole on the $m_{F}$-torus: with $N\geq2$, the $N^{m_{F}}+1$ points
+$\{k\alpha\bmod 2\pi\}_{k=0}^{N^{m_{F}}}$, where
+$\alpha=(\omega_{0}\log p)_{p\mid F}$, fall $N^{m_{F}}$-to-one into the $(2\pi/N)$-grid cells
+of $\mathbb{T}^{m_{F}}$; two of them share a cell, and their difference $q\leq N^{m_{F}}$
+satisfies $|q\,\omega_{0}\log p|_{\mathrm{mod}\ 2\pi}<2\pi/N$ for every $p\mid F$. Each phase of
+$n\in F$ is the integer combination $\sum_{p}k_{p}(n)\,\omega_{0}\log p$ with
+$\sum_{p}k_{p}(n)\leq K_{F}m_{F}$, so every phase on $F$ deviates by less than
+$2\pi K_{F}m_{F}/N\leq\varepsilon$ once $N\geq2\pi K_{F}m_{F}/\varepsilon$ (choose also
+$N\geq2$ so that the wrapped sum stays in $(-\pi,\pi]$). Then
+$\|e^{-i\tau H_{P}/\hbar}\psi-\psi\|^{2}\leq\sum_{n}|c_{n}|^{2}|e^{i\theta_{n}}-1|^{2}
+\leq\max_{n}|\theta_{n}|^{2}\leq\varepsilon^{2}$ with $\tau=q\leq N^{m_{F}}$. Relative
+density with gaps of the same order is the syndeticity statement of Bohr almost-periodicity
+\cite{besicovitch1932}.
+\end{proof}
+
+Proposition~\ref{prop:returnbound} is the quantitative content of ``Diophantine slowness'',
+and it separates two recurrence scales that the framework needs kept apart.
+
+\emph{Arithmetic} return. A typical integer near $x$ carries $\sim\log\log x$ distinct prime
+factors (Theorem~\ref{thm:erdoskac}), so a superposition of $M$ integers near $x$ has
+$m_{F}\lesssim M\log\log x$, and \eqref{eq:returnbound} gives
+\begin{equation}\label{eq:arithreturn}
+\tau_{\varepsilon}\;\lesssim\;(C/\varepsilon)^{M\log\log x}
+\;=\;(\log x)^{M\log(C/\varepsilon)}
+\;=\;(S/k_{B})^{O(1)},
+\end{equation}
+where $S(E)=k_{B}\log x=k_{B}E/\hbar\omega_{0}$ is the microcanonical entropy: for states
+of fixed or slowly growing support, arithmetic $\varepsilon$-returns occur on times
+\emph{polynomial in the entropy}. (The exponent $M\log(C/\varepsilon)$ is set by the support
+size and the resolution; the occupations $K_{F}$ enter only the constant $C_{F}$, not the
+exponent.)
+
+\emph{Generic} return. A quantum system with $D$ resolved incommensurate frequencies
+requires, by the same pigeonhole bound, $\tau_{\varepsilon}\gtrsim(\varepsilon^{-1})^{D}$. At
+energy $E$ the arithmetic Hilbert space has $D=N(E)=e^{S/k_{B}}$ levels; a \emph{generic}
+system on that many resolved frequencies needs
+$\tau_{\varepsilon}\gtrsim e^{\,e^{S/k_{B}}\log(1/\varepsilon)}$: \emph{exponential in the
+entropy} (doubly so). The primon gas occupies the extreme short-return end of this spectrum,
+and the mechanism is exactly arithmetic: unique factorization compresses $D$ level
+frequencies into the $m_{F}\ll D$ integer combinations of $\log p$.
+
+For Conjecture $\mathsf{C2}$ this converts the qualitative cutoff language into a scaling
+falsifier: recurrence phenomenology whose times grow faster than every power of the entropy
+at fixed resolution $\varepsilon$ is inconsistent with every effective arithmetic cutoff
+(upper bound \eqref{eq:arithreturn} changes only polynomially in $S$ when the cutoff $X$ or
+$K$ is enlarged), while recurrence times polynomial in $S$ are the arithmetic prediction.
+No cutoff-consistent adjustment absorbs an exponential-in-$S$ recurrence scale; conversely,
+observed $\varepsilon$-returns at polynomial-in-$S$ times, for states of bounded support,
+would be a signature of frequency compression of exactly the multiplicative kind.
 
 The third qualification concerns the \emph{classical} multiplicative walk, and it sharpens
 the boundary of the no-cycle verdict in an unexpected direction.

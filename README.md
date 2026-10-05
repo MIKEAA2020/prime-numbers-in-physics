@@ -72,3 +72,24 @@ dependencies column and two-plane DAG added.
 ## License
 
 See LICENSE.
+
+## Three-audit adjudication (2026-10-05)
+
+Three independent audits (astra, grok, muse) were adjudicated jointly
+(`review/audit_adjudication.tex` / `audit_adjudication.pdf`): every claim was
+verified against the manuscript, the checkable mathematics was re-derived or
+computed (`pilots/c4_eth/adjudication_checks.py`), and the demanded numerics
+were executed (label-scrambled controls, generic-coupling quantile sweep,
+1/log D scaling fits). Nine cross-audit oppositions were resolved on the
+mathematics - notably: the counting-law defect decays exponentially (muse
+right, grok's non-convergence description wrong); conjugacy-class sizes always
+divide the group order (grok's divisibility charge rebutted by
+orbit-stabilizer); matched-dose GOE statistics are graph-generic while the
+generic-family delocalization is arithmetic (new positive finding). The
+surviving fixes were folded into the paper: sharpened log-count theorem,
+ensemble-bridge proposition, quantitative return-time proposition (C2 scaling
+falsifier), dictionary error slot s(A) for C3, pre-registration conditions for
+C9, and the audit-response controls in the numerics section.
+
+A single-file LaTeX manuscript (`paper/latex/manuscript.tex`) is generated
+from the modular sources and verified to compile identically (45 pp).

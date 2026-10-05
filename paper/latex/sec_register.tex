@@ -4,13 +4,13 @@
 
 \section{The Consolidated Conjecture Register}\label{sec:register}
 
-The register is the framework's contract with honesty: every ambitious claim
-that lacks proof lives here, numbered, graded, and armed with a
-falsifier. Grades: \textbf{A} (mathematically precise; partial evidence exists; actively
+The register consolidates every ambitious claim that lacks proof: numbered, graded, with a
+falsifier or an explicit interpretive exemption. Grades: \textbf{A} (mathematically
+precise; partial evidence exists; actively
 testable), \textbf{B} (well-formed; speculative; no current evidence beyond structural
 fit), \textbf{C} (interpretive; tethered to A/B entries; not empirically separable at
 present). The \emph{Depends on} column lists register entries whose failure collapses the
-entry; the qualifier ``(int.)'' marks a dependency that is interpretive rather than logical —
+entry; the qualifier ``(int.)'' marks a dependency that is interpretive rather than logical---
 such an entry survives the parent's failure as an autonomous mathematical problem.
 
 \begin{longtable}{@{}p{0.045\textwidth}p{0.35\textwidth}p{0.075\textwidth}p{0.105\textwidth}p{0.28\textwidth}@{}}
@@ -41,19 +41,26 @@ effectively finite truncation (primes $\leq X$, occupations $\leq K$), geometric
 motivated, controlling the recurrence-time scale of Theorem~\ref{cor:nopoincare}. &
 B &
 C1 &
-Sets the quantitative recurrence horizon (Diophantine return times); falsified by derived
-recurrence phenomenology inconsistent with any effective cutoff.\\
+Fixes the return-time family: $\tau_{\varepsilon}\leq(2\pi C_{F}/\varepsilon)^{m_{F}}$
+(Prop.~\ref{prop:returnbound}), polynomial in the entropy $S$ for states of fixed support.
+Falsified by recurrence phenomenology whose times grow faster than every power of the
+entropy at fixed resolution $\varepsilon$: enlarging the cutoff changes the bound only
+polynomially in $S$, so no cutoff-consistent enlargement absorbs an exponential-in-$S$
+recurrence scale. Polynomial-in-$S$ returns at bounded support are the arithmetic
+prediction.\\
 $\mathsf{C3}$ &
-\emph{Holographic arithmetic bound.} $E_{\max}(A)=\frac{\hbar\omega_{0}}{4\ell_{P}^{2}}A+O(\hbar\omega_{0}\kappa)$
-universal (Conj.~\ref{conj:holobound}); with Theorem~\ref{thm:logcount} it yields
-$S_{\mathrm{BH}}=A/4\ell_{P}^{2}+O(1)$ (Thm~\ref{thm:bh}). &
+\emph{Holographic arithmetic bound.} $E_{\max}(A)=\frac{\hbar\omega_{0}}{4\ell_{P}^{2}}A+\hbar\omega_{0}s(A)$,
+$s(A)=O(\log\frac{A}{\ell_{P}^{2}})$ universal (Conj.~\ref{conj:holobound}); with
+Theorem~\ref{thm:logcount} it yields
+$S_{\mathrm{BH}}=k_{B}\bigl(A/4\ell_{P}^{2}+s(A)\bigr)+O\bigl(k_{B}e^{-E/\hbar\omega_{0}}\bigr)$ (Thm~\ref{thm:bh}). &
 A &
 C1 &
 Positive evidence: the proved conditional Theorem~\ref{thm:bh} ($S_{\mathrm{BH}}$
 follows exactly once the bound is granted)---the grade certifies that conditional, not
-independent support. Risk: black-hole entropy log-corrections. The arithmetic model fixes the
-$O(1)$ term's oscillation structure (sawtooth, non-convergent); mismatch with computed
-corrections (e.g.\ known $-\tfrac32\log A$ terms) falsifies the pure model.\\
+independent support. The counting defect is exponentially small in $E$ (Thm~\ref{thm:logcount}(iii)),
+so every log$(A)$-class correction must be carried by the dictionary term $s(A)$; the pure
+model ($s=O(1)$) predicts none. Mismatch with computed corrections (e.g.\ known
+$-\tfrac32\log A$ terms) falsifies the pure form and measures $s(A)$.\\
 $\mathsf{C4}$ &
 \emph{Cascade/ETH, interacting completion.} The \emph{interacting} completion
 $H_{\mathrm{tot}}^{(U,V)}=H_{P}+H_{W}+H_{\mathrm{hop}}+U\sum_{p<q}\hat n_{p}\hat n_{q}
@@ -80,8 +87,12 @@ matched dose, and the diagonal ensemble stays $0.04$--$0.09$ of $K$ away from mi
 with no closing trend. Strong dose ($VK^{2}\gtrsim80$) localizes. Level
 statistics come free and positive (GOE at generic coupling, $\mathsf{C5}$); the
 weak-coupling $\langle r\rangle$ is quantile- and direction-dependent
-($0.42$--$0.56$; Remark~\ref{rem:numerics}(a)), so $\mathrm{PR}/D$ is the robust
-weak-coupling diagnostic.\\
+($0.42$--$0.56$; Remark~\ref{rem:numerics}(a)), the generic band is window-dependent at
+the edges ($0.46$--$0.54$ at the same platform), and $\mathrm{PR}/D$ is the robust
+diagnostic. Label-scrambled controls (Remark~\ref{rem:numerics}(f)) show the matched-dose
+GOE band is graph-generic while the generic-family delocalization is arithmetic:
+scrambling the diagonal at fixed density of states collapses $\mathrm{PR}/D$ by
+$2$--$12\times$.\\
 $\mathsf{C5}$ &
 \emph{Arithmetic--chaos correspondence.} The spectral statistics of the quantized
 near-singularity (BKL-type) Hamiltonian match GUE, and its spectral determinant is
@@ -92,9 +103,13 @@ C1 (int.) &
 Compute pair correlations of quantized cosmological billiards; a proven non-GUE
 spectrum for the singularity sector falsifies; conversely, any rigorous Hilbert--P\'olya
 operator would confirm the bridge (and RH's spectral side). On the lattice model itself:
-GOE ratio statistics at generic coupling, verified numerically for $D=625$ to
+GOE ratio statistics at generic coupling for $D=625$ to
 $D=5.9\times10^{4}$ (eigen-windows; equilibration diagnostics to $D\approx10^{5}$),
-with a Poisson control at weak coupling (Remark~\ref{rem:numerics}).\\
+with a Poisson control at weak coupling and label-scrambled controls at fixed density of
+states (Remark~\ref{rem:numerics}(f): matched-dose statistics scramble-insensitive,
+generic-family $\langle r\rangle$ and $\mathrm{PR}/D$ arithmetic-sensitive). The finite-size
+trend of $\langle r\rangle-r_{\mathrm{GOE}}$ in $1/\log D$ does not settle the limiting
+value (Remark~\ref{rem:numerics}(g)).\\
 $\mathsf{C6}$ &
 \emph{Hagedorn wall as singularity resolution.} Approach to a spacetime singularity is
 approach to $T_{H}$: energy converts to primon creation, curvature growth saturates
@@ -125,11 +140,17 @@ B &
 C1 (int.) &
 \emph{Calibrated dictionary protocol} (restated): fit all channel ratios of $\geq5$
 independent decay channels at precision $\sigma\leq0.3\%$ with one common group order
-$N\lesssim$ few$\,\times\,10^{2}$ and class sizes $c_{i}\mid N$; Monte-Carlo-calibrated
-false-positive rate $<1\%$. No acceptable common-$N$ fit at that precision falsifies.
+$N=|G|\lesssim$ few$\,\times\,10^{2}$ and class sizes $c_{i}=|C_{i}|$ (each $|C_{i}|$ divides
+$|G|$ by orbit--stabilizer, so the Chebotarev densities are exactly $c_{i}/N$);
+Monte-Carlo-calibrated false-positive rate $<1\%$ on random tables. The protocol is
+well-formed only when the channel set, the class-to-channel identification, and the
+group-order range are fixed before the data are examined: the calibration prices the fit,
+not the analyst's freedom. No acceptable common-$N$ fit at that precision falsifies.
 Present data (e.g.\ $Z$-pole branching fractions) admit no such fit---the signature is
-absent below unification, as the conjecture requires. Cleanest dated falsifier: observed
-proton decay (Section~\ref{sec:falsify}, item 1).\\
+absent at collider scales, compatible with the conjecture's unification-scale placement
+and carrying no confirmatory content. Cleanest dated falsifier: observed proton decay
+(Section~\ref{sec:falsify}, item 1); a single channel cannot fix a full splitting table, so
+a positive identification requires the multi-channel fit.\\
 $\mathsf{C10}$ &
 \emph{CP violation as the $\sigma$-odd sector.} CKM phase and baryon asymmetry are the
 arithmetic index of asymmetric couplings $w(\pi)\neq w(\bar\pi)$
@@ -137,9 +158,11 @@ arithmetic index of asymmetric couplings $w(\pi)\neq w(\bar\pi)$
 \cite{vaccaro2016}. &
 B &
 C4 &
-Structural constraint: all derived CP/T observables must factor through split/inert
-statistics; any derivation forcing a non-arithmetic phase breaks it. The ratchet lives in
-the non-conserving $H_{W}$ sector (Remark~\ref{rem:conservation}).\\
+Structural constraint (one-sided, necessary only): any derived CP/T observable must factor
+through split/inert statistics; a derivation forcing a genuinely non-arithmetic phase breaks
+it. No CP observable is derived at present; the entry is tested only through $\mathsf{C4}$'s
+dynamics (the ratchet lives in the non-conserving $H_{W}$ sector,
+Remark~\ref{rem:conservation}) and through the arithmetic-factorization requirement.\\
 $\mathsf{C11}$ &
 \emph{Arithmetic hierarchy.} $\log(M_{\mathrm{Pl}}/M_{\mathrm{EW}})\asymp
 E_{\mathrm{cut}}/2\hbar\omega_{0}$, i.e.\ $E_{\mathrm{cut}}\asymp74\,\hbar\omega_{0}$
@@ -198,18 +221,26 @@ $|G|\lesssim$ a few hundred, a common-group-order divisor fit has Monte-Carlo-ca
 false-positive rate below $1\%$ (the divisor constraint is what saves the test; the weak
 form---each ratio near some rational---is vacuous because $\Qq$ is dense). Current tables
 (e.g.\ the $Z$-pole branching fractions, five channels) admit no such fit: the signature is
-absent below unification, exactly as $\mathsf{C9}$ requires, and no obtainable data set can
+absent at collider scales, which is compatible with the conjecture's unification-scale
+placement but carries no confirmatory content; no obtainable data set can
 decide the conjecture today. The computation validates and calibrates the instrument; the
-purchase waits on unification-scale data.
+purchase waits on unification-scale data. The protocol is well-formed only when the channel
+set and the group-order range are fixed before the data are examined: the Monte-Carlo
+calibration prices the fit on random tables, not the analyst's freedom in choosing channels,
+identifications, or $N$.
 \item \emph{A single new scale.} The framework has exactly one dimensionful parameter,
 $\omega_{0}$, with $T_{H}=\hbar\omega_{0}/k_{B}$. Every other number in the physics layer
 is either an integer, a group order, or a value of an $L$-function. Any phenomenological
 use of the framework that requires a second free scale has already left the theory.
-\item \emph{Entropy log-corrections are sawtooth-bounded, not logarithmic.} The
-$O(1)$ defect in Theorem~\ref{thm:logcount} oscillates and never converges; the
-framework's black-hole entropy corrections are therefore not of the standard
-$-\alpha\log A$ family unless additional coarse-graining is applied. This is a distinctive
-statistical signature of integer-lattice counting (register $\mathsf{C3}$'s falsifier).
+\item \emph{The counting contributes no logarithmic correction.} The defect of
+Theorem~\ref{thm:logcount} decays like $e^{-E/\hbar\omega_{0}}$: integer-lattice counting
+contributes no $-\alpha\log A$ term at all, so any correction of that class in the
+black-hole entropy must be carried entirely by the dictionary term $s(A)$ of Conjecture
+$\mathsf{C3}$. The pure model ($s=O(1)$) predicts none; computed corrections of the known
+$-\tfrac32\log A$ type would falsify the pure form and measure $s$
+(register $\mathsf{C3}$'s falsifier). The fluctuation sector the counting \emph{does}
+contribute is the prime-counting oscillation term, bounded by $O(\sqrt{x}\log^{2}x)$ under
+RH (Section~\ref{sec:thermo}).
 \item \emph{Recurrence phenomenology is layered and cutoff-controlled.} The framework's
 cosmology distinguishes exact recurrence (forbidden for generic states,
 Theorem~\ref{thm:noperiod}) from $\varepsilon$-recurrence (universal for the free flow,

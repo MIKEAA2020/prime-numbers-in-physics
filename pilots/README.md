@@ -153,3 +153,30 @@ widens, so the ETH scaling diagnostics are not confounded by the dose:
 
 Artifacts: `figures/fig_c4_ladder.png`, `results/c4_ladder_results.json`,
 `results/ladder_scan.log`, per-configuration `results/scaled/` files.
+
+## Audit-response controls (label-scrambled diagonal + generic quantile sweep)
+
+Controls for the null hypothesis "the diagonal's arithmetic arrangement is
+irrelevant once the density of states and the graph are fixed"
+(`--scramble`: permute the on-site energies among the vertices of the same
+graph, preserving the exact diagonal multiset and every off-diagonal matrix
+element):
+
+- **Scramble pairs** (`res_*scr`): matched-dose level statistics are
+  scramble-insensitive (r 0.518->0.512 at V=0.3; 0.509->0.502 matched) - the
+  GOE band is graph-generic; the generic-family (V=0) delocalization is not
+  (PR/D 0.238->0.113 at d=4; 0.182->0.015 at d=3, sigma_ETH 1.8->4.5): the
+  arithmetic diagonal is a transport organizer, not a source of level
+  repulsion.
+- **Generic-coupling quantile sweep** (`res_d3K28gq*`): full eight-quantile
+  sweep gives 0.464-0.540 (compression at the band edges); the earlier
+  three-interior-quantile flatness (0.505-0.514) sampled only the flat middle.
+- **Finite-size scaling** (`c4_audit_results.json`): 1/log D fits of
+  <r>-r_GOE along the matched-dose ladders (pooled: -1.66/log D + 0.141);
+  residuals large, limiting value unsettled in the computed range.
+
+Artifacts: `figures/fig_c4_controls.png`, `results/c4_audit_results.json`,
+per-configuration `results/scaled/` files, `adjudication_checks.py` (exact
+math checks: counting-defect convergence, class-size divisibility on 12
+groups, Dirichlet return-time bound, Erdos-Kac simulation ->
+`results/adjudication_math.json`).

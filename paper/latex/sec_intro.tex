@@ -11,21 +11,24 @@ quantum gravity, time, and the arrows of time. The mathematical core is theorem-
 primon Hilbert space is $\ell^{2}$ of the free commutative monoid on the primes, which
 sidesteps the nonseparability of naive infinite tensor products; the primon Hamiltonian is
 proved self-adjoint with simple spectrum $\hbar\omega_{0}\log n$; the partition function is
-the Riemann zeta function, so the exponential state-counting law
-$N(E)=\lfloor e^{E/\hbar\omega_{0}}\rfloor$ is a \emph{Hagedorn spectrum} with critical
-temperature $T_{H}=\hbar\omega_{0}/k_{B}$; and the ``thermodynamic cascade into composite
-states'' is grounded in the Hardy--Ramanujan and Erd\H{o}s--Kac theorems. Three structural
-requirements are then met: the diagonal primon Hamiltonian admits no transitions, so an
-interaction sector (multiplication operators and hopping dynamics on the \emph{prime
-lattice}) is introduced; composite integers are \emph{not} entangled states (the occupation
-basis is a product basis), so arithmetic entanglement is defined across prime-mode
+the Riemann zeta function, whose pole at $\beta\hbar\omega_{0}=1$ fixes a Hagedorn temperature
+$T_{H}=\hbar\omega_{0}/k_{B}$ and confines the free Gibbs state to $T<T_{H}$; the
+state-counting law $N(E)=\lfloor e^{E/\hbar\omega_{0}}\rfloor$ holds with a defect that is
+exponentially small in $E$; and the statistics of composite states follow the
+Hardy--Ramanujan normal-order and Erd\H{o}s--Kac theorems. Three obstructions to the
+framework's dynamical claims are then discharged: the diagonal primon Hamiltonian admits no
+transitions, so an interaction sector (multiplication operators and hopping dynamics on the
+\emph{prime lattice}) is introduced; composite integers are \emph{not} entangled states (the
+occupation basis is a product basis), so arithmetic entanglement is defined across prime-mode
 bipartitions; and exact periodicity is forbidden by the $\Qq$-linear independence of prime
-logarithms while approximate recurrence survives in every finite truncation. Claims whose
-proof is out of reach are consolidated into an explicit, falsifiable conjecture register
-$\mathsf{C1}$--$\mathsf{C12}$, from the zeta/black-hole partition-function identification to a
-Galois--Langlands dictionary for the Standard Model. Two register entries are tested
-numerically at laptop scale: eigenstate-thermalization diagnostics for $\mathsf{C4}$ on
-truncations up to $D\approx6\times10^{4}$, and a calibrated Chebotarev-dictionary protocol
+logarithms while approximate recurrence survives in every finite truncation, with return
+times bounded polynomially in the entropy. Claims whose proof is out of reach are consolidated
+into an explicit, falsifiable conjecture register $\mathsf{C1}$--$\mathsf{C12}$, from the
+zeta/black-hole partition-function identification to a Galois--Langlands dictionary for the
+Standard Model. Two register entries are tested numerically at laptop scale:
+eigenstate-thermalization diagnostics for $\mathsf{C4}$ on truncations up to $D\approx6\times10^{4}$
+(eigenwindows) and $D\approx10^{5}$ (Krylov trajectories), against label-scrambled controls
+with the same graph and density of states, and a calibrated Chebotarev-dictionary protocol
 for $\mathsf{C9}$. The result is a framework whose theorems are proved or cited exactly, whose
 analogies are tightened to citable results, and whose remaining ambitions are stated with
 enough precision to be confirmed or refuted.
@@ -80,8 +83,10 @@ two counterexamples.
 \item \textbf{Demote.} A claim that is plausible, well-formed, and beyond current proof
 technology is restated as a numbered conjecture with evidence, dependencies, and a falsifier.
 Twelve conjectures ($\mathsf{C1}$--$\mathsf{C12}$) are consolidated in Section~\ref{sec:register}.
-The guiding rule is that a conjecture must be \emph{decidable}: each one carries at least one
-specified route to confirmation or refutation.
+The guiding rule is that a conjecture must be \emph{operationally testable}: each of
+$\mathsf{C1}$--$\mathsf{C11}$ carries at least one specified route to confirmation or refutation.
+Interpretive entries (grade $\mathsf{C}$) are exempt from this rule and marked as such: they are
+tethered reconstructions, not standalone empirical claims.
 \end{enumerate}
 
 Numerical evidence is held to the same standard: every diagnostic is defined before it is
@@ -91,21 +96,22 @@ protocol choices (window placement, pivoting, trajectory horizon).
 \subsection{Summary of results}
 
 The framework acquires a layered structure. The \emph{mathematical floor} (all theorem-grade)
-consists of: the arithmetic Hilbert space $\Hil_{\mathcal{A}}=\ell^{2}(\Nn,\times)$
+consists of: the arithmetic Hilbert space $\Hil_{\mathcal{A}}=\ell^{2}(\Nn_{\geq1},\times)$
 (Section~\ref{sec:arithmetic}); the self-adjoint primon Hamiltonian with simple spectrum
 $\hbar\omega_{0}\log n$; the partition function $Z(\beta)=\zeta(\beta\hbar\omega_{0})$ with
-Hagedorn temperature $T_{H}=\hbar\omega_{0}/k_{B}$; the exact counting law
-$\log N(E)=E/\hbar\omega_{0}+O(1)$; the Erd\H{o}s--Kac statistics of the microcanonical
-ensemble; the isometric representation $n\mapsto M_{n}$ of the multiplicative monoid on
-$\Hil_{\mathcal{A}}$; the phase-incommensurability theorem forbidding exact periodicity; the
-Bohr almost-periodicity of the zeta clock's correlation kernel; and the product-state theorem
-that settles the entanglement question. The \emph{conjectural superstructure} consists of the
+Hagedorn temperature $T_{H}=\hbar\omega_{0}/k_{B}$; the counting law
+$N(E)=\lfloor e^{E/\hbar\omega_{0}}\rfloor$ with exponentially small defect; the Erd\H{o}s--Kac
+statistics of the microcanonical ensemble; the isometric representation $n\mapsto M_{n}$ of
+the multiplicative monoid on $\Hil_{\mathcal{A}}$; the phase-incommensurability theorem forbidding
+exact periodicity, with quantitative return-time bounds; the Bohr almost-periodicity of the
+zeta clock's correlation kernel; and the product-basis theorem that fixes where arithmetic
+entanglement lives. The \emph{conjectural superstructure} consists of the
 twelve register entries, of which the deepest are $\mathsf{C1}$ (the zeta/black-hole
 identification), $\mathsf{C3}$ (the arithmetic holographic bound), $\mathsf{C4}$ (thermalization
 on the prime lattice), and $\mathsf{C9}$ (the Galois--gauge dictionary). Two entries carry
 carried-out numerical programs: eigenwindow and Krylov diagnostics for $\mathsf{C4}$ to
-$D\approx6\times10^{4}$ (Remark~\ref{rem:numerics}), and a calibrated dictionary protocol for
-$\mathsf{C9}$ (Section~\ref{sec:falsify}).
+$D\approx6\times10^{4}$ and $D\approx10^{5}$ respectively (Remark~\ref{rem:numerics}), and a
+calibrated dictionary protocol for $\mathsf{C9}$ (Section~\ref{sec:falsify}).
 
 The philosophical theses of the framework---eternalism with perspectival observers, an extrinsic
 arrow grounded in arithmetic state-counting, derivative causality, and the rejection of
@@ -118,7 +124,11 @@ wherever the mathematics cannot carry them (Section~\ref{sec:philosophy}).
 This section fixes the foundational objects. Everything here is elementary but must be stated
 carefully, because a naive formulation writes the primon Fock space as an infinite tensor
 product, an object that is \emph{not} separable and is the wrong home for the theory. The
-construction is cheap and clarifying.
+construction is cheap and clarifying. \emph{Units and conventions.} Throughout,
+$k_{B}=1$ unless it is explicitly displayed; inverse temperature $\beta$ is measured in
+inverse energy, so that $\sigma=\beta\hbar\omega_{0}$ is dimensionless. The clock regulator
+of Section~\ref{sec:time} is a separate dimensionless parameter, denoted $\nu$ there to avoid
+a collision of symbols.
 
 \subsection{The arithmetic Hilbert space}
 
@@ -151,10 +161,15 @@ a self-adjoint operator with spectrum $\Nn$.
 A naive formulation writes $\Fock_{\Pr}=\bigotimes_{p\in\Pr}\Fock_{p}$ with one bosonic oscillator
 per prime. The literal von Neumann infinite tensor product of the $\ell^{2}(\Nn)$ over a
 countably infinite index set is nonseparable, and its physically relevant separable subspaces
-depend on a choice of reference vector. Definition~\ref{def:hilbert} achieves the intended
-object directly: $\ell^{2}$ of the countable basis $\mathcal{F}$ is separable, and the tensor
-factorization over any \emph{finite} set of modes is available whenever needed
-(Proposition~\ref{prop:productstructure}). This is the first, and easiest, instance of the
+(the incomplete tensor products) each require a choice of reference vector. The choice is
+forced here: the multiplicative theory lives in the incomplete tensor product over the
+vacuum $\Omega=\bigotimes_{p}\ket{0}_{p}$, and Definition~\ref{def:hilbert} achieves it
+directly: $\ell^{2}$ of the countable basis $\mathcal{F}$ is separable, the unitary
+$\ket{k}\mapsto\bigotimes_{p}\ket{k_{p}}_{p}$ identifies it with both von Neumann's
+incomplete tensor product with reference $\Omega$ and the bosonic Fock space
+$\Gamma(\ell^{2}(\Pr))$, and the tensor factorization over any \emph{finite} set of modes is
+available whenever needed (Proposition~\ref{prop:productstructure}). The nonseparable full
+product is never used. This is the first, and easiest, instance of the
 general principle of this paper: informal infinite constructions are replaced by the countable
 objects they were meant to describe.
 \end{remark}
@@ -187,8 +202,13 @@ H_{P}\;=\;\hbar\omega_{0}\log\Nhat
 \;=\;\hbar\omega_{0}\sum_{p\in\Pr}(\log p)\,\hat n_{p},
 \qquad \omega_{0}>0,
 \end{equation}
-where the equality of the two expressions is pointwise on basis vectors and extends by
-closure.
+with domain
+\begin{equation}\label{eq:domain}
+D(H_{P})\;=\;\Bigl\{c\in\ell^{2}(\Nn_{\geq1}):\ \sum_{n\geq1}(\hbar\omega_{0}\log n)^{2}\,|c_{n}|^{2}<\infty\Bigr\}.
+\end{equation}
+The two expressions in \eqref{eq:primonH} agree on the finite-support domain, on which they
+are essentially self-adjoint; the closure is the self-adjoint operator with domain
+\eqref{eq:domain}.
 \end{definition}
 
 Equation~\eqref{eq:primonH} exhibits $H_{P}$ as a \emph{free Bose gas} whose one-particle
@@ -198,13 +218,16 @@ integer it represents. This is Julia's primon gas~\cite{julia1990}, cleaned of i
 packaging.
 
 \begin{theorem}[Self-adjointness, spectrum, and simplicity]\label{thm:spectrum}
-$H_{P}$ is self-adjoint and nonnegative. Its spectrum is the pure point set
+$H_{P}$ is self-adjoint on $D(H_{P})$ and nonnegative, with compact resolvent. Its spectrum
+is the pure point set
 \begin{equation}
 \spec(H_{P})=\overline{\{\hbar\omega_{0}\log n:n\in\Nn_{\geq 1}\}},
 \end{equation}
 a discrete set whose only accumulation point is $+\infty$; it has no finite accumulation
-point. Every eigenvalue $\hbar\omega_{0}\log n$ is
-\emph{simple}: $\log m=\log n$ if and only if $m=n$. The ground state is the vacuum
+point and no continuous spectrum. Every eigenvalue $\hbar\omega_{0}\log n$ is
+\emph{simple}: $\log m=\log n$ if and only if $m=n$. The gaps between consecutive levels are
+$\hbar\omega_{0}\log\bigl(1+\tfrac1n\bigr)$, which tend to $0$: the levels \emph{densify}
+toward $+\infty$ with unit degeneracy throughout. The ground state is the vacuum
 $\ket{1}$ with eigenvalue $0$, and it is unique.
 \end{theorem}
 
@@ -263,11 +286,19 @@ free-boson computation on each mode.
 \end{proof}
 
 The identification $Z=\zeta$ carries a consequence that gives it physical teeth: the primon gas
-is a \emph{Hagedorn system} \cite{hagedorn1965}. Its density of states grows exponentially in
-the energy, and the partition function diverges at a finite critical temperature. In string
-theory this is the famous signal that, near $T_{H}$, energy input goes into multiplying the
-number of light degrees of freedom rather than into heating. The same reading applies here with
-total exactness, because the counting is exactly solvable.
+is a \emph{Hagedorn system} \cite{hagedorn1965}. Its counting function grows exponentially
+in the energy, and the partition function diverges at a finite critical temperature. In
+string theory this is the famous signal that, near $T_{H}$, energy input goes into multiplying
+the number of light degrees of freedom rather than into heating. The same reading applies here
+exactly, with one structural difference worth recording: every primon level has \emph{unit
+degeneracy} (Theorem~\ref{thm:spectrum}), so the exponential density of states
+$\rho(E)=\sum_{n}\delta(E-\hbar\omega_{0}\log n)$, of size $e^{E/\hbar\omega_{0}}/\hbar\omega_{0}$,
+is produced entirely by level \emph{densification} (gap $\hbar\omega_{0}\log(1+1/n)\to0$), not
+by degeneracy growth. The primon gas is the degeneracy-one limiting case of a Hagedorn system:
+the exponential growth rate is exactly $1/\hbar\omega_{0}$ and nothing multiplies it. Since
+the Gibbs state exists only for $\beta\hbar\omega_{0}>1$, all statements at or above $T_{H}$ are
+microcanonical or cutoff statements, never canonical expectation values; the clock family of
+Section~\ref{sec:time} is the explicit analytic object that lives on both sides of that line.
 
 \begin{theorem}[Hagedorn asymptotics]\label{thm:hagedorn}
 Let $k_{B}=1$ and write $T_{H}=\hbar\omega_{0}$. As $T\uparrow T_{H}$ (i.e.
@@ -296,14 +327,50 @@ $S=\beta U+\log Z$ with $\log Z=-\log(\sigma-1)+O(1)$. Differentiating $U=T T_{H
 in $T$ gives $C=T_{H}^{2}/(T_{H}-T)^{2}$ up to the stated relative error.
 \end{proof}
 
+\begin{proposition}[Ensemble bridge: the pole is the counting law]\label{prop:bridge}
+For $\sigma>1$ the canonical partition function is exactly the Laplace--Stieltjes transform
+of the microcanonical counting function $N$ of Theorem~\ref{thm:logcount} (with
+$x=E/\hbar\omega_{0}$):
+\begin{equation}\label{eq:bridge}
+Z(\sigma)\;=\;\zeta(\sigma)\;=\;\int_{0}^{\infty}e^{-\sigma x}\,dN(x)
+\;=\;\sum_{n\geq1}n^{-\sigma}.
+\end{equation}
+Moreover:
+\begin{enumerate}[leftmargin=1.6em]
+\item the pole part of $Z$ is exactly the Laplace transform of the exponential counting law:
+$\int_{0}^{\infty}e^{-(\sigma-1)x}\,dx=1/(\sigma-1)$;
+\item $Z(\sigma)-1/(\sigma-1)$ extends to an entire function \cite{titchmarsh1986}, and tends
+to the Euler constant $\gamma$ as $\sigma\downarrow1$.
+\end{enumerate}
+The canonical divergence at the Hagedorn point is therefore not an ensemble artifact set
+against the microcanonical counting: the two are related by an exact integral transform, and
+the pole residue $1$ \emph{is} the microcanonical growth rate. The Hagedorn temperature is a
+property of the counting law itself, read on either transform.
+\end{proposition}
+
+\begin{proof}
+The Stieltjes measure of the staircase $x\mapsto\lfloor e^{x}\rfloor$ is
+$\sum_{n\geq1}\delta_{\log n}$, so the integral in \eqref{eq:bridge} equals
+$\sum_{n}e^{-\sigma\log n}=\zeta(\sigma)$ for $\sigma>1$ (absolute convergence). (i) is
+elementary calculus. (ii) is the classical removal of the unique singularity of $\zeta$ at
+$s=1$ \cite{titchmarsh1986}; the constant term $\gamma$ of the Laurent expansion appears in
+Theorem~\ref{thm:hagedorn}.
+\end{proof}
+
 \begin{remark}[Microcanonical reading]
-Section~\ref{sec:thermo} proves the exact counting law
-$\log N(E)=E/\hbar\omega_{0}+O(1)$, which says that the \emph{microcanonical} temperature
-$(dS/dE)^{-1}$ equals $T_{H}$ identically, at every energy scale: the primon gas is an exactly
-critical system. It never heats; it only multiplies states. This is the sharpened form of the
-source's statement that ``the state space expands exponentially'': the expansion rate is not
+Section~\ref{sec:thermo} proves the counting law $N(E)=\lfloor e^{E/\hbar\omega_{0}}\rfloor$
+with a defect that decays like $e^{-E/\hbar\omega_{0}}$: the exponential growth \emph{rate} of
+the level count is exactly $1/\hbar\omega_{0}$, uniformly in $E$. Equivalently, the level
+density grows as $e^{E/\hbar\omega_{0}}/\hbar\omega_{0}$, so every local average of $\log\rho$ over
+a fixed energy window has slope $1/\hbar\omega_{0}+O(e^{-E/\hbar\omega_{0}})$: energy input
+converts into state multiplicity at a fixed exchange rate, at every energy scale. (The
+unsmoothed entropy $k_{B}\log N(E)$ is a staircase: its pointwise derivative vanishes between
+levels, and the statement just made concerns the growth rate of fixed-window smoothings, not
+the pointwise derivative.) This is the sharpened form of the claim that ``the state space
+expands exponentially'': the expansion rate is not
 merely large, it is \emph{uniform} in $E$, and that uniformity is what the pole of $\zeta$ at
-$s=1$ encodes. The classical smooth term ``$x$'' of the prime number theorem is the same
+$s=1$ encodes---and Proposition~\ref{prop:bridge} makes that encoding an exact
+transform identity. The classical smooth term ``$x$'' of the prime number theorem is the same
 statement read on the counting function $\psi(x)$, and the oscillatory remainder
 $-\sum_{\rho}x^{\rho}/\rho$ is the fluctuation sector; the paper returns
 to this duality in Sections~\ref{sec:time} and~\ref{sec:galois}.
@@ -312,8 +379,11 @@ to this duality in Sections~\ref{sec:time} and~\ref{sec:galois}.
 \subsection{Gaussian extension}
 
 The arithmetic sector extends to the Gaussian integers $\Zz[i]$ for the putative
-five-dimensional (and chirality-carrying) sector, and here the mathematics is genuinely
-supportive, because the extension is an instance of the standard theory of number fields.
+five-dimensional, chirality-carrying sector. The mathematics of the extension itself is exact
+and standard---it is the theory of the number field $\Qq(i)$---and it supplies the clean
+statement that any dimensional or chirality reading must lean on: what the extension does
+\emph{not} supply is the dimension count or a chirality operator, both of which are dictionary
+entries ($\mathsf{C9}$, $\mathsf{C10}$) and are labeled as such.
 
 \begin{definition}[Gaussian primon gas]\label{def:gaussian}
 Let $\mathcal{P}_{\Zz[i]}$ denote the Gaussian primes modulo units $\{\pm1,\pm i\}$, with norm
@@ -348,8 +418,12 @@ $L(1,\chi_{-4})=\pi/4$ is Leibniz's series.
 \end{proof}
 
 Equation~\eqref{eq:factorization} exhibits the Gaussian sector as the rational sector
-\emph{times} a chiral factor: $L(s,\chi_{-4})$ is precisely the asymmetry between the splitting
-class $p\equiv1\ (4)$ and the inert class $p\equiv3\ (4)$. This is developed into a precise
+\emph{times} an asymmetric factor: $L(s,\chi_{-4})$ is precisely the asymmetry between the
+splitting class $p\equiv1\ (4)$ and the inert class $p\equiv3\ (4)$---a binary, with exact
+statistics. In the dictionary this binary is read as chirality; the reading is conjectural,
+not structural: the units $\{\pm1,\pm i\}$ are quotiented out in the norm $N(\pi)$, so no
+orientation survives at the level of norms, and no spacetime dimension is selected by the
+factorization. This is developed into a precise
 (and appropriately demoted) arithmetic model of charge conjugation and CP violation in
 Section~\ref{sec:galois}.
 
@@ -364,3 +438,12 @@ $Z^{\mathrm{ren}}_{\mathrm{grav}}(s)=\zeta(s)$ for near-singularity gravity is
 Conjecture~$\mathsf{C1}$ of the register, the reported 2025--2026 developments
 \cite{hartnollyang2026} being its current physical evidence. The discipline of this paper is
 that such identifications live in the register, not in the theorems.
+
+The boundary is worth drawing on the other side as well, because each of the following
+inferences is tempting and none is free: unique factorization does not imply holography;
+the identity $Z=\zeta$ does not imply a black hole; $\Qq$-linear independence of the prime
+logarithms does not imply a beginning of time; the Dedekind factorization
+\eqref{eq:factorization} does not imply a fifth dimension or a chiral fermion; and level
+statistics on truncated occupation lattices do not, by themselves, imply that arithmetic
+thermalizes. Each of these steps requires a register entry with its own evidence and
+falsifier, and the theorems of this section license none of them.
