@@ -1,0 +1,57 @@
+{
+ "frozen": "2026-10-05",
+ "source": {
+  "citation": "S. Navas et al. (Particle Data Group), Phys. Rev. D 110, 030001 (2024), Z boson listing",
+  "url": "https://pdg.lbl.gov/2024/listings/rpp2024-list-z-boson.pdf",
+  "downloaded": "2026-10-05",
+  "pdf_sha256": "25c847cc515cef20010923ad3a8960a27ebb79556cb87f62ff97ed423a2d6758",
+  "total_width_MeV": [
+   2495.5,
+   2.3
+  ],
+  "note": "OUR FIT partial widths for leptons; branching-fraction block for hadrons/invisible/cc/bb; light = hadrons-cc-bb"
+ },
+ "k": 7,
+ "labels": [
+  "ee",
+  "mumu",
+  "tautau",
+  "invisible",
+  "cc",
+  "bb",
+  "light_uds"
+ ],
+ "f": [
+  0.03362452414345822,
+  0.03365658184732518,
+  0.033692646764175514,
+  0.2,
+  0.1203,
+  0.1512,
+  0.42761000000000005
+ ],
+ "sigma": [
+  5.720767712114647e-05,
+  7.851717362309739e-05,
+  9.346791308473861e-05,
+  0.00055,
+  0.0021,
+  0.0005,
+  0.002230156945149825
+ ],
+ "sigma_rel": [
+  0.0017,
+  0.00233,
+  0.00277,
+  0.00275,
+  0.01746,
+  0.00331,
+  0.00522
+ ],
+ "protocol": {
+  "P1_null_first": "3000 Dirichlet(7) draws, matched sigma pattern, common-N scan N in [2,5000]; threshold chi2_0.95(7)",
+  "P2_injection": "N=60 truth c={6,5,10,20,3,7,4}, binomial noise n=3e3/3e4/3e5",
+  "P3_decision": "signature present iff min-chi2 < chi2_0.95(7) AND empirical p < 0.05 vs the P1 null",
+  "P4_regime": "cc (1.7%) and light (0.5%) sigma_rel exceed the 0.3% validity regime; power concentrated in the five precise channels"
+ }
+}
