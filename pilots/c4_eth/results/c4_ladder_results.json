@@ -1,0 +1,256 @@
+{
+ "program": "matched-dose ladder: VK^2 = 36 held fixed, truncation widened",
+ "dose_convention": "effective (occupation-weighted) coupling ~ V*K^2; V = 36/K^2 at every grid; seed 7, g0=1.5, h0=1.0",
+ "window_ladder_d3": [
+  {
+   "tag": "L36d3K14",
+   "d": 3,
+   "K": 14,
+   "D": 3375,
+   "V": 0.1836735,
+   "r_mean": 0.4548074421668215,
+   "sigma_rel": 0.976073414913557,
+   "pr_over_D": 0.0864704798611694,
+   "eig_resid_max": 6.37085171233299e-10
+  },
+  {
+   "tag": "L36d3K18",
+   "d": 3,
+   "K": 18,
+   "D": 6859,
+   "V": 0.1111111,
+   "r_mean": 0.5008173018709624,
+   "sigma_rel": 0.961516475762805,
+   "pr_over_D": 0.10095499008680134,
+   "eig_resid_max": 3.7870020117552805e-09
+  },
+  {
+   "tag": "L36d3K20",
+   "d": 3,
+   "K": 20,
+   "D": 9261,
+   "V": 0.09,
+   "r_mean": 0.49613870711904656,
+   "sigma_rel": 0.9642898325786888,
+   "pr_over_D": 0.10927770007124618,
+   "eig_resid_max": 3.406997777075305e-09
+  },
+  {
+   "tag": "L36d3K22",
+   "d": 3,
+   "K": 22,
+   "D": 12167,
+   "V": 0.0743802,
+   "r_mean": 0.5082345222819853,
+   "sigma_rel": 0.98372418399563,
+   "pr_over_D": 0.11675196844344402,
+   "eig_resid_max": 2.2087154514425612e-09
+  },
+  {
+   "tag": "L36d3K26",
+   "d": 3,
+   "K": 26,
+   "D": 19683,
+   "V": 0.0532544,
+   "r_mean": 0.5284739214552929,
+   "sigma_rel": 0.9640350760405906,
+   "pr_over_D": 0.12631336945292893,
+   "eig_resid_max": 3.397145029376068e-09
+  },
+  {
+   "tag": "L36d3K28",
+   "d": 3,
+   "K": 28,
+   "D": 24389,
+   "V": 0.0459184,
+   "r_mean": 0.48087654772495014,
+   "sigma_rel": 0.9591945483882595,
+   "pr_over_D": 0.12782697317094083,
+   "eig_resid_max": 1.622361806617855e-08
+  },
+  {
+   "tag": "L36d3K30",
+   "d": 3,
+   "K": 30,
+   "D": 29791,
+   "V": 0.04,
+   "r_mean": 0.5200005725570189,
+   "sigma_rel": 0.9485777359283831,
+   "pr_over_D": 0.13188087977172686,
+   "eig_resid_max": 3.2714051816137086e-09
+  },
+  {
+   "tag": "L36d3K34",
+   "d": 3,
+   "K": 34,
+   "D": 42875,
+   "V": 0.0311419,
+   "r_mean": 0.5035365357569849,
+   "sigma_rel": 0.9604404034311351,
+   "pr_over_D": 0.14503402708222207,
+   "eig_resid_max": 6.307851501653378e-08
+  },
+  {
+   "tag": "L36d3K38",
+   "d": 3,
+   "K": 38,
+   "D": 59319,
+   "V": 0.0249307,
+   "r_mean": 0.5057307613558295,
+   "sigma_rel": 0.9617315475963127,
+   "pr_over_D": 0.15290690650891411,
+   "eig_resid_max": 3.391192791058746e-08
+  }
+ ],
+ "window_ladder_d4": [
+  {
+   "tag": "L36d4K7",
+   "d": 4,
+   "K": 7,
+   "D": 4096,
+   "V": 0.7346939,
+   "r_mean": 0.44855060336280744,
+   "sigma_rel": 0.971162591498061,
+   "pr_over_D": 0.0878912143176329,
+   "eig_resid_max": 2.471225161011413e-09
+  },
+  {
+   "tag": "L36d4K9",
+   "d": 4,
+   "K": 9,
+   "D": 10000,
+   "V": 0.4444444,
+   "r_mean": 0.515261784827669,
+   "sigma_rel": 0.9477938887878241,
+   "pr_over_D": 0.11479567387059887,
+   "eig_resid_max": 6.612370637406245e-09
+  },
+  {
+   "tag": "L36d4K11",
+   "d": 4,
+   "K": 11,
+   "D": 20736,
+   "V": 0.2975207,
+   "r_mean": 0.508797422422838,
+   "sigma_rel": 0.9613758946181375,
+   "pr_over_D": 0.1381471365723535,
+   "eig_resid_max": 2.2111041400462462e-08
+  }
+ ],
+ "window_ladder_d4_infeasible": [
+  "L36d4K13",
+  "L36d4K15",
+  "L36d4K17"
+ ],
+ "dense_pairs": [
+  {
+   "tag": "L36d3K14",
+   "d": 3,
+   "K": 14,
+   "D": 3375,
+   "V": 0.1836735,
+   "diag_d": 5.532559787443265,
+   "micro_d": 6.358306188925082,
+   "diag_vs_micro_over_K": 0.05898188582012974,
+   "delta": 1.125,
+   "n_micro_states": 307,
+   "sigma_rel_full": 0.7404787856259336,
+   "tau": 389.9376136010748,
+   "plateau": 5.5420768985771875,
+   "plateau_vs_diag_over_K": 0.0006797936524230204,
+   "plateau_drift": 0.011077657185855294
+  },
+  {
+   "tag": "L36d3K18",
+   "d": 3,
+   "K": 18,
+   "D": 6859,
+   "V": 0.1111111,
+   "diag_d": 7.3127874173455005,
+   "micro_d": 8.187878787878788,
+   "diag_vs_micro_over_K": 0.048616187251849276,
+   "delta": 0.75,
+   "n_micro_states": 330,
+   "sigma_rel_full": 0.7016309571717267,
+   "tau": 205.50078740348195,
+   "plateau": 7.317934359470956,
+   "plateau_vs_diag_over_K": 0.0002859412291919858,
+   "plateau_drift": 0.025607472781543628
+  },
+  {
+   "tag": "L36d3K20",
+   "d": 3,
+   "K": 20,
+   "D": 9261,
+   "V": 0.09,
+   "diag_d": 8.23134897911761,
+   "micro_d": 9.099009900990099,
+   "diag_vs_micro_over_K": 0.04338304609362442,
+   "delta": 0.75,
+   "n_micro_states": 404,
+   "sigma_rel_full": 0.6814255640418716
+  },
+  {
+   "tag": "L36d4K7",
+   "d": 4,
+   "K": 7,
+   "D": 4096,
+   "V": 0.7346939,
+   "diag_d": 2.4173797327337896,
+   "micro_d": 2.1346153846153846,
+   "diag_vs_micro_over_K": 0.040394906874057855,
+   "delta": 1.125,
+   "n_micro_states": 416,
+   "sigma_rel_full": 0.8323617901846919,
+   "tau": 299.99571305556424,
+   "plateau": 2.4002585652064146,
+   "plateau_vs_diag_over_K": 0.0024458810753392895,
+   "plateau_drift": 0.02479733542445084
+  },
+  {
+   "tag": "L36d4K9",
+   "d": 4,
+   "K": 9,
+   "D": 10000,
+   "V": 0.4444444,
+   "diag_d": 3.277591597188125,
+   "micro_d": 2.730337078651685,
+   "diag_vs_micro_over_K": 0.06080605761515997,
+   "delta": 0.5,
+   "n_micro_states": 356,
+   "sigma_rel_full": 0.7829670181648944,
+   "tau": 249.99335720679875,
+   "plateau": 3.3189265436336415,
+   "plateau_vs_diag_over_K": 0.004592771827279623,
+   "plateau_drift": 0.011127503009678907
+  }
+ ],
+ "d4K11_V03_extended": {
+  "D": 20736,
+  "V": 0.3,
+  "tau": 300.0066907751434,
+  "running_time_average": 4.36747160796274,
+  "plateau_windows": {
+   "T2": 4.36747160796274,
+   "T4": 4.401222053518712,
+   "T8": 4.399030445481369,
+   "T16": 4.397403915969549
+  },
+  "plateau_drift": 0.033750445555972064,
+  "resid_fluct": 0.05817073818527739,
+  "micro_d": 3.3514851485148514,
+  "delta": 0.5,
+  "n_micro_states": 606,
+  "diag_estimate": 4.401222053518712,
+  "transient_T22": {
+   "plateau": 3.394029847449273,
+   "tau": 22.48762476376073
+  }
+ },
+ "verdict": {
+  "sigma_rel": "flat: 0.9486-0.9837 (window, d=3, D=3375-59319), 0.9478-0.9712 (window, d=4, D=4096-20736), 0.68-0.83 (dense full spectrum, D<=10^4); no downward trend at fixed dose -- the strong-ETH leg of C4 has no positive evidence at accessible scales",
+  "diag_vs_micro": "O(1) at fixed dose: d=3 stable ~0.87 absolute (0.043-0.059 of K); d=4 grows 0.040 -> 0.061 -> 0.092 of K across D=4096-20736; no closing trend",
+  "plateau_is_diag": "verified exactly at D<=10^4 (|plateau-diag|/K = 0.0003-0.0046, within the nested-window drift); at D=20736 the T<=22.5 average (3.394) was a transient that coincides with the microcanonical value (3.351); the extended trajectory's nested averages saturate at 4.40 +/- 0.03, which is the diagonal ensemble",
+  "relaxation": "fast initial decay (11 -> 3.5 by tau~20) followed by a slow secular tail (still +0.03 per 35 tau at tau=300); the relaxation spectrum is broad, consistent with the occupation-weighted coupling structure"
+ }
+}

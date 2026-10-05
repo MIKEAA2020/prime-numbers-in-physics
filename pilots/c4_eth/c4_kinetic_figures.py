@@ -90,7 +90,7 @@ def main():
     ax_r.axhline(R_POIS, color="k", ls=":", lw=1)
     ax_r.text(1.55, R_GOE + .006, "GOE", fontsize=8)
     ax_r.text(1.55, R_POIS - .022, "Poisson", fontsize=8)
-    ax_r.annotate("V=0 anchor: $\\langle r\\rangle$=0.581\n(first window at d4K11;\ndiag-pivot LU)",
+    ax_r.annotate("V=0 anchor: $\\langle r\\rangle$=0.581\n(diag-pivot shift-invert LU)",
                   (0.0, 0.581), xytext=(0.25, 0.605), fontsize=7, color="#333")
     ax_r.annotate("strong dose localizes\n(V$K^2\\gtrsim$80)", (1.0, 0.4122),
                   xytext=(0.55, 0.355), fontsize=7, color=COL_V,
@@ -140,12 +140,12 @@ def main():
     ax_q.axhline(R_POIS, color="k", ls=":", lw=1)
     ax_q.text(0.015, R_GOE + .006, "GOE", fontsize=8)
     ax_q.text(0.03, R_POIS - .028, "Poisson", fontsize=8)
-    ax_q.annotate("q=0.15 dip reproduced\nexactly on re-run\n(DOS cluster gap)",
+    ax_q.annotate("q=0.15 dip reproduced\nin an independent repetition\n(DOS cluster gap)",
                   (0.15, 0.4361), xytext=(0.18, 0.398), fontsize=6.5, color="#555",
                   arrowprops=dict(arrowstyle="->", lw=.6, color="#999"))
     ax_q.set_xlabel(r"window placement $\sigma$-quantile of the DOS")
     ax_q.set_ylabel(r"$\langle r\rangle$")
-    ax_q.set_title("(c) sharpened protocol note: weak-coupling $\\langle r\\rangle$ is "
+    ax_q.set_title("(c) weak-coupling $\\langle r\\rangle$ is "
                    "window-placement-dependent\n(0.42--0.56, non-monotone); generic is flat GOE",
                    fontsize=10)
     ax_q.legend(fontsize=7.5, loc="upper right")
@@ -193,9 +193,9 @@ def main():
                   ms=9, color="#3d1f5c", label="kinetic V=0.3, $VK^2\\!\\approx\\!235$ (localized)")
     ax_d.set_xscale("log"); ax_d.set_yscale("log")
     ax_d.set_xlabel("truncation dimension $D$")
-    ax_d.set_ylabel(r"$|$diag ensemble $-$ microcanonical$|\,/\,K$")
-    ax_d.set_title("(d) kinetic $V\\!\\approx\\!0.3$ ($VK^2\\!\\approx\\!36$): the only completion "
-                   "that\nequilibrates ($25\\times$ below bare); Krylov horizons annotated",
+    ax_d.set_ylabel(r"$|$time average $-$ microcanonical$|\,/\,K$")
+    ax_d.set_title("(d) finite-horizon time averages at $V\\!\\approx\\!0.3$ "
+                   "($VK^2\\!\\approx\\!36$):\nshort horizons can transiently track microcanonical",
                    fontsize=10)
     ax_d.legend(fontsize=7.5, loc="upper right")
 
@@ -255,10 +255,11 @@ def main():
         verdict=dict(
             sigma_rel="flat 0.94-0.99 at every kinetic dose and scale -- strong-ETH "
                       "eigenstate fluctuation does NOT decay at accessible scales",
-            equilibration="kinetic V=0.3 (VK^2~36) at D=20736: |diag-micro|/K = 0.0039 "
-                          "(bare 0.10, quartic 0.81), settled plateau, resid 0.064, "
-                          "tau<=22 horizon-limited; V=0.1 (tau<=63) plateaus AWAY from "
-                          "micro (0.178) -- equilibration is a dose phenomenon",
+            equilibration="kinetic V=0.3 (VK^2~36) at D=20736: finite-horizon "
+                          "time average 0.0039*K over tau<=22.5 (bare 0.10, quartic 0.81) "
+                          "-- an early transient that coincides with the microcanonical "
+                          "value; the trajectory extended to tau=300 and the matched-dose "
+                          "ladder (c4_ladder_results.json) give the corrected verdict",
             localization="PR/D: kinetic monotone down in V (0.24->0.22->0.14->0.05) but "
                          "10-100x above quartic (0.001-0.029); strong dose (V=1 or "
                          "VK^2>~80) localizes with Poisson statistics",

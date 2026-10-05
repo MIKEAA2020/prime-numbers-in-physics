@@ -14,13 +14,34 @@ Extends the dense pilot (D <= 4096, c4_eth_pilot.py) in two tiers:
   * EVOLVE tier: restarted-Lanczos Krylov time evolution (matvecs only, no
     factorization) -> equilibration diagnostics at D ~ 1e5. Complex Lanczos on
     the real-symmetric H; one full reorthogonalization pass per restart;
-    restart step dt chosen adaptively so (||H||*dt)^(m+1)/(m+1)! <= 1e-10
-    w.r.t. a Gershgorin norm. Validated against dense expm to 1e-13.
+    restart step dt chosen adaptively so (||H||*dt)^(m+1)/(m+1)! <= 1e-10.
+    ||H|| is taken as min(Gershgorin bound, 1.15 x spectral radius from a
+    short Lanczos run) -- the Gershgorin row-sum norm overestimates ||H||_2
+    by up to ~7x on the kinetic family and shrinks dt accordingly; the
+    Lanczos-estimated norm restores the honest step size. Validated against
+    dense expm (c4_extend_validation.py).
 
 Stages (one process each, so wall-clock chunks always fit):
   --stage window : build + LU + eigsh + ETH diagnostics  -> res_{tag}.json
   --stage evolve : build + Krylov equilibration          -> appends to res_{tag}.json
   --stage both   : both in one process (small configs only)
+  --stage dense  : full diagonalization at D <= 11000 -> EXACT diagonal
+                   ensemble of the equilibration protocol, exact microcanonical
+                   value, and full-spectrum (window-free) ETH fluctuation ratio
+
+Evolve tier supports long trajectories in wall-clock chunks:
+  --tau-max T    : total trajectory length (default: D-based table)
+  --resume       : continue from the checkpoint (evol_{tag}.npz holds tau,
+                   trace, and the final state vector); each chunk runs until
+                   --deadline, saves, and the next --resume call continues.
+                   A chunk boundary is just another Lanczos restart, so the
+                   chunked trajectory is identical to a single long run.
+  Plateau diagnostics: time averages over nested late-time windows
+  (tau >= T/2, 3T/4, 7T/8, 15T/16) with the maximum drift between them --
+  convergence of these nested averages to a common value is the operational
+  criterion that the finite-time plateau equals the diagonal ensemble
+  (lim_{T->inf} (1/T) int <a(t)> dt = sum_n |<n|psi0>|^2 <n|a|n> exactly,
+  by dephasing; no ETH input needed).
 
 Outputs -> /home/z/my-project/download/pilot_c4_eth_scaled/res_{tag}.json (+ npz)
 """
@@ -202,6 +223,46 @@ def _gershgorin_norm(H):
     return float(absrow.max())
 
 
+def _spectral_radius(H, v0, steps=64):
+    """max |Ritz value| of a short Lanczos run -- a lower bound on ||H||_2
+    (Ritz values interlace the spectrum); the caller applies a safety factor.
+    Used instead of the Gershgorin row-sum bound, which overestimates ||H||_2
+    by up to ~7x on the kinetic family (mixed kinetic + diagonal row sums) and
+    shrinks the restart step dt by the same factor."""
+    q = np.asarray(v0, dtype=float)
+    q = q / np.linalg.norm(q)
+    Q = np.empty((q.size, steps), dtype=float)
+    alpha = np.empty(steps); beta = np.empty(steps - 1)
+    jj = steps
+    for j in range(steps):
+        Q[:, j] = q
+        z = H @ q
+        alpha[j] = float(q @ z)
+        if j < steps - 1:
+            z = z - alpha[j] * q - (beta[j - 1] * Q[:, j - 1] if j > 0 else 0.0)
+            z -= Q[:, : j + 1] @ (Q[:, : j + 1].T @ z)   # one reorth pass
+            nrm = np.linalg.norm(z)
+            if nrm < 1e-12:
+                jj = j + 1
+                break
+            beta[j] = nrm
+            q = z / nrm
+    ev, _ = eigh_tridiagonal(alpha[:jj], beta[: jj - 1])
+    return float(np.max(np.abs(ev)))
+
+
+def _hnorm(H, norm_mode, D):
+    """Effective ||H|| for the restart-step bound."""
+    gersh = _gershgorin_norm(H)
+    if norm_mode == "gershgorin":
+        return gersh, dict(method="gershgorin", gershgorin=gersh)
+    v0 = np.random.default_rng(12345).standard_normal(D)
+    est = _spectral_radius(H, v0)
+    val = min(gersh, 1.15 * est)
+    return val, dict(method="lanczos", gershgorin=gersh, ritz_est=est,
+                     safety=1.15)
+
+
 def _choose_dt(hnorm, m, tol=1e-10, dt_max=0.25):
     """Largest dt <= dt_max with (hnorm*dt)^(m+1)/(m+1)! <= tol (one-restart bound)."""
     logfact = math.lgamma(m + 2)
@@ -218,14 +279,16 @@ def _choose_dt(hnorm, m, tol=1e-10, dt_max=0.25):
     return lo
 
 
-def krylov_trace(H_shift, psi0, obs, tau_max, m, deadline):
+def krylov_trace(H_shift, psi0, obs, tau_max, m, deadline, tau0=0.0,
+                 norm_mode="lanczos"):
     psi = psi0.astype(complex).copy()
     psi /= np.linalg.norm(psi)
-    hnorm = _gershgorin_norm(H_shift)
+    hnorm, hnorm_info = _hnorm(H_shift, norm_mode, psi.size)
     dt = _choose_dt(hnorm, m)
-    n_steps = max(1, int(round(tau_max / dt)))
+    n_steps = max(1, int(round((tau_max - tau0) / dt)))
     trace = np.empty(n_steps + 1)
     trace[0] = float((np.abs(psi) ** 2) @ obs)
+    taus = tau0 + np.arange(n_steps + 1) * dt
     Q = np.empty((psi.size, m), dtype=complex)
     alpha = np.empty(m); beta = np.empty(m - 1)
     t0 = time.perf_counter()
@@ -259,10 +322,12 @@ def krylov_trace(H_shift, psi0, obs, tau_max, m, deadline):
         trace[step + 1] = float((np.abs(psi) ** 2) @ obs)
     t_evol = time.perf_counter() - t0
     norm_drift = abs(np.linalg.norm(psi) - 1.0)
-    taus = np.arange(len(trace)) * dt
+    if truncated:
+        taus = taus[: len(trace)]
     half = len(taus) // 2
     return dict(tau=taus, trace=trace, t_evol=t_evol, norm_drift=float(norm_drift),
-                dt=dt, m=m, hnorm=hnorm, truncated=truncated,
+                dt=dt, m=m, hnorm=hnorm, hnorm_info=hnorm_info,
+                truncated=truncated, psi=psi,
                 time_avg=float(trace[half:].mean()),
                 resid_fluct=float(trace[half:].std()))
 
@@ -270,20 +335,10 @@ def krylov_trace(H_shift, psi0, obs, tau_max, m, deadline):
 # ----------------------------------------------------------------------------
 # stages
 # ----------------------------------------------------------------------------
-def evolve_stage(res, H, eps, coords, d, K, D, tag, deadline):
-    """Krylov equilibration from |K e_d> (shared by both tiers)."""
-    obsd = coords[d - 1].ravel().astype(float)
-    i0_flat = int(np.ravel_multi_index(tuple(0 if a != d - 1 else K for a in range(d)),
-                                       (K + 1,) * d))
-    E0 = float(eps[i0_flat])
-    psi0 = np.zeros(D); psi0[i0_flat] = 1.0
-    H_shift = (H - E0 * sp.identity(D, format="csr")).tocsr()
-    m = 40 if D > 25000 else 48
-    if D <= 25000:      tau_max = 250.0
-    elif D <= 60000:    tau_max = 150.0
-    else:               tau_max = 75.0
-    ev = krylov_trace(H_shift, psi0, obsd, tau_max, m, deadline)
-    # microcanonical reference at E0 (adaptive half-width, >=300 states)
+def _micro_window(eps, obsd, E0):
+    """Microcanonical reference at E0 (adaptive half-width, >=300 states).
+    Shared verbatim by the evolve and dense stages so the two references
+    coincide exactly."""
     delta = 0.5
     while True:
         win = np.abs(eps - E0) <= delta
@@ -291,22 +346,95 @@ def evolve_stage(res, H, eps, coords, d, K, D, tag, deadline):
             break
         delta *= 1.5
     micro_at_E0 = float(obsd[win].mean()) if win.sum() else float("nan")
+    return micro_at_E0, delta, int(win.sum())
+
+
+def _plateau_diagnostics(tau, trace):
+    """Nested late-time window averages + drift: the operational convergence
+    criterion that the finite-time plateau equals the diagonal ensemble."""
+    T = float(tau[-1])
+    out = {}
+    for f in (0.5, 0.75, 0.875, 0.9375):
+        sel = tau >= f * T
+        out[f"T{int(round(1 / (1 - f)))}"] = float(trace[sel].mean()) \
+            if sel.sum() else float("nan")
+    vals = list(out.values())
+    drift = float(np.nanmax(np.abs(np.diff(vals)))) if len(vals) > 1 else float("nan")
+    sel = tau >= 0.5 * T
+    return dict(plateau_windows=out, plateau_drift=drift,
+                time_avg=float(trace[sel].mean()),
+                resid_fluct=float(trace[sel].std()))
+
+
+def evolve_stage(res, H, eps, coords, d, K, D, tag, deadline, tau_max=None,
+                 resume=False, norm_mode="lanczos"):
+    """Krylov equilibration from |K e_d>; chunk-extendable via --resume.
+
+    Checkpointing: evol_{tag}.npz stores (tau, trace, psi). A chunk boundary
+    is an ordinary Lanczos restart (the integrator restarts every dt anyway),
+    so a resumed trajectory is identical to a single run of the same total
+    length (to roundoff)."""
+    obsd = coords[d - 1].ravel().astype(float)
+    i0_flat = int(np.ravel_multi_index(tuple(0 if a != d - 1 else K for a in range(d)),
+                                       (K + 1,) * d))
+    E0 = float(eps[i0_flat])
+    psi0 = np.zeros(D); psi0[i0_flat] = 1.0
+    H_shift = (H - E0 * sp.identity(D, format="csr")).tocsr()
+    m = 40 if D > 25000 else 48
+    if tau_max is None:
+        if D <= 25000:      tau_max = 250.0
+        elif D <= 60000:    tau_max = 150.0
+        else:               tau_max = 75.0
+    tau_prev, tau_prev_arr, trace_prev, psi_start = 0.0, None, None, psi0
+    npz = os.path.join(OUT, f"evol_{tag}.npz")
+    if resume and os.path.exists(npz):
+        z = np.load(npz, allow_pickle=False)
+        if "psi" not in z:
+            print("  checkpoint has no state vector (old format) -> fresh start",
+                  flush=True)
+        else:
+            tau_prev_arr = np.asarray(z["tau"], dtype=float)
+            trace_prev = np.asarray(z["trace"], dtype=float)
+            tau_prev = float(tau_prev_arr[-1])
+            psi_start = np.asarray(z["psi"])
+            print(f"  resume from checkpoint tau={tau_prev:.1f} "
+                  f"(n={len(trace_prev)} samples)", flush=True)
+    if trace_prev is not None and tau_prev >= tau_max - 1e-9:
+        print(f"  trajectory already at tau_max={tau_max:.0f}", flush=True)
+        tau_full, trace_full = tau_prev_arr, trace_prev
+        ev = dict(t_evol=0.0, norm_drift=0.0, dt=0.0, m=m, hnorm=0.0,
+                  hnorm_info=dict(method="none"), truncated=False,
+                  psi=psi_start)
+    else:
+        ev = krylov_trace(H_shift, psi_start, obsd, tau_max, m, deadline,
+                          tau0=tau_prev, norm_mode=norm_mode)
+        if trace_prev is not None and ev["tau"][-1] > tau_prev:
+            tau_full = np.concatenate([tau_prev_arr, ev["tau"][1:]])
+            trace_full = np.concatenate([trace_prev, ev["trace"][1:]])
+        elif trace_prev is not None:
+            tau_full, trace_full = tau_prev_arr, trace_prev
+        else:
+            tau_full, trace_full = ev["tau"], ev["trace"]
+    micro_at_E0, delta, n_micro = _micro_window(eps, obsd, E0)
+    pl = _plateau_diagnostics(tau_full, trace_full)
     res["evolution"] = dict(
-        E0=E0, delta=delta, n_micro_states=int(win.sum()),
+        E0=E0, delta=delta, n_micro_states=n_micro,
         micro_d=micro_at_E0,
-        time_avg=ev["time_avg"], resid_fluct=ev["resid_fluct"],
+        time_avg=pl["time_avg"], resid_fluct=pl["resid_fluct"],
+        plateau_windows=pl["plateau_windows"], plateau_drift=pl["plateau_drift"],
         norm_drift=ev["norm_drift"], t_evolve=round(ev["t_evol"], 1),
-        diag_vs_micro=abs(ev["time_avg"] - micro_at_E0),
-        m=m, dt=ev["dt"], hnorm=ev["hnorm"], tau_reached=float(ev["tau"][-1]),
-        truncated=ev["truncated"],
+        diag_vs_micro=abs(pl["time_avg"] - micro_at_E0),
+        m=m, dt=ev["dt"], hnorm=ev["hnorm"], hnorm_info=ev["hnorm_info"],
+        tau_reached=float(tau_full[-1]), tau_max=float(tau_max),
+        truncated=ev["truncated"], n_samples=int(len(trace_full)),
     )
-    print(f"  evolve {ev['t_evol']:.0f}s (dt={ev['dt']:.3f}, tau<={ev['tau'][-1]:.0f}) | "
-          f"timeavg={ev['time_avg']:.3f} vs micro={micro_at_E0:.3f} "
-          f"(|dev|={res['evolution']['diag_vs_micro']:.3f}) | "
-          f"residfluct={ev['resid_fluct']:.4f} | normdrift={ev['norm_drift']:.1e}",
-          flush=True)
-    np.savez_compressed(os.path.join(OUT, f"evol_{tag}.npz"),
-                        tau=ev["tau"], trace=ev["trace"])
+    if res.get("dense") and "diag_d" in res["dense"]:
+        res["evolution"]["plateau_vs_diag"] = abs(pl["time_avg"] - res["dense"]["diag_d"])
+    print(f"  evolve {ev['t_evol']:.0f}s (dt={ev['dt']:.3f}, tau<={tau_full[-1]:.0f}/"
+          f"{tau_max:.0f}) | timeavg={pl['time_avg']:.4f} vs micro={micro_at_E0:.4f} "
+          f"(|dev|={res['evolution']['diag_vs_micro']:.4f}) | plateau drift={pl['plateau_drift']:.4f} "
+          f"| residfluct={pl['resid_fluct']:.4f} | normdrift={ev['norm_drift']:.1e}", flush=True)
+    np.savez_compressed(npz, tau=tau_full, trace=trace_full, psi=ev["psi"])
 
 
 def window_stage(res, H, eps, coords, d, K, D, tag, k, ncv, seed,
@@ -418,6 +546,60 @@ def window_stage(res, H, eps, coords, d, K, D, tag, k, ncv, seed,
     return True
 
 
+def dense_stage(res, H, eps, coords, d, K, D, tag):
+    """Exact full-spectrum reference at small D (D <= 11000, dense feasible):
+
+      - diagonal ensemble of the equilibration protocol,
+        <a>_diag = sum_n |<n|psi0>|^2 <n|a|n>  (exact, no time limit);
+      - microcanonical reference (identical rule to the evolve stage);
+      - full-spectrum ETH fluctuation ratio (every eigenstate, no window
+        sampling) -- the exact small-D limit of the window diagnostic.
+    """
+    if D > 10000:
+        print(f"  dense stage: D={D} > 10000 (3.4 GB address-space guard) -- skipped",
+              flush=True)
+        return
+    from scipy.linalg import eigh
+    obs1 = coords[0].ravel().astype(float)
+    obsd = coords[d - 1].ravel().astype(float)
+    i0_flat = int(np.ravel_multi_index(tuple(0 if a != d - 1 else K for a in range(d)),
+                                       (K + 1,) * d))
+    E0 = float(eps[i0_flat])
+    t0 = time.perf_counter()
+    Hd = H.toarray()
+    w, V = eigh(Hd)
+    del Hd
+    t_dense = time.perf_counter() - t0
+    c = V[i0_flat, :]                       # psi0 is a basis state
+    a_d = np.einsum("ij,ij->j", V, V * obsd[:, None])
+    a_1 = np.einsum("ij,ij->j", V, V * obs1[:, None])
+    diag_d = float((c ** 2) @ a_d)
+    diag_1 = float((c ** 2) @ a_1)
+    micro_d, delta, n_micro = _micro_window(eps, obsd, E0)
+    eth1 = eth_window(w, V, obs1)
+    micro1 = micro_reference(eps, obs1, eth1["edges"])
+    v1 = np.isfinite(micro1) & np.isfinite(eth1["smooth"])
+    sigma_rel_full = float(eth1["sigma_eth"] / np.std(a_1))
+    res["dense"] = dict(
+        E0=E0, delta=delta, n_micro_states=n_micro, micro_d=micro_d,
+        diag_d=diag_d, diag_1=diag_1, diag_vs_micro=abs(diag_d - micro_d),
+        sigma_eth_full=eth1["sigma_eth"], sigma_rel_full=sigma_rel_full,
+        micro_rmse_full=float(np.sqrt(np.mean((eth1["smooth"][v1] - micro1[v1]) ** 2)))
+        if v1.sum() else None,
+        lam_min=float(w[0]), lam_max=float(w[-1]),
+        t_dense=round(t_dense, 1), D=D,
+    )
+    if res.get("evolution") and "time_avg" in res["evolution"]:
+        res["dense"]["plateau_vs_diag"] = abs(res["evolution"]["time_avg"] - diag_d)
+        res["dense"]["plateau_vs_diag_over_K"] = res["dense"]["plateau_vs_diag"] / K
+    print(f"  dense {t_dense:.0f}s | diag_d={diag_d:.4f} micro={micro_d:.4f} "
+          f"(|diag-micro|={res['dense']['diag_vs_micro']:.4f}) | "
+          f"sigma_rel_full={sigma_rel_full:.3f} | lam=[{w[0]:.1f},{w[-1]:.1f}]",
+          flush=True)
+    np.savez_compressed(os.path.join(OUT, f"dense_{tag}.npz"),
+                        w=w, a1=a_1, ad=a_d)
+
+
 def _save(tag, res):
     with open(os.path.join(OUT, f"res_{tag}.json"), "w") as f:
         json.dump(res, f, indent=1)
@@ -432,7 +614,8 @@ def _load(tag):
 # main per-config driver
 # ----------------------------------------------------------------------------
 def run(tag, d, K, g0, h0, U, seed, k, ncv, stage, no_window, deadline,
-        selftest=False, sigma_quantile=0.5, V=0.0, pivot="auto"):
+        selftest=False, sigma_quantile=0.5, V=0.0, pivot="auto",
+        tau_max=None, resume=False, norm_mode="lanczos"):
     os.makedirs(OUT, exist_ok=True)
     res = _load(tag) or dict(tag=tag, d=d, K=K, g0=g0, h0=h0, U=U, seed=seed,
                              k=k, ncv=ncv, V=V)
@@ -452,6 +635,11 @@ def run(tag, d, K, g0, h0, U, seed, k, ncv, stage, no_window, deadline,
         print(f"  selftest |w_dense_max-w_sp_max| = {abs(w_dense.max() - w_sp.max()):.2e}",
               flush=True)
 
+    if stage == "dense":
+        dense_stage(res, H, eps, coords, d, K, D, tag)
+        _save(tag, res)
+        return
+
     if stage in ("window", "both"):
         if "r_mean" in res or res.get("window") is None and "tier" in res:
             print("  window stage already done (r_mean present or classified evolve-only)", flush=True)
@@ -465,10 +653,14 @@ def run(tag, d, K, g0, h0, U, seed, k, ncv, stage, no_window, deadline,
         _save(tag, res)
 
     if stage in ("evolve", "both"):
-        if "evolution" in res:
+        ev = res.get("evolution")
+        need = (ev is None) or (tau_max is not None and
+                                float(ev.get("tau_reached", 0.0)) < tau_max - 1e-9)
+        if not need:
             print("  evolve stage already done", flush=True)
         else:
-            evolve_stage(res, H, eps, coords, d, K, D, tag, deadline)
+            evolve_stage(res, H, eps, coords, d, K, D, tag, deadline,
+                         tau_max=tau_max, resume=resume, norm_mode=norm_mode)
         _save(tag, res)
 
     res["peak_rss_mb"] = round(peak_rss_mb(), 1)
@@ -488,7 +680,8 @@ def main():
                         "V sum_{p<q} (n_p+n_q)(a_p^dag a_q + h.c.)")
     p.add_argument("--seed", type=int, default=7)
     p.add_argument("--k", type=int, default=0)
-    p.add_argument("--stage", choices=("window", "evolve", "both"), default="both")
+    p.add_argument("--stage", choices=("window", "evolve", "both", "dense"),
+                   default="both")
     p.add_argument("--no-window", action="store_true")
     p.add_argument("--sigma-quantile", type=float, default=0.5)
     p.add_argument("--pivot", choices=("auto", "diag"), default="auto",
@@ -496,6 +689,15 @@ def main():
                         " symmetric-pattern; needed for the V-kinetic family)")
     p.add_argument("--deadline", type=float, default=430.0,
                    help="wall-clock budget in seconds from process start")
+    p.add_argument("--tau-max", type=float, default=None,
+                   help="total trajectory length for the evolve stage "
+                        "(default: D-based table 250/150/75)")
+    p.add_argument("--resume", action="store_true",
+                   help="evolve: continue from the evol_{tag}.npz checkpoint")
+    p.add_argument("--norm", choices=("lanczos", "gershgorin"), default="lanczos",
+                   help="||H|| estimate for the restart step: Lanczos spectral "
+                        "radius (default; Gershgorin row sums overestimate by "
+                        "up to ~7x on the kinetic family) or the rigorous bound")
     p.add_argument("--selftest", action="store_true")
     a = p.parse_args()
     D = (a.K + 1) ** a.d
@@ -508,7 +710,8 @@ def main():
         k, ncv = a.k, a.k + 100
     run(a.tag, a.d, a.K, a.g0, a.h0, a.U, a.seed, k, ncv, a.stage,
         a.no_window, a.deadline, a.selftest, sigma_quantile=a.sigma_quantile,
-        V=a.V, pivot=a.pivot)
+        V=a.V, pivot=a.pivot, tau_max=a.tau_max, resume=a.resume,
+        norm_mode=a.norm)
 
 
 if __name__ == "__main__":

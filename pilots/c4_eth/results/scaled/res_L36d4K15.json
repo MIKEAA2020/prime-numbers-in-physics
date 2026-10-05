@@ -1,0 +1,26 @@
+{
+ "tag": "L36d4K15",
+ "d": 4,
+ "K": 15,
+ "g0": 1.5,
+ "h0": 1.0,
+ "U": 0.0,
+ "seed": 7,
+ "k": 350,
+ "ncv": 450,
+ "V": 0.16,
+ "D": 65536,
+ "nnz_H": 1248256,
+ "t_build": 0.15,
+ "g": [
+  1.6126,
+  1.8575,
+  1.7481,
+  1.2527
+ ],
+ "sigma": 40.103306480381015,
+ "sigma_quantile": 0.5,
+ "tier": "evolve-only (LU fill exceeded RAM guard)",
+ "window": null,
+ "peak_rss_mb": 2377.2
+}

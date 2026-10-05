@@ -241,7 +241,7 @@ def main():
                       label="Krylov trace truncated by deadline"),
     ]
     fig.legend(handles=handles, loc="upper center", ncol=6, frameon=False, fontsize=9)
-    fig.suptitle("C4 scaled attack: ETH on the prime lattice, $D \\leq 10^5$ "
+    fig.suptitle("C4 scaled program: ETH on the prime lattice, $D \\leq 10^5$ "
                  "(sparse interior eigensolvers + Krylov equilibration; 4 GB / 2 cores)",
                  fontsize=12)
     fig.savefig(os.path.join(SCALED, "fig_c4_scaled.png"), dpi=165)
@@ -257,7 +257,7 @@ def main():
             weakedge="d3K28weakedge uses sigma at the 15% quantile (sparse edge of the DOS)",
             kinetic=r"H_kin = V sum_{p<q} (n_p+n_q)(a_p^dag a_q + h.c.) -- one-term addition, validated to 1e-15 (c4_kinetic_selftest.py); effective dose is V*K^2",
             pivot="diag-pivot splu (diag_pivot_thresh=0) for V-family windows: generic d3K28 257s->3s; eigenpair residuals <= 1.2e-7 certify; d4K10 cross-check auto 0.5157 vs diag 0.5134",
-            sweep="weak <r> across sigma-quantiles {0.02..0.98}: 0.42-0.56 non-monotone; generic flat 0.505-0.514; q=0.15 dip reproduced exactly on re-run",
+            sweep="weak <r> across sigma-quantiles {0.02..0.98}: 0.42-0.56 non-monotone; generic flat 0.505-0.514; q=0.15 dip reproduced in an independent repetition",
         ),
         results=results,
     )

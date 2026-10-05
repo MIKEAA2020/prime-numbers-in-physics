@@ -1,0 +1,144 @@
+=== L36d3K14 (window, D=3375, V=0.1836735, dose=36) ===
+[L36d3K14] D=3375 nnz=39915 build 0.0s (stage=window)
+  splu 0.07s nnzLU=0.8M rss=91.5MB
+  eigsh 3.4s | <r>=0.4548+-0.0191 | sigma_ETH=2.139 | PR/D=0.0865 | microRMSE=1.3378921790826925
+=== L36d3K18 (window, D=6859, V=0.1111111, dose=36) ===
+[L36d3K18] D=6859 nnz=82783 build 0.01s (stage=window)
+  splu 0.28s nnzLU=2.5M rss=137.6MB
+  eigsh 8.9s | <r>=0.5008+-0.0170 | sigma_ETH=2.532 | PR/D=0.1010 | microRMSE=1.576670688513809
+=== L36d3K20 (window, D=9261, V=0.09, dose=36) ===
+[L36d3K20] D=9261 nnz=112581 build 0.01s (stage=window)
+  splu 0.5s nnzLU=4.1M rss=182.9MB
+  eigsh 12.3s | <r>=0.4961+-0.0179 | sigma_ETH=2.708 | PR/D=0.1093 | microRMSE=1.554867516010634
+=== L36d4K7 (window, D=4096, V=0.7346939, dose=36) ===
+[L36d4K7] D=4096 nnz=70400 build 0.01s (stage=window)
+  splu 0.71s nnzLU=2.7M rss=151.5MB
+  eigsh 8.6s | <r>=0.4486+-0.0175 | sigma_ETH=1.028 | PR/D=0.0879 | microRMSE=0.6463963709642305
+=== L36d4K9 (window, D=10000, V=0.4444444, dose=36) ===
+[L36d4K9] D=10000 nnz=179200 build 0.02s (stage=window)
+  splu 8.01s nnzLU=13.7M rss=479.3MB
+  eigsh 50.1s | <r>=0.5153+-0.0173 | sigma_ETH=1.053 | PR/D=0.1148 | microRMSE=0.8183225969351541
+GROUP small DONE
+=== L36d3K22 (window, D=12167, V=0.0743802, dose=36) ===
+[L36d3K22] D=12167 nnz=148787 build 0.02s (stage=window)
+  splu 0.89s nnzLU=5.8M rss=228.1MB
+  eigsh 18.2s | <r>=0.5082+-0.0181 | sigma_ETH=2.814 | PR/D=0.1168 | microRMSE=1.5840128614153268
+=== L36d3K26 (window, D=19683, V=0.0532544, dose=36) ===
+[L36d3K26] D=19683 nnz=242919 build 0.03s (stage=window)
+  splu 2.41s nnzLU=13.0M rss=398.4MB
+  eigsh 39.6s | <r>=0.5285+-0.0175 | sigma_ETH=3.203 | PR/D=0.1263 | microRMSE=1.8354443515124035
+=== L36d3K28 (window, D=24389, V=0.0459184, dose=36) ===
+[L36d3K28] D=24389 nnz=302093 build 0.05s (stage=window)
+  splu 3.1s nnzLU=19.0M rss=518.2MB
+  eigsh 46.4s | <r>=0.4809+-0.0184 | sigma_ETH=2.970 | PR/D=0.1278 | microRMSE=2.0731673317868236
+=== L36d4K11 (window, D=20736, V=0.2975207, dose=36) ===
+[L36d4K11] D=20736 nnz=381888 build 0.05s (stage=window)
+  splu 55.73s nnzLU=51.6M rss=1496.3MB
+  eigsh 129.9s | <r>=0.5088+-0.0177 | sigma_ETH=1.080 | PR/D=0.1381 | microRMSE=0.8721054857423767
+GROUP mid DONE
+=== L36d3K30 (window, D=29791, V=0.04, dose=36) ===
+[L36d3K30] D=29791 nnz=370171 build 0.04s (stage=window)
+  splu 6.4s nnzLU=25.1M rss=708.5MB
+  eigsh 76.8s | <r>=0.5200+-0.0184 | sigma_ETH=3.356 | PR/D=0.1319 | microRMSE=2.2019496183323755
+=== L36d3K34 (window, D=42875, V=0.0311419, dose=36) ===
+[L36d3K34] D=42875 nnz=535535 build 0.08s (stage=window)
+  splu 11.31s nnzLU=43.6M rss=1104.4MB
+  eigsh 107.0s | <r>=0.5035+-0.0185 | sigma_ETH=3.193 | PR/D=0.1450 | microRMSE=2.28080929298916
+=== L36d4K13 (window, D=38416, V=0.2130178, dose=36) ===
+[L36d4K13] D=38416 nnz=721280 build 0.09s (stage=window)
+Can't expand MemType 1: jcol 37137
+  FAILED splu: gstrf was called with invalid arguments -> classified evolve-only
+=== L36d3K38 (window, D=59319, V=0.0249307, dose=36) ===
+[L36d3K38] D=59319 nnz=744003 build 0.09s (stage=window)
+  splu 24.88s nnzLU=74.8M rss=1846.8MB
+  eigsh 145.3s | <r>=0.5057+-0.0173 | sigma_ETH=3.279 | PR/D=0.1529 | microRMSE=2.770124265807524
+=== L36d4K15 (window, D=65536, V=0.16, dose=36) ===
+[L36d4K15] D=65536 nnz=1248256 build 0.15s (stage=window)
+Can't expand MemType 0: jcol 41467
+  LU memory-limited -> evolve-only tier
+=== L36d4K17 (window, D=104976, V=0.1245675, dose=36) ===
+[L36d4K17] D=104976 nnz=2021760 build 0.24s (stage=window)
+Can't expand MemType 0: jcol 59692
+  LU memory-limited -> evolve-only tier
+=== L36d3K14 (dense, D=3375) ===
+[L36d3K14] D=3375 nnz=39915 build 0.0s (stage=dense)
+  dense 6s | diag_d=5.5326 micro=6.3583 (|diag-micro|=0.8257) | sigma_rel_full=0.740 | lam=[-99.8,326.9]
+=== L36d4K7 (dense, D=4096) ===
+[L36d4K7] D=4096 nnz=70400 build 0.01s (stage=dense)
+  dense 10s | diag_d=2.4174 micro=2.1346 (|diag-micro|=0.2828) | sigma_rel_full=0.832 | lam=[-141.7,469.3]
+=== L36d3K18 (dense, D=6859) ===
+[L36d3K18] D=6859 nnz=82783 build 0.01s (stage=dense)
+  dense 40s | diag_d=7.3128 micro=8.1879 (|diag-micro|=0.8751) | sigma_rel_full=0.702 | lam=[-96.6,357.5]
+=== L36d3K20 (dense, D=9261) ===
+[L36d3K20] D=9261 nnz=112581 build 0.01s (stage=dense)
+  dense 98s | diag_d=8.2313 micro=9.0990 (|diag-micro|=0.8677) | sigma_rel_full=0.681 | lam=[-94.2,371.1]
+=== L36d4K9 (dense, D=10000) ===
+[L36d4K9] D=10000 nnz=179200 build 0.02s (stage=dense)
+  dense 124s | diag_d=3.2776 micro=2.7303 (|diag-micro|=0.5473) | sigma_rel_full=0.783 | lam=[-147.3,517.7]
+=== L36d3K14 (evolve, tau-max 600) ===
+[L36d3K14] D=3375 nnz=39915 build 0.0s (stage=evolve)
+    [krylov] deadline reached at step 11425/17580 (tau=390)
+  evolve 480s (dt=0.034, tau<=390/600) | timeavg=5.5421 vs micro=6.3583 (|dev|=0.8162) | plateau drift=0.0111 | residfluct=0.1500 | normdrift=2.6e-12
+=== L36d3K18 (evolve, tau-max 600) ===
+[L36d3K18] D=6859 nnz=82783 build 0.01s (stage=evolve)
+=== L36d3K18 (evolve, tau-max 280) ===
+[L36d3K18] D=6859 nnz=82783 build 0.01s (stage=evolve)
+    [krylov] deadline reached at step 6500/8856 (tau=206)
+  evolve 540s (dt=0.032, tau<=206/280) | timeavg=7.3179 vs micro=8.1879 (|dev|=0.8699) | plateau drift=0.0256 | residfluct=0.1428 | normdrift=1.3e-12
+=== L36d4K7 (evolve, tau-max 300) ===
+[L36d4K7] D=4096 nnz=70400 build 0.01s (stage=evolve)
+    [krylov] deadline reached at step 9975/13161 (tau=227)
+  evolve 541s (dt=0.023, tau<=227/300) | timeavg=2.3925 vs micro=2.1346 (|dev|=0.2579) | plateau drift=0.0314 | residfluct=0.0898 | normdrift=3.4e-14
+[L36d4K7] D=4096 nnz=70400 build 0.01s (stage=evolve)
+  resume from checkpoint tau=227.4 (n=9976 samples)
+  evolve 176s (dt=0.023, tau<=300/300) | timeavg=2.4003 vs micro=2.1346 (|dev|=0.2656) | plateau drift=0.0248 | residfluct=0.0906 | normdrift=2.5e-13
+=== L36d4K9 (evolve, tau-max 250) ===
+[L36d4K9] D=10000 nnz=179200 build 0.02s (stage=evolve)
+    [krylov] deadline reached at step 3750/12038 (tau=78)
+  evolve 542s (dt=0.021, tau<=78/250) | timeavg=3.1264 vs micro=2.7303 (|dev|=0.3961) | plateau drift=0.0530 | residfluct=0.0864 | normdrift=5.7e-13
+[L36d4K9] D=10000 nnz=179200 build 0.03s (stage=evolve)
+  resume from checkpoint tau=77.9 (n=3751 samples)
+    [krylov] deadline reached at step 3700/8288 (tau=77)
+  evolve 543s (dt=0.021, tau<=155/250) | timeavg=3.3158 vs micro=2.7303 (|dev|=0.5854) | plateau drift=0.0111 | residfluct=0.0517 | normdrift=1.5e-13
+[L36d4K9] D=10000 nnz=179200 build 0.02s (stage=evolve)
+  resume from checkpoint tau=154.7 (n=7451 samples)
+    [krylov] deadline reached at step 3750/4588 (tau=78)
+  evolve 542s (dt=0.021, tau<=233/250) | timeavg=3.3225 vs micro=2.7303 (|dev|=0.5922) | plateau drift=0.0286 | residfluct=0.0555 | normdrift=1.3e-13
+[L36d4K9] D=10000 nnz=179200 build 0.03s (stage=evolve)
+  resume from checkpoint tau=232.6 (n=11201 samples)
+  evolve 118s (dt=0.021, tau<=250/250) | timeavg=3.3189 vs micro=2.7303 (|dev|=0.5886) | plateau drift=0.0111 | residfluct=0.0561 | normdrift=4.5e-14
+=== d4K11V03x (evolve, tau-max 300, extension) ===
+[d4K11V03x] D=20736 nnz=381888 build 0.05s (stage=evolve)
+    [krylov] deadline reached at step 1875/15584 (tau=36)
+  evolve 545s (dt=0.019, tau<=36/300) | timeavg=3.5264 vs micro=3.3515 (|dev|=0.1749) | plateau drift=0.0528 | residfluct=0.0707 | normdrift=1.4e-14
+[d4K11V03x] D=20736 nnz=381888 build 0.05s (stage=evolve)
+  resume from checkpoint tau=36.1 (n=1876 samples)
+    [krylov] deadline reached at step 1875/13709 (tau=36)
+  evolve 545s (dt=0.019, tau<=72/300) | timeavg=3.8722 vs micro=3.3515 (|dev|=0.5207) | plateau drift=0.0999 | residfluct=0.1191 | normdrift=2.8e-14
+[d4K11V03x] D=20736 nnz=381888 build 0.07s (stage=evolve)
+  resume from checkpoint tau=72.2 (n=3751 samples)
+    [krylov] deadline reached at step 1825/11834 (tau=35)
+  evolve 541s (dt=0.019, tau<=107/300) | timeavg=4.0542 vs micro=3.3515 (|dev|=0.7027) | plateau drift=0.0576 | residfluct=0.0810 | normdrift=1.1e-14
+[d4K11V03x] D=20736 nnz=381888 build 0.05s (stage=evolve)
+  resume from checkpoint tau=107.3 (n=5576 samples)
+    [krylov] deadline reached at step 1925/10009 (tau=37)
+  evolve 540s (dt=0.019, tau<=144/300) | timeavg=4.1523 vs micro=3.3515 (|dev|=0.8008) | plateau drift=0.0526 | residfluct=0.0738 | normdrift=1.7e-13
+[d4K11V03x] D=20736 nnz=381888 build 0.06s (stage=evolve)
+  resume from checkpoint tau=144.4 (n=7501 samples)
+    [krylov] deadline reached at step 1800/8084 (tau=35)
+  evolve 546s (dt=0.019, tau<=179/300) | timeavg=4.2189 vs micro=3.3515 (|dev|=0.8674) | plateau drift=0.0577 | residfluct=0.0754 | normdrift=7.4e-14
+[d4K11V03x] D=20736 nnz=381888 build 0.07s (stage=evolve)
+  resume from checkpoint tau=179.0 (n=9301 samples)
+    [krylov] deadline reached at step 1800/6284 (tau=35)
+  evolve 547s (dt=0.019, tau<=214/300) | timeavg=4.2760 vs micro=3.3515 (|dev|=0.9245) | plateau drift=0.0579 | residfluct=0.0775 | normdrift=8.7e-14
+[d4K11V03x] D=20736 nnz=381888 build 0.06s (stage=evolve)
+  resume from checkpoint tau=213.7 (n=11101 samples)
+    [krylov] deadline reached at step 1800/4484 (tau=35)
+  evolve 540s (dt=0.019, tau<=248/300) | timeavg=4.3259 vs micro=3.3515 (|dev|=0.9744) | plateau drift=0.0552 | residfluct=0.0719 | normdrift=6.8e-15
+[d4K11V03x] D=20736 nnz=381888 build 0.05s (stage=evolve)
+  resume from checkpoint tau=248.3 (n=12901 samples)
+    [krylov] deadline reached at step 1950/2684 (tau=38)
+  evolve 544s (dt=0.019, tau<=286/300) | timeavg=4.3583 vs micro=3.3515 (|dev|=1.0068) | plateau drift=0.0426 | residfluct=0.0627 | normdrift=1.7e-14
+[d4K11V03x] D=20736 nnz=381888 build 0.06s (stage=evolve)
+  resume from checkpoint tau=285.9 (n=14851 samples)
+  evolve 205s (dt=0.019, tau<=300/300) | timeavg=4.3675 vs micro=3.3515 (|dev|=1.0160) | plateau drift=0.0338 | residfluct=0.0582 | normdrift=7.6e-14

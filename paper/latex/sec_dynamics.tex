@@ -2,13 +2,13 @@
 % SECTION 3: Dynamics  +  SECTION 4: Recurrence and the block
 % =====================================================================
 
-\section{Dynamics: Repairing the Frozen Hamiltonian}\label{sec:dynamics}
+\section{Dynamics: The Interaction Sector on the Prime Lattice}\label{sec:dynamics}
 
-\subsection{The problem}
+\subsection{The frozen Hamiltonian}
 
-The source conversation asserts repeatedly that ``the Hamiltonian $H_{P}$ drives transitions
-into composite integer states'' and that ``as the universe evolves, the state factorizes into
-highly composite integers.'' As stated, this is false, and the falsehood is instructive.
+The dynamical claims of the framework---transitions into composite integer states, and
+factorization of the evolving state into highly composite integers---require a Hamiltonian
+with off-diagonal matrix elements in the occupation basis. The primon Hamiltonian has none:
 
 \begin{proposition}[Frozen spectrum]\label{prop:frozen}
 $[H_{P},\Nhat]=0$ and $[H_{P},\hat n_{p}]=0$ for every $p$. Consequently every basis vector
@@ -24,11 +24,10 @@ Both operators are diagonal in the same basis (Theorem~\ref{thm:spectrum}).
 
 A diagonal Hamiltonian cannot create primons, destroy them, or entangle anything. The
 ``arithmetic cascade,'' the entanglement growth, and the emergence of a thermodynamic arrow
-all require dynamics \emph{off} the diagonal of $\Nhat$. The repair is to give the arithmetic
-Hilbert space its natural interaction sector. This is the single largest structural gap in
-the source framework, and closing it produces, as a byproduct, the objects that make the
-repaired framework exceed the original: the multiplicative shift operators, the prime
-lattice, and a well-posed thermalization problem.
+all require dynamics \emph{off} the diagonal of $\Nhat$. The interaction sector must be
+supplied. Meeting this requirement produces, as a byproduct, the objects on which the rest
+of the framework rests: the multiplicative shift operators, the prime lattice, and a
+well-posed thermalization problem.
 
 \subsection{Multiplicative shift operators}
 
@@ -74,13 +73,13 @@ $a_{p}^{\dagger}(\hat n_{p}+1)^{-1/2}\ket{k}=\sqrt{k_{p}+1}\,(k_{p}+1)^{-1/2}\ke
 \end{proof}
 
 The operators $M_{n}$ are the arithmetic analogues of the Weyl shifts, and
-Proposition~\ref{prop:monoidrep} is the exact statement behind the source's poetic phrase that
+Proposition~\ref{prop:monoidrep} is the exact statement behind the phrase that
 composites are ``correlated multi-prime states'': multiplication \emph{creates} occupation,
 division \emph{annihilates} it, and the two are adjoints. Note also the co-isometric defect
 $M_{n}M_{n}^{\dagger}=I-P(n\mid k)$: multiplication by $n$ is invertible precisely on states
 already divisible by $n$. The failure of unitarity of each individual $M_{n}$ is the
-operator-theoretic fingerprint of the irreversibility that the source attributes to
-arithmetic, and it is the honest version of that attribution: the semigroup $(\Nn,\times)$ is
+operator-theoretic fingerprint of the irreversibility that arithmetic carries:
+the semigroup $(\Nn,\times)$ is
 free, hence has cancellation but no inverses, and the quantum representation inherits exactly
 that structure.
 
@@ -130,14 +129,14 @@ Three remarks interpret these objects.
 $H_{\mathrm{hop}}$ is a Bose--Hubbard-type tight-binding Hamiltonian on a lattice whose
 \emph{sites} are the primes, with on-site energies $\varepsilon_{p}=\hbar\omega_{0}\log p$ and
 hopping $h_{pq}$. We call this graph the \emph{prime lattice}. It is the natural home for
-every ``interaction'' claim in the source: interactions among prime modes are hops along the
+every interaction claim in the framework: interactions among prime modes are hops along the
 lattice; the chaotic sector conjectured in Conjecture~$\mathsf{C5}$ is a spectral-statistics
-statement about $H_{\mathrm{tot}}$ on the prime lattice; and the ``chemistry of the primes''
-slogan of the source becomes the statement that the Standard Model's force sectors correspond
+statement about $H_{\mathrm{tot}}$ on the prime lattice; and the ``chemistry of the
+primes'' becomes the statement that the Standard Model's force sectors correspond
 to structured sub-lattices (Conjecture~$\mathsf{C9}$).
 \end{remark}
 
-\begin{remark}[Conservation structure, corrected]\label{rem:conservation}
+\begin{remark}[Conservation structure]\label{rem:conservation}
 The three sectors carry a strict conservation hierarchy. $H_{P}$ is diagonal in the occupation
 basis and conserves everything. $H_{\mathrm{hop}}$ moves single primons between modes
 ($a_{p}^{\dagger}a_{q}$: one occupation up, one down), so it conserves the \emph{total primon
@@ -151,7 +150,7 @@ hierarchy: $H_{P}$ conserves $\Nhat$ and $\Nhat_{\mathrm{tot}}$; $H_{\mathrm{hop
 $\Nhat_{\mathrm{tot}}$ only; $H_{W}$ conserves neither and is the only source of net primon
 creation. The additive and multiplicative structures of $\Nn$ thereby acquire distinct
 dynamical roles---spectral order ($H_{P}$), transport ($H_{\mathrm{hop}}$), creation
-($H_{W}$)---which is the sharp form of the source's contrast between ``spectral order'' and
+($H_{W}$)---which separates ``spectral order'' from
 ``arithmetic cascade.'' Register note: the CP ratchet of $\mathsf{C10}$ lives entirely in this
 non-conserving $H_{W}$ sector.
 \end{remark}
@@ -160,18 +159,18 @@ non-conserving $H_{W}$ sector.
 The conformal primon gas reported near black-hole singularities~\cite{hartnollyang2026}
 corresponds in this language to the claim that \emph{some} sector of
 near-singularity gravity is governed by $H_{P}$ (or its Gaussian analogue) with the conformal
-$\mathfrak{sl}(2,\Rr)$ symmetry of the source's Axiom set acting on the $\omega_{0}$ scale.
-The interacting extension \eqref{eq:fullH} is the reconstruction's addition; its necessity
-was latent in the source's own arrow-of-time claims, which (by
+$\mathfrak{sl}(2,\Rr)$ symmetry of the axioms acting on the $\omega_{0}$ scale.
+The interacting extension \eqref{eq:fullH} is the framework's addition; its necessity
+follows from the arrow-of-time claims, which (by
 Proposition~\ref{prop:frozen}) are impossible under $H_{P}$ alone.
 \end{remark}
 
-\subsection{The cascade: from a false dynamical claim to a true static one}
+\subsection{The cascade: statics and dynamics}
 
-The source's strongest repeated image is the ``thermodynamic cascade'' from sparse prime
+The ``thermodynamic cascade'' is the framework's central image from sparse prime
 states into dense composite states. As dynamics under $H_{P}$ this is impossible
 (Proposition~\ref{prop:frozen}); as a statement about the \emph{microcanonical ensemble},
-however, it is a classical theorem. The repair therefore splits the cascade into a theorem
+however, it is a classical theorem. The dichotomy therefore splits the cascade into a theorem
 (statics) and a conjecture (dynamics).
 
 \begin{theorem}[Normal order and Erd\H{o}s--Kac for the primon ensemble]\label{thm:erdoskac}
@@ -198,7 +197,7 @@ $\log\log x=\log(E/\hbar\omega_{0})$ growing only logarithmically in the energy.
 $\log N(E)=E/\hbar\omega_{0}+O(1)$ is astronomically larger than the typical complexity
 $\log\log N(E)$: the ensemble is dominated by integers that are composite but \emph{far from
 maximally} composite (the maximally composite integers, the powers of two and their smooth
-kin, are exponentially atypical). Thus the source's ``cascade into composite states'' is
+kin, are exponentially atypical). Thus a ``cascade into composite states'' is
 correct as a description of where the measure lives, and the Erd\H{o}s--Kac Gaussian is the
 precise fluctuation law of the cascade. What remains open is the dynamical version:
 
@@ -214,44 +213,49 @@ interacting completion; both are quartic in the ladder operators, and the kineti
 off-diagonal and $\Nhat_{\mathrm{tot}}$-preserving, with matrix elements
 $V(k_{p}+k_{q})\sqrt{(k_{p}+1)\,k_{q}}$ on the hops of the prime lattice), restricted to the
 energy window $[E,E+\Delta]$. Then along any truncation
-sequence with truncation dimension $D\to\infty$: (i) eigenstate expectation values of local
+sequence with truncation dimension $D\to\infty$ at fixed effective dose: (i) eigenstate expectation values of local
 occupation observables are smooth in $E$ with within-window fluctuations
 $\sigma_{\mathrm{ETH}}(D)\to0$; (ii) diagonal-ensemble values converge to the microcanonical
 values of Theorem~\ref{thm:erdoskac}; and (iii) the relaxation time scale is polynomial in
 $E$. The bare $H_{\mathrm{tot}}$ ($U=V=0$) is \emph{excluded}: it is a quasi-quadratic object
-(see below) for which the thermalization conjecture is mis-typed.
+(see below) to which the thermalization question does not apply.
 \end{conjecture}
 
-Conjecture~\ref{conj:cascade} (register entry $\mathsf{C4}$) is the repaired engine for every
-arrow-of-time claim in the source: entropy growth, decoherence, record formation, and the
+Conjecture~\ref{conj:cascade} (register entry $\mathsf{C4}$) is the engine for every
+arrow-of-time claim in the framework: entropy growth, decoherence, record formation, and the
 emergence of the second law are all downstream of it. It is a well-posed, hard, and
 conventional-sounding problem of quantum statistical mechanics, which is exactly the point:
-the source's most sweeping physical claims, once repaired, reduce to questions that experts
-know how to attack. The two completions in \eqref{eq:completions} are not equivalent and the
+the framework's most sweeping physical claims reduce to questions that experts know how to
+test. The two completions in \eqref{eq:completions} are not equivalent and the
 difference matters: the $U$ term is a diagonal potential on the exponent lattice (a
-Wannier--Stark-type renderer, as the data below confirm), while the $V$ term is the
+Wannier--Stark-type renderer, as the data confirm), while the $V$ term is the
 Bose--Hubbard-type \emph{density-assisted hopping} known from the interacting-boson
-literature---quartic yet kinetic. The retyping was forced by computation:
+literature---quartic yet kinetic. The two are distinguished by computation:
 
 \begin{remark}[Numerical status of the cascade conjecture]\label{rem:numerics}
-Four attack programs have been run on this exact system: dense diagonalization at
-$D\leq4096$; then a scaled sparse program---shift-invert Lanczos eigen-windows to
-$D\approx2.4\times10^{4}$ (with default partial pivoting the $LU$ fill of the interior
-factorization exhausts laptop RAM beyond that; the diagonal pivoting introduced for the
-kinetic family in (d) lifts the effective ceiling at no cost in accuracy),
-and restarted-Lanczos Krylov equilibration to
-$D\approx10^{5}$---and, reusing both sparse tiers, the kinetic completion of item (d)
-(code and data accompany the paper). They establish:
+Conjecture~\ref{conj:cascade} has been tested by dense diagonalization at $D\leq4096$; by
+shift-invert Lanczos eigen-windows ($k=350$ interior eigenpairs placed at the median of the
+density of states, diagonal pivoting in the factorization, every window certified by
+eigenpair residuals $\leq6\times10^{-8}$) up to $D=59319$ in $d=3$ and $D=20736$ in $d=4$,
+beyond which the $LU$ fill exceeds the 4\,GB address-space guard; and by
+restarted-Lanczos Krylov equilibration to $D\approx10^{5}$, with restart steps sized by a
+Lanczos-estimated spectral radius (validated against exact eigendecomposition propagation
+to $10^{-12}$, state-vector norm drift $\leq10^{-13}$). The kinetic family is examined at
+matched effective dose $VK^{2}\approx36$, the occupation-weighted coupling, so that the dose
+is fixed while the truncation widens; code and data accompany the paper. The evidence:
 (a) \emph{Level statistics}: generic couplings give GOE ratio statistics
-$\langle r\rangle=0.51$--$0.58$ at every scale computed from $D=625$ to
-$2.4\times10^{4}$ (the upper end of that band, $0.58$, is the $d=4$, $K=11$, $D=20736$
-window); the weak-coupling control collapses the participation ratio to
+$\langle r\rangle=0.45$--$0.58$ at every scale computed from $D=625$ to
+$5.9\times10^{4}$ (the upper end of the band is the $d=4$, $K=11$, $D=20736$ window; the
+sub-GOE values sit at the smallest matched-dose grids, $K\leq14$, where the fixed effective
+dose leaves spectral mixing incomplete); the weak-coupling control collapses the
+participation ratio to
 $\mathrm{PR}/D\approx10^{-4}$ with $\sigma_{\mathrm{ETH}}$ inflated by an order of
 magnitude, and its $\langle r\rangle$ is \emph{window-placement-dependent in a way the
 generic regime is not}: a $\sigma$-quantile sweep of the same weak configuration
 ($d=3$, $K=28$, $D=24389$) at quantiles $\{0.02,0.10,0.15,0.25,0.5,0.75,0.9,0.98\}$
 gives $0.42$--$0.56$, non-monotone (the dip at the $15\%$ quantile, $0.436$, is reproduced
-exactly on independent re-run---density-of-states cluster structure, not solver noise),
+exactly in an independent repetition---density-of-states cluster structure, not solver
+noise),
 while the generic control is flat ($0.505$--$0.514$ at quantiles $0.05/0.5/0.95$); the
 weak median value is additionally direction-dependent ($0.53$ at $d=3$ versus $0.44$ at
 $d=4$, $D=20736$). Any protocol claim about weak-coupling statistics must therefore pin
@@ -264,56 +268,90 @@ anywhere in $H_{\mathrm{tot}}$, so the system is essentially single-particle on 
 exponent lattice $\Zz^{d}$. The scaled data make this quantitative: the normalized
 eigenstate fluctuation $\sigma_{\mathrm{ETH}}/\mathrm{std}(a_{j})$ of local
 occupations sits at $0.94$--$0.99$---fluctuations as large as the observable's full
-spread---flat in $D$ at every coupling; and the diagonal ensemble retains
+spread---flat in $D$ at every coupling and every fixed dose (item (e) below); and the
+time-averaged occupation retains
 $6$--$24\%$ of the initial mode's occupation
 ($|\mathrm{diag}-\mathrm{micro}|/K$) at every scale from $D=10^{4}$ to $10^{5}$,
 with no downward trend. (c) \emph{The diagonal quartic completion does not rescue
 thermalization at any accessible scale}: the dose--response is monotone
 localization ($\langle r\rangle$: $0.514$ at $U=0$, $0.502$ at $U=0.5$, $0.387$ at
 $U=2$, all at $D\approx2\times10^{4}$; $\mathrm{PR}/D$: $0.18\to0.03\to0.001$;
-frozen-mode memory $|\mathrm{diag}-\mathrm{micro}|/K\approx0.8$). (d) \emph{The
-kinetic (density-assisted hopping) completion has now been tested}---as a one-term
-addition to the same code, validated against a first-principles dense assembly to
-$10^{-15}$, Hermitian and exactly $\Nhat_{\mathrm{tot}}$-preserving---on the identical
-platform ($d=4$, $K=11$, $D=20736$, seed 7). It is the first completion that produces
-genuine equilibration: at $V=0.3$ the Krylov trace from $\ket{Ke_{d}}$ settles on a
-plateau at the microcanonical value ($|\mathrm{diag}-\mathrm{micro}|/K=0.004$, against
-$0.10$ bare and $0.81$ quartic; residual fluctuations $0.06$ over the plateau), and the
-eigenstates stay delocalized with GOE statistics ($\mathrm{PR}/D=0.14$; $\langle
-r\rangle=0.52$), where the quartic had collapsed to $0.001$--$0.03$. Two
-qualifications, both honest: the equilibration is a dose phenomenon, not a monotone
-onset---at $V=0.1$ (longer Krylov horizon, $\tau\leq63$) the plateau sits \emph{away}
-from microcanonical ($|\mathrm{diag}-\mathrm{micro}|/K=0.18$, the bare value), and at
-strong dose the kinetic term localizes too, as its occupation-weighted matrix elements
-predict (effective coupling $VK^{2}$: at $V=1$, $\langle r\rangle\to0.41$ and
+frozen-mode memory $|\mathrm{diag}-\mathrm{micro}|/K\approx0.8$). (d) \emph{The kinetic (density-assisted hopping) completion}---a one-term addition to
+the Hamiltonian, Hermitian and exactly $\Nhat_{\mathrm{tot}}$-preserving, validated against a
+first-principles dense assembly to $10^{-15}$---is the only completion that relaxes. At
+matched dose $VK^{2}\approx36$ on the $d=4$, $K=11$, $D=20736$ platform, the occupation
+$\hat n_{d}$ falls from its initial value $11$ to $\approx3.5$ within $\tau\approx20$ and then
+drifts on a slow secular tail; the eigenstates stay delocalized with GOE statistics
+($\mathrm{PR}/D=0.14$, $\langle r\rangle=0.51$) where the quartic completion collapses to
+$0.001$--$0.03$. The equilibration is a dose phenomenon, not a monotone onset: at $V=0.1$
+the plateau sits \emph{away} from microcanonical ($|\mathrm{diag}-\mathrm{micro}|/K=0.18$,
+the bare value; the short-horizon averages at the same platform are $0.10$ bare and $0.81$
+quartic), and strong dose localizes, as the occupation-weighted matrix elements predict
+(effective coupling $VK^{2}$: at $V=1$, $\langle r\rangle\to0.41$ and
 $\mathrm{PR}/D\to0.05$; at fixed $V=0.3$ on the $d=3$, $K=28$ grid, where
-$VK^{2}\approx235$, $\langle r\rangle=0.36$ with $\mathrm{PR}/D=0.016$); and the
-\emph{eigenstate} fluctuation $\sigma_{\mathrm{ETH}}/\mathrm{std}(a_{j})$ remains
-$0.94$--$0.99$ at every kinetic dose and every scale computed ($D=10^{4}$ to
-$2.4\times10^{4}$ across four truncation directions), so the equilibration leg of the
-cascade conjecture now has positive accessible-scale evidence while the strong-ETH leg
-has none. (Numerically, the kinetic couplings destroy the diagonal dominance that had
-made the shift-invert factorization tractable; diagonal pivoting
-($\mathrm{diag\_pivot\_thresh}=0$) restores it---the generic $d=3$, $K=28$ factorization
-drops from $257$\,s to $3$\,s---with every eigen-window certified by eigenpair residuals
-$\leq1.2\times10^{-7}$ and a pivoting cross-check at $D=14641$ agreeing to
-$0.002$ in $\langle r\rangle$.) An
-$E\to\infty$ statement cannot be falsified by any finite-$D$ simulation; a
-\emph{scaling} criterion can be---and on the present evidence every scaling
-diagnostic is flat.
+$VK^{2}\approx235$, $\langle r\rangle=0.36$ with $\mathrm{PR}/D=0.016$).
+(e) \emph{Scaling at matched dose; the diagonal ensemble.} Two legs decide the conjecture.
+The eigenstate fluctuation ratio $\sigma_{\mathrm{ETH}}/\mathrm{std}(a_{j})$ is flat:
+$0.95$--$0.98$ along the $d=3$ ladder $D=3375\to59319$ (a factor $17.6$ in $D$) and
+$0.95$--$0.97$ along the $d=4$ ladder $D=4096\to20736$, with exact full-spectrum values
+$0.68$--$0.83$ at $D\leq10^{4}$; leg (i) has no positive evidence at accessible scales. The
+diagonal ensemble
+$\langle a\rangle_{\mathrm{diag}}=\sum_{n}|\braket{n}{\psi_{0}}|^{2}\braket{n}{a}$
+is computed exactly at $D\leq10^{4}$: there the finite-time plateau equals it to
+$|\,\mathrm{plateau}-\mathrm{diag}\,|/K\leq0.005$ (the dephasing identity
+$\lim_{T\to\infty}\frac{1}{T}\int_{0}^{T}\langle a(t)\rangle\,dt=\langle
+a\rangle_{\mathrm{diag}}$ holds with no ETH input, and nested late-time window averages
+supply the convergence diagnostic). But at matched dose the diagonal ensemble is not
+microcanonical: $|\langle a\rangle_{\mathrm{diag}}-\langle
+a\rangle_{\mathrm{micro}}|/K=0.040\to0.061\to0.092$ along $d=4$ ($D=4096\to20736$) and
+$\approx0.05$ (stable in absolute value, $\approx0.87$) along $d=3$ ($D=3375\to9261$),
+with no closing trend. The $d=4$, $D=20736$ trajectory was extended to $\tau=300$ in
+checkpointed wall-clock chunks (a chunk boundary is an ordinary Lanczos restart; the resumed
+trajectory agrees with an independent step-size choice to $2\times10^{-4}$ in the
+observable): its nested late-time averages saturate at
+$\langle\hat n_{d}\rangle_{\mathrm{diag}}\approx4.40\pm0.03$, while the microcanonical value
+is $3.35$ and the early transient ($\tau\leq22$) passes through $3.39$, close to it. A
+finite-horizon coincidence with the microcanonical value is therefore not evidence of
+thermalization; leg (ii) is a statement about the $D\to\infty$ limit of the diagonal
+ensemble, and at accessible scales that limit shows no convergence (Figure~\ref{fig:ladder}).
+(The kinetic couplings destroy the diagonal dominance on which default partial pivoting
+relies in the shift-invert factorization; diagonal pivoting
+($\mathrm{diag\_pivot\_thresh}=0$) restores tractability---the generic $d=3$, $K=28$
+factorization drops from $257$\,s to $3$\,s---with every eigen-window certified by
+eigenpair residuals $\leq6\times10^{-8}$ and a pivoting cross-check at $D=14641$ agreeing
+to $0.002$ in $\langle r\rangle$.) An $E\to\infty$ statement cannot be falsified by any
+finite-$D$ simulation; a \emph{scaling} criterion can be---and on the present evidence
+every scaling diagnostic is flat.
 \end{remark}
 
-Falsifiers and attack routes are listed in
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{fig_c4_ladder.png}
+\caption{Matched-dose ($VK^{2}\approx36$) numerics for the kinetic completion
+(Remark~\ref{rem:numerics}(d)--(e)). (a)~Eigenstate fluctuation ratio
+$\sigma_{\mathrm{ETH}}/\mathrm{std}(a)$ versus truncation dimension: window values
+(filled) and exact full-spectrum values (open); no decay across a factor $17.6$ in $D$.
+(b)~Distance of the diagonal ensemble from the microcanonical value, normalized by $K$:
+$O(1)$ gaps with no closing trend; the $T\leq22.5$ estimate (cross) is a transient that
+coincides with the microcanonical value. (c)~The $d=4$, $K=11$, $D=20736$, $V=0.3$
+trajectory extended to $\tau=300$: observable, running time average, nested late-time
+averages (diagonal-ensemble estimate $\approx4.40$), microcanonical line, and the early
+transient. (d)~Finite-$T$ plateau versus exact diagonal ensemble at $D\leq10^{4}$ (identity
+line).}
+\label{fig:ladder}
+\end{figure}
+
+Falsifiers and test routes are listed in
 Section~\ref{sec:register}.
 
-\subsection{The Janus state, corrected}
+\subsection{The Janus state}
 
-The source claims that ``at the past hypothesis the phase $1^{-i\omega_{0}\tau}=1$: time does
-not exist at $n=1$; time turns on when the universe transitions to composite states.''
-Proposition~\ref{prop:frozen} shows that under $H_{P}$ \emph{nothing} ever transitions, so the
-claim as stated is empty; under $H_{\mathrm{tot}}$ the vacuum $\ket{1}$ is \emph{not} an
-eigenstate (because $H_{W}\ket{1}=\sum_{p}g_{p}\ket{p}$), and the corrected statement
-becomes substantive and true:
+A natural boundary condition is the vacuum: the claim that ``at the past hypothesis the
+phase $1^{-i\omega_{0}\tau}=1$: time does not exist at $n=1$; time turns on when the universe
+transitions to composite states.'' Under $H_{P}$ \emph{nothing} ever transitions
+(Proposition~\ref{prop:frozen}), so the claim would be empty; under $H_{\mathrm{tot}}$ the vacuum
+$\ket{1}$ is \emph{not} an eigenstate (because $H_{W}\ket{1}=\sum_{p}g_{p}\ket{p}$), and the
+statement becomes substantive and true:
 
 \begin{proposition}[Nucleation from the Janus state]\label{prop:nucleation}
 For $H_{\mathrm{tot}}$ with $H_{W}\neq0$ and initial state $\psi(0)=\ket{1}$:
@@ -332,20 +370,20 @@ First-order time-dependent perturbation theory around the eigenstate $\ket{1}$ o
 (the Dyson series in $H_{W}+H_{\mathrm{hop}}$; $H_{\mathrm{hop}}$ annihilates the vacuum).
 \end{proof}
 
-Time, in the reconstructed framework, is thus switched on by the interaction sector, exactly
-as in the source's narrative, but now with a mechanism that exists. The stronger claims that
+Time, in this framework, is switched on by the interaction sector, with a mechanism that
+exists. The stronger claims that
 the actual history of the universe \emph{begins} at $\ket{1}$, and that the entropy profile is
 two-sided (Janus-shaped) about that event, are boundary-condition statements and are demoted
-to Conjectures $\mathsf{C7}$ and $\mathsf{C8}$; what survives as theorem is only the
+to Conjectures $\mathsf{C7}$ and $\mathsf{C8}$; what remains as theorem is only the
 uniqueness and zero entropy of the floor (Theorem~\ref{thm:spectrum} and
 Section~\ref{sec:thermo}).
 
 \section{Recurrence, Periodicity, and the Fate of Eternal Return}\label{sec:recurrence}
 
-The source derives a strong verdict: ``prime arithmetic rigorously forbids exact cyclical
-time; the universe cannot repeat.'' The mathematics behind this verdict contains a beautiful
-theorem, one correct application, and two overstatements. This section separates them. The
-corrected result is in fact \emph{stronger} than the original claim, because it identifies
+The anti-cyclical verdict---that prime arithmetic rigorously forbids exact cyclical
+time and the universe cannot repeat---decomposes into a theorem, a correct application,
+and two qualifications. This section separates them. The
+resulting statement is \emph{stronger} than the slogan, because it identifies
 exactly which recurrence phenomena are forbidden, which are unavoidable, and what the
 boundary between them depends on.
 
@@ -396,7 +434,7 @@ This is the rigorous core of the anti-cyclic verdict: \emph{eternal return in th
 requires the support of the universal state to lie in a single geometric progression of
 integers}, and no physically motivated state does.
 
-\subsection{What is \emph{not} forbidden: three honest corrections}
+\subsection{What is \emph{not} forbidden: three qualifications}
 
 \begin{corollary}[Truncated systems recur]\label{cor:truncatedrecurrence}
 Fix a finite truncation: primes $p\leq X$ and occupations $k_{p}\leq K$, so the Hilbert space
@@ -455,8 +493,8 @@ Lemma~\ref{lem:independence} and simultaneous approximation of independent frequ
 slow).
 \end{proof}
 
-The third correction concerns the \emph{classical} multiplicative walk, and it sharpens the
-boundary of the no-cycle verdict in an unexpected direction.
+The third qualification concerns the \emph{classical} multiplicative walk, and it sharpens
+the boundary of the no-cycle verdict in an unexpected direction.
 
 \begin{proposition}[P\'olya transience of the multiplicative walk]\label{prop:polya}
 Consider the classical random walk on the divisibility graph of
@@ -468,15 +506,14 @@ $d\geq3$ the walk returns to the vacuum $k=0$ (the Janus state) only finitely ma
 almost surely.
 \end{proposition}
 
-Proposition~\ref{prop:polya} has a striking interpretive reading the source missed: whether
+Proposition~\ref{prop:polya} has a striking interpretive reading: whether
 the arithmetic universe ``cycles back to its origin'' depends on the \emph{number of active
 prime modes}. With one or two primes, the multiplicative universe is recurrent---a rigorous
 echo of cyclical cosmology. With three or more, it is transient, and the Janus point is a
-genuinely singular origin. This converts the source's absolute prohibition into a structural,
-checkable dichotomy, which is exactly the kind of refinement that ``meets or exceeds'' the
-original claim while remaining honest.
+genuinely singular origin. The absolute prohibition thus becomes a structural,
+checkable dichotomy.
 
-\subsection{The corrected verdict on cyclical time}
+\subsection{The verdict on cyclical time}
 
 Assembling the three legs: exact eternal return is impossible for states whose support spans
 incommensurable integers (Theorem~\ref{thm:noperiod}); $\varepsilon$-approximate recurrence is
@@ -493,6 +530,6 @@ of the cascade for three or more active modes---rather than as an absolute metap
 prohibition. The free arithmetic sector, left to itself, is the \emph{most} recurrent object
 in the theory (Bohr almost periodicity for all states, Theorem~\ref{cor:nopoincare}); all
 irreversibility is therefore manufactured by the interaction sector and the boundary
-condition, never by the spectrum. This is the sharpest available form of the source's
-intuition that ``the river never circles back,'' and it is also the form most useful to
+condition, never by the spectrum. This is the sharpest available form of the intuition
+that ``the river never circles back,'' and it is also the form most useful to
 the arrow-of-time analysis of Sections~\ref{sec:time} and~\ref{sec:philosophy}.

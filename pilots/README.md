@@ -114,9 +114,16 @@ python3 c4_eth/c4_kinetic_selftest.py
 bash c4_eth/run_c4_scaled.sh
 # kinetic completion + sigma-quantile sweep (~2 h; resumable the same way)
 bash c4_eth/run_c4_kinetic.sh
+# matched-dose ladder + diagonal-ensemble confirmation (~2.5 h; groups:
+# small mid large dense evolve ext/extloop; resumable the same way)
+bash c4_eth/run_c4_ladder.sh small
+# machinery validation (Lanczos-norm step size vs exact propagation,
+# checkpoint/resume equivalence, dense diagonal ensemble; ~9 min)
+python3 c4_eth/c4_extend_validation.py
 # merge + figures
 python3 c4_eth/c4_scaled_figures.py
 python3 c4_eth/c4_kinetic_figures.py
+python3 c4_eth/c4_ladder_figures.py
 # C9 (< 30 s)
 python3 c9_chebotarev/c9_chebotarev_pilot.py
 ```
@@ -124,3 +131,25 @@ python3 c9_chebotarev/c9_chebotarev_pilot.py
 Requirements: numpy, scipy, matplotlib. The scaled worker validates itself against
 the dense pilot (exact eigenvalue agreement at D = 4096) and against dense `expm`
 for the Krylov propagator (agreement to 10⁻¹³; norm drift ≤ 10⁻¹³ per trace).
+
+## Matched-dose ladder (VK^2 = 36)
+
+Holds the occupation-weighted effective coupling fixed while the truncation
+widens, so the ETH scaling diagnostics are not confounded by the dose:
+
+- **Window ladder** (`L36d3K*`, `L36d4K*`): sigma_ETH/std(a) flat at
+  0.95-0.98 across D=3,375-59,319 (d=3) and D=4,096-20,736 (d=4); PR/D rises
+  with D at fixed dose; the 4D window tier is LU-fill-limited beyond
+  D=20,736.
+- **Dense pairs** (D<=10^4): exact diagonal ensemble vs microcanonical vs
+  finite-T Krylov plateau; the plateau equals the diagonal ensemble to
+  0.005*K (dephasing identity verified), while the diagonal ensemble stays
+  0.04-0.09*K from microcanonical with no closing trend.
+- **Extended trajectory** (`d4K11V03x`): D=20,736, V=0.3, tau=0-300 in 9
+  checkpointed chunks (a chunk boundary is an ordinary Lanczos restart;
+  agreement with an independent step size: 2e-4 in the observable). Nested
+  late-time averages saturate at diag ~ 4.40 vs micro 3.35; the tau<=22
+  average (3.39, near micro) was a transient.
+
+Artifacts: `figures/fig_c4_ladder.png`, `results/c4_ladder_results.json`,
+`results/ladder_scan.log`, per-configuration `results/scaled/` files.

@@ -4,93 +4,93 @@
 
 \section*{Abstract}
 \noindent
-This document is a rigorous reconstruction of the ``prime-spectral framework'' developed in a
-forty-eight-turn source conversation, in which the statistical mechanics of a free Bose gas of
-``primons'' (one-particle energies $\log p$, $p$ ranging over the rational primes) was advanced as
-the arithmetic core of a unified picture of quantum gravity, time, and the arrows of time. Our
-procedure is threefold. First, we \emph{elevate} every statement that admits a precise formulation:
-the primon Hilbert space is defined as $\ell^{2}$ of the free commutative monoid on the primes,
-sidestepping the nonseparability of naive infinite tensor products; the primon Hamiltonian is
+We develop the mathematical and physical content of the ``prime-spectral framework'': the
+statistical mechanics of a free Bose gas of ``primons'' (one-particle energies $\log p$, $p$
+ranging over the rational primes), advanced as the arithmetic core of a unified picture of
+quantum gravity, time, and the arrows of time. The mathematical core is theorem-grade. The
+primon Hilbert space is $\ell^{2}$ of the free commutative monoid on the primes, which
+sidesteps the nonseparability of naive infinite tensor products; the primon Hamiltonian is
 proved self-adjoint with simple spectrum $\hbar\omega_{0}\log n$; the partition function is
-identified with the Riemann zeta function; the exponential state-counting law
-$N(E)=\lfloor e^{E/\hbar\omega_{0}}\rfloor$ is given its correct name, a \emph{Hagedorn spectrum}
-with critical temperature $T_{H}=\hbar\omega_{0}/k_{B}$; and the ``thermodynamic cascade into
-composite states'' is grounded in the Hardy--Ramanujan and Erd\H{o}s--Kac theorems. Second, we
-\emph{repair} the central gaps: the frozen-Hamiltonian problem (the diagonal primon Hamiltonian
-admits no transitions), the false identification of composite integers with entangled states
-(occupation-basis states are product states across every prime-mode bipartition), and the
-overstrong no-recurrence claim (exact periodicity is indeed forbidden by the
-$\Qq$-linear independence of prime logarithms, but approximate recurrence survives in every
-finite truncation). Third, we \emph{demote} to an explicit, falsifiable conjecture register every
-claim whose proof is out of reach, from the zeta/black-hole partition-function identification to
-the Galois--Langlands dictionary for the Standard Model. The result is a framework whose
-mathematical core is now theorem-grade, whose analogies are tightened to citable results, and
-whose remaining ambitions are stated with enough precision to be attacked or refuted.
+the Riemann zeta function, so the exponential state-counting law
+$N(E)=\lfloor e^{E/\hbar\omega_{0}}\rfloor$ is a \emph{Hagedorn spectrum} with critical
+temperature $T_{H}=\hbar\omega_{0}/k_{B}$; and the ``thermodynamic cascade into composite
+states'' is grounded in the Hardy--Ramanujan and Erd\H{o}s--Kac theorems. Three structural
+requirements are then met: the diagonal primon Hamiltonian admits no transitions, so an
+interaction sector (multiplication operators and hopping dynamics on the \emph{prime
+lattice}) is introduced; composite integers are \emph{not} entangled states (the occupation
+basis is a product basis), so arithmetic entanglement is defined across prime-mode
+bipartitions; and exact periodicity is forbidden by the $\Qq$-linear independence of prime
+logarithms while approximate recurrence survives in every finite truncation. Claims whose
+proof is out of reach are consolidated into an explicit, falsifiable conjecture register
+$\mathsf{C1}$--$\mathsf{C12}$, from the zeta/black-hole partition-function identification to a
+Galois--Langlands dictionary for the Standard Model. Two register entries are tested
+numerically at laptop scale: eigenstate-thermalization diagnostics for $\mathsf{C4}$ on
+truncations up to $D\approx6\times10^{4}$, and a calibrated Chebotarev-dictionary protocol
+for $\mathsf{C9}$. The result is a framework whose theorems are proved or cited exactly, whose
+analogies are tightened to citable results, and whose remaining ambitions are stated with
+enough precision to be confirmed or refuted.
 
 \bigskip
 
-\section{Introduction: Source, Method, and Results}\label{sec:intro}
+\section{Introduction}\label{sec:intro}
 
-\subsection{The source conversation}
+\subsection{The framework}
 
-The source material is a shared conversation (48 turns) in which a user and an assistant
-co-developed a speculative but internally ambitious framework: that the prime numbers, through the
-primon gas of Julia~\cite{julia1990} and Spector~\cite{spector1998}, supply the quantum-mechanical
-spectrum of the near-singularity gravitational field, that the Riemann zeta function is the
-gravitational partition function, and that the entire architecture of time---its problem, its
-arrow, its block-universe metaphysics, and its impossibility of cycles---follows from the
-arithmetic of the integers. The conversation drew on reported 2025--2026 developments linking
-conformal primon gases to black-hole interiors~\cite{hartnollyang2026}, on the philosophical
-literature of time's arrow~\cite{carroll2010,wallace2017,price1996}, and on first-person
-metaphysics~\cite{hellie2013,hare2009,conitzer2019}. It culminated in claims that Gaussian primes
-extend the framework to five dimensions, that the Absolute Galois group plays the role of a grand
-unified symmetry, and that gravity is an entropic, $1/N$-suppressed collective effect.
+The prime-spectral framework proposes that the prime numbers, through the primon gas of
+Julia~\cite{julia1990} and Spector~\cite{spector1998}, supply the quantum-mechanical spectrum
+of the near-singularity gravitational field, that the Riemann zeta function is the gravitational
+partition function, and that the architecture of time---its problem, its arrow, its
+block-universe metaphysics, and its impossibility of cycles---follows from the arithmetic of the
+integers. Recent developments linking conformal primon gases to black-hole
+interiors~\cite{hartnollyang2026}, the philosophical literature of time's
+arrow~\cite{carroll2010,wallace2017,price1996}, and first-person
+metaphysics~\cite{hellie2013,hare2009,conitzer2019} motivate the construction. Its ambitions
+extend to Gaussian primes as a five-dimensional chirality-carrying sector, the Absolute Galois
+group as a grand unified symmetry, and gravity as an entropic, $1/N$-suppressed collective
+effect.
 
-Taken verbatim, the conversation alternates between genuine mathematics, physics speculation, and
-rhetorical overreach. That alternation is precisely what makes it worth reconstructing: the
-skeleton is sound and unusually coherent, while the joints are loose. The present document
-keeps the skeleton, tightens every joint, discards nothing that can be saved by honest
-reformulation, and labels everything else.
+The framework alternates between genuine mathematics, physics speculation, and rhetoric; the
+skeleton is unusually coherent, while the joints are loose. This paper keeps the skeleton,
+tightens every joint, and labels everything else. Three instruments suffice: state precisely
+what can be proved; construct what is missing; and demote what remains to falsifiable
+conjectures.
 
-\subsection{Method: elevate, repair, demote}\label{sec:method}
+\subsection{Epistemic status: prove, construct, demote}\label{sec:method}
 
-Every substantive claim in the source was subjected to one of three treatments.
+Every substantive statement in this paper receives one of three labels.
 
 \begin{enumerate}[leftmargin=1.6em]
-\item \textbf{Elevate.} If a claim has a precise mathematical formulation and a proof, it is
+\item \textbf{Prove.} A statement with a precise mathematical formulation and a proof is
 stated as a theorem, lemma, or proposition with its proof or an exact citation. Examples: the
 $\Qq$-linear independence of $\{\log p\}$; the identification of the partition function with
 $\zeta$; the Hagedorn asymptotics; the positive-definiteness of the Page--Wootters clock kernel;
 the exact state-counting identity $\log N(E)=E/\hbar\omega_{0}+O(1)$.
-\item \textbf{Repair.} If a claim is right in spirit but wrong in mechanism, the mechanism is
-replaced and the repaired claim is re-proved. Three repairs dominate this document:
-(i)~the diagonal primon Hamiltonian cannot drive the claimed ``cascade into composite states'',
-so a multiplicative transition sector (multiplication operators $M_{n}$ and a hopping dynamics
-on the \emph{prime lattice}) is introduced in Section~\ref{sec:dynamics};
+\item \textbf{Construct.} Where a mechanism is missing, it is supplied and its consequences
+proved. Three constructions dominate this paper:
+(i)~the diagonal primon Hamiltonian cannot drive a ``cascade into composite states'', so a
+multiplicative transition sector (multiplication operators $M_{n}$ and a hopping dynamics on
+the \emph{prime lattice}) is introduced in Section~\ref{sec:dynamics};
 (ii)~composite integers are \emph{not} entangled states---the occupation basis is a product
-basis---so arithmetic entanglement is redefined across prime-mode bipartitions in
-Section~\ref{sec:entangle}, and the ``arithmetic holism'' that resolves Bell's trilemma is
-relocated from single integers to superpositions;
-(iii)~the ``universe cannot repeat'' claim conflated exact periodicity, Poincar\'e recurrence,
+basis---so arithmetic entanglement is defined across prime-mode bipartitions in
+Section~\ref{sec:entangle}, and ``arithmetic holism'' is relocated from single integers to
+superpositions;
+(iii)~the ``universe cannot repeat'' claim conflates exact periodicity, Poincar\'e recurrence,
 and dynamical return; these are separated in Section~\ref{sec:recurrence} into one theorem and
 two counterexamples.
-\item \textbf{Demote.} If a claim is plausible, well-formed, and beyond current proof
-technology, it is restated as a numbered conjecture with evidence, dependencies, and a
-falsifier. Twelve conjectures ($\mathsf{C1}$--$\mathsf{C12}$) are consolidated in
-Section~\ref{sec:register}. The guiding rule is that a conjecture must be \emph{attackable}:
-each one carries at least one specified route to confirmation or refutation.
+\item \textbf{Demote.} A claim that is plausible, well-formed, and beyond current proof
+technology is restated as a numbered conjecture with evidence, dependencies, and a falsifier.
+Twelve conjectures ($\mathsf{C1}$--$\mathsf{C12}$) are consolidated in Section~\ref{sec:register}.
+The guiding rule is that a conjecture must be \emph{decidable}: each one carries at least one
+specified route to confirmation or refutation.
 \end{enumerate}
 
-An audit trail of the corrections is given in Appendix~\ref{app:corrections}; it lists each
-original claim, its repaired or demoted status, and the pointer to the section where the
-treatment occurs. Nothing in the source ambition is silently dropped: where a claim is rejected
-outright (for example, that the Hamiltonian $H_{P}=\hbar\omega_{0}\log\Nhat$ by itself ``drives
-transitions into composite integer states''), the rejection is argued, and the surviving
-content is carried forward under its own name.
+Numerical evidence is held to the same standard: every diagnostic is defined before it is
+computed, and finite-size results are reported with their uncertainty and their dependence on
+protocol choices (window placement, pivoting, trajectory horizon).
 
 \subsection{Summary of results}
 
-The reconstruction yields a layered structure. The \emph{mathematical floor} (all theorem-grade)
+The framework acquires a layered structure. The \emph{mathematical floor} (all theorem-grade)
 consists of: the arithmetic Hilbert space $\Hil_{\mathcal{A}}=\ell^{2}(\Nn,\times)$
 (Section~\ref{sec:arithmetic}); the self-adjoint primon Hamiltonian with simple spectrum
 $\hbar\omega_{0}\log n$; the partition function $Z(\beta)=\zeta(\beta\hbar\omega_{0})$ with
@@ -99,24 +99,26 @@ $\log N(E)=E/\hbar\omega_{0}+O(1)$; the Erd\H{o}s--Kac statistics of the microca
 ensemble; the isometric representation $n\mapsto M_{n}$ of the multiplicative monoid on
 $\Hil_{\mathcal{A}}$; the phase-incommensurability theorem forbidding exact periodicity; the
 Bohr almost-periodicity of the zeta clock's correlation kernel; and the product-state theorem
-that repairs the entanglement story. The \emph{conjectural superstructure} consists of the
+that settles the entanglement question. The \emph{conjectural superstructure} consists of the
 twelve register entries, of which the deepest are $\mathsf{C1}$ (the zeta/black-hole
 identification), $\mathsf{C3}$ (the arithmetic holographic bound), $\mathsf{C4}$ (thermalization
-on the prime lattice), and $\mathsf{C9}$ (the Galois--gauge dictionary).
+on the prime lattice), and $\mathsf{C9}$ (the Galois--gauge dictionary). Two entries carry
+carried-out numerical programs: eigenwindow and Krylov diagnostics for $\mathsf{C4}$ to
+$D\approx6\times10^{4}$ (Remark~\ref{rem:numerics}), and a calibrated dictionary protocol for
+$\mathsf{C9}$ (Section~\ref{sec:falsify}).
 
-The philosophical theses of the source---eternalism with perspectival observers, an extrinsic
+The philosophical theses of the framework---eternalism with perspectival observers, an extrinsic
 arrow grounded in arithmetic state-counting, derivative causality, and the rejection of
-superdeterminism---survive the reconstruction in \emph{conditional} form: they are
-well-defined consequences of the conjectural superstructure, and they are marked as
-interpretive rather than theorem-grade wherever the mathematics cannot carry them
-(Section~\ref{sec:philosophy}).
+superdeterminism---survive in \emph{conditional} form: they are well-defined consequences of the
+conjectural superstructure, and they are marked as interpretive rather than theorem-grade
+wherever the mathematics cannot carry them (Section~\ref{sec:philosophy}).
 
 \section{The Arithmetic Sector}\label{sec:arithmetic}
 
 This section fixes the foundational objects. Everything here is elementary but must be stated
-carefully, because the source conversation (and part of the physics literature) informally
-writes the primon Fock space as an infinite tensor product, an object that is \emph{not}
-separable and is the wrong home for the theory. The repair is cheap and clarifying.
+carefully, because a naive formulation writes the primon Fock space as an infinite tensor
+product, an object that is \emph{not} separable and is the wrong home for the theory. The
+construction is cheap and clarifying.
 
 \subsection{The arithmetic Hilbert space}
 
@@ -146,15 +148,15 @@ a self-adjoint operator with spectrum $\Nn$.
 \end{definition}
 
 \begin{remark}[Why not an infinite tensor product?]
-The source writes $\Fock_{\Pr}=\bigotimes_{p\in\Pr}\Fock_{p}$ with one bosonic oscillator per
-prime. The literal von Neumann infinite tensor product of the $\ell^{2}(\Nn)$ over a countably
-infinite index set is nonseparable, and its physically relevant separable subspaces depend on
-a choice of reference vector. Definition~\ref{def:hilbert} achieves the intended object
-directly: $\ell^{2}$ of the countable basis $\mathcal{F}$ is separable, and the tensor
+A naive formulation writes $\Fock_{\Pr}=\bigotimes_{p\in\Pr}\Fock_{p}$ with one bosonic oscillator
+per prime. The literal von Neumann infinite tensor product of the $\ell^{2}(\Nn)$ over a
+countably infinite index set is nonseparable, and its physically relevant separable subspaces
+depend on a choice of reference vector. Definition~\ref{def:hilbert} achieves the intended
+object directly: $\ell^{2}$ of the countable basis $\mathcal{F}$ is separable, and the tensor
 factorization over any \emph{finite} set of modes is available whenever needed
 (Proposition~\ref{prop:productstructure}). This is the first, and easiest, instance of the
-general principle of this reconstruction: replace informal infinite constructions by the
-countable objects they were meant to describe.
+general principle of this paper: informal infinite constructions are replaced by the countable
+objects they were meant to describe.
 \end{remark}
 
 For each prime $p$ the standard bosonic ladder operators act on the $p$-mode: on basis vectors
@@ -170,9 +172,9 @@ $\{\psi:\sum_{p}k_{p}^{2}|\psi_{k}|^{2}<\infty\}$.
 
 \subsection{The multiplicative number operator and the primon Hamiltonian}
 
-The source's central operator is the \emph{multiplicative number operator}, whose eigenvalue on
-$\ket{k}$ is the integer $n=\prod_{p}p^{k_{p}}$ itself. We define it together with the
-Hamiltonian it generates.
+The central operator of the framework is the \emph{multiplicative number operator}, whose
+eigenvalue on $\ket{k}$ is the integer $n=\prod_{p}p^{k_{p}}$ itself. We define it together
+with the Hamiltonian it generates.
 
 \begin{definition}[Multiplicative number operator; primon Hamiltonian]\label{def:hamiltonian}
 The \emph{multiplicative number operator} $\Nhat$ is the diagonal operator
@@ -217,14 +219,12 @@ points. Simplicity: if $a_{m}=a_{n}$ with $m\neq n$, then $\log m=\log n$ forces
 contradiction. The ground state: $a_{n}\geq 0$ with equality only at $n=1$.
 \end{proof}
 
-Two consequences deserve emphasis because the source conversation uses both constantly.
-First, the \emph{unique zero-entropy ground state} $\ket{1}$ is the multiplicative identity;
-this is the rigorous content of the source's ``arithmetic floor'' and of its Janus point
-claims, developed in Sections~\ref{sec:thermo} and~\ref{sec:philosophy}. Second, the
-\emph{simplicity} of every level means the primon spectrum has no degeneracy whatsoever: the
-integers label states one-to-one. Any degeneracy in a putative physical realization must
-therefore come from sectors \emph{beyond} $H_{P}$ (for instance the Gaussian sector of
-Section~\ref{sec:galois}).
+Two consequences deserve emphasis. First, the \emph{unique zero-entropy ground state} $\ket{1}$
+is the multiplicative identity; this is the arithmetic floor underlying the Janus point
+developed in Sections~\ref{sec:thermo} and~\ref{sec:philosophy}. Second, the \emph{simplicity}
+of every level means the primon spectrum has no degeneracy whatsoever: the integers label
+states one-to-one. Any degeneracy in a putative physical realization must therefore come from
+sectors \emph{beyond} $H_{P}$ (for instance the Gaussian sector of Section~\ref{sec:galois}).
 
 \subsection{The partition function and the Hagedorn temperature}
 
@@ -262,13 +262,12 @@ $\sigma>1$ and the Euler product are Euler's theorems; the occupation formula is
 free-boson computation on each mode.
 \end{proof}
 
-The source conversation states the identification $Z=\zeta$ correctly but never names the
-consequence that gives it physical teeth: the primon gas is a \emph{Hagedorn system}
-\cite{hagedorn1965}. Its density of states grows exponentially in the energy, and the
-partition function diverges at a finite critical temperature. In string theory this is the
-famous signal that, near $T_{H}$, energy input goes into multiplying the number of light
-degrees of freedom rather than into heating. The same reading applies here with total
-exactness, because the counting is exactly solvable.
+The identification $Z=\zeta$ carries a consequence that gives it physical teeth: the primon gas
+is a \emph{Hagedorn system} \cite{hagedorn1965}. Its density of states grows exponentially in
+the energy, and the partition function diverges at a finite critical temperature. In string
+theory this is the famous signal that, near $T_{H}$, energy input goes into multiplying the
+number of light degrees of freedom rather than into heating. The same reading applies here with
+total exactness, because the counting is exactly solvable.
 
 \begin{theorem}[Hagedorn asymptotics]\label{thm:hagedorn}
 Let $k_{B}=1$ and write $T_{H}=\hbar\omega_{0}$. As $T\uparrow T_{H}$ (i.e.
@@ -306,13 +305,13 @@ source's statement that ``the state space expands exponentially'': the expansion
 merely large, it is \emph{uniform} in $E$, and that uniformity is what the pole of $\zeta$ at
 $s=1$ encodes. The classical smooth term ``$x$'' of the prime number theorem is the same
 statement read on the counting function $\psi(x)$, and the oscillatory remainder
-$-\sum_{\rho}x^{\rho}/\rho$ is the fluctuation sector; the reconstruction returns to this
-duality in Sections~\ref{sec:time} and~\ref{sec:galois}.
+$-\sum_{\rho}x^{\rho}/\rho$ is the fluctuation sector; the paper returns
+to this duality in Sections~\ref{sec:time} and~\ref{sec:galois}.
 \end{remark}
 
 \subsection{Gaussian extension}
 
-The source extends the arithmetic sector to the Gaussian integers $\Zz[i]$ for the putative
+The arithmetic sector extends to the Gaussian integers $\Zz[i]$ for the putative
 five-dimensional (and chirality-carrying) sector, and here the mathematics is genuinely
 supportive, because the extension is an instance of the standard theory of number fields.
 
@@ -348,11 +347,10 @@ $\zeta_{\Qq(i)}=\zeta\,L(\chi_{-4})$ \cite{neukirch1999}. The nonvanishing
 $L(1,\chi_{-4})=\pi/4$ is Leibniz's series.
 \end{proof}
 
-Equation~\eqref{eq:factorization} is the exact arithmetic statement behind the source's slogan
-that ``the fifth dimension requires complex primes.'' The Gaussian sector is the rational
-sector \emph{times} a chiral factor: $L(s,\chi_{-4})$ is precisely the asymmetry between the
-splitting class $p\equiv1\ (4)$ and the inert class $p\equiv3\ (4)$. This is developed into a
-precise (and appropriately demoted) arithmetic model of charge conjugation and CP violation in
+Equation~\eqref{eq:factorization} exhibits the Gaussian sector as the rational sector
+\emph{times} a chiral factor: $L(s,\chi_{-4})$ is precisely the asymmetry between the splitting
+class $p\equiv1\ (4)$ and the inert class $p\equiv3\ (4)$. This is developed into a precise
+(and appropriately demoted) arithmetic model of charge conjugation and CP violation in
 Section~\ref{sec:galois}.
 
 \subsection{What the arithmetic sector does and does not assert}
@@ -364,5 +362,5 @@ of $\zeta$, and its critical behavior is exactly Hagedorn behavior. \emph{No cla
 been made that any physical system is a primon gas.} The identification
 $Z^{\mathrm{ren}}_{\mathrm{grav}}(s)=\zeta(s)$ for near-singularity gravity is
 Conjecture~$\mathsf{C1}$ of the register, the reported 2025--2026 developments
-\cite{hartnollyang2026} being its current physical evidence. The discipline of this
-reconstruction is that such identifications live in the register, not in the theorems.
+\cite{hartnollyang2026} being its current physical evidence. The discipline of this paper is
+that such identifications live in the register, not in the theorems.

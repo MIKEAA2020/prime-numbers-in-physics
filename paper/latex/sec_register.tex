@@ -4,10 +4,10 @@
 
 \section{The Consolidated Conjecture Register}\label{sec:register}
 
-The register is the reconstruction's contract with honesty: every ambitious claim of the
-source that survived repair but not proof lives here, numbered, graded, and armed with a
+The register is the framework's contract with honesty: every ambitious claim
+that lacks proof lives here, numbered, graded, and armed with a
 falsifier. Grades: \textbf{A} (mathematically precise; partial evidence exists; actively
-attackable), \textbf{B} (well-formed; speculative; no current evidence beyond structural
+testable), \textbf{B} (well-formed; speculative; no current evidence beyond structural
 fit), \textbf{C} (interpretive; tethered to A/B entries; not empirically separable at
 present). The \emph{Depends on} column lists register entries whose failure collapses the
 entry; the qualifier ``(int.)'' marks a dependency that is interpretive rather than logical —
@@ -15,11 +15,11 @@ such an entry survives the parent's failure as an autonomous mathematical proble
 
 \begin{longtable}{@{}p{0.045\textwidth}p{0.35\textwidth}p{0.075\textwidth}p{0.105\textwidth}p{0.28\textwidth}@{}}
 \toprule
-\textbf{ID} & \textbf{Statement} & \textbf{Grade} & \textbf{Depends on} & \textbf{Falsifier / attack route}\\
+\textbf{ID} & \textbf{Statement} & \textbf{Grade} & \textbf{Depends on} & \textbf{Falsifier / test route}\\
 \midrule
 \endfirsthead
 \toprule
-\textbf{ID} & \textbf{Statement} & \textbf{Grade} & \textbf{Depends on} & \textbf{Falsifier / attack route}\\
+\textbf{ID} & \textbf{Statement} & \textbf{Grade} & \textbf{Depends on} & \textbf{Falsifier / test route}\\
 \midrule
 \endhead
 \bottomrule
@@ -34,7 +34,7 @@ A &
 Derive $H_{\mathrm{sing}}$ from BKL/conformal reduction; compute its level statistics
 (cf.\ $\mathsf{C5}$). Falsified if the near-singularity spectrum is provably not
 log-integer. Evidence base is thin---the structural Dedekind fit plus one reported program
-~\cite{hartnollyang2026}; the grade reflects attackability, not weight of evidence.\\
+~\cite{hartnollyang2026}; the grade reflects testability, not weight of evidence.\\
 $\mathsf{C2}$ &
 \emph{Arithmetic cutoff.} The physically realized arithmetic universe is a finite or
 effectively finite truncation (primes $\leq X$, occupations $\leq K$), geometrically
@@ -55,28 +55,29 @@ independent support. Risk: black-hole entropy log-corrections. The arithmetic mo
 $O(1)$ term's oscillation structure (sawtooth, non-convergent); mismatch with computed
 corrections (e.g.\ known $-\tfrac32\log A$ terms) falsifies the pure model.\\
 $\mathsf{C4}$ &
-\emph{Cascade/ETH, retyped.} The \emph{interacting} completion
+\emph{Cascade/ETH, interacting completion.} The \emph{interacting} completion
 $H_{\mathrm{tot}}^{(U,V)}=H_{P}+H_{W}+H_{\mathrm{hop}}+U\sum_{p<q}\hat n_{p}\hat n_{q}
 +V\sum_{p<q}(\hat n_{p}+\hat n_{q})(a_{p}^{\dagger}a_{q}+a_{q}^{\dagger}a_{p})$
 (diagonal or kinetic) thermalizes on the prime lattice:
 $\sigma_{\mathrm{ETH}}(D)\to0$ and diagonal $\to$ microcanonical along truncation
-sequences (Conj.~\ref{conj:cascade}). The bare $H_{\mathrm{tot}}$ is excluded as
-mis-typed (Remark~\ref{rem:numerics}). &
+sequences at fixed dose (Conj.~\ref{conj:cascade}). The bare $H_{\mathrm{tot}}$ is excluded
+(Remark~\ref{rem:numerics}). &
 A &
 C1 (int.) &
-\emph{Scaling criterion} (restated): ETH diagnostics along truncation sequences with
-$D\to\infty$ ---sparse eigen-windows to $D\approx2.4\times10^{4}$ (the diagonal-pivot
-factorization introduced for the kinetic family lifts the old $LU$-fill ceiling) and
-Krylov equilibration diagnostics to $D\approx10^{5}$;
+\emph{Scaling criterion}: ETH diagnostics along truncation sequences with $D\to\infty$ at
+fixed effective dose $VK^{2}$ --- sparse eigen-windows to $D=5.9\times10^{4}$ and Krylov
+equilibration to $D\approx10^{5}$;
 falsified if $\sigma_{\mathrm{ETH}}(D)$ never decays and $|\mathrm{diag}-\mathrm{micro}|$
-stays $O(1)$ for every interacting completion. Executed to date: the bare system is
+stays $O(1)$ for every interacting completion. Current evidence: the bare system is
 decided---structurally non-ergodic at all scales computed; the \emph{diagonal} quartic
-localizes monotonically ($\mathrm{PR}/D\to10^{-3}$); the \emph{kinetic} completion
-(\emph{tested}: one-term addition, validated to $10^{-15}$) is the first to equilibrate
-($|\mathrm{diag}-\mathrm{micro}|/K=0.004$ at $V\approx0.3$, $D\approx2\times10^{4}$,
-versus $0.10$ bare and $0.81$ quartic) with GOE statistics and delocalized eigenstates,
-but its $\sigma_{\mathrm{ETH}}/\mathrm{std}$ is flat at $0.94$--$0.99$ at every dose and
-scale, and strong dose ($VK^{2}\gtrsim80$) localizes it too. Level
+localizes monotonically ($\mathrm{PR}/D\to10^{-3}$); the \emph{kinetic} completion is the
+only one that relaxes (occupation falls from $K$ to $\approx3.5$ within $\tau\approx20$, GOE
+statistics, delocalized eigenstates at matched dose), and its finite-time plateau equals the
+diagonal ensemble exactly where the latter is computable ($D\leq10^{4}$,
+$|\,\mathrm{plateau}-\mathrm{diag}\,|/K\leq0.005$); but neither scaling leg is positive:
+$\sigma_{\mathrm{ETH}}/\mathrm{std}$ is flat at $0.95$--$0.98$ across $D=3375\to59319$ at
+matched dose, and the diagonal ensemble stays $0.04$--$0.09$ of $K$ away from microcanonical
+with no closing trend. Strong dose ($VK^{2}\gtrsim80$) localizes. Level
 statistics come free and positive (GOE at generic coupling, $\mathsf{C5}$); the
 weak-coupling $\langle r\rangle$ is quantile- and direction-dependent
 ($0.42$--$0.56$; Remark~\ref{rem:numerics}(a)), so $\mathrm{PR}/D$ is the robust
@@ -92,7 +93,7 @@ Compute pair correlations of quantized cosmological billiards; a proven non-GUE
 spectrum for the singularity sector falsifies; conversely, any rigorous Hilbert--P\'olya
 operator would confirm the bridge (and RH's spectral side). On the lattice model itself:
 GOE ratio statistics at generic coupling, verified numerically for $D=625$ to
-$D\approx2.4\times10^{4}$ (eigen-windows; equilibration diagnostics to $D\approx10^{5}$),
+$D=5.9\times10^{4}$ (eigen-windows; equilibration diagnostics to $D\approx10^{5}$),
 with a Poisson control at weak coupling (Remark~\ref{rem:numerics}).\\
 $\mathsf{C6}$ &
 \emph{Hagedorn wall as singularity resolution.} Approach to a spacetime singularity is
@@ -170,18 +171,18 @@ deterministically through the physical plane. But the register is \emph{two-plan
 mathematical plane, $\mathsf{C4}$, $\mathsf{C5}$, and the computational content of
 $\mathsf{C9}$ (find a number field matching a branching table) are autonomous problems
 that survive any verdict on $\mathsf{C1}$---which is precisely why they carry the register's
-cheapest attacks. $\mathsf{C4}$'s listed dependency on $\mathsf{C1}$ is interpretive, not
+most economical tests. $\mathsf{C4}$'s listed dependency on $\mathsf{C1}$ is interpretive, not
 logical: the arithmetic sector and $H_{\mathrm{tot}}^{(U,V)}$ exist unconditionally, so the
 thermalization problem is well-posed even if the spectral-identification program collapses.
 Second, four entries ($\mathsf{C1}$, $\mathsf{C3}$, $\mathsf{C4}$, $\mathsf{C5}$) have
-\emph{purely mathematical} attack routes: they can be advanced or refuted without any
-experiment. Third, the register is \emph{conservative relative to the source}: every claim
-the source asserted as established (``proves,'' ``rigorously forbids,'' ``dissolves'') appears
-here either as a theorem with its corrected content, or as a graded conjecture---never both.
+\emph{purely mathematical} test routes: they can be advanced or refuted without any
+experiment. Third, the register is conservative: no claim appears both as a theorem and as
+a graded conjecture; where a strong reading is available but unproved, only the graded
+conjecture is carried.
 
-\section{Falsifiability, Predictions, and Attack Paths}\label{sec:falsify}
+\section{Falsifiability, Predictions, and Test Programs}\label{sec:falsify}
 
-\subsection{What the reconstructed framework predicts that rivals do not}
+\subsection{What the framework predicts that rivals do not}
 
 \begin{enumerate}[leftmargin=1.6em]
 \item \emph{No proton decay, by construction.} The arithmetic GUT unifies through number
@@ -198,7 +199,7 @@ false-positive rate below $1\%$ (the divisor constraint is what saves the test; 
 form---each ratio near some rational---is vacuous because $\Qq$ is dense). Current tables
 (e.g.\ the $Z$-pole branching fractions, five channels) admit no such fit: the signature is
 absent below unification, exactly as $\mathsf{C9}$ requires, and no obtainable data set can
-decide the conjecture today. The attack validates and calibrates the instrument; the
+decide the conjecture today. The computation validates and calibrates the instrument; the
 purchase waits on unification-scale data.
 \item \emph{A single new scale.} The framework has exactly one dimensionful parameter,
 $\omega_{0}$, with $T_{H}=\hbar\omega_{0}/k_{B}$. Every other number in the physics layer
@@ -219,36 +220,41 @@ fix where our universe sits among these layers---a prediction in the sense that 
 mechanism cannot be indifferent.
 \end{enumerate}
 
-\subsection{Mathematical attack paths}
+\subsection{Mathematical test programs}
 
 Four problems, in increasing order of depth, would each move multiple register entries:
 \begin{enumerate}[leftmargin=1.6em]
 \item \emph{Prove or refute thermalization for $H_{\mathrm{tot}}^{(U,V)}$ on finite
 truncations} ($\mathsf{C4}$): a numerical program of ETH tests along the prime
 lattice, directly analogous to established kicked-rotor and Bose--Hubbard studies;
-every ingredient is finite-dimensional and computable. The program has now been run
+every ingredient is finite-dimensional and computable. The program has been carried out
 at three scales and for both completions: dense diagonalization to $D=4096$, sparse
-shift-invert eigen-windows to $D=2.4\times10^{4}$, and Krylov equilibration to
+shift-invert eigen-windows to $D=5.9\times10^{4}$, and Krylov equilibration to
 $D\approx10^{5}$---all laptop-scale (minutes per configuration; the interior
 eigensolver tier is bounded by $LU$ fill, the evolution tier only by $D\tau$; diagonal
 pivoting, needed for the kinetic family, cut the generic factorization from $257$\,s
-to $3$\,s with eigenpair residuals $\leq1.2\times10^{-7}$). Verdict so far: level
+to $3$\,s with eigenpair residuals $\leq6\times10^{-8}$). Verdict: level
 statistics GOE at generic coupling throughout; every \emph{eigenstate} ETH diagnostic
 flat in $D$ ($\sigma_{\mathrm{ETH}}/\mathrm{std}\approx0.95$ for the bare, quartic, and
-kinetic systems alike); the diagonal quartic completion localizes monotonically in
-$U$; the kinetic completion (density-assisted hopping, tested as a one-term addition
-validated to $10^{-15}$) is the first to equilibrate---$|\mathrm{diag}-
-\mathrm{micro}|/K=0.004$ at $V\approx0.3$, $D\approx2\times10^{4}$, with GOE
-statistics and delocalized eigenstates---though it is dose-limited (localizing at
-$VK^{2}\gtrsim80$) and its equilibration leg is horizon-limited beyond
-$D\approx5\times10^{4}$. The scaling falsifier is armed on the strong-ETH leg and
-still unfalsified there; the equilibration leg now has its first positive evidence.
+kinetic systems alike, at matched dose across $D=3375\to59319$); the diagonal quartic
+completion localizes monotonically in
+$U$; the kinetic completion (density-assisted hopping, Hermitian and number-conserving,
+validated to $10^{-15}$) is the only one that relaxes---fast initial decay to
+$\approx3.5$ within $\tau\approx20$ with GOE statistics and delocalized eigenstates,
+and a finite-time plateau that equals the diagonal ensemble exactly where the latter is
+computable ($D\leq10^{4}$)---but the diagonal ensemble itself stays $0.04$--$0.09$ of
+$K$ from the microcanonical value at matched dose with no closing trend, and the
+$D=20736$ trajectory extended to $\tau=300$ saturates at $\langle\hat
+n_{d}\rangle_{\mathrm{diag}}\approx4.40$ against a microcanonical value of $3.35$. The
+strong-ETH leg is flat at every accessible scale; the equilibration leg requires the
+$D\to\infty$ limit of the diagonal ensemble, which shows no convergence at accessible
+scales.
 \item \emph{Compute the level statistics of the interacting arithmetic Hamiltonian and
 compare with GUE} ($\mathsf{C5}$): the prime lattice with log-spaced on-site energies is a
 banded, incommensurate system; its statistics are accessible by dense-diagonalization
 experiments and by Dyson--Brownian-motion arguments. The banded-incommensurate claim
 is verified numerically at every scale computed: GOE ratio statistics
-($\langle r\rangle=0.51$--$0.54$) from $D=625$ to $2.4\times10^{4}$ at generic
+($\langle r\rangle=0.45$--$0.58$) from $D=625$ to $5.9\times10^{4}$ at generic
 coupling, with the weak-coupling limit identifiable by $\mathrm{PR}/D\to10^{-4}$
 ---though whether the correspondence is GOE or GUE in the infinite limit is exactly
 what finite windows cannot decide ($\langle r\rangle$ separates GOE from GUE by
@@ -265,17 +271,18 @@ one instance would convert the dictionary from analogy to theory; the search spa
 computable and finite for any fixed table.
 \end{enumerate}
 
-\subsection{The honest bottom line}
+\subsection{Assessment}
 
-The reconstructed framework now satisfies the three standards the source set for itself and
-did not previously meet. Its mathematical core is genuinely theorem-grade: the spectrum, the
+The framework now satisfies three standards. Its mathematical core is genuinely theorem-grade: the
+spectrum, the
 partition function, the Hagedorn asymptotics, the counting law, the clock kernel, the
-no-periodicity theorem, and the entanglement structure are proved, with all repairs
-documented. Its analogies are tightened: every ``X is like Y'' of the source is now either
-a citable theorem about X and Y (Kronecker--Weber, Chebotarev, Erd\H{o}s--Kac, P\'olya,
+no-periodicity theorem, and the entanglement structure are proved. Its analogies are
+tightened: every structural analogy is either
+a citable theorem (Kronecker--Weber, Chebotarev, Erd\H{o}s--Kac, P\'olya,
 Bohr) or an explicit register entry. And its remaining ambition---that the primes order the
 spectrum of spacetime itself---is stated in a form precise enough to be wrong:
 $\mathsf{C1}$ through $\mathsf{C12}$ name their evidence, their dependencies, and their
-falsifiers. A framework that can be wrong in stated ways is a research program; one that
-cannot is a metaphor. The reconstruction's purpose is to have moved this one across that
-line.
+falsifiers, and the two numerically testable entries ($\mathsf{C4}$, $\mathsf{C9}$) carry
+carried-out programs with stated uncertainties. A framework that can be wrong in stated
+ways is a research program; one that
+cannot is a metaphor.

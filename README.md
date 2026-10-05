@@ -1,7 +1,8 @@
 # Prime Numbers in Physics — The Prime-Spectral Framework
 
 Repository persisting the full research line: the 48-turn source conversation
-("Prime Numbers and Universe", Qwen, October 2026) and its rigorous reconstruction.
+("Prime Numbers and Universe", Qwen, October 2026), the research paper built
+from it, and the complete numerical program for its conjecture register.
 
 ## Contents
 
@@ -9,51 +10,64 @@ Repository persisting the full research line: the 48-turn source conversation
 |---|---|
 | `transcript/qwen_chat_transcript_full.txt` | Full 48-turn source transcript (9,891 lines) |
 | `transcript/*.json` | Raw DOM extraction (user turns, assistant turns, page data) |
-| `paper/latex/` | LaTeX sources of the reconstructed paper (Tectonic) |
+| `paper/latex/` | LaTeX sources of the paper (Tectonic) |
 | `paper/output/prime_spectral_framework_rigorous_reconstruction.pdf` | **Main deliverable** — the research paper |
 | `paper/output/prime_spectral_framework_cover.html` | Cover page source (HTML/Playwright, Template 03) |
-| `pilots/` | **Executed register attacks**: C4-ETH simulations (dense pilot + sparse scaled run to D≈10⁵) and C9-Chebotarev protocol calibration — scripts, results, figures |
+| `pilots/` | **Numerical programs for the register**: C4-ETH (dense pilot, sparse scaled run, kinetic completion, matched-dose ladder) and C9-Chebotarev protocol calibration — scripts, results, figures |
 | `review/` | **Conjecture-register review** (§10 audit that located the repairs folded into the paper) |
 | `scripts/merge_transcript.py` | Transcript merge pipeline |
 | `worklog.md` | Multi-agent work log |
 
-## The reconstruction
+## The paper
 
-The paper elevates, repairs, and demotes the source framework:
+The paper develops the prime-spectral framework in three epistemic tiers:
 
-- **Elevated to theorems**: primon Hilbert space as l2(F); self-adjoint primon
-  Hamiltonian with simple spectrum hbar*omega0*log n; partition function = zeta;
-  Hagedorn temperature T_H = hbar*omega0/kB with exact asymptotics; log-count law
-  S(E) = E/T_H + O(1); Erdos-Kac cascade statistics; zeta clock kernel and its
-  Bohr almost-periodicity; uniform recurrence of the free flow.
-- **Repaired**: frozen-Hamiltonian gap (multiplication operators, prime lattice,
-  walk/hop dynamics); composite-!=-entangled correction (occupation basis is a
-  product basis; arithmetic entanglement is superpositional); recurrence claims
-  (exact periodicity forbidden; epsilon-recurrence universal; Polya transience).
-- **Demoted to conjectures**: C1-C12 register with evidence grades, dependencies,
-  and falsifiers — from the zeta/black-hole identification to the Galois-Langlands
-  dictionary. C1 is the root on the physical plane; C4, C5 and C9's computational
-  content are autonomous mathematical problems (two-plane register).
+- **Theorems** (proved or cited exactly): primon Hilbert space as l2(F);
+  self-adjoint primon Hamiltonian with simple spectrum hbar*omega0*log n;
+  partition function = zeta; Hagedorn temperature T_H = hbar*omega0/kB with
+  exact asymptotics; log-count law S(E) = E/T_H + O(1); Erdos-Kac cascade
+  statistics; zeta clock kernel and its Bohr almost-periodicity; uniform
+  recurrence of the free flow; product-basis structure of occupation states.
+- **Constructions**: the interaction sector (multiplication operators, prime
+  lattice, walk/hop dynamics, diagonal and kinetic completions); arithmetic
+  entanglement across prime-mode bipartitions; the recurrence trichotomy.
+- **Conjectures C1-C12** with evidence grades, dependencies, and falsifiers —
+  from the zeta/black-hole identification to the Galois-Langlands dictionary.
+  C1 is the root on the physical plane; C4, C5 and C9's computational content
+  are autonomous mathematical problems (two-plane register).
 
-## Register review and executed attacks
+## Numerical programs
 
-A line-level audit of the conjecture register (`review/conjecture_register_review.md`)
-found one genuine error and several hygiene defects, all folded back into the paper:
+- **C4-ETH** (`pilots/c4_eth/`): dense pilot (D=625-4096); sparse
+  shift-invert eigen-windows (350 interior eigenpairs, eigenpair-residual
+  certified) to D=59,319 in d=3; restarted-Lanczos Krylov equilibration to
+  D≈10^5 (step size from a Lanczos-estimated spectral radius, validated
+  against exact propagation to 1e-12); the kinetic (density-assisted hopping)
+  completion; and the **matched-dose ladder** at fixed effective coupling
+  VK^2≈36, which removes the dose confound while the truncation widens
+  (D=3,375→59,319 in d=3, D=4,096→20,736 in d=4).
+  Verdicts: level statistics GOE at generic coupling everywhere; the
+  eigenstate fluctuation ratio sigma_ETH/std(a) is flat (0.95-0.98) across the
+  whole ladder — no strong-ETH scaling; at D≤10^4 the finite-time plateau
+  equals the exact diagonal ensemble to 0.005·K (dephasing identity), but the
+  diagonal ensemble itself stays 0.04-0.09·K away from microcanonical with no
+  closing trend; the D=20,736 V=0.3 trajectory extended to tau=300 saturates
+  at diag≈4.40 vs micro 3.35 — the short-horizon (tau≤22) agreement with
+  microcanonical was a transient.
+- **C9-Chebotarev** (`pilots/c9_chebotarev/`): dictionary-protocol
+  calibration in under 30 s; Z-pole data admit no common-group-order fit —
+  the signature is absent below unification, as C9 requires.
 
-- **Conservation structure corrected**: `H_W` does *not* conserve the total primon
-  number — it is the nucleation sector (contradicted the nucleation proposition);
-  commutator coefficients in Prop. well-posedness fixed.
-- **C4 retyped**: the bare `H_tot` has no quartic sector (quasi-single-particle on the
-  exponent lattice) — thermalization is now conjectured for an interacting completion,
-  with a finite-size *scaling* falsifier instead of an unfalsifiable E→∞ statement.
-- **C9 falsifier recalibrated**: Monte-Carlo-calibrated common-group-order divisor
-  protocol (≥5 channels, σ≤0.3%, |G|≲ few·10²); Z-pole data admits no fit — the
-  signature is absent below unification, as C9 requires.
-- **Dependencies column added** to the register; two-plane (physical/mathematical) DAG.
+See `pilots/README.md` for per-program detail.
 
-Both "cheapest attacks" were *executed* (`pilots/`): the C4-ETH program from D=625
-(dense) to D≈10⁵ (sparse interior eigensolvers, laptop-scale), and the C9-Chebotarev
-dictionary check in under 30 seconds. See `pilots/README.md`.
+## Register review
+
+A line-level audit of the conjecture register
+(`review/conjecture_register_review.md`) located one genuine error and
+several hygiene defects, all folded back into the paper: conservation
+structure corrected (H_W is the nucleation sector); C4 retyped to the
+interacting completion with a scaling falsifier; C9 falsifier recalibrated;
+dependencies column and two-plane DAG added.
 
 ## License
 

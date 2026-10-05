@@ -1,0 +1,27 @@
+{
+ "tag": "L36d4K13",
+ "d": 4,
+ "K": 13,
+ "g0": 1.5,
+ "h0": 1.0,
+ "U": 0.0,
+ "seed": 7,
+ "k": 350,
+ "ncv": 450,
+ "V": 0.2130178,
+ "D": 38416,
+ "nnz_H": 721280,
+ "t_build": 0.09,
+ "g": [
+  1.6126,
+  1.8575,
+  1.7481,
+  1.2527
+ ],
+ "sigma": 34.75619894966354,
+ "sigma_quantile": 0.5,
+ "tier": "evolve-only (splu failed: SystemError)",
+ "window": null,
+ "splu_error": "gstrf was called with invalid arguments",
+ "peak_rss_mb": 2470.3
+}
