@@ -325,3 +325,80 @@ window), σ-quantile swept over the whole DOS:
 3. C9 k=7 Z-granularity variant needs a frozen PDG extract (protocol update).
 4. kappa at D > 6e4 (window tier LU-limited); a Krylov-tier estimator of the
    eigenstate fluctuation would extend the ladder.
+
+# Task 9: the three residuals (falsifier split, self-adjointness, Krylov kappa)
+
+## A. Math/physical falsifier separation (residual 1)
+
+- Register falsifier column typed: M (proof / certified computation),
+  P (measured data), M/P; legend in the section 10 preamble, markers in
+  every row, closing observation updated (8 of 12 entries M-decidable).
+- New section 11 subsection "Falsifier classes" (sec:classes): class
+  definitions (noiseless/repeatable vs statistical/one-shot), a 12-row
+  classification table (entry / class / decisive instance / uncertainty),
+  and the structural observation that the framework's falsifier surface is
+  predominantly mathematical while the physical surface is concentrated,
+  dated, and pre-registered.
+- New subsection "Physical test programs" (sec:physical): proton decay
+  (dated), unification-scale precision branching (frozen protocol), CMB
+  low-entropy statistics (C7/C8), scale identification (C11 input side) -
+  each with its data source and decision instrument; the mathematical
+  programs subsection renumbered (sec:mathprograms). Assessment updated.
+
+## B. Infinite-volume self-adjointness (residual 2)
+
+- Prop wellposed repaired: a_p^dag a_q is unbounded on l^2(F) (matrix
+  elements ~ occupation); the proof route is now the occupation-sector
+  decomposition, not a boundedness claim, and the domain statement is the
+  closure of H_P + H_hop (Kato-Rellich with bounded H_W only).
+- New Proposition (prop:sector, occupation sectors): (i) H_nc^(U,V) =
+  H_P + H_U + H_hop + H_kin commutes with N_tot and the outside-mode
+  occupations; orthogonal direct sum of finite Hermitian blocks of
+  dimension C(S+d-1, d-1); the kinetic block is Hermitian by bond-reversal
+  weight invariance ((n_p + n_q) commutes with the hop); row-sum norm
+  bound ||H_kin^(S)|| <= |V|(d-1)S(S+1). (ii) Essential self-adjointness
+  on the finitely supported configurations; H_tot^(U,V) self-adjoint for
+  every U, V (Kato-Rellich, relative bound 0). (iii) Box truncations exact
+  on contained sectors (H_W = 0); Trotter-Kato uniform strong convergence
+  with the walk. Proof sketch + numerical corroboration (28/28 checks,
+  c4_sector_checks.py: Hermiticity 0.0e+00, norm bound satisfied with the
+  expected slack, box-exactness 7e-15, walk control leaks).
+- New Remark (rem:modecount): the d -> infinity limit is singular - the
+  hops reach infinitely many unoccupied modes with matrix elements
+  sqrt(k_q) >= 1, so a finite mode cutoff is an ingredient of the
+  conjecture, not an optional regularization.
+
+## C. Krylov-tier kappa estimator (residual 4 of task 8)
+
+- c4_kappa_krylov.py: block Chebyshev subspace iteration on (H-c)^2,
+  passband by stochastic Lanczos quadrature (block-independent - the Ritz
+  count cannot see past the block boundary), float32 filtering + float64
+  polish, residual certification, resumable degree-chunk checkpoints.
+- En-route engineering findings: the boundary of a contiguous interior
+  block never converges (selection is converged-only); the Lanczos count
+  probe needs ~360 steps at relative band widths ~1/200 (100 steps bias
+  +30-70%, 250 steps +10%, 360 steps < 2% vs dense ground truth); the
+  float32 residual floor grows with ||H|| sqrt(M) x amplification
+  contrast, so the discovery phase is count-based (span inclusion) and
+  only the polish phase certifies; the spectral radius is dose-pinned
+  (R ~ 570 at VK^2 = 36, d = 4: fully occupied corners), which sets the
+  degree wall.
+- Validation (4 platforms vs LU): machine-precision eigenvalue sets at
+  D = 9.3e3, 1e4 (max |dlambda| <= 4e-11), kappa ratio 1.006 at 6.9e3,
+  289/350 certified at 2.4e4 with kappa within 2.4% (central-subset bias
+  measured, not assumed).
+- Extension: L36d4K13, D = 3.84e4 (first LU-infeasible 4D point), M = 3400,
+  14 sweeps: kappa = 0.250 (276/350 certified, resid <= 1.8e-6, <r> =
+  0.511, PR/D = 0.148). d=4 ladder 0.449 -> 0.367 -> 0.313 -> 0.250;
+  four-point fit kappa ~ D^{-0.255} (3-point -0.222); benchmark distance
+  7.2 -> 7.8. Subset-bias-corrected kappa ~ 0.256. The slow decay
+  persists past the LU ceiling.
+- Cost ceiling: total filter work ~ ln(eps) R/(2t) block-matvecs; at fixed
+  dose R is constant and t ~ 1/D, so the degree grows linearly in D - the
+  LU fill ceiling (2.1e4 in d=4) is replaced by a compute-degree ceiling
+  ~ one rung higher (hours per configuration here). K15/K17 4D and K42+ 3D
+  remain beyond this platform's budget; the machinery is in place.
+
+Paper: 51 pp body (0 overfull, 0 undefined, 330 links); manuscript.tex
+regenerated and verified to compile identically; final.pdf 52 pp with
+cover. fig_c4_strongeth.png regenerated with the Krylov-tier point.

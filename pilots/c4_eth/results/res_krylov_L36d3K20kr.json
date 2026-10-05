@@ -1,0 +1,55 @@
+{
+ "tag": "L36d3K20kr",
+ "d": 3,
+ "K": 20,
+ "D": 9261,
+ "g0": 1.5,
+ "h0": 1.0,
+ "U": 0.0,
+ "seed": 7,
+ "V": 0.09,
+ "scramble": false,
+ "k": 350,
+ "s": 416,
+ "sigma": 34.011973816621555,
+ "sigma_quantile": 0.5,
+ "method": {
+  "filter_dtype": "float32+f64 polish",
+  "m_chunk": 90,
+  "t": 3.2523794088713704,
+  "R": 346.41773417446285,
+  "edges": [
+   -103.54137755788156,
+   380.4297079910844
+  ],
+  "M": 817,
+  "count_est": 424.32132123558006,
+  "sweeps": 8,
+  "matmats_total": 17728,
+  "filter_matmats_this_run": 14400,
+  "wall_s": 353.3,
+  "converged": true,
+  "n_conv_band": 364,
+  "count_in_band": 406,
+  "phase": 1
+ },
+ "n_certified": 350,
+ "tier": "krylov-window",
+ "window": [
+  31.27725626329264,
+  36.75341797109277
+ ],
+ "band_est": [
+  0.0,
+  68.02394763324311
+ ],
+ "eig_resid_max": 2.536217587075366e-08,
+ "eig_resid_med": 1.756053617839125e-13,
+ "r_mean": 0.49613870697440804,
+ "r_sem": 0.017904520664826385,
+ "sigma_eth": 2.7076527530505485,
+ "sigma_eth_d": 2.4819969402413085,
+ "micro_rmse": 1.554867515977256,
+ "micro_rmse_d": 1.4683313757418177,
+ "pr_over_D": 0.10927770007663853
+}

@@ -110,3 +110,38 @@ Two register entries carry completed test programs with power statements:
 
 A single-file LaTeX manuscript (`paper/latex/manuscript.tex`) is generated
 from the modular sources and verified to compile identically (47 pp).
+
+## Residual items closed (this revision)
+
+- **Falsifier classes (math/physical split).** The conjecture register's
+  falsifier column is typed: M (decidable by proof or certified finite
+  computation), P (decidable by measured data), M/P; 8 of 12 entries are
+  decidable without any experiment, the physical surface is concentrated in
+  C9 (proton decay, precision branching) and C7-C8 (cosmological
+  statistics). Section 11 develops the classification, the epistemic
+  distinction (noiseless/repeatable vs statistical/one-shot), and the
+  pre-registration discipline it imposes on the physical side.
+- **Infinite-volume self-adjointness of the kinetic completion.** A
+  proposition (occupation sectors) proves essential self-adjointness of
+  H_P + H_U + H_hop + H_kin(V) on the finitely supported configurations
+  via the N_tot-conserving sector decomposition (finite Hermitian blocks;
+  bond-reversal weight invariance), self-adjointness of the full
+  H_tot^(U,V) by Kato-Rellich with the bounded H_W (no coupling
+  smallness), exactness of box truncations on contained sectors, and
+  Trotter-Kato convergence in general; the d -> infinity mode-count limit
+  is shown to be singular. Corroborated by 28/28 numerical sector checks
+  (`pilots/c4_eth/c4_sector_checks.py`).
+- **Factorization-free kappa ladder past the LU ceiling.** A block
+  Chebyshev subspace-iteration window tier (on (H-c)^2, passband sized by
+  stochastic Lanczos quadrature, residual-certified pairs) reproduces the
+  LU windows to machine precision (max |dlambda| <= 4e-11) and extends the
+  d=4 fluctuation ladder to D = 3.84e4, past the LU fill ceiling: kappa =
+  0.250 (276/350 pairs certified), four-point fit D^{-0.255} vs thermal
+  D^{-1/2}, benchmark distance still growing. The tier's own ceiling is
+  quantitative: Chebyshev degree ~ ln(eps) R/(2t) with the dose-pinned
+  radius R ~ 570 (VK^2 = 36, d = 4), i.e. degree growing linearly in D at
+  fixed protocol (`pilots/c4_eth/c4_kappa_krylov.py`).
+
+The single-file LaTeX manuscript (`paper/latex/manuscript.tex`) is
+regenerated from the modular sources and verified to compile identically
+(51 pp body).

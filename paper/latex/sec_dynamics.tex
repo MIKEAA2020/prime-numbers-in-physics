@@ -106,12 +106,14 @@ H_{\mathrm{hop}}(P_{f},h)\;=\;\sum_{p\neq q\in P_{f}}h_{pq}
 \end{equation}
 
 \begin{proposition}[Well-posed interacting dynamics]\label{prop:wellposed}
-For finite $P_{f}$, $H_{W}$ and $H_{\mathrm{hop}}$ are bounded and self-adjoint. The full
-Hamiltonian
+For finite $P_{f}$, $H_{W}$ is bounded and self-adjoint, and the number-conserving part
+$H_{P}+H_{\mathrm{hop}}$ is essentially self-adjoint on the finitely supported configurations
+(Proposition~\ref{prop:sector}). The full Hamiltonian
 \begin{equation}\label{eq:fullH}
 H_{\mathrm{tot}}=H_{P}+H_{W}+H_{\mathrm{hop}}
 \end{equation}
-is self-adjoint on the domain of $H_{P}$ (Kato--Rellich), and
+is self-adjoint on the domain of the closure of $H_{P}+H_{\mathrm{hop}}$ (Kato--Rellich, the
+bounded $H_{W}$ being a relative-bound-zero perturbation), and
 $[H_{\mathrm{tot}},\Nhat]\neq0$: the dynamics generates genuine transitions
 \begin{equation}
 \bra{m}H_{W}\ket{k}\neq 0 \iff m/k\in\{p,p^{-1}\}\ \text{for some }p\in P_{f},
@@ -121,9 +123,13 @@ i.e. precisely the edges of the \emph{divisibility graph} of $\Nn$ restricted to
 
 \begin{proof}
 Each $M_{p}$ is bounded with norm $1$ (Proposition~\ref{prop:monoidrep}); a finite sum of
-bounded self-adjoint operators is bounded self-adjoint. $a_{p}^{\dagger}a_{q}$ is bounded
-(particle-number preserving hop). $H_{\mathrm{tot}}$ is a bounded perturbation of the
-self-adjoint $H_{P}$, hence self-adjoint on $D(H_{P})$. Non-commutation:
+bounded self-adjoint operators is bounded self-adjoint, so $H_{W}$ is bounded. The hop
+$a_{p}^{\dagger}a_{q}$ is number-conserving but \emph{unbounded} on $\ell^{2}(\mathcal{F})$ (its
+matrix elements $\sqrt{(k_{p}+1)k_{q}}$ grow linearly with the occupation), so it is not a
+bounded perturbation of $H_{P}$; its self-adjointness is instead a consequence of the
+occupation-sector decomposition of Proposition~\ref{prop:sector}, which applies verbatim to
+$H_{P}+H_{\mathrm{hop}}$. $H_{\mathrm{tot}}$ is then a bounded perturbation of the self-adjoint
+closure of $H_{P}+H_{\mathrm{hop}}$, hence self-adjoint on its domain. Non-commutation:
 $M_{p}$ changes the eigenvalue of $\Nhat$ from $n$ to $np$, and a direct computation gives
 \begin{equation}
 [H_{W},\Nhat]\ket{n}=\sum_{p}g_{p}\,n\Bigl(-(p-1)\ket{np}+\bigl(1-\tfrac{1}{p}\bigr)\,\mathbf{1}_{p\mid n}\ket{n/p}\Bigr)\neq0
@@ -250,7 +256,82 @@ test. The two completions in \eqref{eq:completions} are not equivalent and the
 difference matters: the $U$ term is a diagonal potential on the exponent lattice (a
 Wannier--Stark-type renderer, as the data confirm), while the $V$ term is the
 Bose--Hubbard-type \emph{density-assisted hopping} known from the interacting-boson
-literature---quartic yet kinetic. The two are distinguished by computation:
+literature---quartic yet kinetic. Before the numerical program, the well-posedness of the
+kinetic completion itself:
+
+\begin{proposition}[Occupation sectors; self-adjointness of the completions]\label{prop:sector}
+Fix a finite active set $P_{f}$ ($d$ modes), real couplings $h$, $U$, $V$, and let
+$\Hil_{\mathcal{A}}=\ell^{2}(\mathcal{F})$.
+\begin{enumerate}[leftmargin=1.6em]
+\item The number-conserving part
+$H_{\mathrm{nc}}^{(U,V)}=H_{P}+U\sum_{p<q}\hat n_{p}\hat n_{q}+H_{\mathrm{hop}}+V\sum_{p<q}
+(\hat n_{p}+\hat n_{q})(a_{p}^{\dagger}a_{q}+a_{q}^{\dagger}a_{p})$
+commutes with $\Nhat_{\mathrm{tot}}$ and with $\hat n_{q}$ for every $q\notin P_{f}$: it
+decomposes as an orthogonal direct sum of finite-dimensional blocks $H^{(\kappa,S)}$, indexed
+by the occupations $\kappa$ outside $P_{f}$ and the total occupation $S$ inside $P_{f}$, of
+dimension $\binom{S+d-1}{d-1}$. Each block is Hermitian; for the kinetic term this is the
+bond-reversal invariance of its weight: a hop raises $k_{p}$ by one and lowers $k_{q}$ by
+one, so $(\hat n_{p}+\hat n_{q})$ commutes with $a_{p}^{\dagger}a_{q}$ and the matrix
+elements $V(k_{p}+k_{q})\sqrt{(k_{p}+1)k_{q}}$ are symmetric across every bond. The sector
+norms obey the row-sum bound
+$\|H_{\mathrm{kin}}^{(S)}\|\leq|V|(d-1)S(S+1)$.
+\item $H_{\mathrm{nc}}^{(U,V)}$ is essentially self-adjoint on the finitely supported
+configurations; its closure is the direct sum of the blocks with maximal domain
+$\{\psi:\sum_{\kappa,S}\|H^{(\kappa,S)}\psi_{\kappa,S}\|^{2}<\infty\}$. Since $H_{W}$ is
+bounded (Proposition~\ref{prop:wellposed}), the full interacting completion
+$H_{\mathrm{tot}}^{(U,V)}$ of \eqref{eq:completions} is self-adjoint on that domain for
+every $U,V\in\Rr$ (Kato--Rellich, relative bound zero): no smallness condition on the
+couplings is needed.
+\item \emph{Box truncations.} Let $H^{(K)}$ be the restriction of
+$H_{\mathrm{tot}}^{(U,V)}$ to the box $\{k_{p}\leq K\}$. Every sector with $S\leq K$ lies
+entirely inside the box, and the sectors are invariant under the number-conserving part, so
+for $H_{W}=0$ the truncated dynamics is \emph{exact} on each such sector,
+\begin{equation*}
+e^{-i\tau H^{(K)}}\psi=e^{-i\tau H_{\mathrm{nc}}^{(U,V)}}\psi ,
+\end{equation*}
+for every state $\psi$
+supported in a sector $S\leq K$ and all $\tau$. With $H_{W}\neq0$ the sectors mix through the
+walk, and the truncated propagators converge to the untruncated one strongly, uniformly on
+compact $\tau$-intervals: the finitely supported configurations are a core for
+$H_{\mathrm{tot}}^{(U,V)}$ on which the truncations stabilize, and Trotter--Kato transfers
+the convergence to the resolvents and hence to the propagators.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}[Proof sketch]
+(i) The conservation identities are immediate from the ladder algebra; finiteness of the
+sectors is the finiteness of $\{k\in\Nn^{d}:\sum k_{p}=S\}$; Hermiticity and the norm bound
+follow from the displayed matrix elements (each row of a sector block carries at most
+$2\binom{d}{2}$ bonds of weight at most $(k_{p}+k_{q})(k_{p}+k_{q}+1)/2\leq S(S+1)/2$, and
+$\sum_{p<q}(k_{p}+k_{q})\leq(d-1)S$). (ii) A direct sum of finite Hermitian blocks is
+self-adjoint on its maximal domain, and the algebraic direct sum of the block spaces---the
+finitely supported configurations---is a core. (iii) For $H_{W}=0$ the block containing
+$\psi$ is contained in the box, both propagators act as the same finite matrix on it, and
+the orthogonal blocks are untouched. For the general case, each term maps the finitely
+supported configurations into themselves, so $H^{(K)}\psi=H\psi$ once $K$ exceeds the
+support of $\psi$; Trotter--Kato (the sequence of self-adjoint truncations with uniformly
+bounded resolvents converging on a core) yields strong resolvent convergence and hence the
+uniform strong convergence of $e^{-i\tau H^{(K)}}$ on compact $\tau$-intervals.
+\end{proof}
+
+The sector structure is corroborated numerically at the assembly level: every extracted
+sector block is Hermitian to machine precision and satisfies the norm bound for $S\leq12$
+at $d=3,4$; the box-exactness of sector-supported dynamics holds to $7\times10^{-15}$
+across truncations, while the walk control ($g\neq0$) leaks out of the sector exactly as
+$H_{W}$'s non-conservation requires (Remark~\ref{rem:conservation}).
+
+\begin{remark}[The mode-count limit is singular]\label{rem:modecount}
+For an infinite active set the interacting terms do not define operators on
+$\ell^{2}(\mathcal{F})$ at all: from any configuration with $k_{q}\geq1$, the hop
+$a_{p}^{\dagger}a_{q}$ reaches every unoccupied mode $p\notin\mathrm{supp}(k)$ with matrix
+element $\sqrt{k_{q}}\geq1$, so $a_{p}^{\dagger}a_{q}\psi\notin\ell^{2}$ for every nonzero
+finitely supported $\psi$ with occupation. The interacting theory therefore requires a
+finite mode cutoff $P_{f}$---an ingredient of the conjecture, not an optional
+regularization---and any $d\to\infty$ limit demands coupling decay across modes. The free
+$H_{P}$, in contrast, is defined for all primes simultaneously.
+\end{remark}
+
+The two completions are distinguished by computation:
 
 \begin{remark}[Numerical status of the cascade conjecture]\label{rem:numerics}
 Conjecture~\ref{conj:cascade} has been tested by dense diagonalization at $D\leq4096$; by
@@ -384,7 +465,10 @@ $\mathrm{std}_{\mathrm{basis}}=\sqrt{K(K+2)/12}$:
 $\kappa=\sigma_{\mathrm{ETH}}/\mathrm{std}_{\mathrm{basis}}$. Along the matched-dose
 ladders $\kappa$ is $O(1)$ and decays slowly: $0.50\to0.29$ at $d=3$
 ($D=3375\to59319$), a fitted power law $\kappa\propto D^{-0.185\pm0.021}$ ($n=9$,
-$R^{2}=0.92$), and $D^{-0.222\pm0.003}$ at $d=4$ ($D=4096\to20736$); exact full-spectrum
+$R^{2}=0.92$), and $D^{-0.222\pm0.003}$ at $d=4$ on the three $LU$ points
+($D=4096\to20736$), extended to a four-point fit $D^{-0.255}$ by the
+factorization-free tier at $D=3.84\times10^{4}$ (item (i); $\kappa=0.250$, $276$ certified
+pairs); exact full-spectrum
 diagonalizations reproduce the window protocol to $\leq11\%$ and give consistent
 fixed-fraction exponents ($-0.10$ at $d=3$, $D\leq9261$; $-0.21$ at $d=4$, $D\leq10^{4}$).
 Two calibrated benchmarks locate the decay (Figure~\ref{fig:strongeth}). Strong ETH predicts
@@ -412,6 +496,38 @@ the fluctuation decays two and a half times more slowly than the thermal scaling
 distance from the fixed-fraction benchmark grows by a factor $\approx2.5$; a pre-asymptotic
 crossover at larger $D$ cannot be excluded (item (g)), but no trend toward it is visible in
 the computed range.
+(i) \emph{A factorization-free window tier, and where its own ceiling sits.} The window
+diagnostic is bounded by $LU$ fill; the same $k=350$ median-energy eigenpairs can be
+computed without any factorization by block Chebyshev subspace iteration on
+$B=(H-c)^{2}$, where $c$ is the density-of-states median (the shift-invert target: the
+smallest eigenvalues of $B$ are the eigenvalues of $H$ nearest $c$). A low-pass Chebyshev
+$T_{M}(\xi(B))$, $\xi(b)=1+2(b_{w}-b)/(b_{\mathrm{high}}-b_{w})$, amplifies the passband
+$\pm t$ (holding the block, sized by stochastic Lanczos quadrature with $8$--$12$ probes
+of $360$ fully reorthogonalized Lanczos steps---the block itself cannot see past its own
+boundary) against a stopband bounded by $1$; Rayleigh--Ritz in float64 follows every
+sweep, filtering runs in float32 with a float64 polish, and every selected pair is
+certified by its residual. Validated against the $LU$ tier at four platforms: the
+eigenvalue sets agree to machine precision where both run ($\max|\Delta\lambda|\leq
+4\times10^{-11}$ at $D=9.3\times10^{3}$ and $10^{4}$; $\kappa$ within $0.6\%$ at
+$D=6.9\times10^{3}$), and at the near-ceiling platform $D=2.4\times10^{4}$ the tier
+certified $289$ of $350$ pairs within its sweep budget with $\kappa$ within $2.4\%$ (the
+certified subset is central, and its bias is measured, not assumed). Applied to the first
+$LU$-infeasible $d=4$ platform ($K=13$, $D=3.84\times10^{4}$, degree $M=3400$), it
+certifies $276$ pairs at residuals $\leq1.8\times10^{-6}$ with GOE statistics
+($\langle r\rangle=0.511$) and gives $\kappa=0.250$ (the subset bias of $2$--$3\%$ raises
+this to $\approx0.256$): the $d=4$ ladder now reads
+$0.449\to0.367\to0.313\to0.250$ over $D=4096\to38416$, a four-point fit
+$\kappa\propto D^{-0.255}$ against the thermal $D^{-1/2}$, with the distance from the
+fixed-fraction benchmark still growing ($\kappa/B_{\mathrm{frac}}$: $7.2\to7.8$) past
+the $LU$ ceiling. The tier's own ceiling is quantitative: its cost is governed by the
+Chebyshev degree $M\approx\ln(\varepsilon)\,R/(2t)$, and on this family $R$ is
+\emph{dose-pinned}---the fully occupied corners of the exponent lattice carry row sums
+proportional to $VK^{2}(d-1)$, so $R\approx570$ at $VK^{2}=36$ in $d=4$ against a
+physical band of $\approx70$---while $t\propto D^{-1}$ at fixed protocol. The degree
+requirement therefore grows linearly in $D$ along the ladder: the $LU$-fill ceiling at
+$D=2.1\times10^{4}$ is replaced by a compute-degree ceiling roughly one rung higher
+(hours per configuration at this platform), and the estimator, its passband calibration,
+and its certification machinery are in place for larger-scale resources.
 \end{remark}
 
 \begin{figure}[t]
@@ -452,9 +568,11 @@ line).}
 \centering
 \includegraphics[width=\textwidth]{fig_c4_strongeth.png}
 \caption{Absolute eigenstate-fluctuation scaling at matched dose
-(Remark~\ref{rem:numerics}(h)).
+(Remark~\ref{rem:numerics}(h)--(i)).
 (a)~$\kappa=\sigma_{\mathrm{ETH}}/\mathrm{std}_{\mathrm{basis}}$ versus truncation dimension
-(window values, exact $350$-state selections, and label-scrambled controls) against the
+(window values, exact $350$-state selections, label-scrambled controls, and the
+factorization-free Krylov-tier point at $D=3.84\times10^{4}$, open diamond: $276$ of
+$350$ pairs certified) against the
 calibrated benchmarks: the protocol-matched shell benchmark $B_{\mathrm{count}}$, the
 fixed-fraction $B_{\mathrm{frac}}\propto D^{-1/2}$ (the strong-ETH scaling), and the
 Haar-in-full-basis level $\sqrt{2/D}$. (b)~Distance from the benchmarks:

@@ -17,6 +17,7 @@ kappa = sigma_ETH/std_basis; B = thermal-shell benchmark
    L36d3K28scr: D= 24389 kappa=0.4260 B_count=0.0430 B_frac=0.0398 R=9.90 N_shell=1031
    L36d3K38scr: D= 59319 kappa=0.4546 B_count=0.0488 B_frac=0.0256 R=9.32 N_shell=827
    L36d4K11scr: D= 20736 kappa=0.3129 B_count=0.0289 B_frac=0.0434 R=10.83 N_shell=2323
+    L36d4K13kr: D= 38416 kappa=0.2497 B_count=0.0325 B_frac=0.0320 R=7.68 N_shell=1854 n_cert=276
 
 dense tier:
       L36d3K14: kappa_350=0.5506 window_ratio=1.112 kappa_50=0.5057 R_50=4.66
@@ -28,6 +29,7 @@ dense tier:
 fits (alpha in kappa ~ D^alpha):
   L36-3D: alpha=-0.185 (n=9)
   L36-4D: alpha=-0.222 (n=3)
+  L36-4D+kr: alpha=-0.255 (n=4)
   dense-3D: alpha=-0.096 (n=3)
   dense-4D: alpha=-0.206 (n=2)
 

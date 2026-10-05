@@ -244,3 +244,43 @@ branching table (`c9_prereg_application.py`):
 Artifacts: `figures/fig_c9_prereg.png`,
 `results/c9_prereg_results.json`, `results/prereg_summary.txt`,
 `results/prereg_app.log`; protocol document `review/c9_preregistration.md`.
+
+## c4_eth: factorization-free window tier and sector checks (residuals)
+
+Two additions close the audit-adjudication residuals:
+
+- `c4_kappa_krylov.py` - block Chebyshev subspace iteration on
+  B = (H - c)^2 (c = median of the diagonal energies, the shift-invert
+  target): low-pass Chebyshev T_M(xi(B)), xi(b) = 1 + 2(b_w - b)/(b_high
+  - b_w), passband +-t sized by stochastic Lanczos quadrature (8-12
+  probes x 360 fully reorthogonalized steps; the block cannot see past
+  its own boundary), float32 filtering with a float64 polish, Rayleigh-
+  Ritz after every sweep, every selected pair certified by ||Hv - wv||.
+  Resumable in degree-chunks (state checkpoints after every chunk).
+  Validation against the LU tier (results/c4_kappa_krylov_validation.json):
+  eigenvalue sets identical to machine precision at D = 9.3e3 and 1e4
+  (max |dlambda| <= 4e-11), kappa within 0.6% at D = 6.9e3, 289/350
+  pairs certified at the near-ceiling D = 2.4e4 with kappa within 2.4%.
+  Extension: L36d4K13 (D = 3.84e4, M = 3400) gives kappa = 0.250 with
+  276/350 certified pairs at residuals <= 1.8e-6, <r> = 0.511 (GOE),
+  PR/D = 0.148; the d=4 ladder reads 0.449 -> 0.367 -> 0.313 -> 0.250 and
+  the four-point fit is kappa ~ D^{-0.255} against the thermal D^{-1/2},
+  with the fixed-fraction benchmark distance still growing (7.2 -> 7.8).
+  Cost ceiling: Chebyshev degree ~ ln(eps) R/(2t) with the radius R
+  dose-pinned (~570 at VK^2 = 36 in d = 4; the fully occupied corners
+  carry row sums proportional to VK^2 (d-1)), so the degree grows
+  linearly in D at fixed protocol - the LU fill ceiling is replaced by a
+  compute-degree ceiling about one rung higher.
+- `c4_sector_checks.py` - numerical corroboration of the occupation-
+  sector proposition: every sector block Hermitian to machine precision
+  and within the row-sum norm bound ||H_kin^(S)|| <= |V|(d-1)S(S+1) for
+  S <= 12 at d = 3,4; box-truncation exactness of sector-supported
+  dynamics to 7e-15 across truncations (same seed -> same couplings);
+  the walk control leaks out of the sector as H_W's non-conservation
+  requires (results/c4_sector_checks.json, 28/28 checks).
+
+Artifacts: `results/res_krylov_*.json`, `results/win_krylov_*.npz`,
+`results/c4_kappa_krylov_results.json`,
+`results/c4_kappa_krylov_validation.json`,
+`results/c4_sector_checks.json`, `figures/fig_c4_strongeth.png`
+(regenerated with the Krylov-tier point).

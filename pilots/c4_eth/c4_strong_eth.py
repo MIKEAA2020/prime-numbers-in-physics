@@ -45,6 +45,7 @@ OUT = base.OUT
 L36_3D = ["L36d3K14", "L36d3K18", "L36d3K20", "L36d3K22", "L36d3K26",
           "L36d3K28", "L36d3K30", "L36d3K34", "L36d3K38"]
 L36_4D = ["L36d4K7", "L36d4K9", "L36d4K11"]
+L36_KRY = ["L36d4K13kr"]     # factorization-free tier past the LU ceiling
 L36_SCR = ["L36d3K14scr", "L36d3K28scr", "L36d3K38scr", "L36d4K11scr"]
 DENSE = ["L36d3K14", "L36d3K18", "L36d3K20", "L36d4K7", "L36d4K9"]
 # zoo for the delocalization-mass panel: everything with a window result
@@ -87,7 +88,7 @@ def main():
     print("=" * 70, flush=True)
     rows = []
 
-    # ---------- window tier: ladder + scrambled ----------
+    # ---------- window tier: ladder + scrambled + krylov ----------
     for tag in L36_3D + L36_4D + L36_SCR:
         if not (os.path.exists(os.path.join(OUT, f"res_{tag}.json"))
                 and os.path.exists(os.path.join(OUT, f"win_{tag}.npz"))):
@@ -141,6 +142,58 @@ def main():
         print(f"  {tag}: D={D} kappa={kappa:.4f} B_count={B_count:.4f} "
               f"B_frac={B_frac:.4f} R_count={kappa/B_count:.2f} "
               f"N_shell={N_shell}", flush=True)
+
+    # ---------- factorization-free (Krylov) tier: past the LU ceiling ----------
+    for tag in L36_KRY:
+        rp = os.path.join(OUT, f"res_krylov_{tag}.json")
+        zp = os.path.join(OUT, f"win_krylov_{tag}.npz")
+        if not (os.path.exists(rp) and os.path.exists(zp)):
+            print(f"  skip {tag} (no krylov result)", flush=True)
+            continue
+        res = json.load(open(rp))
+        z = np.load(zp)
+        w, a = np.asarray(z["w"]), np.asarray(z["a1"])
+        d, K, D = res["d"], res["K"], res["D"]
+        sig, fl, cen = binned_sigma(w, a)
+        assert abs(sig - res["sigma_eth"]) < 2e-6 * max(1, sig), \
+            (tag, sig, res["sigma_eth"])
+        std_basis = float(np.sqrt(K * (K + 2) / 12.0))
+        eps, obs = rebuild_shell(d, K, res["g0"], res["h0"], res.get("U", 0.0),
+                                 res["seed"], res.get("V", 0.0),
+                                 res.get("scramble", False), w)
+        be = res.get("band_est")
+        assert be is not None and abs(eps.min() - be[0]) < 1e-9 \
+            and abs(eps.max() - be[1]) < 1e-9, (tag, eps.min(), eps.max(), be)
+        inwin = (eps >= w.min()) & (eps <= w.max())
+        N_shell = int(inwin.sum())
+        sig_shell = float(obs[inwin].std()) if N_shell >= 10 else float("nan")
+        B_count = float(np.sqrt(2.0 / N_shell) * sig_shell / std_basis) \
+            if N_shell >= 10 else float("nan")
+        lo, hi = np.quantile(eps, [0.475, 0.525])
+        infrac = (eps >= lo) & (eps <= hi)
+        N_frac = int(infrac.sum())
+        B_frac = float(np.sqrt(2.0 / N_frac) * obs[infrac].std() / std_basis)
+        kappa = sig / std_basis
+        PR = res.get("pr_over_D")
+        rows.append(dict(
+            tag=tag, family="L36-4D-krylov",
+            d=d, K=K, D=D, V=res.get("V"), PR_over_D=PR,
+            n_certified=res.get("n_certified"),
+            sigma_eth=sig, raw_std=float(a.std()), std_basis=std_basis,
+            kappa=kappa, kappa_x_sqrtD=kappa * np.sqrt(D),
+            N_shell=N_shell, sigma_A_shell=sig_shell, B_count=B_count,
+            N_frac=N_frac, B_frac=B_frac,
+            R_count=(kappa / B_count if B_count == B_count else None),
+            R_frac=kappa / B_frac,
+            N_eff=(N_shell / (kappa / B_count) ** 2
+                   if B_count == B_count else None),
+            kappa_Haar=float(np.sqrt(2.0 / D)),
+            kappa_x_sqrtPR=(kappa * np.sqrt(PR * D) if PR else None),
+            r_mean=res.get("r_mean"),
+        ))
+        print(f"  {tag}: D={D} kappa={kappa:.4f} B_count={B_count:.4f} "
+              f"B_frac={B_frac:.4f} R_frac={kappa/B_frac:.2f} "
+              f"N_shell={N_shell} n_cert={res.get('n_certified')}", flush=True)
 
     # ---------- dense tier: exact full spectra ----------
     dense_rows = []
@@ -197,6 +250,20 @@ def main():
                     D_range=[float(xs.min()), float(xs.max())])
 
     fits = {fam: slope(fam) for fam in ("L36-3D", "L36-4D")}
+    # 4D ladder including the Krylov-tier point past the LU ceiling
+    all4 = [r for r in rows if r["family"] in ("L36-4D", "L36-4D-krylov")]
+    if len(all4) >= 4:
+        xs = np.array([r["D"] for r in all4])
+        ys = np.array([r["kappa"] for r in all4])
+        lx, ly = np.log(xs), np.log(ys)
+        A = np.vstack([lx, np.ones_like(lx)]).T
+        coef = np.linalg.lstsq(A, ly, rcond=None)[0]
+        pred = A @ coef
+        ss_res = float(((ly - pred) ** 2).sum())
+        ss_tot = float(((ly - ly.mean()) ** 2).sum())
+        fits["L36-4D+kr"] = dict(alpha=float(coef[0]),
+                                 r2=1 - ss_res / ss_tot, n=len(all4),
+                                 D_range=[float(xs.min()), float(xs.max())])
     # dense fixed-fraction slopes
     for fam, dsel in (("dense-3D", 3), ("dense-4D", 4)):
         xs = np.array([r["D"] for r in dense_rows if r["d"] == dsel])
@@ -289,15 +356,18 @@ def main():
     fig, axes = plt.subplots(2, 2, figsize=(11.5, 8.6),
                              constrained_layout=True)
     col = {"L36-3D": ("o", "#4c72b0"), "L36-4D": ("s", "#dd8452"),
-           "scrambled": ("x", "#c44e52")}
+           "L36-4D-krylov": ("D", "#dd8452"), "scrambled": ("x", "#c44e52")}
 
     # (a) kappa vs D with benchmarks
     ax = axes[0, 0]
     for fam, (m, c) in col.items():
         xs = [r["D"] for r in rows if r["family"] == fam]
         ys = [r["kappa"] for r in rows if r["family"] == fam]
+        if not xs:
+            continue
         ax.loglog(xs, ys, marker=m, ls="none" if fam != "L36-3D" else "-",
                   lw=0 if fam != "L36-3D" else 0.9, color=c, ms=5,
+                  mfc=("none" if fam == "L36-4D-krylov" else None),
                   label=fam + (f" (slope {fits[fam]['alpha']:.2f})"
                                if fits.get(fam) else ""))
     xs = [r["D"] for r in dense_rows]
@@ -334,6 +404,15 @@ def main():
     ax.axhline(1.0, color="k", ls=":", lw=0.9)
     ax.annotate(r"dotted: $R_{\rm frac}$ vs. $D^{-1/2}$ scaling"
                 " (strong ETH)", xy=(4000, 2.2), fontsize=6.5)
+    kr = [r for r in rows if r["family"] == "L36-4D-krylov"]
+    if kr:
+        ax.loglog([r["D"] for r in kr], [r["R_frac"] for r in kr], "D",
+                  mfc="none", mec="#dd8452", ms=8, ls="none")
+        ax.annotate("Krylov tier (276/350 certified)",
+                    xy=(kr[0]["D"], kr[0]["R_frac"]),
+                    xytext=(0.62, 0.30), textcoords="axes fraction",
+                    fontsize=6.5, color="#dd8452",
+                    arrowprops=dict(arrowstyle="-", color="#dd8452", lw=0.6))
     ax.set_xlabel(r"truncation dimension $D$")
     ax.set_ylabel(r"$\kappa / B$")
     ax.set_title("(b) Distance from the thermal-shell benchmark")
@@ -386,7 +465,9 @@ def main():
         for r in rows:
             fh.write(f"{r['tag']:>14}: D={r['D']:>6} kappa={r['kappa']:.4f} "
                      f"B_count={r['B_count']:.4f} B_frac={r['B_frac']:.4f} "
-                     f"R={r['R_count']:.2f} N_shell={r['N_shell']}\n")
+                     f"R={r['R_count']:.2f} N_shell={r['N_shell']}"
+                     + (f" n_cert={r['n_certified']}"
+                        if r.get("n_certified") else "") + "\n")
         fh.write("\ndense tier:\n")
         for r in dense_rows:
             fh.write(f"{r['tag']:>14}: kappa_350={r['kappa_350']:.4f} "
