@@ -271,3 +271,57 @@ window), σ-quantile swept over the whole DOS:
    (or Chebyshev trace filtering) at V ≈ 0.3 to confirm the plateau is the diagonal
    ensemble, not a transient.
 3. C9 dictionary check unchanged (no new physics input this pass).
+
+---
+
+# Task 8 — C9 pre-registered application; strong-ETH flatness resolved
+
+## A. C9: from calibrated protocol to pre-registered, powered application
+
+- Protocol frozen in `review/c9_preregistration.md` (commit d3b1160; decision-rule
+  direction corrected in 9f30553 *before* the fit was run) — statistic, data,
+  null, decision rule, truth tables, sigma scenarios, interpretation policy.
+- Statistic strengthened: class-equation constraint sum c_i = N (the earlier fit
+  left the c_i unconstrained — an analyst degree of freedom); exact DP minimization,
+  brute-force validated (60 cases), batch==single==backtrack to roundoff.
+- Execution: null 5000 Dirichlet tables at the Z uncertainty pattern (median
+  2.8e5, q05 2.9e4, FPR at chi2_crit 0/5000); T_obs = 4.1e5, p = 0.59 ->
+  ABSENT; power 1.000 at the registered threshold for N = 6/36/360 at *current*
+  precision (0.90 at the chi2_crit variant = the Prob(chi2_5 <= 9.49) floor);
+  per-channel exclusion 221/7/5/4/2.8 sigma; lambda = 208; primitive-N recovery.
+- Verdict upgrade: "compatibility, not confirmation" -> "exclusion at the Z
+  scale with unit power over the registered range; frozen prospective protocol
+  for precision tables". Residual: the confirmatory content must come from
+  unification-scale data; the k=7 granularity variant deferred (needs a frozen
+  PDG extract).
+
+## B. C4 strong-ETH leg: the flatness was a normalization artifact; the
+   absolute diagnostic decays too slowly
+
+- The reported flatness was the RATIO sigma_ETH/std(a) — window-width-dependent
+  (compares fluctuation to the window's own spread incl. trend), not an ETH
+  scaling test.
+- Absolute diagnostic kappa = sigma_ETH/std_basis: 0.50 -> 0.29 (d=3 ladder,
+  D 3375 -> 59319), kappa ~ D^{-0.185 +/- 0.021} (n=9, R^2=0.92);
+  D^{-0.222 +/- 0.003} (d=4); dense tier validates the window protocol
+  (<= 11%) and gives fixed-fraction exponents -0.10 / -0.21.
+- Benchmarks (exact, from rebuilt shells): B_frac (5% shell, D^{-1/2}
+  strong-ETH scaling) — kappa/B_frac GROWS 4.6 -> 11.3 (d=3), 4.6 -> 7.2 (d=4);
+  B_count (protocol shell, ~10^3 states) — kappa/B_count falls 15.0 -> 6.4;
+  N_eff = N_shell/R^2 ~ 8 -> 23 (D^{0.3}): eigenstates are random
+  combinations of ~10 states, not ~10^3.
+- Structure: kappa*sqrt(PR) grows 8.5 -> 28 (support-uniform level sqrt(2));
+  a1 spans [0.3K, 0.94K] in one window — the slow mode; scrambled matched-dose
+  controls hold kappa flat 0.43-0.46 while PR/D falls 0.082 -> 0.035: the
+  decay is arithmetic-organized. <r>: no size trend (0.013 +/- 0.020).
+- Register update: strong-ETH leg now "quantitative negative evidence at
+  accessible scales" (was: flat/unfalsified); falsifier criterion restated as
+  approach-to-thermal-scaling. New figure fig_c4_strongeth.png; paper 47 pp.
+
+## C. Residual open items after this task
+
+1. Math/physical falsifier separation in §11 only partial (unchanged).
+2. Infinite-volume self-adjointness of the kinetic completion (unchanged).
+3. C9 k=7 Z-granularity variant needs a frozen PDG extract (protocol update).
+4. kappa at D > 6e4 (window tier LU-limited); a Krylov-tier estimator of the
+   eigenstate fluctuation would extend the ladder.

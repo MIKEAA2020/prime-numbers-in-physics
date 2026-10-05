@@ -281,7 +281,7 @@ while the generic coupling at the same platform is window-dependent too, with ha
 amplitude: the full eight-quantile sweep of the same generic configuration
 ($g_{0}=1.5$, $d=3$, $K=28$, $D=24389$) gives $0.464$--$0.540$, the compression sitting at
 the band edges ($0.464$ at the $98\%$ quantile)---an earlier three-interior-quantile check
-($0.505$--$0.514$ at $0.05/0.5/0.95$) sampled only the flat middle and is superseded;
+($0.505$--$0.514$ at $0.05/0.5/0.95$) sampled only the flat middle of that band;
 weak median value is additionally direction-dependent ($0.53$ at $d=3$ versus $0.44$ at
 $d=4$, $D=20736$). Any protocol claim about weak-coupling statistics must therefore pin
 the quantile and the direction; the robust weak-coupling diagnostic is $\mathrm{PR}/D$,
@@ -319,8 +319,11 @@ $VK^{2}\approx235$, $\langle r\rangle=0.36$ with $\mathrm{PR}/D=0.016$).
 The eigenstate fluctuation ratio $\sigma_{\mathrm{ETH}}/\mathrm{std}(a_{j})$ is flat:
 $0.95$--$0.98$ along the $d=3$ ladder $D=3375\to59319$ (a factor $17.6$ in $D$) and
 $0.95$--$0.97$ along the $d=4$ ladder $D=4096\to20736$, with exact full-spectrum values
-$0.68$--$0.83$ at $D\leq10^{4}$; leg (i) has no positive evidence at accessible scales. The
-diagonal ensemble
+$0.68$--$0.83$ at $D\leq10^{4}$; the ratio compares the fluctuation to the window's own
+spread, which contains the smooth energy dependence, so it is window-width-dependent and
+not by itself a scaling diagnostic---item (h) develops the absolute normalization, in which
+the fluctuation decays with exponent $0.19$ ($d=3$) and $0.22$ ($d=4$) against the thermal
+$1/2$, receding from the strong-ETH scaling. The diagonal ensemble
 $\langle a\rangle_{\mathrm{diag}}=\sum_{n}|\braket{n}{\psi_{0}}|^{2}\braket{n}{a}$
 is computed exactly at $D\leq10^{4}$: there the finite-time plateau equals it to
 $|\,\mathrm{plateau}-\mathrm{diag}\,|/K\leq0.005$ (the dephasing identity
@@ -375,6 +378,40 @@ computed ($d=4$, $K=17$) has $E/\hbar\omega_{0}\leq17\log210\approx91$ and typic
 prime-factor counts near $\log n\approx91$ of $\approx4.5$, whereas the
 Erd\H{o}s--Kac statistics of the cascade require $\log\log x\to\infty$: every
 finite-$D$ diagnostic in this paper is a statement about a pre-asymptotic window.
+(h) \emph{Eigenstate fluctuation scaling in absolute units.} Normalize the same fluctuation
+by the a priori spread of the local occupation over the $(K+1)^{d}$ product basis,
+$\mathrm{std}_{\mathrm{basis}}=\sqrt{K(K+2)/12}$:
+$\kappa=\sigma_{\mathrm{ETH}}/\mathrm{std}_{\mathrm{basis}}$. Along the matched-dose
+ladders $\kappa$ is $O(1)$ and decays slowly: $0.50\to0.29$ at $d=3$
+($D=3375\to59319$), a fitted power law $\kappa\propto D^{-0.185\pm0.021}$ ($n=9$,
+$R^{2}=0.92$), and $D^{-0.222\pm0.003}$ at $d=4$ ($D=4096\to20736$); exact full-spectrum
+diagonalizations reproduce the window protocol to $\leq11\%$ and give consistent
+fixed-fraction exponents ($-0.10$ at $d=3$, $D\leq9261$; $-0.21$ at $d=4$, $D\leq10^{4}$).
+Two calibrated benchmarks locate the decay (Figure~\ref{fig:strongeth}). Strong ETH predicts
+$\kappa\propto D^{-1/2}$ with the prefactor fixed by the shell statistics of the observable:
+the exact fixed-fraction benchmark $B_{\mathrm{frac}}$ (a $5\%$ quantile shell at the median)
+sits a factor $4.6\to11.3$ ($d=3$) and $4.6\to7.2$ ($d=4$) below the measured $\kappa$, and
+the distance grows along both ladders---the fluctuation recedes from the strong-ETH scaling
+as the truncation widens. The protocol-matched benchmark $B_{\mathrm{count}}$ (the basis shell
+spanned by the eigen-window itself, $N_{\mathrm{shell}}\approx10^{3}$ states) is approached
+more slowly ($\kappa/B_{\mathrm{count}}$ falls $15.0\to6.4$ at $d=3$); in effective-dimension
+terms the eigenstates behave as random combinations of
+$N_{\mathrm{eff}}=2\sigma_{A,\mathrm{shell}}^{2}/\sigma_{\mathrm{ETH}}^{2}\approx8\to23$ states,
+growing roughly as $D^{0.3}$---two orders of magnitude below both the shell and the
+dimension. The structure behind the number is visible directly: within a single
+median-energy window the eigenstate values $\langle E|\hat n_{1}|E\rangle$ span $[0.3K,\,0.94K]$,
+and $\kappa\sqrt{\mathrm{PR}}$ (the fluctuation against the support-uniform level $\sqrt{2}$)
+grows from $8.5$ to $28$ along the $d=3$ ladder: the eigenstate weight is correlated with the
+occupation it measures---the same slow mode that produces the secular drift of item (e). The
+decay itself is organized by the arithmetic diagonal: label-scrambled controls at matched
+dose hold $\kappa$ flat at $0.43$--$0.46$ while their participation ratio \emph{falls}
+($\mathrm{PR}/D$: $0.082\to0.035$ over the same ladder). The level statistics show no size
+trend (slope of $\langle r\rangle$ in $\log D$: $0.013\pm0.020$; mean $0.500$). At the scales
+computed, the strong-ETH leg of $\mathsf{C4}$ therefore carries quantitative negative evidence:
+the fluctuation decays two and a half times more slowly than the thermal scaling and its
+distance from the fixed-fraction benchmark grows by a factor $\approx2.5$; a pre-asymptotic
+crossover at larger $D$ cannot be excluded (item (g)), but no trend toward it is visible in
+the computed range.
 \end{remark}
 
 \begin{figure}[t]
@@ -409,6 +446,24 @@ averages (diagonal-ensemble estimate $\approx4.40$), microcanonical line, and th
 transient. (d)~Finite-$T$ plateau versus exact diagonal ensemble at $D\leq10^{4}$ (identity
 line).}
 \label{fig:ladder}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{fig_c4_strongeth.png}
+\caption{Absolute eigenstate-fluctuation scaling at matched dose
+(Remark~\ref{rem:numerics}(h)).
+(a)~$\kappa=\sigma_{\mathrm{ETH}}/\mathrm{std}_{\mathrm{basis}}$ versus truncation dimension
+(window values, exact $350$-state selections, and label-scrambled controls) against the
+calibrated benchmarks: the protocol-matched shell benchmark $B_{\mathrm{count}}$, the
+fixed-fraction $B_{\mathrm{frac}}\propto D^{-1/2}$ (the strong-ETH scaling), and the
+Haar-in-full-basis level $\sqrt{2/D}$. (b)~Distance from the benchmarks:
+$\kappa/B_{\mathrm{count}}$ (solid) falls slowly; $\kappa/B_{\mathrm{frac}}$ (dotted) grows.
+(c)~$\kappa\sqrt{\mathrm{PR}}$ versus eigenstate participation across all computed window
+configurations (matched dose: circles; scrambled: crosses; all others: dots), against the
+support-uniform level $\sqrt{2}$: the fluctuation sits $10$--$30$ times above it and grows
+with $D$. (d)~Energy-resolved within-window fluctuation at three scales.}
+\label{fig:strongeth}
 \end{figure}
 
 Falsifiers and test routes are listed in

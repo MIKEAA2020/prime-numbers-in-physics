@@ -102,8 +102,11 @@ zeta/black-hole partition-function identification to a Galois--Langlands diction
 Standard Model. Two register entries are tested numerically at laptop scale:
 eigenstate-thermalization diagnostics for $\mathsf{C4}$ on truncations up to $D\approx6\times10^{4}$
 (eigenwindows) and $D\approx10^{5}$ (Krylov trajectories), against label-scrambled controls
-with the same graph and density of states, and a calibrated Chebotarev-dictionary protocol
-for $\mathsf{C9}$. The result is a framework whose theorems are proved or cited exactly, whose
+with the same graph and density of states---the kinetic completion relaxes to its diagonal
+ensemble, while its eigenstate fluctuations decay as $D^{-0.19}$, receding from the strong-ETH
+scaling $D^{-1/2}$---and a pre-registered Chebotarev-dictionary test for $\mathsf{C9}$, which
+excludes the signature at the $Z$ pole with unit detection power over the registered range of
+group orders. The result is a framework whose theorems are proved or cited exactly, whose
 analogies are tightened to citable results, and whose remaining ambitions are stated with
 enough precision to be confirmed or refuted.
 
@@ -185,7 +188,9 @@ identification), $\mathsf{C3}$ (the arithmetic holographic bound), $\mathsf{C4}$
 on the prime lattice), and $\mathsf{C9}$ (the Galois--gauge dictionary). Two entries carry
 carried-out numerical programs: eigenwindow and Krylov diagnostics for $\mathsf{C4}$ to
 $D\approx6\times10^{4}$ and $D\approx10^{5}$ respectively (Remark~\ref{rem:numerics}), and a
-calibrated dictionary protocol for $\mathsf{C9}$ (Section~\ref{sec:falsify}).
+pre-registered dictionary application for $\mathsf{C9}$ that excludes the $Z$-pole branching table
+with unit detection power over group orders $N\leq360$ at current precision
+(Section~\ref{sec:falsify}).
 
 The philosophical theses of the framework---eternalism with perspectival observers, an extrinsic
 arrow grounded in arithmetic state-counting, derivative causality, and the rejection of
@@ -805,7 +810,7 @@ while the generic coupling at the same platform is window-dependent too, with ha
 amplitude: the full eight-quantile sweep of the same generic configuration
 ($g_{0}=1.5$, $d=3$, $K=28$, $D=24389$) gives $0.464$--$0.540$, the compression sitting at
 the band edges ($0.464$ at the $98\%$ quantile)---an earlier three-interior-quantile check
-($0.505$--$0.514$ at $0.05/0.5/0.95$) sampled only the flat middle and is superseded;
+($0.505$--$0.514$ at $0.05/0.5/0.95$) sampled only the flat middle of that band;
 weak median value is additionally direction-dependent ($0.53$ at $d=3$ versus $0.44$ at
 $d=4$, $D=20736$). Any protocol claim about weak-coupling statistics must therefore pin
 the quantile and the direction; the robust weak-coupling diagnostic is $\mathrm{PR}/D$,
@@ -843,8 +848,11 @@ $VK^{2}\approx235$, $\langle r\rangle=0.36$ with $\mathrm{PR}/D=0.016$).
 The eigenstate fluctuation ratio $\sigma_{\mathrm{ETH}}/\mathrm{std}(a_{j})$ is flat:
 $0.95$--$0.98$ along the $d=3$ ladder $D=3375\to59319$ (a factor $17.6$ in $D$) and
 $0.95$--$0.97$ along the $d=4$ ladder $D=4096\to20736$, with exact full-spectrum values
-$0.68$--$0.83$ at $D\leq10^{4}$; leg (i) has no positive evidence at accessible scales. The
-diagonal ensemble
+$0.68$--$0.83$ at $D\leq10^{4}$; the ratio compares the fluctuation to the window's own
+spread, which contains the smooth energy dependence, so it is window-width-dependent and
+not by itself a scaling diagnostic---item (h) develops the absolute normalization, in which
+the fluctuation decays with exponent $0.19$ ($d=3$) and $0.22$ ($d=4$) against the thermal
+$1/2$, receding from the strong-ETH scaling. The diagonal ensemble
 $\langle a\rangle_{\mathrm{diag}}=\sum_{n}|\braket{n}{\psi_{0}}|^{2}\braket{n}{a}$
 is computed exactly at $D\leq10^{4}$: there the finite-time plateau equals it to
 $|\,\mathrm{plateau}-\mathrm{diag}\,|/K\leq0.005$ (the dephasing identity
@@ -899,6 +907,40 @@ computed ($d=4$, $K=17$) has $E/\hbar\omega_{0}\leq17\log210\approx91$ and typic
 prime-factor counts near $\log n\approx91$ of $\approx4.5$, whereas the
 Erd\H{o}s--Kac statistics of the cascade require $\log\log x\to\infty$: every
 finite-$D$ diagnostic in this paper is a statement about a pre-asymptotic window.
+(h) \emph{Eigenstate fluctuation scaling in absolute units.} Normalize the same fluctuation
+by the a priori spread of the local occupation over the $(K+1)^{d}$ product basis,
+$\mathrm{std}_{\mathrm{basis}}=\sqrt{K(K+2)/12}$:
+$\kappa=\sigma_{\mathrm{ETH}}/\mathrm{std}_{\mathrm{basis}}$. Along the matched-dose
+ladders $\kappa$ is $O(1)$ and decays slowly: $0.50\to0.29$ at $d=3$
+($D=3375\to59319$), a fitted power law $\kappa\propto D^{-0.185\pm0.021}$ ($n=9$,
+$R^{2}=0.92$), and $D^{-0.222\pm0.003}$ at $d=4$ ($D=4096\to20736$); exact full-spectrum
+diagonalizations reproduce the window protocol to $\leq11\%$ and give consistent
+fixed-fraction exponents ($-0.10$ at $d=3$, $D\leq9261$; $-0.21$ at $d=4$, $D\leq10^{4}$).
+Two calibrated benchmarks locate the decay (Figure~\ref{fig:strongeth}). Strong ETH predicts
+$\kappa\propto D^{-1/2}$ with the prefactor fixed by the shell statistics of the observable:
+the exact fixed-fraction benchmark $B_{\mathrm{frac}}$ (a $5\%$ quantile shell at the median)
+sits a factor $4.6\to11.3$ ($d=3$) and $4.6\to7.2$ ($d=4$) below the measured $\kappa$, and
+the distance grows along both ladders---the fluctuation recedes from the strong-ETH scaling
+as the truncation widens. The protocol-matched benchmark $B_{\mathrm{count}}$ (the basis shell
+spanned by the eigen-window itself, $N_{\mathrm{shell}}\approx10^{3}$ states) is approached
+more slowly ($\kappa/B_{\mathrm{count}}$ falls $15.0\to6.4$ at $d=3$); in effective-dimension
+terms the eigenstates behave as random combinations of
+$N_{\mathrm{eff}}=2\sigma_{A,\mathrm{shell}}^{2}/\sigma_{\mathrm{ETH}}^{2}\approx8\to23$ states,
+growing roughly as $D^{0.3}$---two orders of magnitude below both the shell and the
+dimension. The structure behind the number is visible directly: within a single
+median-energy window the eigenstate values $\langle E|\hat n_{1}|E\rangle$ span $[0.3K,\,0.94K]$,
+and $\kappa\sqrt{\mathrm{PR}}$ (the fluctuation against the support-uniform level $\sqrt{2}$)
+grows from $8.5$ to $28$ along the $d=3$ ladder: the eigenstate weight is correlated with the
+occupation it measures---the same slow mode that produces the secular drift of item (e). The
+decay itself is organized by the arithmetic diagonal: label-scrambled controls at matched
+dose hold $\kappa$ flat at $0.43$--$0.46$ while their participation ratio \emph{falls}
+($\mathrm{PR}/D$: $0.082\to0.035$ over the same ladder). The level statistics show no size
+trend (slope of $\langle r\rangle$ in $\log D$: $0.013\pm0.020$; mean $0.500$). At the scales
+computed, the strong-ETH leg of $\mathsf{C4}$ therefore carries quantitative negative evidence:
+the fluctuation decays two and a half times more slowly than the thermal scaling and its
+distance from the fixed-fraction benchmark grows by a factor $\approx2.5$; a pre-asymptotic
+crossover at larger $D$ cannot be excluded (item (g)), but no trend toward it is visible in
+the computed range.
 \end{remark}
 
 \begin{figure}[t]
@@ -933,6 +975,24 @@ averages (diagonal-ensemble estimate $\approx4.40$), microcanonical line, and th
 transient. (d)~Finite-$T$ plateau versus exact diagonal ensemble at $D\leq10^{4}$ (identity
 line).}
 \label{fig:ladder}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{fig_c4_strongeth.png}
+\caption{Absolute eigenstate-fluctuation scaling at matched dose
+(Remark~\ref{rem:numerics}(h)).
+(a)~$\kappa=\sigma_{\mathrm{ETH}}/\mathrm{std}_{\mathrm{basis}}$ versus truncation dimension
+(window values, exact $350$-state selections, and label-scrambled controls) against the
+calibrated benchmarks: the protocol-matched shell benchmark $B_{\mathrm{count}}$, the
+fixed-fraction $B_{\mathrm{frac}}\propto D^{-1/2}$ (the strong-ETH scaling), and the
+Haar-in-full-basis level $\sqrt{2/D}$. (b)~Distance from the benchmarks:
+$\kappa/B_{\mathrm{count}}$ (solid) falls slowly; $\kappa/B_{\mathrm{frac}}$ (dotted) grows.
+(c)~$\kappa\sqrt{\mathrm{PR}}$ versus eigenstate participation across all computed window
+configurations (matched dose: circles; scrambled: crosses; all others: dots), against the
+support-uniform level $\sqrt{2}$: the fluctuation sits $10$--$30$ times above it and grows
+with $D$. (d)~Energy-resolved within-window fluctuation at three scales.}
+\label{fig:strongeth}
 \end{figure}
 
 Falsifiers and test routes are listed in
@@ -2039,6 +2099,31 @@ group orders. That is a checkable structural signature, quite unlike the free pa
 Lie-group GUTs, and it is the kind of prediction that would falsify $\mathsf{C9}$ outright
 if the statistics came out transcendental or unsplittable.
 
+The hook has been made operational as a pre-registered test protocol and applied to the
+$Z$-pole branching table. The statistic is the best class-equation-constrained dictionary
+fit,
+$T=\min\sum_{i}(f_{i}-c_{i}/N)^{2}/\sigma_{i}^{2}$ over group orders $N\in[5,360]$ and
+integers $c_{i}\geq1$ with $c_{i}\mid N$ and $\sum_{i}c_{i}=N$ (class sizes divide the
+group order by orbit--stabilizer, and the classes partition the group); the minimization is
+exact by dynamic programming over integer partial sums. The null distribution is
+Monte-Carlo-calibrated on structureless (Dirichlet) tables at the measured uncertainty
+pattern, and the decision rule is fixed in advance of the fit: the signature is present iff
+the observed fit is at least as good as the null's best $5\%$. Power is calibrated by
+injected truth tables at $N=6$, $36$, and $360$ (one per decade of the registered range):
+the detection probability is $1.000$ at the registered threshold at \emph{current}
+$Z$-pole precision. Applied to the exhaustive five-channel $Z$ table
+(hadronic, $e$, $\mu$, $\tau$, invisible; PDG values and uncertainties), the protocol
+returns $T=4.1\times10^{5}$ (best fit $N=48$, $c=(24,2,3,3,16)$) at the null's $59$th
+percentile: the signature is absent, and the absence is decisive rather than
+under-powered---each channel individually misses every candidate value $c/N$ by at least
+$2.8\sigma$ (the hadronic channel by $221\sigma$), and all uncertainties would have to
+inflate by a factor $208$ for the best constrained fit to become acceptable. The $Z$-scale
+exclusion is consistent with the dictionary's unification-scale placement and carries no
+confirmatory content; the frozen protocol (statistic, null, decision rule, power tables)
+applies unchanged to future precision tables, for which the statistical floor of a
+$Z$ factory with $\sim10^{12}$ recorded decays improves the current precision by a further
+factor $\sim3\times10^{-3}$.
+
 % =====================================================================
 % SECTION 9: Arrows of time and the philosophy register
 % =====================================================================
@@ -2312,16 +2397,18 @@ C1 (int.) &
 \emph{Scaling criterion}: ETH diagnostics along truncation sequences with $D\to\infty$ at
 fixed effective dose $VK^{2}$ --- sparse eigen-windows to $D=5.9\times10^{4}$ and Krylov
 equilibration to $D\approx10^{5}$;
-falsified if $\sigma_{\mathrm{ETH}}(D)$ never decays and $|\mathrm{diag}-\mathrm{micro}|$
-stays $O(1)$ for every interacting completion. Current evidence: the bare system is
+falsified if the eigenstate fluctuation never approaches the thermal scaling and
+$|\mathrm{diag}-\mathrm{micro}|$ stays $O(1)$ for every interacting completion. Current evidence: the bare system is
 decided---structurally non-ergodic at all scales computed; the \emph{diagonal} quartic
 localizes monotonically ($\mathrm{PR}/D\to10^{-3}$); the \emph{kinetic} completion is the
 only one that relaxes (occupation falls from $K$ to $\approx3.5$ within $\tau\approx20$, GOE
 statistics, delocalized eigenstates at matched dose), and its finite-time plateau equals the
 diagonal ensemble exactly where the latter is computable ($D\leq10^{4}$,
-$|\,\mathrm{plateau}-\mathrm{diag}\,|/K\leq0.005$); but neither scaling leg is positive:
-$\sigma_{\mathrm{ETH}}/\mathrm{std}$ is flat at $0.95$--$0.98$ across $D=3375\to59319$ at
-matched dose, and the diagonal ensemble stays $0.04$--$0.09$ of $K$ away from microcanonical
+$|\,\mathrm{plateau}-\mathrm{diag}\,|/K\leq0.005$); but neither scaling leg closes: in absolute
+units the eigenstate fluctuation decays as $\kappa\propto D^{-0.185\pm0.021}$ at $d=3$ and
+$D^{-0.222}$ at $d=4$ against the strong-ETH $D^{-1/2}$, its distance from the fixed-fraction
+thermal benchmark grows ($4.6\to11.3$ at $d=3$; Remark~\ref{rem:numerics}(h)), and the
+diagonal ensemble stays $0.04$--$0.09$ of $K$ away from microcanonical
 with no closing trend. Strong dose ($VK^{2}\gtrsim80$) localizes. Level
 statistics come free and positive (GOE at generic coupling, $\mathsf{C5}$); the
 weak-coupling $\langle r\rangle$ is quantile- and direction-dependent
@@ -2383,10 +2470,14 @@ $|G|$ by orbit--stabilizer, so the Chebotarev densities are exactly $c_{i}/N$);
 Monte-Carlo-calibrated false-positive rate $<1\%$ on random tables. The protocol is
 well-formed only when the channel set, the class-to-channel identification, and the
 group-order range are fixed before the data are examined: the calibration prices the fit,
-not the analyst's freedom. No acceptable common-$N$ fit at that precision falsifies.
-Present data (e.g.\ $Z$-pole branching fractions) admit no such fit---the signature is
-absent at collider scales, compatible with the conjecture's unification-scale placement
-and carrying no confirmatory content. Cleanest dated falsifier: observed proton decay
+not the analyst's freedom. The frozen protocol has been applied to the $Z$-pole
+five-channel table: $T=4.1\times10^{5}$ at the null's $59$th percentile---signature absent
+at the $Z$ scale with detection power $1.000$ over the whole registered range at current
+precision (each channel excludes individually at $\geq2.8\sigma$), an exclusion rather than
+an under-powered null, compatible with the conjecture's unification-scale placement and
+carrying no confirmatory content. The fit identifies the class vector only up to common
+factors (the primitive representative of the group order). Cleanest dated falsifier:
+observed proton decay
 (Section~\ref{sec:falsify}, item 1); a single channel cannot fix a full splitting table, so
 a positive identification requires the multi-channel fit.\\
 $\mathsf{C10}$ &
@@ -2454,15 +2545,18 @@ $\mathsf{C9}$ outright---a clean, dated test.
 \item \emph{Branching statistics are group statistics.} Under $\mathsf{C9}$, unification-scale
 branching data must organize into Chebotarev densities: rational numbers with denominators
 dividing a Galois group order. This is a sharp, unusual, and cheap-to-check signature. The
-check is now calibrated: for $\geq5$ channels at precision $\sigma\leq0.3\%$ with
-$|G|\lesssim$ a few hundred, a common-group-order divisor fit has Monte-Carlo-calibrated
-false-positive rate below $1\%$ (the divisor constraint is what saves the test; the weak
-form---each ratio near some rational---is vacuous because $\Qq$ is dense). Current tables
-(e.g.\ the $Z$-pole branching fractions, five channels) admit no such fit: the signature is
-absent at collider scales, which is compatible with the conjecture's unification-scale
-placement but carries no confirmatory content; no obtainable data set can
-decide the conjecture today. The computation validates and calibrates the instrument; the
-purchase waits on unification-scale data. The protocol is well-formed only when the channel
+check is pre-registered and calibrated: a class-equation-constrained divisor fit over
+group orders $N\leq360$, with a Monte-Carlo-calibrated null at the measured uncertainty
+pattern (the divisor constraint is what saves the test; the weak
+form---each ratio near some rational---is vacuous because $\Qq$ is dense) and with decision
+rule and power tables fixed in advance. Applied to the $Z$-pole five-channel table, the
+signature is absent with detection power $1.000$ over the registered range at current
+precision: the exclusion holds at the $Z$ scale, which is compatible with the conjecture's
+unification-scale placement but carries no confirmatory content. The instrument is
+validated and its power is measured; the
+purchase waits on unification-scale data, and the frozen protocol applies to future
+precision tables without modification (a $Z$ factory improves the statistical floor by
+$\sim3\times10^{-3}$). The protocol is well-formed only when the channel
 set and the group-order range are fixed before the data are examined: the Monte-Carlo
 calibration prices the fit on random tables, not the analyst's freedom in choosing channels,
 identifications, or $N$.
@@ -2503,9 +2597,11 @@ $D\approx10^{5}$---all laptop-scale (minutes per configuration; the interior
 eigensolver tier is bounded by $LU$ fill, the evolution tier only by $D\tau$; diagonal
 pivoting, needed for the kinetic family, cut the generic factorization from $257$\,s
 to $3$\,s with eigenpair residuals $\leq6\times10^{-8}$). Verdict: level
-statistics GOE at generic coupling throughout; every \emph{eigenstate} ETH diagnostic
-flat in $D$ ($\sigma_{\mathrm{ETH}}/\mathrm{std}\approx0.95$ for the bare, quartic, and
-kinetic systems alike, at matched dose across $D=3375\to59319$); the diagonal quartic
+statistics GOE at generic coupling throughout; the eigenstate fluctuation ratio
+$\sigma_{\mathrm{ETH}}/\mathrm{std}$ is flat in $D$ ($\approx0.95$ for the bare, quartic, and
+kinetic systems alike, at matched dose across $D=3375\to59319$), and in absolute units the
+fluctuation decays as $D^{-0.185\pm0.021}$ ($d=3$), two and a half times more slowly than
+the strong-ETH $D^{-1/2}$ (Remark~\ref{rem:numerics}(h)); the diagonal quartic
 completion localizes monotonically in
 $U$; the kinetic completion (density-assisted hopping, Hermitian and number-conserving,
 validated to $10^{-15}$) is the only one that relaxes---fast initial decay to
@@ -2514,8 +2610,12 @@ and a finite-time plateau that equals the diagonal ensemble exactly where the la
 computable ($D\leq10^{4}$)---but the diagonal ensemble itself stays $0.04$--$0.09$ of
 $K$ from the microcanonical value at matched dose with no closing trend, and the
 $D=20736$ trajectory extended to $\tau=300$ saturates at $\langle\hat
-n_{d}\rangle_{\mathrm{diag}}\approx4.40$ against a microcanonical value of $3.35$. The
-strong-ETH leg is flat at every accessible scale; the equilibration leg requires the
+n_{d}\rangle_{\mathrm{diag}}\approx4.40$ against a microcanonical value of $3.35$. In
+absolute units the eigenstate fluctuation decays as $D^{-0.185\pm0.021}$ at $d=3$
+($D^{-0.222}$ at $d=4$) against the strong-ETH $D^{-1/2}$, with the distance to the
+fixed-fraction thermal benchmark growing by a factor $\approx2.5$ along the ladder and
+effective random-combination dimensions $N_{\mathrm{eff}}\approx8\to23$ versus shells of
+$\sim10^{3}$ states (Remark~\ref{rem:numerics}(h)); the equilibration leg requires the
 $D\to\infty$ limit of the diagonal ensemble, which shows no convergence at accessible
 scales.
 \item \emph{Compute the level statistics of the interacting arithmetic Hamiltonian and
@@ -2537,7 +2637,9 @@ spectral reading of RH via von Koch's equivalence \cite{vonkoch1901}).
 \item \emph{Close the Chebotarev dictionary on one completed instance} ($\mathsf{C9}$):
 find a number field whose splitting statistics reproduce a measured branching table. Even
 one instance would convert the dictionary from analogy to theory; the search space is
-computable and finite for any fixed table.
+computable and finite for any fixed table. The decision machinery---the constrained fit,
+the calibrated null, and the power tables---is in place and validated by injection; what is
+missing is data at the dictionary's scale.
 \end{enumerate}
 
 \subsection{Assessment}

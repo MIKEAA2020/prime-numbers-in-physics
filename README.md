@@ -91,5 +91,22 @@ ensemble-bridge proposition, quantitative return-time proposition (C2 scaling
 falsifier), dictionary error slot s(A) for C3, pre-registration conditions for
 C9, and the audit-response controls in the numerics section.
 
+Two register entries carry completed test programs with power statements:
+
+- **C4 strong-ETH leg (fluctuation scaling)**: in absolute units the
+  eigenstate fluctuation decays as D^{-0.185 +/- 0.021} (d=3, D up to
+  5.9e4) against the strong-ETH D^{-1/2}, with the distance to the
+  fixed-fraction thermal benchmark growing (4.6 -> 11.3) and effective
+  random-combination dimensions of only ~8-23 states; label-scrambled
+  controls hold the fluctuation flat, so the slow decay is organized by the
+  arithmetic diagonal (`pilots/c4_eth/c4_strong_eth.py`).
+- **C9 dictionary application (pre-registered)**: the protocol frozen in
+  `review/c9_preregistration.md` (class-equation-constrained divisor fit,
+  Monte-Carlo null, decision rule, power tables) applied to the Z-pole
+  branching table: signature absent at the 59th percentile of the null,
+  with detection power 1.000 over group orders N <= 360 at current
+  precision - an exclusion at the Z scale, compatible with the conjecture's
+  unification-scale placement (`pilots/c9_chebotarev/c9_prereg_application.py`).
+
 A single-file LaTeX manuscript (`paper/latex/manuscript.tex`) is generated
-from the modular sources and verified to compile identically (45 pp).
+from the modular sources and verified to compile identically (47 pp).

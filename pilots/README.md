@@ -180,3 +180,67 @@ per-configuration `results/scaled/` files, `adjudication_checks.py` (exact
 math checks: counting-defect convergence, class-size divisibility on 12
 groups, Dirichlet return-time bound, Erdos-Kac simulation ->
 `results/adjudication_math.json`).
+
+## Strong-ETH fluctuation scaling (absolute normalization)
+
+The eigenstate fluctuation re-measured in absolute units
+(`c4_strong_eth.py`): kappa = sigma_ETH / std_basis with
+std_basis = sqrt(K(K+2)/12) the a-priori spread of the local occupation
+over the (K+1)^d product basis, against two calibrated benchmarks
+(B_count: Haar-random eigenstates in the basis shell the 350-state
+eigen-window actually spans; B_frac: a fixed 5% quantile shell, the
+D^{-1/2} strong-ETH scaling with the exact prefactor).
+
+- **Decay**: kappa = 0.50 -> 0.29 along the d=3 matched-dose ladder
+  (D = 3375 -> 59319): kappa ~ D^{-0.185 +/- 0.021} (n=9, R^2=0.92);
+  D^{-0.222 +/- 0.003} along d=4 - two and a half times slower than the
+  thermal D^{-1/2}. Exact full-spectrum diagonalizations reproduce the
+  window protocol to <= 11% (fixed-fraction exponents -0.10 / -0.21).
+- **Distance from the strong-ETH scaling grows**: kappa/B_frac rises
+  4.6 -> 11.3 (d=3) and 4.6 -> 7.2 (d=4); kappa/B_count falls 15.0 -> 6.4
+  (the protocol shell is not the entropy scale); effective
+  random-combination dimension N_eff = N_shell/R^2 ~ 8 -> 23 vs shells of
+  ~10^3 states.
+- **The decay is arithmetic-organized**: label-scrambled controls at
+  matched dose hold kappa flat at 0.43-0.46 while PR/D falls
+  (0.082 -> 0.035; `res_*scr`, `win_*scr` in `results/scaled/`).
+- **Slow-mode structure**: kappa*sqrt(PR) grows 8.5 -> 28 (support-uniform
+  level sqrt(2)); within one median-energy window the eigenstate values of
+  n_1 span [0.3K, 0.94K]; <r> shows no size trend (slope 0.013 +/- 0.020
+  in log D, mean 0.500).
+
+Artifacts: `figures/fig_c4_strongeth.png`,
+`results/c4_strongeth_results.json`, `results/strongeth_summary.txt`,
+per-configuration `results/scaled/` files (incl. the three scrambled
+matched-dose windows).
+
+## C9 pre-registered dictionary application
+
+The Chebotarev dictionary protocol, frozen in
+`review/c9_preregistration.md` (commit 9f30553, corrected rule) before the
+fit was run, and applied once to the exhaustive five-channel Z-pole
+branching table (`c9_prereg_application.py`):
+
+- Statistic: T = min over N in [5,360], c_i | N, sum c_i = N (class
+  equation, enforced by exact dynamic programming) of the chi-square; the
+  DP is validated against brute-force enumeration (60 cases) and
+  batch==single==backtrack to roundoff.
+- Null: 5000 Dirichlet tables at the actual uncertainty pattern (median
+  2.8e5, 5% quantile 2.9e4; false-positive rate at chi2_0.95(4) is 0/5000).
+- **Decision: signature absent.** T_obs = 4.1e5 (best N=48,
+  c=(24,2,3,3,16)) at the null's 59th percentile; per-channel exclusion
+  depth 221/7/5/4/2.8 sigma (had/e/mu/tau/invisible); precision-inflation
+  factor lambda = 208.
+- **Power = 1.000** at the registered threshold for every injected truth
+  table (N = 6, 36, 360) at current Z-pole precision (also at x1e-1,
+  x1e-2, and the Z-factory statistical floor 3.3e-3): the absence is an
+  exclusion over the whole registered range, not an under-powered null.
+  Recovery of the group order is up to common factors (primitive
+  representative).
+- Sensitivity: the unconstrained N<=5000 variant of the earlier
+  compatibility check returns chi2 = 4.9e4 (N=30), consistent with the
+  constrained statistic.
+
+Artifacts: `figures/fig_c9_prereg.png`,
+`results/c9_prereg_results.json`, `results/prereg_summary.txt`,
+`results/prereg_app.log`; protocol document `review/c9_preregistration.md`.

@@ -1,0 +1,34 @@
+Strong-ETH fluctuation scaling (matched dose VK^2=36)
+
+kappa = sigma_ETH/std_basis; B = thermal-shell benchmark
+      L36d3K14: D=  3375 kappa=0.4951 B_count=0.0330 B_frac=0.1084 R=15.02 N_shell=1781
+      L36d3K18: D=  6859 kappa=0.4623 B_count=0.0354 B_frac=0.0755 R=13.07 N_shell=1559
+      L36d3K20: D=  9261 kappa=0.4472 B_count=0.0365 B_frac=0.0654 R=12.26 N_shell=1474
+      L36d3K22: D= 12167 kappa=0.4242 B_count=0.0377 B_frac=0.0568 R=11.24 N_shell=1379
+      L36d3K26: D= 19683 kappa=0.4112 B_count=0.0401 B_frac=0.0446 R=10.25 N_shell=1221
+      L36d3K28: D= 24389 kappa=0.3550 B_count=0.0413 B_frac=0.0401 R=8.59 N_shell=1152
+      L36d3K30: D= 29791 kappa=0.3752 B_count=0.0427 B_frac=0.0363 R=8.80 N_shell=1082
+      L36d3K34: D= 42875 kappa=0.3162 B_count=0.0442 B_frac=0.0303 R=7.16 N_shell=1008
+      L36d3K38: D= 59319 kappa=0.2913 B_count=0.0453 B_frac=0.0257 R=6.43 N_shell=958
+       L36d4K7: D=  4096 kappa=0.4485 B_count=0.0251 B_frac=0.0983 R=17.85 N_shell=3128
+       L36d4K9: D= 10000 kappa=0.3665 B_count=0.0249 B_frac=0.0625 R=14.71 N_shell=3165
+      L36d4K11: D= 20736 kappa=0.3129 B_count=0.0272 B_frac=0.0436 R=11.50 N_shell=2655
+   L36d3K14scr: D=  3375 kappa=0.4559 B_count=0.0355 B_frac=0.1078 R=12.84 N_shell=1559
+   L36d3K28scr: D= 24389 kappa=0.4260 B_count=0.0430 B_frac=0.0398 R=9.90 N_shell=1031
+   L36d3K38scr: D= 59319 kappa=0.4546 B_count=0.0488 B_frac=0.0256 R=9.32 N_shell=827
+   L36d4K11scr: D= 20736 kappa=0.3129 B_count=0.0289 B_frac=0.0434 R=10.83 N_shell=2323
+
+dense tier:
+      L36d3K14: kappa_350=0.5506 window_ratio=1.112 kappa_50=0.5057 R_50=4.66
+      L36d3K18: kappa_350=0.4886 window_ratio=1.057 kappa_50=0.4727 R_50=6.26
+      L36d3K20: kappa_350=0.4433 window_ratio=0.991 kappa_50=0.4587 R_50=7.01
+       L36d4K7: kappa_350=0.4995 window_ratio=1.114 kappa_50=0.4426 R_50=4.50
+       L36d4K9: kappa_350=0.3627 window_ratio=0.990 kappa_50=0.3682 R_50=5.89
+
+fits (alpha in kappa ~ D^alpha):
+  L36-3D: alpha=-0.185 (n=9)
+  L36-4D: alpha=-0.222 (n=3)
+  dense-3D: alpha=-0.096 (n=3)
+  dense-4D: alpha=-0.206 (n=2)
+
+<r> trend: slope=0.0134 mean=0.500 std=0.020
