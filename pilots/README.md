@@ -154,57 +154,159 @@ widens, so the ETH scaling diagnostics are not confounded by the dose:
 Artifacts: `figures/fig_c4_ladder.png`, `results/c4_ladder_results.json`,
 `results/ladder_scan.log`, per-configuration `results/scaled/` files.
 
-## Krylov tier: edge-window kappa estimator + large-grid trajectories
+## Audit-response controls (label-scrambled diagonal + generic quantile sweep)
 
-The LU (shift-invert) window tier hits the SuperLU fill wall at 4D D>=38416
-(3.4 GB address-space guard; MemoryError or a SuperLU internal error). The
-Krylov tier replaces it with factorization-free measurements:
+Controls for the null hypothesis "the diagonal's arithmetic arrangement is
+irrelevant once the density of states and the graph are fixed"
+(`--scramble`: permute the on-site energies among the vertices of the same
+graph, preserving the exact diagonal multiset and every off-diagonal matrix
+element):
 
-- **Median-window routes, measured and closed** (kept for the record):
-  folded-operator -(H-sigma)^2 with ARPACK which='LA' stalls at ncv
-  240/460/700 (0/160 wanted pairs; the window boundary is a spectral
-  continuum); LOBPCG with an ILU^2 preconditioner overflows on the indefinite
-  shifted system; unpreconditioned LOBPCG contracts at ~0.96/iteration; soft
-  Gaussian filters need polynomial degree ~ ||H||/sigma_f ~ 5e3 on this band.
-- **Edge-window estimator** (executed): eigsh(H, which='LM'), k=350
-  upper-edge eigenpairs, identical eth_window protocol (30 bins),
-  residual certification <= 1.3e-11. d=4 ladder D=4,096-104,976:
-  sigma_rel = 0.871/0.887/0.886/0.894/0.895/0.888 (FLAT); d=3 ladder:
-  0.839/0.835/0.838 (FLAT). Edge sector: <r>_edge 0.38-0.43 (Poisson-like),
-  PR/D 0.054->0.009.
-- **Matched-dose trajectories at the largest grids** (resumable chunks):
-  L36d4K13 climbs through microcanonical on the secular tail (running
-  average 3.96 -> 4.62 at tau=20->78, micro 3.956); K15/K17 reach
-  tau~25-35 per cluster session, horizon-limited as the level spacing
-  shrinks.
+- **Scramble pairs** (`res_*scr`): matched-dose level statistics are
+  scramble-insensitive (r 0.518->0.512 at V=0.3; 0.509->0.502 matched) - the
+  GOE band is graph-generic; the generic-family (V=0) delocalization is not
+  (PR/D 0.238->0.113 at d=4; 0.182->0.015 at d=3, sigma_ETH 1.8->4.5): the
+  arithmetic diagonal is a transport organizer, not a source of level
+  repulsion.
+- **Generic-coupling quantile sweep** (`res_d3K28gq*`): full eight-quantile
+  sweep gives 0.464-0.540 (compression at the band edges); the earlier
+  three-interior-quantile flatness (0.505-0.514) sampled only the flat middle.
+- **Finite-size scaling** (`c4_audit_results.json`): 1/log D fits of
+  <r>-r_GOE along the matched-dose ladders (pooled: -1.66/log D + 0.141);
+  residuals large, limiting value unsettled in the computed range.
+
+Artifacts: `figures/fig_c4_controls.png`, `results/c4_audit_results.json`,
+per-configuration `results/scaled/` files, `adjudication_checks.py` (exact
+math checks: counting-defect convergence, class-size divisibility on 12
+groups, Dirichlet return-time bound, Erdos-Kac simulation ->
+`results/adjudication_math.json`).
+
+## Strong-ETH fluctuation scaling (absolute normalization)
+
+The eigenstate fluctuation re-measured in absolute units
+(`c4_strong_eth.py`): kappa = sigma_ETH / std_basis with
+std_basis = sqrt(K(K+2)/12) the a-priori spread of the local occupation
+over the (K+1)^d product basis, against two calibrated benchmarks
+(B_count: Haar-random eigenstates in the basis shell the 350-state
+eigen-window actually spans; B_frac: a fixed 5% quantile shell, the
+D^{-1/2} strong-ETH scaling with the exact prefactor).
+
+- **Decay**: kappa = 0.50 -> 0.29 along the d=3 matched-dose ladder
+  (D = 3375 -> 59319): kappa ~ D^{-0.185 +/- 0.021} (n=9, R^2=0.92);
+  D^{-0.222 +/- 0.003} along d=4 - two and a half times slower than the
+  thermal D^{-1/2}. Exact full-spectrum diagonalizations reproduce the
+  window protocol to <= 11% (fixed-fraction exponents -0.10 / -0.21).
+- **Distance from the strong-ETH scaling grows**: kappa/B_frac rises
+  4.6 -> 11.3 (d=3) and 4.6 -> 7.2 (d=4); kappa/B_count falls 15.0 -> 6.4
+  (the protocol shell is not the entropy scale); effective
+  random-combination dimension N_eff = N_shell/R^2 ~ 8 -> 23 vs shells of
+  ~10^3 states.
+- **The decay is arithmetic-organized**: label-scrambled controls at
+  matched dose hold kappa flat at 0.43-0.46 while PR/D falls
+  (0.082 -> 0.035; `res_*scr`, `win_*scr` in `results/scaled/`).
+- **Slow-mode structure**: kappa*sqrt(PR) grows 8.5 -> 28 (support-uniform
+  level sqrt(2)); within one median-energy window the eigenstate values of
+  n_1 span [0.3K, 0.94K]; <r> shows no size trend (slope 0.013 +/- 0.020
+  in log D, mean 0.500).
+
+Artifacts: `figures/fig_c4_strongeth.png`,
+`results/c4_strongeth_results.json`, `results/strongeth_summary.txt`,
+per-configuration `results/scaled/` files (incl. the three scrambled
+matched-dose windows).
+
+## C9 pre-registered dictionary application
+
+The Chebotarev dictionary protocol, frozen in
+`review/c9_preregistration.md` (commit 9f30553, corrected rule) before the
+fit was run, and applied once to the exhaustive five-channel Z-pole
+branching table (`c9_prereg_application.py`):
+
+- Statistic: T = min over N in [5,360], c_i | N, sum c_i = N (class
+  equation, enforced by exact dynamic programming) of the chi-square; the
+  DP is validated against brute-force enumeration (60 cases) and
+  batch==single==backtrack to roundoff.
+- Null: 5000 Dirichlet tables at the actual uncertainty pattern (median
+  2.8e5, 5% quantile 2.9e4; false-positive rate at chi2_0.95(4) is 0/5000).
+- **Decision: signature absent.** T_obs = 4.1e5 (best N=48,
+  c=(24,2,3,3,16)) at the null's 59th percentile; per-channel exclusion
+  depth 221/7/5/4/2.8 sigma (had/e/mu/tau/invisible); precision-inflation
+  factor lambda = 208.
+- **Power = 1.000** at the registered threshold for every injected truth
+  table (N = 6, 36, 360) at current Z-pole precision (also at x1e-1,
+  x1e-2, and the Z-factory statistical floor 3.3e-3): the absence is an
+  exclusion over the whole registered range, not an under-powered null.
+  Recovery of the group order is up to common factors (primitive
+  representative).
+- Sensitivity: the unconstrained N<=5000 variant of the earlier
+  compatibility check returns chi2 = 4.9e4 (N=30), consistent with the
+  constrained statistic.
+
+Artifacts: `figures/fig_c9_prereg.png`,
+`results/c9_prereg_results.json`, `results/prereg_summary.txt`,
+`results/prereg_app.log`; protocol document `review/c9_preregistration.md`.
+
+## c4_eth: factorization-free window tier and sector checks (residuals)
+
+Two additions close the audit-adjudication residuals:
+
+- `c4_kappa_krylov.py` - block Chebyshev subspace iteration on
+  B = (H - c)^2 (c = median of the diagonal energies, the shift-invert
+  target): low-pass Chebyshev T_M(xi(B)), xi(b) = 1 + 2(b_w - b)/(b_high
+  - b_w), passband +-t sized by stochastic Lanczos quadrature (8-12
+  probes x 360 fully reorthogonalized steps; the block cannot see past
+  its own boundary), float32 filtering with a float64 polish, Rayleigh-
+  Ritz after every sweep, every selected pair certified by ||Hv - wv||.
+  Resumable in degree-chunks (state checkpoints after every chunk).
+  Validation against the LU tier (results/c4_kappa_krylov_validation.json):
+  eigenvalue sets identical to machine precision at D = 9.3e3 and 1e4
+  (max |dlambda| <= 4e-11), kappa within 0.6% at D = 6.9e3, 289/350
+  pairs certified at the near-ceiling D = 2.4e4 with kappa within 2.4%.
+  Extension: L36d4K13 (D = 3.84e4, M = 3400) gives kappa = 0.250 with
+  276/350 certified pairs at residuals <= 1.8e-6, <r> = 0.511 (GOE),
+  PR/D = 0.148; the d=4 ladder reads 0.449 -> 0.367 -> 0.313 -> 0.250 and
+  the four-point fit is kappa ~ D^{-0.255} against the thermal D^{-1/2},
+  with the fixed-fraction benchmark distance still growing (7.2 -> 7.8).
+  Cost ceiling: Chebyshev degree ~ ln(eps) R/(2t) with the radius R
+  dose-pinned (~570 at VK^2 = 36 in d = 4; the fully occupied corners
+  carry row sums proportional to VK^2 (d-1)), so the degree grows
+  linearly in D at fixed protocol - the LU fill ceiling is replaced by a
+  compute-degree ceiling about one rung higher.
+- `c4_sector_checks.py` - numerical corroboration of the occupation-
+  sector proposition: every sector block Hermitian to machine precision
+  and within the row-sum norm bound ||H_kin^(S)|| <= |V|(d-1)S(S+1) for
+  S <= 12 at d = 3,4; box-truncation exactness of sector-supported
+  dynamics to 7e-15 across truncations (same seed -> same couplings);
+  the walk control leaks out of the sector as H_W's non-conservation
+  requires (results/c4_sector_checks.json, 28/28 checks).
+
+Artifacts: `results/res_krylov_*.json`, `results/win_krylov_*.npz`,
+`results/c4_kappa_krylov_results.json`,
+`results/c4_kappa_krylov_validation.json`,
+`results/c4_sector_checks.json`, `figures/fig_c4_strongeth.png`
+(regenerated with the Krylov-tier point).
+
+## Edge-window kappa stage + the k=7 variant (the K15/K17 leg)
+
+The `--stage kappa` worker (edge window) complements `c4_kappa_krylov.py`
+(the Chebyshev median-window tier, degree-walled at K13):
 
 ```bash
-# kappa stage at any grid (minutes; single process)
+# upper-edge window at any grid (minutes, single process, residuals <= 1.3e-11)
 python3 c4_eth/c4_scaled_eth.py --tag L36d4K17 --d 4 --K 17 \
     --V 0.1245675 --stage kappa
-# trajectory chunk (repeat with --resume; checkpoints in evol_{tag}.npz)
+# matched-dose trajectory chunk (repeat with --resume)
 python3 c4_eth/c4_scaled_eth.py --tag L36d4K17 --d 4 --K 17 \
     --V 0.1245675 --stage evolve --tau-max 100 --resume
 ```
 
-Artifacts: `results/scaled/win_kappa_{tag}.npz` (eigenvalues, eigenstate
-diagonals, residuals), the `kappa` block of `res_{tag}.json`, and the
-extended `fig_c4_ladder.png` / `c4_ladder_results.json`.
-
-## C9 k=7 dictionary variant (frozen PDG 2024 extract)
-
-Seven-flavour Z-width decomposition frozen and committed BEFORE the fit
-(`pdg_z_extract_2024.json`, with the pre-registered protocol embedded);
-null calibration (3000 matched-sigma Dirichlet draws) runs first, injection
-second, the data fit last. Verdict: no common-N table (best chi2 = 1394.68
-against a 14.07 threshold; empirical p = 0.032, tracing to lepton
-universality). The injection amendment (the pre-registered truth table had
-c=7 not dividing N=60) is recorded in the results file.
-
-```bash
-python3 c9_chebotarev/c9_freeze_pdg.py     # writes the frozen extract
-python3 c9_chebotarev/c9_k7_variant.py     # null -> injection -> fit
-```
-
-Artifacts: `pdg_z_extract_2024.json`, `results/c9_k7_results.json` (also
-mirrored in the analysis download directory).
+- d=4 edge ladder (D=4,096-104,976): sigma_rel = 0.871/0.887/0.886/0.894/
+  0.895/0.888 (FLAT); d=3: 0.839/0.835/0.838 (FLAT); edge sector
+  Poisson-like (<r>_edge 0.38-0.43, PR/D 0.054->0.009).
+- Median-window factorization-free routes measured as closed at these
+  scales: ARPACK-fold (ncv 240/460/700: 0/160), ILU^2 LOBPCG (NaN),
+  unpreconditioned LOBPCG (0.96/iter), soft filters (degree ~5e3).
+- Matched-dose trajectories at the three largest grids: K13 tau=96 (secular
+  climb 3.96->4.79 vs micro 3.956), K15 tau=44, K17 tau=36 (horizon-limited).
+- C9 k=7: `c9_freeze_pdg.py` (frozen 2024 extract, committed pre-fit) +
+  `c9_k7_variant.py` (null -> injection -> fit): no common-N table at the Z
+  scale at seven channels (chi2 = 1394.68 vs 14.07; p = 0.032).

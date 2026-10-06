@@ -1,0 +1,13 @@
+{
+  "defect": {
+    "converges_to_zero": true,
+    "amplitude_asymptotic": "log(1+1/m) ~ 1/m = e^{-x}",
+    "grok_verdict": "WRONG on convergence (r->0) and on asymptotic amplitude (log 2 is only the global/first-jump envelope)",
+    "muse_verdict": "RIGHT: O(e^{-E/(h w0)}) sharp",
+    "paper_verdict": "WRONG as written (Thm 6.1 says 'does not converge')"
+  },
+  "class_sizes": {
+    "all_divide": true,
+    "grok_verdict": "WRONG: class sizes always divide |G| (orbit-stabilizer); the nontrivial constraint is realizability, not divisibility"
+  }
+}

@@ -107,7 +107,13 @@ Theorem layer: factorization \eqref{eq:factorization}; model demoted ($\mathsf{C
 \end{center}
 
 Each row now has the same structure: a true theorem about number fields, an honest
-conjecture about the pairing. Two entries deserve expansion because they carry the
+conjecture about the pairing. The table is a bookkeeping of identifications, not a
+construction: no row supplies a gauge field, a connection, an action, a mass gap, or any
+confinement or scattering observable, and none is derived anywhere in this section. Each
+row's physical content is exactly its conjectural statistics---restrictions, densities,
+hierarchies---and nothing more; the dynamical and geometric content of the Standard Model
+would have to be carried by constructions that this paper does not attempt. Two entries
+deserve expansion because they carry the
 most distinctive physical claims.
 
 \subsection{Arithmetic charge conjugation, parity, and time reversal}
@@ -210,3 +216,28 @@ statistics, at the unification scale, organize into ratios of small integers div
 group orders. That is a checkable structural signature, quite unlike the free parameters of
 Lie-group GUTs, and it is the kind of prediction that would falsify $\mathsf{C9}$ outright
 if the statistics came out transcendental or unsplittable.
+
+The hook has been made operational as a pre-registered test protocol and applied to the
+$Z$-pole branching table. The statistic is the best class-equation-constrained dictionary
+fit,
+$T=\min\sum_{i}(f_{i}-c_{i}/N)^{2}/\sigma_{i}^{2}$ over group orders $N\in[5,360]$ and
+integers $c_{i}\geq1$ with $c_{i}\mid N$ and $\sum_{i}c_{i}=N$ (class sizes divide the
+group order by orbit--stabilizer, and the classes partition the group); the minimization is
+exact by dynamic programming over integer partial sums. The null distribution is
+Monte-Carlo-calibrated on structureless (Dirichlet) tables at the measured uncertainty
+pattern, and the decision rule is fixed in advance of the fit: the signature is present iff
+the observed fit is at least as good as the null's best $5\%$. Power is calibrated by
+injected truth tables at $N=6$, $36$, and $360$ (one per decade of the registered range):
+the detection probability is $1.000$ at the registered threshold at \emph{current}
+$Z$-pole precision. Applied to the exhaustive five-channel $Z$ table
+(hadronic, $e$, $\mu$, $\tau$, invisible; PDG values and uncertainties), the protocol
+returns $T=4.1\times10^{5}$ (best fit $N=48$, $c=(24,2,3,3,16)$) at the null's $59$th
+percentile: the signature is absent, and the absence is decisive rather than
+under-powered---each channel individually misses every candidate value $c/N$ by at least
+$2.8\sigma$ (the hadronic channel by $221\sigma$), and all uncertainties would have to
+inflate by a factor $208$ for the best constrained fit to become acceptable. The $Z$-scale
+exclusion is consistent with the dictionary's unification-scale placement and carries no
+confirmatory content; the frozen protocol (statistic, null, decision rule, power tables)
+applies unchanged to future precision tables, for which the statistical floor of a
+$Z$ factory with $\sim10^{12}$ recorded decays improves the current precision by a further
+factor $\sim3\times10^{-3}$.

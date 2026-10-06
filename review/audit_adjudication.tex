@@ -1,0 +1,452 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,urlcolor=blue!45!black]{hyperref}
+\geometry{a4paper,top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm}
+\emergencystretch=3em
+\newcommand{\Cn}[1]{$\mathsf{C#1}$}
+\newcommand{\ok}{\textbf{applied}}
+\newcommand{\ket}[1]{\lvert #1\rangle}
+\newcommand{\Nn}{\mathbb{N}}
+\newcommand{\Qq}{\mathbb{Q}}
+\newcommand{\reb}{\textbf{rebutted}}
+\newcommand{\pver}{\textbf{partial}}
+\newcommand{\sat}{\textbf{already satisfied}}
+\DeclareMathOperator{\spec}{spec}
+
+\title{Adjudication of Three Independent Audits\\ of the Prime-Spectral Framework Manuscript}
+\author{Working review document}
+\date{October 5, 2026}
+
+\begin{document}
+\maketitle
+
+\section{Scope, material, and method}
+
+Three independent line-level audits of the manuscript \emph{The Prime-Spectral
+Framework: Theorems, Conjectures, and Numerical Tests} were received in
+\texttt{audits/prime audit.txt}: \textbf{astra} (13 points, short-form),
+\textbf{grok} (13 numbered flaws, a 7-row internal-inconsistency table, and a
+7-item improvement program), and \textbf{muse} (8 subsections of mathematical
+gaps, minor issues, and a 6-item improvement plan). This document adjudicates
+them jointly: every substantive claim was checked against the manuscript text,
+every checkable mathematical assertion was re-derived or computed, the
+numerical demands that could be executed at laptop scale were executed, the
+surviving fixes were folded into the manuscript, and the points on which the
+audits disagree with each other were resolved on the mathematics.
+
+\paragraph{Verdict categories.} Each point receives one of:
+\ok{} (the claim is correct and a fix has been applied);
+\pver{} (the concern is valid but the stated specifics are wrong or
+overstated; a precise fix is applied instead);
+\reb{} (the claim is factually wrong, with proof or computation);
+\sat{} (the manuscript already contains the demanded content; the audit
+misread or reviewed an extraction artifact);
+\textbf{run} (the demand was executed as a new computation and folded in).
+
+\paragraph{Verification tools.} (i) Exact and Monte-Carlo checks
+(\texttt{scripts/adjudication\_checks.py}): counting-defect convergence,
+conjugacy-class divisibility on 12 finite groups, the Dirichlet return-time
+bound, and Erd\H{o}s--Kac normal-order simulation. (ii) New numerical controls
+(\texttt{c4\_scaled\_eth.py --scramble}, \texttt{--sigma-quantile}):
+label-scrambled diagonal controls, a generic-coupling quantile sweep, and
+$1/\log D$ scaling fits. (iii) Line-level re-reading of all eight source
+files of the manuscript.
+
+\section{Cross-audit oppositions and their resolution}
+
+The audits disagree with each other on nine points of substance. Each
+opposition is stated, adjudicated, and cross-referenced to the change made.
+
+\begin{longtable}{@{}p{0.30\textwidth}p{0.31\textwidth}p{0.31\textwidth}@{}}
+\toprule
+\textbf{Opposition} & \textbf{Resolution} & \textbf{Manuscript change}\\
+\midrule
+\endhead
+O1. Counting-law defect: grok --- ``non-convergent sawtooth of amplitude
+$\log 2$''; muse --- ``error is $O(e^{-E/\hbar\omega_{0}})$''; the audited text
+said ``$O(1)$, does not converge.'' &
+\emph{Muse is right.} Computed: $r(E)=\log\lfloor e^{x}\rfloor-x$ satisfies
+$\log(1-e^{-x})\le r\le 0$ with $r\to0$ like $e^{-x}$; the jump amplitude at
+level $m$ is $\log(1+1/m)\sim 1/m$. The $\log 2$ bound is only the global
+envelope at the bottom of the spectrum; the non-convergent object is the
+fractional part $\{e^{x}\}$, not the error. &
+Theorem~\ref{thm:logcount} restated: sharp two-sided bound, exponential decay,
+smoothing item, staircase honesty; C5 fluctuation sector reassigned from the
+floor to the prime-counting oscillations.\\
+O2. Independence of $\{\log p\}$: grok --- ``Baker/Lindemann--Weierstrass
+territory''; muse --- ``unique factorization suffices, no Baker needed.'' &
+\emph{Muse is right.} The paper's proof clears denominators and exponentiates:
+$\prod p_i^{c_i}=1$ forces $c_i=0$. Baker's theorem concerns algebraic
+coefficients and is neither needed nor used. &
+Lemma statement made explicitly finite-support (astra's variant of the same
+point).\\
+O3. Hardy--Ramanujan citation: grok --- the partition asymptotics
+$p(n)\sim e^{\pi\sqrt{2n/3}}$ is cited for the cascade (category error); muse
+--- normal order vs.\ maximal order conflated in prose. &
+\emph{Both charges miss the text.} The manuscript cites
+\texttt{hardyramanujan1917} --- ``The normal number of prime factors of a
+number $n$'', QJM~48 (1917) --- which \emph{is} the normal-order theorem; the
+prose distinguishes typical from maximally composite integers. &
+Abstract wording strengthened to ``Hardy--Ramanujan normal-order and
+Erd\H{o}s--Kac theorems'' to remove the ambiguity the audits read in.\\
+O4. C9 class sizes: grok --- ``class sizes divide the group order only in
+trivial cases''; the protocol fits $c_i\mid N$. &
+\emph{The paper is right.} Orbit--stabilizer: $|C(x)|\cdot|C_G(x)|=|G|$, so
+$|C|\bigm| |G|$ always. Brute-force verified on $C_2$--$C_5$, $S_3$--$S_5$,
+$D_4$--$D_8$, $Q_8$: every class size divides $|G|$. The real constraints are
+realizability and analyst degrees of freedom, which grok also raises
+(see G10). &
+Register C9 row: $c_i=|C_i|$ with the orbit--stabilizer gloss; pre-registration
+and non-confirmatory $Z$-pole wording added.\\
+O5. Microcanonical temperature: grok --- ``exactly critical at every energy''
+is circular and false; muse --- no phase transition is proved, rename;
+astra --- interpretive analogy. &
+\emph{All three converge on demotion; grok's diagnosis of the mechanism is
+correct.} The unsmoothed entropy is a staircase (derivative $0$ a.e.);
+$T\equiv T_H$ holds only for fixed-window smoothings, whose growth rate is
+$1/\hbar\omega_0$ exactly. &
+Theorem restated as a growth-rate statement with the staircase made explicit;
+``exactly critical'' removed; Hagedorn reading tied to unit degeneracy and
+densification.\\
+O6. Canonical ensemble at the pole: grok --- no ensemble exists at $T\ge T_H$
+and no theorem bridges the divergence to the counting; muse --- same, plus a
+cutoff-canonical demand. &
+\emph{Valid; the bridge is now a proposition.} For $\sigma>1$,
+$Z(\sigma)=\zeta(\sigma)=\int e^{-\sigma x}\,dN(x)$ exactly (Laplace--Stieltjes
+identity); the pole $1/(\sigma-1)$ is exactly the Laplace transform of the
+exponential counting law, and $\zeta-1/(\sigma-1)$ is entire. &
+New Proposition (ensemble bridge) in \S2; canonical statements confined to
+$T<T_H$; above-$T_H$ statements labeled microcanonical or cutoff.\\
+O7. Holographic error budget: grok --- area-independent $O(1)$ cannot absorb
+$\log(A/\ell_P^2)$, so Theorem 6.2 is false under the register's own risk note;
+astra --- the cutoff is an assumption. &
+\emph{grok's arithmetic is right and is adopted as structure.} The counting
+contributes no $\log A$ term (its defect is exponentially small); every
+logarithmic correction must be carried by the dictionary. &
+Conjecture restated with the dictionary slot $s(A)=O(\log(A/\ell_P^2))$;
+conditional theorem: area coefficient exact, corrections carried by $s$; the
+pure ($s=O(1)$) sub-hypothesis is falsifiable by computed $-\frac32\log A$
+corrections.\\
+O8. C4 numerics: grok --- GOE on a sparse perturbation of a separable ramp is
+the default expectation; demands a label-scrambled control, a generic quantile
+sweep, and $1/\log D$ scaling; muse --- $D\lesssim 6\times10^4$ is
+pre-asymptotic ($\log\log D$ small). &
+\emph{Both executed.} The scrambled controls \emph{confirm} grok's reading for
+level statistics (matched-dose $\langle r\rangle$ is scramble-insensitive:
+$0.518\to0.512$, $0.509\to0.502$) and \emph{refute} it for the generic family's
+delocalization (scrambling collapses PR$/D$ by $2\times$ at $d=4$ and
+$12\times$ at $d=3$, and inflates $\sigma_{\mathrm{ETH}}$ $1.8\to4.5$): the
+arithmetic diagonal is a transport organizer, not a source of level repulsion.
+muse's asymptotic-distance point is quantified ($\log\log$ of the largest
+truncation $\approx 4.5$). &
+Remark (f) label-scrambled controls and (g) finite-size scaling added;
+Figure~\ref{fig:controls}; register rows C4/C5 updated; the scaling limit is
+reported as unsettled.\\
+O9. Editorial strategy: grok --- split the paper into a mathematical note and
+a conjectural essay; muse --- quarantine the interpretation inside one paper;
+astra --- enforce a per-claim ledger. &
+\emph{muse and astra adopted.} The register \emph{is} the per-claim ledger
+(statement, grade, dependencies, falsifier, exemption markers); the two-plane
+presentation quarantines interpretive dependencies; splitting is a publishing
+decision without mathematical content, noted here for the record. &
+No structural split; \S1.2 amended (operational testability for C1--C11,
+interpretive exemption marked); ``not implied'' boundary paragraph added at the
+end of \S2.\\
+\bottomrule
+\end{longtable}
+
+\section{Point-by-point verdicts}
+
+\subsection{astra}
+
+\begin{longtable}{@{}p{0.46\textwidth}p{0.14\textwidth}p{0.34\textwidth}@{}}
+\toprule
+\textbf{Claim} & \textbf{Verdict} & \textbf{Action}\\
+\midrule
+\endhead
+A1 Formal construction vs.\ physical interpretation must be separated ($\zeta$
+as partition function vs.\ Hagedorn reading). & \pver & Hagedorn reading tied
+to unit degeneracy/densification; Gibbs existence confined to $T<T_H$; ensemble
+bridge added.\\
+A2 $N(E)$ needs explicit definition, vacuum convention, proof. & \sat &
+Already exact ($n\ge1$, $N(E)=\lfloor e^{E/\hbar\omega_0}\rfloor$, vacuum
+$\ket1$ at $E=0$); now strengthened with the sharp defect.\\
+A3 ``Naive infinite tensor product is the wrong home'' is too broad; incomplete
+tensor products are separable. & \ok & Incomplete tensor product over the
+vacuum $\Omega$ identified, unitary to bosonic Fock; the full product never
+used.\\
+A4 $\Qq$-independence of $\{\log p\}$ needs the finite-support condition. &
+\ok & Lemma restated for finite relations.\\
+A5 Gaussian-prime/chirality language conflates splitting classification with
+chiral gauge representation. & \ok & Factorization supplies no dimension count
+and no chirality operator; both are marked dictionary entries.\\
+A6 Galois unification under-specified (profinite, not Lie; no functor). & \ok &
+Minimal well-posed dictionary (conj:gut) with the ``does and does not supply''
+boundary; no functor claimed.\\
+A7 Langlands invoked too imprecisely. & \sat & Exact setting given
+(function-field $\mathrm{GL}_n$, \cite{lafforgue2002} in the manuscript);
+specialization requirement stated.\\
+A8 ``Photon as reciprocity map'' not well typed. & \ok & Dictionary rows
+labeled demoted; new bookkeeping paragraph: no gauge field, connection, action,
+or propagating degree of freedom is constructed.\\
+A9 Chebotarev statistics do not establish confinement or color. & \ok & Same
+paragraph; confinement observables explicitly not derived.\\
+A10 ``Decidable'' overstates. & \ok & Replaced by ``operationally testable'';
+C1--C11 carry routes; interpretive entries exempt and marked.\\
+A11 Numerical standards need reproducibility content (seeds, grids, cutoff
+dependence). & \pver & ``Code, seeds, parameter grids, and all result files
+accompany the paper (repository)''; window/cutoff dependence is reported in
+Remark (a),(f),(g); Monte-Carlo false-positive calibration prices the C9
+multiple-testing.\\
+A12 ``Gravity as entropic $1/N$ effect'' requires definitions. & \sat & The
+claim is register-held (C1/C6, grade B/C) with the falsifier column carrying
+the operational content; no theorem asserts it.\\
+A13 Per-claim ledger; neutral language in theorem sections. & \sat & The
+register is the ledger; theorem environments state mathematics only; physical
+identifications live in the register.\\
+\bottomrule
+\end{longtable}
+
+\subsection{grok}
+
+\begin{longtable}{@{}p{0.46\textwidth}p{0.14\textwidth}p{0.34\textwidth}@{}}
+\toprule
+\textbf{Claim} & \textbf{Verdict} & \textbf{Action}\\
+\midrule
+\endhead
+G1 Abstract overclaims the counting law (``exact identity'', $O(1)$,
+non-convergent sawtooth; C5 unfalsifiable). & \pver & See O1: defect decays
+exponentially; abstract restated; C5's fluctuation sector reassigned to
+prime-counting oscillations with the von Koch bound.\\
+G2 ``Exactly critical at every energy'' is circular/false. & \ok & See O5;
+statement now a growth-rate property; pointwise temperature undefined between
+levels.\\
+G3 Hardy--Ramanujan is the wrong theorem. & \reb & See O3: the 1917
+normal-order paper is cited, not the partition asymptotics; abstract
+disambiguated anyway.\\
+G4 Canonical $Z=\zeta$ is not the ensemble the physics needs; no
+microcanonical theorem; no bridge. & \ok & See O6: ensemble-bridge
+proposition; canonical confined below $T_H$.\\
+G5 Multiplication operators are not interactions; the diagonalized model is
+not the conjectured one. & \pver & ``Selected, not derived'' provenance remark;
+the $M_n$ algebra supplies exact energy bookkeeping (new commutator identity)
+and the graph; bare $H_{\mathrm{tot}}$ is excluded from the conjecture
+explicitly.\\
+G6 Gaussian extension yields no chirality or five dimensions. & \ok & See A5;
+units quotiented; norm-based energies only.\\
+G7 Holographic bridge is an assumption wearing a theorem number; $O(1)$
+cannot absorb $\log A$. & \ok & See O7: dictionary slot $s(A)$; area
+coefficient exact; pure form falsifiable.\\
+G8 Clock thermodynamics contradicts ``exactly critical''; no directional
+limit. & \ok & Regulator $\nu$ separated from inverse temperature; clock
+exists on both sides of $T_H$; new theorem addendum: no limit
+$\nu\downarrow\frac12$ selects a direction.\\
+G9 Phase incommensurability does not imply the universe cannot repeat; C2's
+falsifier is absorbable. & \pver & Ray-periodicity classification added;
+quantitative return-time proposition; C2 falsifier restated as a scaling
+criterion (super-polynomial-in-$S$ recurrence is inconsistent with every
+cutoff).\\
+G10 C9's falsifier cannot do its work (divisibility, analyst freedom,
+absence-as-confirmation, single-channel, Kronecker--Weber abelian). & \pver &
+Divisibility charge rebutted (O4); pre-registration language, non-confirmatory
+$Z$-pole wording, and single-channel caveat applied; KW already scoped to the
+abelian row.\\
+G11 C4 numerics do not test thermalization of the arithmetic universe (no
+scrambled control, no generic quantile sweep, dose tuning, structural ETH
+failure, no $1/\log D$ scaling). & \ok/\textbf{run} & All diagnostics executed
+(O8): matched-dose GOE is graph-generic (honest concession), generic-family
+delocalization is arithmetic; full generic sweep $0.46$--$0.540$; scaling fits
+with the limit reported unsettled; matched dose is the controlled variable,
+stated as such.\\
+G12 Register self-violations (C4 depth placement, C12 exempt, C10/C11
+open-ended, cut-off constraint). & \ok & Two-plane DAG separates physical
+ordering from logical autonomy; \S1.2 amended; C10 constraint labeled
+one-sided; C12 marked interpretive with the exemption.\\
+G13 Small consistency errors ($\ell^2(\Nn,\times)$, $k_B$ mixing, Bochner
+toeplitz, ``three structural requirements met''). & \ok & $\ell^2$ of
+$\Nn_{\geq1}$; units paragraph ($k_B=1$ unless displayed, $\sigma$
+dimensionless, $\nu$ regulator); kinematical-level disclaimer for the
+clock section; abstract now says ``obstructions are discharged''.\\
+\bottomrule
+\end{longtable}
+
+The 7-row internal-inconsistency table and the 7-item improvement program map
+onto the rows above (rows 1--7 of the table duplicate G4, G8, G7, G12, G2, G3,
+G10; improvements 1--7 map to O9, O7, O6, O8/G11, G10, G13, and the new
+``not implied'' boundary respectively). grok's acknowledgment list (the
+arithmetic core is correct) is consistent with the manuscript's own
+grading and requires no action.
+
+\subsection{muse}
+
+\begin{longtable}{@{}p{0.46\textwidth}p{0.14\textwidth}p{0.34\textwidth}@{}}
+\toprule
+\textbf{Claim} & \textbf{Verdict} & \textbf{Action}\\
+\midrule
+\endhead
+M1 (2.1) Fock isomorphism not proved; notation; Gaussian $\Qq_{>0}$ domain
+unbounded below. & \pver & Fock unitary and incomplete tensor product added;
+notation already single-convention; the unbounded-below charge is a misread
+(energies are $\log N(\pi)$ over Gaussian-prime norms, never $\log r$ for
+$r\in\Qq_{>0}$).\\
+M2 (2.2) $H_P$ domain, essential self-adjointness, spectrum qualifiers,
+over-selling. & \ok & Explicit $D(H_P)$; compact resolvent, pure point, no
+finite accumulation, gaps $\hbar\omega_0\log(1+1/n)$; the diagonal-operator
+nature is stated without depth claims.\\
+M3 (2.3) Trace-class condition; Hagedorn naming; cascade is statistical, not
+dynamical. & \ok & $\beta\hbar\omega_0>1$ carried through; degeneracy-one
+structural difference stated; the statics/dynamics dichotomy is the section's
+spine (frozen-dynamics proposition + Erd\H{o}s--Kac theorem).\\
+M4 (2.4) Ensemble window undefined; normal vs.\ maximal order. & \pver &
+Cumulative measure labeled, shell transfer noted (normal order holds on every
+dyadic range); typical vs.\ maximally composite already distinguished.\\
+M5 (2.5) Monoid relations, boundedness, lattice definition. & \sat & Cuntz-type
+relations, range projections, shift ladder already in the monoid proposition;
+Kato--Rellich now explicit; $H_W$ edges $=$ divisibility graph $=$ occupation
+axes, stated.\\
+M6 (2.6) Periodicity quantifiers; Bohr $\sigma$; quantitative recurrence. &
+\ok & Ray version added; $\sigma=2\nu>1$ fixed in the theorem; new quantitative
+return-time proposition with polynomial-in-entropy arithmetic scale vs.\
+double-exponential generic scale.\\
+M7 (2.7) Entanglement bipartition-relativity. & \sat & The section defines
+entanglement exactly across prime-mode bipartitions; the product-basis theorem
+is scoped; the counterexamples are the section's own.\\
+M8 (2.8) Dynamics vs.\ kinematics; $Z\neq\zeta$ under $V$; reporting. & \ok &
+Well-posedness proposition (bounded perturbation, Kato--Rellich); free-theorem
+statements scoped to $H_P$; the interacting family is the conjecture's object,
+tested in Remark (a)--(g).\\
+M9 (\S3) Conjecture-level demands (C1 derivation, C3 dictionary, C4
+pre-asymptotics, C9 blind prediction, arrows, math-vs-physical falsifiers). &
+\pver & C4 pre-asymptotics quantified (O8); C3 dictionary slot (O7); C9
+pre-registration (O4); C1 remains register-held with its conditional evidence;
+arrows carry their own falsifiers (CMB phenomenology) and the free-sector
+impossibility is now a theorem; the math/physical falsifier split is partially
+implemented and remains open.\\
+M10 (\S4) Minor issues (cross-refs, $O(1)$ vs.\ exponentially small, floor,
+units, multi-index notation, bookmarks). & \ok/\sat & Compile: 0 undefined
+references; defect restated; floor displayed; units paragraph; occupation
+multi-index convention; bookmarks verified.\\
+\bottomrule
+\end{longtable}
+
+\section{Verification computations}
+
+\subsection{Counting-law defect (O1)}
+At level $m$ the defect extremum is $-\log(1+1/m)$, and $1/m=e^{-x}$ at
+$x=\log m$: amplitude ratio $\to1$ (computed to $m=10^{6}$ exactly and
+$m=10^{100}$ by formula). The bound $-\log(1-e^{-x})\le 2e^{-x}$ holds at
+$x=\log 2$ with slack ($0.693\le1.0$). \textbf{grok's non-convergence claim is
+false; muse's estimate is sharp.}
+
+\subsection{Conjugacy-class divisibility (O4)}
+Brute force over $C_n$ ($n\le5$), $S_n$ ($n\le5$), $D_n$ ($n\le8$), $Q_8$:
+every class size divides the group order, as orbit--stabilizer guarantees.
+\textbf{grok's ``only in trivial cases'' is wrong}; the paper's $c_i\mid N$
+with $N=|G|$ is exact.
+
+\subsection{Dirichlet return-time bound (G9)}
+For $m$ rationally independent frequencies, the pigeonhole grid with
+$N=\lceil 2\pi/\delta\rceil$ produces $q\le N^m$ with all phases within
+$2\pi/N$: verified for $m=2,3$ at $\delta=0.05$ and $m=4,5$ at coarser
+$\delta$. This is the mechanism behind the new Proposition~(return bound)
+$\tau_\varepsilon\le(2\pi C_F/\varepsilon)^{m_F}$, $C_F=2+K_Fm_F$.
+
+\subsection{Arithmetic vs.\ generic recurrence scales (G9/O1)}
+Simulated $\omega(n)$ near $x=10^{6},10^{12},10^{18}$: means $2.94,3.55,3.76$
+vs.\ $\log\log x=2.63,3.32,3.72$. With $M$ integers near $x$,
+$m_F\lesssim M\log\log x$, hence
+$\tau\lesssim(C/\varepsilon)^{M\log\log x}=(S/k_B)^{O(1)}$: \emph{polynomial in
+the entropy} for bounded support, against the generic-system scale
+$\gtrsim\varepsilon^{-D}$ with $D=e^{S/k_B}$: \emph{double-exponential}. This
+is precisely the recurrence-time separation grok demanded as the only
+non-absorbable C2 falsifier.
+
+\section{New numerical controls (O8)}
+
+\begin{center}
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+Platform & $\langle r\rangle$ arith & $\langle r\rangle$ scr &
+PR$/D$ arith & PR$/D$ scr & $\sigma_{\mathrm{ETH}}$ arith &
+$\sigma_{\mathrm{ETH}}$ scr\\
+\midrule
+$d=4,K=11$, $V=0$ & 0.581 & 0.510 & 0.238 & 0.113 & 0.36 & 0.37\\
+$d=4,K=11$, $V=0.3$ & 0.518 & 0.512 & 0.136 & 0.117 & 1.09 & 1.06\\
+$d=4,K=11$, matched & 0.509 & 0.501 & 0.138 & 0.117 & 1.08 & 1.08\\
+$d=3,K=28$, $V=0$ & 0.514 & 0.544 & 0.182 & 0.015 & 1.79 & 4.55\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Reading: at matched kinetic dose the level statistics are scramble-insensitive
+(the GOE band is a property of the graph); the generic family's
+delocalization is not (the arithmetic diagonal organizes transport through
+incommensurate step resonance). Generic-coupling quantile sweep at
+$d=3,K=28$: $0.464$--$0.540$ (the earlier three-interior-quantile flatness was
+a sampling artifact; now superseded and reported as such). $1/\log D$ fits
+along the matched-dose ladders: pooled deviation
+$-1.66/\log D+0.141$; residuals large; the limiting value is unsettled within
+the computed range.
+
+\section{Manuscript changes}
+
+\begin{enumerate}[leftmargin=1.6em]
+\item \textbf{Theorem (log-count) strengthened:} sharp defect bounds,
+exponential decay, sharpness, fixed-window smoothing item, staircase honesty
+(\S6).
+\item \textbf{New Proposition (ensemble bridge):} $Z=\zeta$ as the exact
+Laplace--Stieltjes transform of the counting function; pole $=$ transform of
+the exponential law; $\zeta-1/(\sigma-1)$ entire (\S2).
+\item \textbf{New Proposition (quantitative return times):} Dirichlet bound,
+polynomial-in-entropy arithmetic scale vs.\ double-exponential generic scale;
+C2 falsifier restated as a scaling criterion (\S4).
+\item \textbf{Ray periodicity classification} added to the no-period theorem
+(\S4).
+\item \textbf{Conjecture C3/Theorem (BH) restructured:} dictionary error slot
+$s(A)=O(\log(A/\ell_P^2))$; area coefficient exact; pure form falsifiable
+(\S6, register).
+\item \textbf{Clock section:} regulator $\nu$ disambiguated from inverse
+temperature; kinematical-level scoping; no-directional-limit addendum (\S5).
+\item \textbf{Dynamics section:} commutator identity $[H_P,M_m]$; provenance
+(``selected, not derived''); full generic quantile sweep; new Remark items (f)
+label-scrambled controls and (g) finite-size scaling; Figure (controls)
+(\S3).
+\item \textbf{Register:} C2, C3, C4, C5, C9, C10 rows updated; \S1.2
+operational-testability rule with interpretive exemption; falsifiability
+items 2 and 4 rewritten.
+\item \textbf{Arithmetic sector:} incomplete-tensor-product/Fock unitary;
+explicit $D(H_P)$; spectrum qualifiers; Hagedorn structural difference; units
+paragraph; ``not implied'' boundary paragraph (\S2).
+\item \textbf{Galois section:} dictionary bookkeeping boundary (no gauge
+dynamics constructed) (\S7).
+\end{enumerate}
+
+Compile status: 45 pages (46 with cover), 0 overfull boxes, 0 undefined
+references; single-file manuscript generated and verified to compile
+identically.
+
+\section{Residual open items}
+
+\begin{enumerate}[leftmargin=1.6em]
+\item C9 has no pre-registered application yet; the protocol's well-formedness
+conditions are stated but unexercised on real data (all obtainable data admit
+no fit, which is compatibility, not confirmation).
+\item The strong-ETH leg of C4 remains flat at all computed scales; no
+closing trend in $|\mathrm{diag}-\mathrm{micro}|/K$; the scaling limit of
+$\langle r\rangle$ is unsettled within the computed range.
+\item muse's demand for a strict separation of mathematical and physical
+falsifiers in \S11 is only partially implemented.
+\item grok's editorial suggestion to split the manuscript into a mathematical
+note and a conjectural essay is recorded as a publishing option; not adopted.
+\item The $H_{\mathrm{tot}}^{(U,V)}$ family is selected, not derived; the
+infinite-volume self-adjointness of the kinetic completion (unbounded
+coefficients) is outside the Kato--Rellich argument and remains open.
+\end{enumerate}
+
+\end{document}

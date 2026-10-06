@@ -1,0 +1,57 @@
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}The framework}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Epistemic status: prove, construct, demote}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Summary of results}{4}{subsection.1.3}%
+\contentsline {section}{\numberline {2}The Arithmetic Sector}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}The arithmetic Hilbert space}{5}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}The multiplicative number operator and the primon Hamiltonian}{5}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}The partition function and the Hagedorn temperature}{6}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Gaussian extension}{8}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}What the arithmetic sector does and does not assert}{9}{subsection.2.5}%
+\contentsline {section}{\numberline {3}Dynamics: The Interaction Sector on the Prime Lattice}{9}{section.3}%
+\contentsline {subsection}{\numberline {3.1}The frozen Hamiltonian}{9}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Multiplicative shift operators}{9}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}The walk Hamiltonian and the prime lattice}{10}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}The cascade: statics and dynamics}{12}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}The Janus state}{14}{subsection.3.5}%
+\contentsline {section}{\numberline {4}Recurrence, Periodicity, and the Fate of Eternal Return}{15}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Linear independence of the prime logarithms}{15}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Exact periodicity is forbidden}{16}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}What is \emph {not} forbidden: three qualifications}{17}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}The verdict on cyclical time}{19}{subsection.4.4}%
+\contentsline {section}{\numberline {5}The Arithmetic Clock and the Problem of Time}{19}{section.5}%
+\contentsline {subsection}{\numberline {5.1}The problem of time, stated precisely}{19}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}The zeta clock}{20}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Energy--time duality of the arithmetic clock}{21}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Reconciliation of the three times}{21}{subsection.5.4}%
+\contentsline {section}{\numberline {6}Thermodynamics, Gravity, and the Holographic Bridge}{22}{section.6}%
+\contentsline {subsection}{\numberline {6.1}The exact counting law}{22}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}The holographic bridge}{23}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Singularities and the Hagedorn wall}{24}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Emergent gravity and the hierarchy problem}{24}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}The classical limit and the pole at unity}{25}{subsection.6.5}%
+\contentsline {section}{\numberline {7}Entanglement: Arithmetic Superpositions and Holism}{25}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Composite integers are product states}{25}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Splitting primes as natural entanglement resources}{26}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Measurement, decoherence, and records}{27}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Bell's trilemma and the rejection of superdeterminism}{27}{subsection.7.4}%
+\contentsline {section}{\numberline {8}The Arithmetic Gauge Sector}{28}{section.8}%
+\contentsline {subsection}{\numberline {8.1}From Lie unification to Galois unification}{28}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}The dictionary}{29}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Arithmetic charge conjugation, parity, and time reversal}{30}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}Vaccaro's program, translated}{30}{subsection.8.4}%
+\contentsline {subsection}{\numberline {8.5}What Langlands does and does not supply}{31}{subsection.8.5}%
+\contentsline {section}{\numberline {9}Arrows of Time and the Philosophy Register}{31}{section.9}%
+\contentsline {subsection}{\numberline {9.1}The extrinsic arrow, structurally grounded}{31}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}The hierarchy of arrows}{32}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}Cyclical time: the verdict}{32}{subsection.9.3}%
+\contentsline {subsection}{\numberline {9.4}Eternalism, indexicality, and the vertiginous question}{33}{subsection.9.4}%
+\contentsline {subsection}{\numberline {9.5}Past Hypothesis as arithmetic necessity: theorem and conjecture}{33}{subsection.9.5}%
+\contentsline {subsection}{\numberline {9.6}The Big Crunch, Gold universes, and reverse-arrow regions}{34}{subsection.9.6}%
+\contentsline {subsection}{\numberline {9.7}Superdeterminism and locality}{34}{subsection.9.7}%
+\contentsline {section}{\numberline {10}The Consolidated Conjecture Register}{34}{section.10}%
+\contentsline {section}{\numberline {11}Falsifiability, Predictions, and Test Programs}{41}{section.11}%
+\contentsline {subsection}{\numberline {11.1}What the framework predicts that rivals do not}{41}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}Mathematical test programs}{41}{subsection.11.2}%
+\contentsline {subsection}{\numberline {11.3}Assessment}{42}{subsection.11.3}%
+\contentsline {section}{\numberline {A}Notation}{43}{appendix.A}%

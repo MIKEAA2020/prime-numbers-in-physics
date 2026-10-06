@@ -1,0 +1,11 @@
+======================================================================
+STAGE 0: DP self-test
+selftest PASS (60 brute-force cases; batch==single==backtrack; T=409582.3, N=48, c=[24, 2, 3, 3, 16])
+STAGE 1: null calibration (5000 Dirichlet tables, actual sigma)
+null: median=283735.6 q05=29132.8 q95=5516069.0 FPR(chi2crit)=0.0000
+STAGE 2: Z-pole application
+Z: T_obs=409582.3 best N=48 c=[24, 2, 3, 3, 16] threshold(q05)=29132.8 p=0.5914 -> absent; lambda=207.8; per-channel min dev ['221', '7', '5', '4', '3'] sigma
+STAGE 3: power
+power N6 current: medT=4.4 detect@chi2=0.905 recoverN=1.000
+power N6 x1e-1: medT=4.3 detect@chi2=0.908 recoverN=1.000
+power N6 x1e-2: medT=4.3 detect@chi2=0.912 recoverN=1.000

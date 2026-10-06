@@ -4,14 +4,18 @@
 
 \section{The Consolidated Conjecture Register}\label{sec:register}
 
-The register is the framework's contract with honesty: every ambitious claim
-that lacks proof lives here, numbered, graded, and armed with a
-falsifier. Grades: \textbf{A} (mathematically precise; partial evidence exists; actively
+The register consolidates every ambitious claim that lacks proof: numbered, graded, with a
+falsifier or an explicit interpretive exemption. Grades: \textbf{A} (mathematically
+precise; partial evidence exists; actively
 testable), \textbf{B} (well-formed; speculative; no current evidence beyond structural
 fit), \textbf{C} (interpretive; tethered to A/B entries; not empirically separable at
 present). The \emph{Depends on} column lists register entries whose failure collapses the
-entry; the qualifier ``(int.)'' marks a dependency that is interpretive rather than logical ---
-such an entry survives the parent's failure as an autonomous mathematical problem.
+entry; the qualifier ``(int.)'' marks a dependency that is interpretive rather than logical---
+such an entry survives the parent's failure as an autonomous mathematical problem. The
+falsifier column is typed by how the test is decided: \textbf{M} (mathematical: decidable
+by proof or certified finite computation, noiseless and repeatable), \textbf{P} (physical:
+decidable by comparison with measured data, statistical, one-shot), \textbf{M/P} (both
+routes exist); the classification is developed in Section~\ref{sec:classes}.
 
 \begin{longtable}{@{}p{0.045\textwidth}p{0.35\textwidth}p{0.075\textwidth}p{0.105\textwidth}p{0.28\textwidth}@{}}
 \toprule
@@ -34,26 +38,33 @@ A &
 Derive $H_{\mathrm{sing}}$ from BKL/conformal reduction; compute its level statistics
 (cf.\ $\mathsf{C5}$). Falsified if the near-singularity spectrum is provably not
 log-integer. Evidence base is thin---the structural Dedekind fit plus one reported program
-~\cite{hartnollyang2026}; the grade reflects testability, not weight of evidence.\\
+~\cite{hartnollyang2026}; the grade reflects testability, not weight of evidence. \textbf{M}\\
 $\mathsf{C2}$ &
 \emph{Arithmetic cutoff.} The physically realized arithmetic universe is a finite or
 effectively finite truncation (primes $\leq X$, occupations $\leq K$), geometrically
 motivated, controlling the recurrence-time scale of Theorem~\ref{cor:nopoincare}. &
 B &
 C1 &
-Sets the quantitative recurrence horizon (Diophantine return times); falsified by derived
-recurrence phenomenology inconsistent with any effective cutoff.\\
+Fixes the return-time family: $\tau_{\varepsilon}\leq(2\pi C_{F}/\varepsilon)^{m_{F}}$
+(Prop.~\ref{prop:returnbound}), polynomial in the entropy $S$ for states of fixed support.
+Falsified by recurrence phenomenology whose times grow faster than every power of the
+entropy at fixed resolution $\varepsilon$: enlarging the cutoff changes the bound only
+polynomially in $S$, so no cutoff-consistent enlargement absorbs an exponential-in-$S$
+recurrence scale. Polynomial-in-$S$ returns at bounded support are the arithmetic
+prediction. \textbf{M}\\
 $\mathsf{C3}$ &
-\emph{Holographic arithmetic bound.} $E_{\max}(A)=\frac{\hbar\omega_{0}}{4\ell_{P}^{2}}A+O(\hbar\omega_{0}\kappa)$
-universal (Conj.~\ref{conj:holobound}); with Theorem~\ref{thm:logcount} it yields
-$S_{\mathrm{BH}}=A/4\ell_{P}^{2}+O(1)$ (Thm~\ref{thm:bh}). &
+\emph{Holographic arithmetic bound.} $E_{\max}(A)=\frac{\hbar\omega_{0}}{4\ell_{P}^{2}}A+\hbar\omega_{0}s(A)$,
+$s(A)=O(\log\frac{A}{\ell_{P}^{2}})$ universal (Conj.~\ref{conj:holobound}); with
+Theorem~\ref{thm:logcount} it yields
+$S_{\mathrm{BH}}=k_{B}\bigl(A/4\ell_{P}^{2}+s(A)\bigr)+O\bigl(k_{B}e^{-E/\hbar\omega_{0}}\bigr)$ (Thm~\ref{thm:bh}). &
 A &
 C1 &
 Positive evidence: the proved conditional Theorem~\ref{thm:bh} ($S_{\mathrm{BH}}$
 follows exactly once the bound is granted)---the grade certifies that conditional, not
-independent support. Risk: black-hole entropy log-corrections. The arithmetic model fixes the
-$O(1)$ term's oscillation structure (sawtooth, non-convergent); mismatch with computed
-corrections (e.g.\ known $-\tfrac32\log A$ terms) falsifies the pure model.\\
+independent support. The counting defect is exponentially small in $E$ (Thm~\ref{thm:logcount}(iii)),
+so every log$(A)$-class correction must be carried by the dictionary term $s(A)$; the pure
+model ($s=O(1)$) predicts none. Mismatch with computed corrections (e.g.\ known
+$-\tfrac32\log A$ terms) falsifies the pure form and measures $s(A)$. \textbf{M}\\
 $\mathsf{C4}$ &
 \emph{Cascade/ETH, interacting completion.} The \emph{interacting} completion
 $H_{\mathrm{tot}}^{(U,V)}=H_{P}+H_{W}+H_{\mathrm{hop}}+U\sum_{p<q}\hat n_{p}\hat n_{q}
@@ -65,25 +76,38 @@ sequences at fixed dose (Conj.~\ref{conj:cascade}). The bare $H_{\mathrm{tot}}$ 
 A &
 C1 (int.) &
 \emph{Scaling criterion}: ETH diagnostics along truncation sequences with $D\to\infty$ at
-fixed effective dose $VK^{2}$ --- sparse eigen-windows to $D=5.9\times10^{4}$ and Krylov
+fixed effective dose $VK^{2}$ --- sparse eigen-windows to $D=5.9\times10^{4}$, a
+factorization-free Chebyshev tier past the $LU$ fill ceiling to $D=3.8\times10^{4}$ in
+$d=4$, an upper-edge Krylov window to $D=1.05\times10^{5}$ (Remark~\ref{rem:numerics}(j)),
+and Krylov
 equilibration to $D\approx10^{5}$;
-falsified if $\sigma_{\mathrm{ETH}}(D)$ never decays and $|\mathrm{diag}-\mathrm{micro}|$
-stays $O(1)$ for every interacting completion. Current evidence: the bare system is
+falsified if the eigenstate fluctuation never approaches the thermal scaling and
+$|\mathrm{diag}-\mathrm{micro}|$ stays $O(1)$ for every interacting completion. Current evidence: the bare system is
 decided---structurally non-ergodic at all scales computed; the \emph{diagonal} quartic
 localizes monotonically ($\mathrm{PR}/D\to10^{-3}$); the \emph{kinetic} completion is the
 only one that relaxes (occupation falls from $K$ to $\approx3.5$ within $\tau\approx20$, GOE
 statistics, delocalized eigenstates at matched dose), and its finite-time plateau equals the
 diagonal ensemble exactly where the latter is computable ($D\leq10^{4}$,
-$|\,\mathrm{plateau}-\mathrm{diag}\,|/K\leq0.005$); but neither scaling leg is positive:
-$\sigma_{\mathrm{ETH}}/\mathrm{std}$ is flat at $0.95$--$0.98$ across $D=3375\to59319$ at
-matched dose (median window), and flat at $0.87$--$0.90$ across $D=4096\to104976$ at the
-upper-edge Krylov window (restarted Lanczos past the $LU$ fill ceiling; residuals
-$\leq10^{-11}$); the diagonal ensemble stays $0.04$--$0.09$ of $K$ away from microcanonical
-with no closing trend. Strong dose ($VK^{2}\gtrsim80$) localizes. Level
+$|\,\mathrm{plateau}-\mathrm{diag}\,|/K\leq0.005$); but neither scaling leg closes: in absolute
+units the eigenstate fluctuation decays as $\kappa\propto D^{-0.185\pm0.021}$ at $d=3$ and
+$D^{-0.22}\to D^{-0.26}$ at $d=4$ (four points to $D=3.8\times10^{4}$, the last past the
+$LU$ ceiling) against the strong-ETH $D^{-1/2}$, its distance from the fixed-fraction
+thermal benchmark grows ($4.6\to11.3$ at $d=3$, $4.6\to7.8$ at $d=4$;
+Remark~\ref{rem:numerics}(h)--(i)), the fluctuation \emph{ratio} stays flat at the
+upper-edge window to $D=1.05\times10^{5}$ ($0.87$--$0.90$; Remark~\ref{rem:numerics}(j)),
+and the
+diagonal ensemble stays $0.04$--$0.09$ of $K$ away from microcanonical
+with no closing trend; at the three grids past the $LU$ ceiling the resumable
+trajectories track the same secular climb and are horizon-limited
+(Remark~\ref{rem:numerics}(k)). Strong dose ($VK^{2}\gtrsim80$) localizes. Level
 statistics come free and positive (GOE at generic coupling, $\mathsf{C5}$); the
 weak-coupling $\langle r\rangle$ is quantile- and direction-dependent
-($0.42$--$0.56$; Remark~\ref{rem:numerics}(a)), so $\mathrm{PR}/D$ is the robust
-weak-coupling diagnostic.\\
+($0.42$--$0.56$; Remark~\ref{rem:numerics}(a)), the generic band is window-dependent at
+the edges ($0.46$--$0.54$ at the same platform), and $\mathrm{PR}/D$ is the robust
+diagnostic. Label-scrambled controls (Remark~\ref{rem:numerics}(f)) show the matched-dose
+GOE band is graph-generic while the generic-family delocalization is arithmetic:
+scrambling the diagonal at fixed density of states collapses $\mathrm{PR}/D$ by
+$2$--$12\times$. \textbf{M}\\
 $\mathsf{C5}$ &
 \emph{Arithmetic--chaos correspondence.} The spectral statistics of the quantized
 near-singularity (BKL-type) Hamiltonian match GUE, and its spectral determinant is
@@ -94,9 +118,13 @@ C1 (int.) &
 Compute pair correlations of quantized cosmological billiards; a proven non-GUE
 spectrum for the singularity sector falsifies; conversely, any rigorous Hilbert--P\'olya
 operator would confirm the bridge (and RH's spectral side). On the lattice model itself:
-GOE ratio statistics at generic coupling, verified numerically for $D=625$ to
+GOE ratio statistics at generic coupling for $D=625$ to
 $D=5.9\times10^{4}$ (eigen-windows; equilibration diagnostics to $D\approx10^{5}$),
-with a Poisson control at weak coupling (Remark~\ref{rem:numerics}).\\
+with a Poisson control at weak coupling and label-scrambled controls at fixed density of
+states (Remark~\ref{rem:numerics}(f): matched-dose statistics scramble-insensitive,
+generic-family $\langle r\rangle$ and $\mathrm{PR}/D$ arithmetic-sensitive). The finite-size
+trend of $\langle r\rangle-r_{\mathrm{GOE}}$ in $1/\log D$ does not settle the limiting
+value (Remark~\ref{rem:numerics}(g)). \textbf{M}\\
 $\mathsf{C6}$ &
 \emph{Hagedorn wall as singularity resolution.} Approach to a spacetime singularity is
 approach to $T_{H}$: energy converts to primon creation, curvature growth saturates
@@ -104,21 +132,21 @@ approach to $T_{H}$: energy converts to primon creation, curvature growth satura
 B &
 C1, C3 &
 Near-singularity GR calculations (e.g.\ BKL maps) exhibiting equilibration at a critical
-scale; falsified by derived continua with no critical behavior.\\
+scale; falsified by derived continua with no critical behavior. \textbf{M}\\
 $\mathsf{C7}$ &
 \emph{Janus boundary condition.} The universal state's history touches the unique
 zero-entropy floor $\ket{1}$ at one end (the arithmetic Past Hypothesis). &
 B &
 C1, C4 &
 No direct route; constrained by $\mathsf{C1}$, $\mathsf{C4}$; cosmological
-tests indirect (initial-state smoothness statistics).\\
+tests indirect (initial-state smoothness statistics). \textbf{P}\\
 $\mathsf{C8}$ &
 \emph{Two-sided entropy.} The entropy profile is U-shaped about $\ket{1}$ (Janus-point
 cosmology, arithmetic form) \cite{barbour2016,carrollchen2005}. &
 B &
 C7 &
 As for $\mathsf{C7}$; additionally, CMB statistics distinguishing one-sided from
-two-sided low-entropy origins.\\
+two-sided low-entropy origins. \textbf{P}\\
 $\mathsf{C9}$ &
 \emph{Galois--gauge dictionary.} Minimal form of Conj.~\ref{conj:gut}: charge lattice
 $\leftrightarrow$ splitting restrictions; branching ratios $\leftrightarrow$ Chebotarev
@@ -127,13 +155,28 @@ B &
 C1 (int.) &
 \emph{Calibrated dictionary protocol} (restated): fit all channel ratios of $\geq5$
 independent decay channels at precision $\sigma\leq0.3\%$ with one common group order
-$N\lesssim$ few$\,\times\,10^{2}$ and class sizes $c_{i}\mid N$; Monte-Carlo-calibrated
-false-positive rate $<1\%$. No acceptable common-$N$ fit at that precision falsifies.
-Present data (e.g.\ $Z$-pole branching fractions, at five- and seven-channel granularity---the
-latter against a frozen 2024 PDG extract under a pre-registered null-first protocol) admit no
-such fit---the signature is
-absent below unification, as the conjecture requires. Cleanest dated falsifier: observed
-proton decay (Section~\ref{sec:falsify}, item 1).\\
+$N=|G|\lesssim$ few$\,\times\,10^{2}$ and class sizes $c_{i}=|C_{i}|$ (each $|C_{i}|$ divides
+$|G|$ by orbit--stabilizer, so the Chebotarev densities are exactly $c_{i}/N$);
+Monte-Carlo-calibrated false-positive rate $<1\%$ on random tables. The protocol is
+well-formed only when the channel set, the class-to-channel identification, and the
+group-order range are fixed before the data are examined: the calibration prices the fit,
+not the analyst's freedom. The frozen protocol has been applied to the $Z$-pole
+five-channel table: $T=4.1\times10^{5}$ at the null's $59$th percentile---signature absent
+at the $Z$ scale with detection power $1.000$ over the whole registered range at current
+precision (each channel excludes individually at $\geq2.8\sigma$), an exclusion rather than
+an under-powered null, compatible with the conjecture's unification-scale placement and
+carrying no confirmatory content. A seven-channel granularity variant has been executed
+under the same discipline: a frozen, committed 2024 PDG extract (seven-flavour $Z$-width
+decomposition; null calibration run before the fit; empirical false-positive rate
+$0/3000$ at the $\chi^{2}_{0.95}(7)$ threshold; injection power demonstrated at
+$3\times10^{5}$ events with the divisor-scan's highly-composite-$N$ bias documented)
+rejects every common-$N$ table ($\chi^{2}=1395$ against a threshold of $14.1$; the residual
+proximity to rational structure, at the $3.2$ percentile of the structureless null, traces
+to lepton universality, which any equal-class group reproduces). The fit identifies the class vector only up to common
+factors (the primitive representative of the group order). Cleanest dated falsifier:
+observed proton decay
+(Section~\ref{sec:falsify}, item 1); a single channel cannot fix a full splitting table, so
+a positive identification requires the multi-channel fit. \textbf{M/P}\\
 $\mathsf{C10}$ &
 \emph{CP violation as the $\sigma$-odd sector.} CKM phase and baryon asymmetry are the
 arithmetic index of asymmetric couplings $w(\pi)\neq w(\bar\pi)$
@@ -141,9 +184,11 @@ arithmetic index of asymmetric couplings $w(\pi)\neq w(\bar\pi)$
 \cite{vaccaro2016}. &
 B &
 C4 &
-Structural constraint: all derived CP/T observables must factor through split/inert
-statistics; any derivation forcing a non-arithmetic phase breaks it. The ratchet lives in
-the non-conserving $H_{W}$ sector (Remark~\ref{rem:conservation}).\\
+Structural constraint (one-sided, necessary only): any derived CP/T observable must factor
+through split/inert statistics; a derivation forcing a genuinely non-arithmetic phase breaks
+it. No CP observable is derived at present; the entry is tested only through $\mathsf{C4}$'s
+dynamics (the ratchet lives in the non-conserving $H_{W}$ sector,
+Remark~\ref{rem:conservation}) and through the arithmetic-factorization requirement. \textbf{M}\\
 $\mathsf{C11}$ &
 \emph{Arithmetic hierarchy.} $\log(M_{\mathrm{Pl}}/M_{\mathrm{EW}})\asymp
 E_{\mathrm{cut}}/2\hbar\omega_{0}$, i.e.\ $E_{\mathrm{cut}}\asymp74\,\hbar\omega_{0}$
@@ -152,7 +197,7 @@ B &
 C1, C3 &
 Any derivation fixing $\omega_{0}$ to a known scale (e.g.\ a horizon temperature,
 $\mathsf{C3}$) closes or breaks the numerology; conversely a derived
-$10^{32}$-state effective arithmetic universe confirms.\\
+$10^{32}$-state effective arithmetic universe confirms. \textbf{M}\\
 $\mathsf{C12}$ &
 \emph{Perspectival Everett semantics.} Branches are factorization histories in
 $\Hil_{\mathcal{A}}$; ``now'' and ``I'' are indexicals; the felt flow is record formation
@@ -178,9 +223,11 @@ that survive any verdict on $\mathsf{C1}$---which is precisely why they carry th
 most economical tests. $\mathsf{C4}$'s listed dependency on $\mathsf{C1}$ is interpretive, not
 logical: the arithmetic sector and $H_{\mathrm{tot}}^{(U,V)}$ exist unconditionally, so the
 thermalization problem is well-posed even if the spectral-identification program collapses.
-Second, four entries ($\mathsf{C1}$, $\mathsf{C3}$, $\mathsf{C4}$, $\mathsf{C5}$) have
-\emph{purely mathematical} test routes: they can be advanced or refuted without any
-experiment. Third, the register is conservative: no claim appears both as a theorem and as
+Second, the falsifier column is typed (Section~\ref{sec:classes}): eight of the twelve
+entries ($\mathsf{C1}$--$\mathsf{C6}$, $\mathsf{C10}$, $\mathsf{C11}$) can be advanced or
+refuted without any experiment---by proof, or by finite computation with certified
+error---while the physical surface is concentrated in $\mathsf{C9}$'s dated tests and the
+cosmology entries $\mathsf{C7}$--$\mathsf{C8}$. Third, the register is conservative: no claim appears both as a theorem and as
 a graded conjecture; where a strong reading is available but unproved, only the graded
 conjecture is carried.
 
@@ -197,25 +244,38 @@ $\mathsf{C9}$ outright---a clean, dated test.
 \item \emph{Branching statistics are group statistics.} Under $\mathsf{C9}$, unification-scale
 branching data must organize into Chebotarev densities: rational numbers with denominators
 dividing a Galois group order. This is a sharp, unusual, and cheap-to-check signature. The
-check is now calibrated: for $\geq5$ channels at precision $\sigma\leq0.3\%$ with
-$|G|\lesssim$ a few hundred, a common-group-order divisor fit has Monte-Carlo-calibrated
-false-positive rate below $1\%$ (the divisor constraint is what saves the test; the weak
-form---each ratio near some rational---is vacuous because $\Qq$ is dense). Current tables
-(e.g.\ the $Z$-pole branching fractions) admit no such fit at either granularity: the
-five-channel scan and a seven-channel scan against a frozen 2024 PDG extract
-(pre-registered protocol, null-first) both reject every common-$N$ table---the signature is
-absent below unification, exactly as $\mathsf{C9}$ requires, and no obtainable data set can
-decide the conjecture today. The computation validates and calibrates the instrument; the
-purchase waits on unification-scale data.
+check is pre-registered and calibrated: a class-equation-constrained divisor fit over
+group orders $N\leq360$, with a Monte-Carlo-calibrated null at the measured uncertainty
+pattern (the divisor constraint is what saves the test; the weak
+form---each ratio near some rational---is vacuous because $\Qq$ is dense) and with decision
+rule and power tables fixed in advance. Applied to the $Z$-pole five-channel table, the
+signature is absent with detection power $1.000$ over the registered range at current
+precision: the exclusion holds at the $Z$ scale, which is compatible with the conjecture's
+unification-scale placement but carries no confirmatory content. The instrument is
+validated and its power is measured; the
+purchase waits on unification-scale data, and the frozen protocol applies to future
+tables. At seven-channel granularity (a frozen, committed 2024 PDG $Z$ extract; null
+calibration before the fit; empirical false-positive rate $0/3000$ at the
+$\chi^{2}_{0.95}(7)$ threshold) the verdict is unchanged: no common-$N$ table fits, and
+the
+precision tables without modification (a $Z$ factory improves the statistical floor by
+$\sim3\times10^{-3}$). The protocol is well-formed only when the channel
+set and the group-order range are fixed before the data are examined: the Monte-Carlo
+calibration prices the fit on random tables, not the analyst's freedom in choosing channels,
+identifications, or $N$.
 \item \emph{A single new scale.} The framework has exactly one dimensionful parameter,
 $\omega_{0}$, with $T_{H}=\hbar\omega_{0}/k_{B}$. Every other number in the physics layer
 is either an integer, a group order, or a value of an $L$-function. Any phenomenological
 use of the framework that requires a second free scale has already left the theory.
-\item \emph{Entropy log-corrections are sawtooth-bounded, not logarithmic.} The
-$O(1)$ defect in Theorem~\ref{thm:logcount} oscillates and never converges; the
-framework's black-hole entropy corrections are therefore not of the standard
-$-\alpha\log A$ family unless additional coarse-graining is applied. This is a distinctive
-statistical signature of integer-lattice counting (register $\mathsf{C3}$'s falsifier).
+\item \emph{The counting contributes no logarithmic correction.} The defect of
+Theorem~\ref{thm:logcount} decays like $e^{-E/\hbar\omega_{0}}$: integer-lattice counting
+contributes no $-\alpha\log A$ term at all, so any correction of that class in the
+black-hole entropy must be carried entirely by the dictionary term $s(A)$ of Conjecture
+$\mathsf{C3}$. The pure model ($s=O(1)$) predicts none; computed corrections of the known
+$-\tfrac32\log A$ type would falsify the pure form and measure $s$
+(register $\mathsf{C3}$'s falsifier). The fluctuation sector the counting \emph{does}
+contribute is the prime-counting oscillation term, bounded by $O(\sqrt{x}\log^{2}x)$ under
+RH (Section~\ref{sec:thermo}).
 \item \emph{Recurrence phenomenology is layered and cutoff-controlled.} The framework's
 cosmology distinguishes exact recurrence (forbidden for generic states,
 Theorem~\ref{thm:noperiod}) from $\varepsilon$-recurrence (universal for the free flow,
@@ -226,104 +286,96 @@ fix where our universe sits among these layers---a prediction in the sense that 
 mechanism cannot be indifferent.
 \end{enumerate}
 
-\subsection{Falsifier taxonomy: mathematical and physical classes}
+\subsection{Falsifier classes}\label{sec:classes}
 
-The register's falsifiers divide by their \emph{mode of decision} into two classes.
-\emph{Mathematical} falsifiers are decidable by proof or by exact finite computation---no
-physical input is required, and the decision, once obtained, is permanent. \emph{Physical}
-falsifiers divide further into \emph{simulation-bounded} routes, whose reach is set by
-measured compute ceilings (fill memory, Krylov horizons) and which deliver evidence rather
-than verdicts, and \emph{observation-bounded} routes, which wait on data. The split matters
-operationally: the mathematical class carries the register's cheapest decisive tests, the
-simulation class is where the two executed programs live, and the observation class carries
-the only dated falsifiers.
+The register's falsifier column mixes two kinds of tests, and the difference is not
+cosmetic. A \emph{mathematical} falsifier is decided by a proof or by a finite computation
+with certified error: it is noiseless, repeatable, and can be re-run by anyone; its only
+uncertainty is truncation, and the computation itself certifies the truncation (residual
+norms, certified bounds, exact integer arithmetic). A \emph{physical} falsifier is decided
+by comparison with measured data: it carries measurement uncertainty, it is one-shot
+(Nature does not repeat the experiment), and it is exactly where analyst freedom can
+corrupt inference---which is why the physical tests of this framework are
+pre-registered (statistic, null, decision rule, and power fixed before the data are
+examined; the $Z$-pole application of $\mathsf{C9}$ is the executed template). The
+classification:
 
-\paragraph{Mathematical falsifiers (proof or exact computation).}
+\begin{center}
+\small
+\begin{tabular}{@{}llp{0.40\textwidth}l@{}}
+\toprule
+\textbf{Entry} & \textbf{Class} & \textbf{Decisive instance} & \textbf{Uncertainty}\\
+\midrule
+$\mathsf{C1}$ & M & derived $H_{\mathrm{sing}}$ spectrum not log-integer & proof\\
+$\mathsf{C2}$ & M & recurrence growth vs.\ polynomial-in-$S$ bound & truncation, quantified\\
+$\mathsf{C3}$ & M & $s(A)$ vs.\ computed $\log A$ corrections & literature-exact\\
+$\mathsf{C4}$ & M & ETH scaling along certified truncations & finite-size, residual-certified\\
+$\mathsf{C5}$ & M & GUE pair correlations; Hilbert--P\'olya construction & finite-size\\
+$\mathsf{C6}$ & M & BKL-map analysis blocking critical behavior & model class\\
+$\mathsf{C7}$ & P & initial-state smoothness statistics & cosmological\\
+$\mathsf{C8}$ & P & CMB one- vs.\ two-sided low-entropy statistics & cosmological\\
+$\mathsf{C9}$ & M/P & dictionary closure (M); proton decay, precision tables (P) & MC-calibrated / measurement\\
+$\mathsf{C10}$ & M & derived CP observable not factoring through split/inert & model class\\
+$\mathsf{C11}$ & M & derivation fixing $\omega_{0}$ to a measured scale & measured input\\
+$\mathsf{C12}$ & --- & interpretive; internal criteria only & ---\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Two structural facts follow. First, the framework's falsifier surface is predominantly
+mathematical: eight of the twelve entries are decidable without any experiment, which is
+unusual for a framework with cosmological ambitions and is a direct consequence of its
+arithmetical form---the physical claims compress into number-theoretic statements whose
+truth is a matter of proof or computation. Second, the physical surface is small,
+concentrated, and dated: proton decay ($\mathsf{C9}$), unification-scale precision
+branching ($\mathsf{C9}$), and the low-entropy statistics of the cosmic background
+($\mathsf{C7}$--$\mathsf{C8}$). Where the two classes meet---$\mathsf{C9}$'s dictionary
+applied to measured tables---the mathematical side supplies the calibrated instrument and
+the physical side supplies the data, and the discipline on both is pre-registration on the
+physical side and certified error on the mathematical side.
+
+\subsection{Mathematical test programs}\label{sec:mathprograms}
+
+Four problems, in increasing order of depth, would each move multiple register entries:
 \begin{enumerate}[leftmargin=1.6em]
-\item \emph{Thermalization of $H_{\mathrm{tot}}^{(U,V)}$} ($\mathsf{C4}$): a proof that the
-diagonal ensemble converges to microcanonical along box-truncation sequences at fixed dose
-would confirm; a proof of an obstruction (a conserved quantity blocking relaxation beyond
-$\Nhat_{\mathrm{tot}}$, or a bound keeping $|\mathrm{diag}-\mathrm{micro}|$ bounded away from
-zero) would refute. Proposition~\ref{prop:infinitevolume} supplies the well-posedness
-premise: the infinite-volume operator exists, is self-adjoint and bounded below, and the
-truncations converge in the strong resolvent sense, so both outcomes are meaningful
-statements about one object. The $M$-sector decomposition used there (finite Jacobi blocks
-per hopping pair) is also the natural starting structure for either proof.
-\item \emph{Level-statistics class and the Hilbert--P\'olya construction} ($\mathsf{C5}$):
-whether the infinite lattice model's statistics are GOE, GUE, or neither is a
-computation-or-proof question, as is the existence of a fluctuation-sector operator with
-spectrum $\{\tfrac12+i\gamma\}$; a proven non-GUE spectrum for the singularity sector would
-falsify $\mathsf{C5}$ outright.
-\item \emph{Chebotarev dictionary closure} ($\mathsf{C9}$): for any fixed branching table,
-the search for a number field whose conjugacy-class proportions reproduce it is finite and
-exact; one completed instance converts the dictionary from analogy to theory, and a proof
-that no field realizes a table that the framework requires would break the dictionary.
-\item \emph{Entropy oscillation structure} ($\mathsf{C3}$): the $O(1)$ sawtooth of
-Theorem~\ref{thm:logcount} is exactly computable; its incompatibility with any specific
-computed correction family (e.g.\ $-\tfrac32\log A$ terms) is a decidable comparison.
-\item \emph{Recurrence Diophantine structure} ($\mathsf{C2}$): the return-time asymptotics
-and their cutoff dependence are number-theoretic and exactly computable for any postulated
-cutoff.
-\end{enumerate}
-
-\paragraph{Physical falsifiers (simulation or observation).}
-\begin{enumerate}[leftmargin=1.6em]
-\item \emph{ETH scaling diagnostics} ($\mathsf{C4}$, simulation): the accessible regime is
-quantitatively bounded, and the bounds are themselves measured---interior eigen-windows by
-the $LU$ fill ceiling ($D\leq20736$ on 4D grids at $3$--$4$\,GB; beyond it, folded-operator
-restarted Lanczos at three subspace budgets, ILU$^{2}$-preconditioned LOBPCG, and
-degree-$\sim\!5\times10^{3}$ polynomial filters were all measured to fail or stall on the
-window-edge continuum), Krylov equilibration by the trajectory horizon ($\tau\approx40$--$50$
-per day-scale compute at $D\approx10^{5}$). Within this regime the evidence is uniform: flat
-$\sigma_{\mathrm{ETH}}/\mathrm{std}$ at the median window to $D=5.9\times10^{4}$, flat at the
-upper-edge Krylov window to $D=1.05\times10^{5}$, no closing of the diagonal-to-microcanonical
-gap, GOE statistics at generic coupling throughout.
-\item \emph{Branching statistics as group statistics} ($\mathsf{C9}$, observation): the
-instrument is calibrated and executed (five channels on the earlier table; seven channels on
-the frozen 2024 extract, pre-registered protocol); unification-scale data remain the missing
-input.
-\item \emph{Observed proton decay} ($\mathsf{C9}$, observation): the cleanest dated
-falsifier---absence is a structural feature, observation is terminal for $\mathsf{C9}$.
-\item \emph{Initial-state smoothness and two-sided statistics} ($\mathsf{C7}$, $\mathsf{C8}$,
-observation): CMB constraints on one- versus two-sided low-entropy origins.
-\item \emph{Near-singularity equilibration} ($\mathsf{C6}$, simulation): BKL-map and
-near-singularity GR computations exhibiting (or excluding) critical behavior at the Hagedorn
-scale.
-\end{enumerate}
-
-\paragraph{Executed status of the two programs.}
-
-\begin{enumerate}[leftmargin=1.6em]
-\item \emph{Thermalization program for $H_{\mathrm{tot}}^{(U,V)}$} ($\mathsf{C4}$):
-directly analogous to established kicked-rotor and Bose--Hubbard studies; every ingredient
-is finite-dimensional and computable. The program has been carried out
-at four scales and for both completions: dense diagonalization to $D=4096$, sparse
-shift-invert eigen-windows to $D=5.9\times10^{4}$, Krylov equilibration to
-$D\approx10^{5}$, and---new here---a Krylov-tier fluctuation window past the $LU$ fill
-ceiling: plain restarted Lanczos returns the $k=350$ \emph{upper-edge} eigenpairs at every
-scale with residuals $\leq10^{-11}$ (the same $\mathrm{eth\_window}$ protocol, $30$ bins),
-extending the $\sigma_{\mathrm{ETH}}/\mathrm{std}$ ladder from $D=20736$ to $D=104976$ at
-matched dose, while the median-window Krylov routes (folded-operator restarted Lanczos at
-three subspace budgets, ILU$^{2}$-preconditioned and unpreconditioned LOBPCG, polynomial
-filters of degree $\sim\!5\times10^{3}$) were measured to stall on the window-edge
-continuum and are archived with the pilots. Verdict: level
-statistics GOE at generic coupling throughout; every \emph{eigenstate} ETH diagnostic
-flat in $D$ ($\sigma_{\mathrm{ETH}}/\mathrm{std}\approx0.95$ for the bare, quartic, and
-kinetic systems alike at the median window, $D=3375\to59319$; $\approx0.87$--$0.90$ at the
-upper-edge Krylov window, $D=4096\to104976$, flat across a factor $26$ in $D$); the diagonal quartic
+\item \emph{Prove or refute thermalization for $H_{\mathrm{tot}}^{(U,V)}$ on finite
+truncations} ($\mathsf{C4}$): a numerical program of ETH tests along the prime
+lattice, directly analogous to established kicked-rotor and Bose--Hubbard studies;
+every ingredient is finite-dimensional and computable. The program has been carried out
+at three scales and for both completions: dense diagonalization to $D=4096$, sparse
+shift-invert eigen-windows to $D=5.9\times10^{4}$, and Krylov equilibration to
+$D\approx10^{5}$---all laptop-scale (minutes per configuration; the interior
+eigensolver tier is bounded by $LU$ fill, the evolution tier only by $D\tau$; diagonal
+pivoting, needed for the kinetic family, cut the generic factorization from $257$\,s
+to $3$\,s with eigenpair residuals $\leq6\times10^{-8}$). A factorization-free
+window tier---block Chebyshev subspace iteration on $(H-c)^{2}$ with $c$ the median of
+the density of states, the passband sized by stochastic Lanczos quadrature, every
+selected pair certified by its residual---reproduces the $LU$ windows to machine
+precision where both run ($\max|\Delta\lambda|\leq4\times10^{-11}$ at $D=10^{4}$,
+$\kappa$ within $0.6\%$ at $D=6.9\times10^{3}$; Remark~\ref{rem:numerics}(i)); its
+cost ceiling is characterized by the Chebyshev degree $\ln(\varepsilon)\,R/(2t)$ at the
+dose-pinned radius $R$. Verdict: level
+statistics GOE at generic coupling throughout; the eigenstate fluctuation ratio
+$\sigma_{\mathrm{ETH}}/\mathrm{std}$ is flat in $D$ ($\approx0.95$ for the bare, quartic, and
+kinetic systems alike, at matched dose across $D=3375\to59319$), and in absolute units the
+fluctuation decays as $D^{-0.185\pm0.021}$ ($d=3$), two and a half times more slowly than
+the strong-ETH $D^{-1/2}$ (Remark~\ref{rem:numerics}(h)); the diagonal quartic
 completion localizes monotonically in
 $U$; the kinetic completion (density-assisted hopping, Hermitian and number-conserving,
-validated to $10^{-15}$) is the only one that relaxes---fast initial decay to
+self-adjoint in the infinite-volume limit by Proposition~\ref{prop:sector} and validated
+to $10^{-15}$ against a first-principles dense assembly) is the only one that
+relaxes---fast initial decay to
 $\approx3.5$ within $\tau\approx20$ with GOE statistics and delocalized eigenstates,
 and a finite-time plateau that equals the diagonal ensemble exactly where the latter is
 computable ($D\leq10^{4}$)---but the diagonal ensemble itself stays $0.04$--$0.09$ of
 $K$ from the microcanonical value at matched dose with no closing trend, and the
 $D=20736$ trajectory extended to $\tau=300$ saturates at $\langle\hat
-n_{d}\rangle_{\mathrm{diag}}\approx4.40$ against a microcanonical value of $3.35$. At the
-two largest grids the matched-dose trajectories are horizon-limited ($\tau\lesssim50$ at
-$D=65536$ and $104976$), consistent with the level-spacing shrinkage of the dephasing time.
-The
-strong-ETH leg is flat at every accessible scale; the equilibration leg requires the
+n_{d}\rangle_{\mathrm{diag}}\approx4.40$ against a microcanonical value of $3.35$. In
+absolute units the eigenstate fluctuation decays as $D^{-0.185\pm0.021}$ at $d=3$
+($D^{-0.222}$ at $d=4$) against the strong-ETH $D^{-1/2}$, with the distance to the
+fixed-fraction thermal benchmark growing by a factor $\approx2.5$ along the ladder and
+effective random-combination dimensions $N_{\mathrm{eff}}\approx8\to23$ versus shells of
+$\sim10^{3}$ states (Remark~\ref{rem:numerics}(h)); the equilibration leg requires the
 $D\to\infty$ limit of the diagonal ensemble, which shows no convergence at accessible
 scales.
 \item \emph{Compute the level statistics of the interacting arithmetic Hamiltonian and
@@ -345,31 +397,66 @@ spectral reading of RH via von Koch's equivalence \cite{vonkoch1901}).
 \item \emph{Close the Chebotarev dictionary on one completed instance} ($\mathsf{C9}$):
 find a number field whose splitting statistics reproduce a measured branching table. Even
 one instance would convert the dictionary from analogy to theory; the search space is
-computable and finite for any fixed table. The dictionary instrument now runs at two
-granularities: the five-channel calibration, and a seven-channel variant executed against a
-frozen, committed 2024 PDG extract (seven-flavour $Z$-width decomposition; null calibration
-run before the fit under a fixed protocol; empirical false-positive rate $0/3000$ at the
-$\chi^{2}_{0.95}(7)$ threshold; injection power demonstrated at $3\times10^{5}$ events with
-the minimal-$N$ recovery and the highly-composite-$N$ bias of the divisor scan documented).
-The seven-channel verdict matches the five-channel one: no common-$N$ table fits
-($\chi^{2}=1395$ against a threshold of $14.1$; the residual proximity to rational
-structure, at the $3.2$ percentile of the structureless null, traces to lepton
-universality, which any equal-class group reproduces)---the signature is absent at the
-$Z$ scale, as $\mathsf{C9}$ requires.
+computable and finite for any fixed table. The decision machinery---the constrained fit,
+the calibrated null, and the power tables---is in place and validated by injection; what is
+missing is data at the dictionary's scale. The instrument now runs at two granularities:
+the five-channel scan and a seven-channel variant executed against a frozen, committed
+2024 PDG extract (pre-registered null-first protocol; the seven-flavour $Z$-width
+decomposition; injection power at $3\times10^{5}$ events with the divisor scan's
+highly-composite-$N$ preference documented); both reject every common-$N$ table at the $Z$
+scale, as the conjecture requires.
 \end{enumerate}
+
+\subsection{Physical test programs}\label{sec:physical}
+
+The physical falsifiers are few, and each names its data source and its decision
+instrument.
+
+\begin{enumerate}[leftmargin=1.6em]
+\item \emph{Proton decay} ($\mathsf{C9}$, dated). Observation of any proton decay channel
+falsifies the arithmetic unification outright---baryon number is not gauged into a decay
+channel anywhere in the dictionary. The instrument is the existing large-volume water
+Cherenkov and scintillator programs; no framework-specific analysis is needed, which is
+what makes the test clean.
+\item \emph{Unification-scale precision branching} ($\mathsf{C9}$, protocol frozen). The
+class-equation-constrained divisor fit, its Monte-Carlo-calibrated null, and its power
+tables are fixed and validated (Section~\ref{sec:falsify}, item 2); the protocol applies
+without modification to future five-channel-or-better tables at $\sigma\leq0.3\%$. A $Z$
+factory improves the statistical floor by $\sim3\times10^{-3}$; unification-scale decay
+channels would enter through the same fit. A positive identification requires the
+multi-channel closure (Section~\ref{sec:mathprograms}, item 4); a single channel can only
+exclude.
+\item \emph{Low-entropy statistics of the cosmic background} ($\mathsf{C7}$, $\mathsf{C8}$).
+One-sided versus two-sided low-entropy origins leave different statistics in the CMB
+temperature and polarization maps; the framework's Janus prediction is two-sided. The
+instrument is standard observational cosmology; the framework contributes the prior, not
+the telescope.
+\item \emph{Scale identification} ($\mathsf{C11}$, input side). Any derivation fixing
+$\omega_{0}$ to a measured scale (a horizon temperature, a Hagedorn scale) closes the
+framework's one free parameter or breaks the numerology; the measurement enters as the
+input, the derivation is the mathematical side.
+\end{enumerate}
+
+Each physical test inherits its discipline from the class analysis of
+Section~\ref{sec:classes}: the decision rule is fixed before the data, the uncertainty is
+quantified (Monte-Carlo null, power table), and the outcome is reported as exclusion,
+identification, or under-powered, never as confirmation by compatibility.
 
 \subsection{Assessment}
 
 The framework now satisfies three standards. Its mathematical core is genuinely theorem-grade: the
 spectrum, the
 partition function, the Hagedorn asymptotics, the counting law, the clock kernel, the
-no-periodicity theorem, and the entanglement structure are proved. Its analogies are
+no-periodicity theorem, the occupation-sector self-adjointness of the interacting
+completions (Proposition~\ref{prop:sector}), and the entanglement structure are proved. Its
+analogies are
 tightened: every structural analogy is either
 a citable theorem (Kronecker--Weber, Chebotarev, Erd\H{o}s--Kac, P\'olya,
 Bohr) or an explicit register entry. And its remaining ambition---that the primes order the
 spectrum of spacetime itself---is stated in a form precise enough to be wrong:
 $\mathsf{C1}$ through $\mathsf{C12}$ name their evidence, their dependencies, and their
-falsifiers, and the two numerically testable entries ($\mathsf{C4}$, $\mathsf{C9}$) carry
+falsifiers, the falsifier column is typed (Section~\ref{sec:classes}), and the two
+numerically testable entries ($\mathsf{C4}$, $\mathsf{C9}$) carry
 carried-out programs with stated uncertainties. A framework that can be wrong in stated
 ways is a research program; one that
 cannot is a metaphor.

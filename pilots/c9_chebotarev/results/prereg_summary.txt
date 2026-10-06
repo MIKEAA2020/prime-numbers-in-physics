@@ -1,0 +1,14 @@
+C9 pre-registered application (freeze 9f30553)
+decision rule: present iff p = Prob(T_null <= T_obs) <= 0.05
+T_obs = 409582.3 (best N=48, c=[24, 2, 3, 3, 16])
+null: median=283735.6 q05=29132.8 q95=5516069.0
+p = 0.5914 -> absent
+lambda = 207.8 (uncertainties would need to grow by this factor)
+per-channel min deviations (sigma): ['221', '7', '5', '4', '3']
+sum-rule deviation: 1.64 sigma
+FPR at chi2_crit: 0.0000
+power (current sigma):
+  N6_current: detect=0.905 recoverN=1.000
+  N36_current: detect=0.905 recoverN=0.000
+  N360_current: detect=0.905 recoverN=0.000
+unconstrained N<=5000 sensitivity: chi2=49040.7 (N=30)

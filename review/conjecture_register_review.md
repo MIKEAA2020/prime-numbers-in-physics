@@ -274,96 +274,172 @@ window), σ-quantile swept over the whole DOS:
 
 ---
 
-# Task 7. Residuals pass: Krylov tier, k=7 dictionary, falsifier taxonomy, well-posedness
+# Task 8 — C9 pre-registered application; strong-ETH flatness resolved
 
-## A. Krylov-tier fluctuation window (the kappa estimator) at K15/K17
+## A. C9: from calibrated protocol to pre-registered, powered application
 
-- **What was asked**: push the fluctuation ladder's κ (σ_rel) measurements past
-  the LU (dense-decomposition) size ceiling using Krylov/Lanczos quantities;
-  cluster run at K15/K17 with the resumable checkpoints and Lanczos-norm
-  calibration.
-- **Median-window routes measured and closed** (all archived):
-  * Folded operator −(H−σ)², ARPACK which='LA': stalls at ncv = 240/460/700
-    (0/160 wanted pairs after 60–121 restart cycles, 170–360 s each). Root
-    cause: the median window's boundary is a spectral continuum — no
-    factorization-free transform separates the 160th from the 161st level.
-    (A first implementation using 'LM' silently returned the *wrong spectral
-    end* — the far edges also certify — caught by the window-position check.)
-  * LOBPCG with M = (ILU of H−σ)²: double indefinite solves overflow (NaN);
-    LOBPCG on the assembled folded matrix: ~0.6 contraction/iteration (hours);
-    unpreconditioned: ~0.96/iteration.
-  * Soft Gaussian-filter estimator: needs polynomial degree ~ ‖H‖/σ_filter
-    ≈ 5×10³ on this band (‖H‖ ≈ 10³ from the kinetic edge states).
-  * σ_rel bin-width control on the existing windows: 11→116 levels/bin moves
-    the ratio by < 0.05 — the fluctuation is binning-robust, which licenses
-    cross-convention comparison.
-- **The executed Krylov tier**: plain restarted Lanczos eigsh(H, which='LM')
-  returns the k=350 *upper-edge* eigenpairs at every scale (residuals
-  ≤ 1.3×10⁻¹¹; 40 s at D=20736, 233 s at D=104976), feeding the identical
-  eth_window protocol (30 bins).
-  * d=4 edge ladder (D = 4096→104976): σ_rel = 0.871, 0.887, 0.886, 0.894,
-    0.895, 0.888 — **FLAT** across ×25.6 in D.
-  * d=3 edge ladder (D = 3375→59319): 0.839, 0.835, 0.838 — FLAT.
-  * Edge-sector physics: ⟨r⟩_edge = 0.38–0.43 (Poisson-like), PR/D =
-    0.054→0.009 (semi-localized) — reported as a second fluctuation
-    measurement, cross-calibrated on the overlapping grids, not a substitute
-    for the median window.
-- **Matched-dose trajectories (the cluster run proper)**: K13 (D=38416) to
-  τ≈80+, K15 (D=65536) and K17 (D=104976) to τ≈25–35 in resumable chunks;
-  K13 shows the same slow secular climb through the microcanonical value
-  (3.96 → 4.21 → 4.43 → 4.62 at τ = 20/39/59/78 vs micro 3.96); K15/K17 are
-  horizon-limited exactly as the level-spacing shrinkage predicts.
+- Protocol frozen in `review/c9_preregistration.md` (commit d3b1160; decision-rule
+  direction corrected in 9f30553 *before* the fit was run) — statistic, data,
+  null, decision rule, truth tables, sigma scenarios, interpretation policy.
+- Statistic strengthened: class-equation constraint sum c_i = N (the earlier fit
+  left the c_i unconstrained — an analyst degree of freedom); exact DP minimization,
+  brute-force validated (60 cases), batch==single==backtrack to roundoff.
+- Execution: null 5000 Dirichlet tables at the Z uncertainty pattern (median
+  2.8e5, q05 2.9e4, FPR at chi2_crit 0/5000); T_obs = 4.1e5, p = 0.59 ->
+  ABSENT; power 1.000 at the registered threshold for N = 6/36/360 at *current*
+  precision (0.90 at the chi2_crit variant = the Prob(chi2_5 <= 9.49) floor);
+  per-channel exclusion 221/7/5/4/2.8 sigma; lambda = 208; primitive-N recovery.
+- Verdict upgrade: "compatibility, not confirmation" -> "exclusion at the Z
+  scale with unit power over the registered range; frozen prospective protocol
+  for precision tables". Residual: the confirmatory content must come from
+  unification-scale data; the k=7 granularity variant deferred (needs a frozen
+  PDG extract).
 
-## B. C9 k=7 granularity variant on the frozen PDG extract
+## B. C4 strong-ETH leg: the flatness was a normalization artifact; the
+   absolute diagnostic decays too slowly
 
-- Frozen extract: seven-flavour Z-width decomposition from the PDG 2024
-  listing (ee, μμ, ττ, invisible, cc, bb, light), committed *before* the fit
-  with the pre-registered protocol embedded (commit 0c77e30).
-- Pre-registered order executed: null first (3000 matched-σ Dirichlet(7)
-  draws; FPR at χ²₀.₉₅(7) = 0/3000), injection second, data fit last.
-- Injection amendment (recorded): the pre-registered truth table
-  c={6,5,10,20,3,7,4} at N=60 is infeasible (7 ∤ 60); the executed table
-  c={6,5,10,20,3,10,4} recovers N=60 exactly at 3×10⁵ events; at lower
-  statistics the scan prefers highly-composite N (finer divisor grids absorb
-  noise) — a documented divisor-scan bias.
-- **Verdict**: best fit N=840, c={28,28,28,168,105,120,420}, χ²=1394.68 vs
-  threshold 14.07; empirical p = 0.032. No common-N dictionary at the Z scale
-  at k=7 — consistent with the k=5 result. The 3.2-percentile proximity to
-  rational structure traces to lepton universality (any equal-class group
-  reproduces it), not to the Chebotarev signature.
+- The reported flatness was the RATIO sigma_ETH/std(a) — window-width-dependent
+  (compares fluctuation to the window's own spread incl. trend), not an ETH
+  scaling test.
+- Absolute diagnostic kappa = sigma_ETH/std_basis: 0.50 -> 0.29 (d=3 ladder,
+  D 3375 -> 59319), kappa ~ D^{-0.185 +/- 0.021} (n=9, R^2=0.92);
+  D^{-0.222 +/- 0.003} (d=4); dense tier validates the window protocol
+  (<= 11%) and gives fixed-fraction exponents -0.10 / -0.21.
+- Benchmarks (exact, from rebuilt shells): B_frac (5% shell, D^{-1/2}
+  strong-ETH scaling) — kappa/B_frac GROWS 4.6 -> 11.3 (d=3), 4.6 -> 7.2 (d=4);
+  B_count (protocol shell, ~10^3 states) — kappa/B_count falls 15.0 -> 6.4;
+  N_eff = N_shell/R^2 ~ 8 -> 23 (D^{0.3}): eigenstates are random
+  combinations of ~10 states, not ~10^3.
+- Structure: kappa*sqrt(PR) grows 8.5 -> 28 (support-uniform level sqrt(2));
+  a1 spans [0.3K, 0.94K] in one window — the slow mode; scrambled matched-dose
+  controls hold kappa flat 0.43-0.46 while PR/D falls 0.082 -> 0.035: the
+  decay is arithmetic-organized. <r>: no size trend (0.013 +/- 0.020).
+- Register update: strong-ETH leg now "quantitative negative evidence at
+  accessible scales" (was: flat/unfalsified); falsifier criterion restated as
+  approach-to-thermal-scaling. New figure fig_c4_strongeth.png; paper 47 pp.
 
-## C. Paper changes
+## C. Residual open items after this task
 
-- **§11 falsifier taxonomy** (residual 1): falsifiers split into mathematical
-  (proof/exact-computation decidable: C4 thermalization proof, C5 statistics
-  class + Hilbert–Pólya, C9 dictionary closure, C3 oscillation structure,
-  C2 recurrence Diophantincs) and physical (simulation-bounded: C4 ETH
-  diagnostics with *measured* ceilings and horizons; observation-bounded: C9
-  proton decay + unification branching, C7/C8 CMB statistics, C6 BKL).
-- **Infinite-volume self-adjointness** (residual 2): new Proposition
-  prop:infinitevolume in sec_dynamics — the kinetic completion is essentially
-  self-adjoint on C₀(ℕ^d), self-adjoint and bounded below on
-  D(H_P)∩D(N²_total), truncations converge strongly on the core (each
-  fixed-occupation sector stabilizes at K ≥ M+1); proof via M-sector Jacobi
-  block decomposition + Kato–Rellich against the confining diagonal
-  H_P + λN². The d→∞ extension with summable couplings flagged open.
-- rem:numerics: fourth tier added (Krylov edge window + the closed
-  median-window routes); item (e) extended with the edge ladder and the
-  large-grid trajectory horizons; C4/C9 register rows and §11.1/§11.2 items
-  updated; intro updated to D≈10⁵ and two granularities.
-- fig_c4_ladder.png panel (a) extended with the Krylov edge tier (d=3, d=4
-  families, LU-ceiling marker); c4_ladder_results.json + summary.txt extended
-  (edge_ladder, late_trajectories, closed-routes record).
+1. Math/physical falsifier separation in §11 only partial (unchanged).
+2. Infinite-volume self-adjointness of the kinetic completion (unchanged).
+3. C9 k=7 Z-granularity variant needs a frozen PDG extract (protocol update).
+4. kappa at D > 6e4 (window tier LU-limited); a Krylov-tier estimator of the
+   eigenstate fluctuation would extend the ladder.
 
-## D. What remains cheapest, now
+# Task 9: the three residuals (falsifier split, self-adjointness, Krylov kappa)
 
-1. The mathematical falsifier for C4 is now well-posed *and* structured: the
-   M-sector Jacobi decomposition of prop:infinitevolume is the natural
-   starting point for either a thermalization proof or an obstruction.
-2. C9: the k=7 instrument is live on a frozen extract; any new precision
-   table (e.g. W or Higgs branching at higher precision) can be frozen and
-   fitted under the same pre-registered protocol in minutes.
-3. The median-window Krylov extension would need either RAM ≫ 3 GB (the LU
-   fill wall) or an eigensolver with factorization-quality interior
-   convergence — both out of laptop scale; the edge tier is the honest
-   measurement at D ≳ 2×10⁴ on this hardware.
+## A. Math/physical falsifier separation (residual 1)
+
+- Register falsifier column typed: M (proof / certified computation),
+  P (measured data), M/P; legend in the section 10 preamble, markers in
+  every row, closing observation updated (8 of 12 entries M-decidable).
+- New section 11 subsection "Falsifier classes" (sec:classes): class
+  definitions (noiseless/repeatable vs statistical/one-shot), a 12-row
+  classification table (entry / class / decisive instance / uncertainty),
+  and the structural observation that the framework's falsifier surface is
+  predominantly mathematical while the physical surface is concentrated,
+  dated, and pre-registered.
+- New subsection "Physical test programs" (sec:physical): proton decay
+  (dated), unification-scale precision branching (frozen protocol), CMB
+  low-entropy statistics (C7/C8), scale identification (C11 input side) -
+  each with its data source and decision instrument; the mathematical
+  programs subsection renumbered (sec:mathprograms). Assessment updated.
+
+## B. Infinite-volume self-adjointness (residual 2)
+
+- Prop wellposed repaired: a_p^dag a_q is unbounded on l^2(F) (matrix
+  elements ~ occupation); the proof route is now the occupation-sector
+  decomposition, not a boundedness claim, and the domain statement is the
+  closure of H_P + H_hop (Kato-Rellich with bounded H_W only).
+- New Proposition (prop:sector, occupation sectors): (i) H_nc^(U,V) =
+  H_P + H_U + H_hop + H_kin commutes with N_tot and the outside-mode
+  occupations; orthogonal direct sum of finite Hermitian blocks of
+  dimension C(S+d-1, d-1); the kinetic block is Hermitian by bond-reversal
+  weight invariance ((n_p + n_q) commutes with the hop); row-sum norm
+  bound ||H_kin^(S)|| <= |V|(d-1)S(S+1). (ii) Essential self-adjointness
+  on the finitely supported configurations; H_tot^(U,V) self-adjoint for
+  every U, V (Kato-Rellich, relative bound 0). (iii) Box truncations exact
+  on contained sectors (H_W = 0); Trotter-Kato uniform strong convergence
+  with the walk. Proof sketch + numerical corroboration (28/28 checks,
+  c4_sector_checks.py: Hermiticity 0.0e+00, norm bound satisfied with the
+  expected slack, box-exactness 7e-15, walk control leaks).
+- New Remark (rem:modecount): the d -> infinity limit is singular - the
+  hops reach infinitely many unoccupied modes with matrix elements
+  sqrt(k_q) >= 1, so a finite mode cutoff is an ingredient of the
+  conjecture, not an optional regularization.
+
+## C. Krylov-tier kappa estimator (residual 4 of task 8)
+
+- c4_kappa_krylov.py: block Chebyshev subspace iteration on (H-c)^2,
+  passband by stochastic Lanczos quadrature (block-independent - the Ritz
+  count cannot see past the block boundary), float32 filtering + float64
+  polish, residual certification, resumable degree-chunk checkpoints.
+- En-route engineering findings: the boundary of a contiguous interior
+  block never converges (selection is converged-only); the Lanczos count
+  probe needs ~360 steps at relative band widths ~1/200 (100 steps bias
+  +30-70%, 250 steps +10%, 360 steps < 2% vs dense ground truth); the
+  float32 residual floor grows with ||H|| sqrt(M) x amplification
+  contrast, so the discovery phase is count-based (span inclusion) and
+  only the polish phase certifies; the spectral radius is dose-pinned
+  (R ~ 570 at VK^2 = 36, d = 4: fully occupied corners), which sets the
+  degree wall.
+- Validation (4 platforms vs LU): machine-precision eigenvalue sets at
+  D = 9.3e3, 1e4 (max |dlambda| <= 4e-11), kappa ratio 1.006 at 6.9e3,
+  289/350 certified at 2.4e4 with kappa within 2.4% (central-subset bias
+  measured, not assumed).
+- Extension: L36d4K13, D = 3.84e4 (first LU-infeasible 4D point), M = 3400,
+  14 sweeps: kappa = 0.250 (276/350 certified, resid <= 1.8e-6, <r> =
+  0.511, PR/D = 0.148). d=4 ladder 0.449 -> 0.367 -> 0.313 -> 0.250;
+  four-point fit kappa ~ D^{-0.255} (3-point -0.222); benchmark distance
+  7.2 -> 7.8. Subset-bias-corrected kappa ~ 0.256. The slow decay
+  persists past the LU ceiling.
+- Cost ceiling: total filter work ~ ln(eps) R/(2t) block-matvecs; at fixed
+  dose R is constant and t ~ 1/D, so the degree grows linearly in D - the
+  LU fill ceiling (2.1e4 in d=4) is replaced by a compute-degree ceiling
+  ~ one rung higher (hours per configuration here). K15/K17 4D and K42+ 3D
+  remain beyond this platform's budget; the machinery is in place.
+
+Paper: 51 pp body (0 overfull, 0 undefined, 330 links); manuscript.tex
+regenerated and verified to compile identically; final.pdf 52 pp with
+cover. fig_c4_strongeth.png regenerated with the Krylov-tier point.
+
+
+---
+
+# Task 10. The two remaining items: K15/K17 Krylov cluster and the k=7 variant
+
+## A. K15/K17 past both ceilings
+
+- The Chebyshev tier (Task 9) is degree-walled at K13 (degree linear in D at
+  dose-pinned R ~ 570). The remaining factorization-free median-window routes
+  were implemented and measured: ARPACK which='LA' on -(H-sigma)^2 stalls at
+  ncv 240/460/700 (0/160 pairs; continuum at the window edge; a which='LM'
+  first attempt silently returned the far-edge end and was caught by a
+  window-position check); ILU^2 LOBPCG overflows; unpreconditioned LOBPCG
+  contracts at 0.96/iter; soft filters need degree ~5e3.
+- Executed: the UPPER-EDGE window (eigsh(H, 'LM'), k=350, 30 bins, residuals
+  <= 1.3e-11). d=4 edge ladder to D=104976: sigma_rel = 0.871-0.895 FLAT
+  (x25.6 in D); d=3 edge ladder: 0.835-0.839 FLAT; <r>_edge 0.38-0.43
+  (Poisson-like edge sector), PR/D 0.054->0.009. The fluctuation RATIO is
+  flat past both ceilings in both window conventions; the absolute-units
+  kappa (Task 9) decays on the slow D^-0.255 track at the median.
+- Matched-dose trajectories: K13 tau=96 (secular climb through micro:
+  3.96->4.79 vs micro 3.956), K15 tau=44, K17 tau=36 -- horizon-limited,
+  ~2.2 h across 12 resumable chunks.
+
+## B. C9 k=7 on the frozen 2024 PDG extract
+
+- Extract frozen and committed BEFORE the fit (seven-flavour Z-width
+  decomposition, protocol embedded; null first, injection second, fit last).
+- Null: FPR 0/3000 at chi2_0.95(7) = 14.07. Injection: pre-registered truth
+  infeasible (7 does not divide 60) -- amendment recorded; the valid table
+  recovers N=60 at 3e5 events with the highly-composite-N scan bias
+  documented. Fit: best chi2 = 1394.68, p = 0.032 (lepton universality);
+  no common-N table -- the five-channel exclusion confirmed at k=7.
+
+## C. Reconciliation
+
+- Both parallel sessions' residuals work is merged into one line (Tasks 7-9
+  as base; this session's K15/K17 edge tier, k=7 record, and closed-routes
+  measurement as extensions). Paper items (j)/(k) added to rem:numerics;
+  register C4/C9 rows, falsify items, and the intro updated.

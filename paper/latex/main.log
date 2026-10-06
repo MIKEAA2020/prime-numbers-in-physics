@@ -1,0 +1,1605 @@
+**
+(main.tex
+LaTeX2e <2021-11-15> patch level 1
+L3 programming layer <2022-02-24> (article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+(size11.clo
+File: size11.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count181
+\c@section=\count182
+\c@subsection=\count183
+\c@subsubsection=\count184
+\c@paragraph=\count185
+\c@subparagraph=\count186
+\c@figure=\count187
+\c@table=\count188
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen138
+) (amsmath.sty
+Package: amsmath 2021/10/15 v2.17l AMS math features
+\@mathmargin=\skip49
+
+For additional information on amsmath, use the `?' option.
+(amstext.sty
+Package: amstext 2021/08/26 v2.01 AMS text
+ (amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks16
+\ex@=\dimen139
+)) (amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen140
+) (amsopn.sty
+Package: amsopn 2021/08/26 v2.02 operator names
+)
+\inf@bad=\count189
+LaTeX Info: Redefining \frac on input line 234.
+\uproot@=\count190
+\leftroot@=\count191
+LaTeX Info: Redefining \overline on input line 399.
+\classnum@=\count192
+\DOTSCASE@=\count193
+LaTeX Info: Redefining \ldots on input line 496.
+LaTeX Info: Redefining \dots on input line 499.
+LaTeX Info: Redefining \cdots on input line 620.
+\Mathstrutbox@=\box50
+\strutbox@=\box51
+\big@size=\dimen141
+LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
+\macc@depth=\count194
+\c@MaxMatrixCols=\count195
+\dotsspace@=\muskip16
+\c@parentequation=\count196
+\dspbrk@lvl=\count197
+\tag@help=\toks17
+\row@=\count198
+\column@=\count199
+\maxfields@=\count266
+\andhelp@=\toks18
+\eqnshift@=\dimen142
+\alignsep@=\dimen143
+\tagshift@=\dimen144
+\tagwidth@=\dimen145
+\totwidth@=\dimen146
+\lineht@=\dimen147
+\@envbody=\toks19
+\multlinegap=\skip50
+\multlinetaggap=\skip51
+\mathdisplay@stack=\toks20
+LaTeX Info: Redefining \[ on input line 2938.
+LaTeX Info: Redefining \] on input line 2939.
+) (amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)) (amsthm.sty
+Package: amsthm 2020/05/29 v2.20.6
+\thm@style=\toks21
+\thm@bodyfont=\toks22
+\thm@headfont=\toks23
+\thm@notefont=\toks24
+\thm@headpunct=\toks25
+\thm@preskip=\skip52
+\thm@postskip=\skip53
+\thm@headsep=\skip54
+\dth@everypar=\toks26
+) (geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+ (keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks27
+) (ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+ (iftex.sty
+Package: iftex 2022/02/03 v1.0f TeX engine tests
+))
+\Gm@cnth=\count267
+\Gm@cntv=\count268
+\c@Gm@tempcnt=\count269
+\Gm@bindingoffset=\dimen148
+\Gm@wd@mp=\dimen149
+\Gm@odd@mp=\dimen150
+\Gm@even@mp=\dimen151
+\Gm@layoutwidth=\dimen152
+\Gm@layoutheight=\dimen153
+\Gm@layouthoffset=\dimen154
+\Gm@layoutvoffset=\dimen155
+\Gm@dimlist=\toks28
+) (graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+ (graphics.sty
+Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
+ (trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+) (graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: xetex.def on input line 107.
+ (xetex.def
+File: xetex.def 2021/03/18 v5.0k Graphics/color driver for xetex
+))
+\Gin@req@height=\dimen156
+\Gin@req@width=\dimen157
+)
+(xcolor.sty
+Package: xcolor 2021/10/31 v2.13 LaTeX color extensions (UK)
+ (color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: xetex.def on input line 227.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1368.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1370.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1372.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1373.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1374.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1375.
+) (booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen158
+\lightrulewidth=\dimen159
+\cmidrulewidth=\dimen160
+\belowrulesep=\dimen161
+\belowbottomsep=\dimen162
+\aboverulesep=\dimen163
+\abovetopsep=\dimen164
+\cmidrulesep=\dimen165
+\cmidrulekern=\dimen166
+\defaultaddspace=\dimen167
+\@cmidla=\count270
+\@cmidlb=\count271
+\@aboverulesep=\dimen168
+\@belowrulesep=\dimen169
+\@thisruleclass=\count272
+\@lastruleclass=\count273
+\@thisrulewidth=\dimen170
+) (longtable.sty
+Package: longtable 2021-09-01 v4.17 Multi-page Table package (DPC)
+\LTleft=\skip55
+\LTright=\skip56
+\LTpre=\skip57
+\LTpost=\skip58
+\LTchunksize=\count274
+\LTcapwidth=\dimen171
+\LT@head=\box52
+\LT@firsthead=\box53
+\LT@foot=\box54
+\LT@lastfoot=\box55
+\LT@gbox=\box56
+\LT@cols=\count275
+\LT@rows=\count276
+\c@LT@tables=\count277
+\c@LT@chunks=\count278
+\LT@p@ftn=\toks29
+) (tabularx.sty
+Package: tabularx 2020/01/15 v2.11c `tabularx' package (DPC)
+
+(array.sty
+Package: array 2021/10/04 v2.5f Tabular extension package (FMi)
+\col@sep=\dimen172
+\ar@mcellbox=\box57
+\extrarowheight=\dimen173
+\NC@list=\toks30
+\extratabsurround=\skip59
+\backup@length=\skip60
+\ar@cellbox=\box58
+)
+\TX@col@width=\dimen174
+\TX@old@table=\dimen175
+\TX@old@col=\dimen176
+\TX@target=\dimen177
+\TX@delta=\dimen178
+\TX@cols=\count279
+\TX@ftn=\toks31
+) (adjustbox.sty
+Package: adjustbox 2020/08/19 v1.3 Adjusting TeX boxes (trim, clip, ...)
+ (xkeyval.sty
+Package: xkeyval 2020/11/20 v2.8 package option processing (HA)
+ (xkeyval (xkvutils
+\XKV@toks=\toks32
+\XKV@tempa@toks=\toks33
+)
+\XKV@depth=\count280
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+)) (adjcalc.sty
+Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back
+-ends (calc, etex, pgfmath)
+)
+(trimclip.sty
+Package: trimclip 2020/08/19 v1.2 Trim and clip general TeX material
+ (collectbox.sty
+Package: collectbox 2012/05/17 v0.4b Collect macro arguments as boxes
+\collectedbox=\box59
+)
+\tc@llx=\dimen179
+\tc@lly=\dimen180
+\tc@urx=\dimen181
+\tc@ury=\dimen182
+Package trimclip Info: Using driver 'tc-xetex.def'.
+ (tc-xetex.def
+File: tc-xetex.def 2019/01/04 v2.2 Clipping driver for xetex
+))
+\adjbox@Width=\dimen183
+\adjbox@Height=\dimen184
+\adjbox@Depth=\dimen185
+\adjbox@Totalheight=\dimen186
+\adjbox@pwidth=\dimen187
+\adjbox@pheight=\dimen188
+\adjbox@pdepth=\dimen189
+\adjbox@ptotalheight=\dimen190
+ (ifoddpage.sty
+Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
+\c@checkoddpage=\count281
+) (varwidth.sty
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box60
+\sift@deathcycles=\count282
+\@vwid@loff=\dimen191
+\@vwid@roff=\dimen192
+))
+(enumitem.sty
+Package: enumitem 2019/06/20 v3.9 Customized lists
+\labelindent=\skip61
+\enit@outerparindent=\dimen193
+\enit@toks=\toks34
+\enit@inbox=\box61
+\enit@count@id=\count283
+\enitdp@description=\count284
+) (microtype.sty
+Package: microtype 2022/03/14 v3.0d Micro-typographical refinements (RS)
+ (etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count285
+)
+\MT@toks=\toks35
+\MT@tempbox=\box62
+\MT@count=\count286
+LaTeX Info: Redefining \noprotrusionifhmode on input line 1027.
+LaTeX Info: Redefining \leftprotrusion on input line 1028.
+LaTeX Info: Redefining \rightprotrusion on input line 1036.
+LaTeX Info: Redefining \textls on input line 1195.
+\MT@outer@kern=\dimen194
+LaTeX Info: Redefining \textmicrotypecontext on input line 1781.
+\MT@listname@count=\count287
+ (microtype-xetex.def
+File: microtype-xetex.def 2022/03/14 v3.0d Definitions specific to xetex (RS)
+LaTeX Info: Redefining \lsstyle on input line 236.
+)
+Package microtype Info: Loading configuration file microtype.cfg.
+
+(microtype.cfg
+File: microtype.cfg 2022/03/14 v3.0d microtype main configuration file (RS)
+)) (tcolorbox.sty
+Package: tcolorbox 2022/01/07 version 5.0.2 text color boxes
+ (pgf.sty (pgfrcs.sty (pgfutil-common.tex
+\pgfutil@everybye=\toks36
+\pgfutil@tempdima=\dimen195
+\pgfutil@tempdimb=\dimen196
+
+(pgfutil-common-lists.tex)) (pgfutil-latex.def
+\pgfutil@abb=\box63
+) (pgfrcs.code.tex
+(pgf.revision.tex)
+Package: pgfrcs 2021/05/15 v3.1.9a (3.1.9a)
+))
+Package: pgf 2021/05/15 v3.1.9a (3.1.9a)
+ (pgfcore.sty (pgfsys.sty (pgfsys.code.tex
+Package: pgfsys 2021/05/15 v3.1.9a (3.1.9a)
+
+(pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks37
+\pgfkeys@temptoks=\toks38
+ (pgfkeysfiltered.code.tex
+\pgfkeys@tmptoks=\toks39
+))
+\pgf@x=\dimen197
+\pgf@y=\dimen198
+\pgf@xa=\dimen199
+\pgf@ya=\dimen256
+\pgf@xb=\dimen257
+\pgf@yb=\dimen258
+\pgf@xc=\dimen259
+\pgf@yc=\dimen260
+\pgf@xd=\dimen261
+\pgf@yd=\dimen262
+\w@pgf@writea=\write3
+\r@pgf@reada=\read2
+\c@pgf@counta=\count288
+\c@pgf@countb=\count289
+\c@pgf@countc=\count290
+\c@pgf@countd=\count291
+\t@pgf@toka=\toks40
+\t@pgf@tokb=\toks41
+\t@pgf@tokc=\toks42
+\pgf@sys@id@count=\count292
+ (pgf.cfg
+File: pgf.cfg 2021/05/15 v3.1.9a (3.1.9a)
+)
+Driver file for pgf: pgfsys-xetex.def
+ (pgfsys-xetex.def
+File: pgfsys-xetex.def 2021/05/15 v3.1.9a (3.1.9a)
+
+(pgfsys-dvipdfmx.def
+File: pgfsys-dvipdfmx.def 2021/05/15 v3.1.9a (3.1.9a)
+ (pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2021/05/15 v3.1.9a (3.1.9a)
+)
+\pgfsys@objnum=\count293
+))) (pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfsyssoftpath@smallbuffer@items=\count294
+\pgfsyssoftpath@bigbuffer@items=\count295
+)
+(pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+)) (pgfcore.code.tex
+Package: pgfcore 2021/05/15 v3.1.9a (3.1.9a)
+ (pgfmath.code.tex
+(pgfmathcalc.code.tex (pgfmathutil.code.tex) (pgfmathparser.code.tex
+\pgfmath@dimen=\dimen263
+\pgfmath@count=\count296
+\pgfmath@box=\box64
+\pgfmath@toks=\toks43
+\pgfmath@stack@operand=\toks44
+\pgfmath@stack@operation=\toks45
+)
+(pgfmathfunctions.code.tex (pgfmathfunctions.basic.code.tex)
+(pgfmathfunctions.trigonometric.code.tex) (pgfmathfunctions.random.code.tex)
+(pgfmathfunctions.comparison.code.tex) (pgfmathfunctions.base.code.tex)
+(pgfmathfunctions.round.code.tex) (pgfmathfunctions.misc.code.tex)
+(pgfmathfunctions.integerarithmetics.code.tex))) (pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count297
+))
+(pgfint.code.tex) (pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@picminx=\dimen264
+\pgf@picmaxx=\dimen265
+\pgf@picminy=\dimen266
+\pgf@picmaxy=\dimen267
+\pgf@pathminx=\dimen268
+\pgf@pathmaxx=\dimen269
+\pgf@pathminy=\dimen270
+\pgf@pathmaxy=\dimen271
+\pgf@xx=\dimen272
+\pgf@xy=\dimen273
+\pgf@yx=\dimen274
+\pgf@yy=\dimen275
+\pgf@zx=\dimen276
+\pgf@zy=\dimen277
+) (pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@path@lastx=\dimen278
+\pgf@path@lasty=\dimen279
+)
+(pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@shorten@end@additional=\dimen280
+\pgf@shorten@start@additional=\dimen281
+) (pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfpic=\box65
+\pgf@hbox=\box66
+\pgf@layerbox@main=\box67
+\pgf@picture@serial@count=\count298
+)
+(pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgflinewidth=\dimen282
+) (pgfcoretransformations.code.tex
+File: pgfcoretransformations.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@pt@x=\dimen283
+\pgf@pt@y=\dimen284
+\pgf@pt@temp=\dimen285
+)
+(pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+) (pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+)
+(pgfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+) (pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfarrowsep=\dimen286
+)
+(pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@max=\dimen287
+\pgf@sys@shading@range@num=\count299
+\pgf@shadingcount=\count300
+) (pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+ (pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfexternal@startupbox=\box68
+))
+(pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+) (pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+)
+(pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+) (pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+))) (pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfnodeparttextbox=\box69
+)
+(pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+) (pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@nodesepstart=\dimen288
+\pgf@nodesepend=\dimen289
+) (pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2021/05/15 v3.1.9a (3.1.9a)
+)) (verbatim.sty
+Package: verbatim 2020-07-07 v1.5u LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks46
+\verbatim@line=\toks47
+\verbatim@in@stream=\read3
+) (environ.sty
+Package: environ 2014/05/04 v0.3 A new way to define environments
+ (trimspaces.sty
+Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
+))
+\tcb@titlebox=\box70
+\tcb@upperbox=\box71
+\tcb@lowerbox=\box72
+\tcb@phantombox=\box73
+\c@tcbbreakpart=\count301
+\c@tcblayer=\count302
+\c@tcolorbox@number=\count303
+\tcb@temp=\box74
+\tcb@temp=\box75
+\tcb@temp=\box76
+\tcb@temp=\box77
+) (natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip62
+\bibsep=\skip63
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count304
+) (hyperref.sty
+Package: hyperref 2022-02-21 v7.00n Hypertext links for LaTeX
+
+(ltxcmds.sty
+Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
+) (pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+ (infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode not found.
+) (kvsetkeys.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+)
+(kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+) (pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+) (hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+) (letltxmacro.sty
+Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
+) (auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+) (kvoptions.sty
+Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
+)
+\@linkdim=\dimen290
+\Hy@linkcounter=\count305
+\Hy@pagecounter=\count306
+ (pd1enc.def
+File: pd1enc.def 2022-02-21 v7.00n Hyperref: PDFDocEncoding definition (HO)
+) (intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+) (etexcmds.sty
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+)
+\Hy@SavedSpaceFactor=\count307
+ (puenc.def
+File: puenc.def 2022-02-21 v7.00n Hyperref: PDF Unicode definition (HO)
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 4018.
+Package hyperref Info: Option `bookmarks' set `true' on input line 4018.
+Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 4018
+.
+Package hyperref Info: Option `unicode' set `true' on input line 4018.
+Package hyperref Info: Hyper figures OFF on input line 4137.
+Package hyperref Info: Link nesting OFF on input line 4142.
+Package hyperref Info: Hyper index ON on input line 4145.
+Package hyperref Info: Plain pages OFF on input line 4152.
+Package hyperref Info: Backreferencing OFF on input line 4157.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4390.
+\c@Hy@tempcnt=\count308
+
+(url.sty
+\Urlmuskip=\muskip17
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4749.
+\XeTeXLinkMargin=\dimen291
+ (bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+ (bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+\Fld@menulength=\count309
+\Field@Width=\dimen292
+\Fld@charsize=\dimen293
+Package hyperref Info: Hyper figures OFF on input line 6027.
+Package hyperref Info: Link nesting OFF on input line 6032.
+Package hyperref Info: Hyper index ON on input line 6035.
+Package hyperref Info: backreferencing OFF on input line 6042.
+Package hyperref Info: Link coloring ON on input line 6045.
+Package hyperref Info: Link coloring with OCG OFF on input line 6052.
+Package hyperref Info: PDF/A mode OFF on input line 6057.
+LaTeX Info: Redefining \ref on input line 6097.
+LaTeX Info: Redefining \pageref on input line 6101.
+ (atbegshi-ltx.sty
+Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
+package with kernel methods
+)
+\Hy@abspage=\count310
+\c@Item=\count311
+\c@Hfootnote=\count312
+)
+Package hyperref Info: Driver (autodetected): hxetex.
+ (hxetex.def
+File: hxetex.def 2022-02-21 v7.00n Hyperref driver for XeTeX
+
+(stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
+)
+)
+\pdfm@box=\box78
+\c@Hy@AnnotLevel=\count313
+\HyField@AnnotCount=\count314
+\Fld@listcount=\count315
+\c@bookmark@seq@number=\count316
+ (rerunfilecheck.sty
+Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
+ (atveryend-ltx.sty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
+kage
+with kernel methods
+) (uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+86.
+)
+\Hy@SectionHShift=\skip64
+)
+\c@theorem=\count317
+\c@conjecture=\count318
+
+(l3backend-xetex.def
+File: l3backend-xetex.def 2022-02-07 L3 backend support: XeTeX
+\c__kernel_sys_dvipdfmx_version_int=\count319
+\l__color_backend_stack_int=\count320
+\g__color_backend_stack_int=\count321
+\g__graphics_track_int=\count322
+\l__pdf_internal_box=\box79
+\g__pdf_backend_object_int=\count323
+\g__pdf_backend_annotation_int=\count324
+\g__pdf_backend_link_int=\count325
+) (main.aux)
+\openout1 = `main.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 63.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 6
+3.
+ (ts1cmr.fd
+File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: xetex
+*geometry* verbose mode - [ preamble ] result:
+* driver: xetex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(71.13188pt, 455.24411pt, 71.13188pt)
+* v-part:(T,H,B)=(71.13188pt, 702.78308pt, 71.13188pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=455.24411pt
+* \textheight=702.78308pt
+* \oddsidemargin=-1.1381pt
+* \evensidemargin=-1.1381pt
+* \topmargin=-38.1381pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=11.0pt
+* \footskip=30.0pt
+* \marginparwidth=50.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+LaTeX Info: Redefining \microtypecontext on input line 63.
+Package microtype Info: Applying patch `item' on input line 63.
+Package microtype Info: Applying patch `toc' on input line 63.
+Package microtype Info: Applying patch `eqnum' on input line 63.
+Package microtype Info: Applying patch `footnote' on input line 63.
+Package microtype Info: Character protrusion enabled (level 2).
+Package microtype Info: Using default protrusion set `alltext'.
+Package microtype Info: No adjustment of tracking.
+Package microtype Info: No adjustment of spacing.
+Package microtype Info: No adjustment of kerning.
+(mt-LatinModernRoman.cfg
+File: mt-LatinModernRoman.cfg 2021/02/21 v1.1 microtype config. file: Latin Mod
+ern Roman (RS)
+)
+Package hyperref Info: Link coloring ON on input line 63.
+ (nameref.sty
+Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
+ (refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+) (gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+)
+\c@section@level=\count326
+)
+LaTeX Info: Redefining \ref on input line 63.
+LaTeX Info: Redefining \pageref on input line 63.
+LaTeX Info: Redefining \nameref on input line 63.
+
+(main.out) (main.out)
+\@outlinefile=\write4
+\openout4 = `main.out'.
+
+ (main.toc (mt-cmr.cfg
+File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
+(RS)
+)
+LaTeX Font Info:    Trying to load font information for U+msa on input line 2.
+ (umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+) (mt-msa.cfg
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 2.
+ (umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+(mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+) [1
+
+])
+\tf@toc=\write5
+\openout5 = `main.toc'.
+
+ [2] (sec_intro
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `cmss' (encoding: OT1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+ [3] [4] [5] [6] [7] [8]) (sec_dynamics
+[9] [10] [11]
+LaTeX Font Info:    Trying to load font information for U+euf on input line 185
+.
+ (ueuf.fd
+File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
+) (mt-euf.cfg
+File: mt-euf.cfg 2006/07/03 v1.1 microtype config. file: AMS Euler Fraktur (RS)
+
+) [12] [13]
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `lmtt' (encoding: TU).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+ [14] [15] [16]
+File: fig_c4_controls.png Graphic file (type bmp)
+<fig_c4_controls.png>
+File: fig_c4_ladder.png Graphic file (type bmp)
+<fig_c4_ladder.png>
+File: fig_c4_strongeth.png Graphic file (type bmp)
+<fig_c4_strongeth.png>
+ [17] [18]
+[19] [20] [21]) (sec_time [22] [23] [24] [25] [26] [27]) (sec_entangle [28]
+[29] [30]) (sec_galois [31]
+Underfull \hbox (badness 10000) in paragraph at lines 84--85
+[]|\TU/lmr/m/n/10.95 Quadratic/non-abelian exten-
+ []
+
+
+Underfull \hbox (badness 2717) in paragraph at lines 84--85
+\TU/lmr/m/n/10.95 the arithmetic $\OML/cmm/m/it/10.95 C$\TU/lmr/m/n/10.95 ; spl
+it/inert
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 88--89
+\TU/lmr/m/n/10.95 their non-abelian analogues);
+ []
+
+
+Underfull \hbox (badness 3568) in paragraph at lines 91--91
+[]|\TU/lmr/m/n/10.95 Higgs mechanism, sponta-
+ []
+
+
+Underfull \hbox (badness 3428) in paragraph at lines 94--95
+[]|\TU/lmr/m/n/10.95 Theorem layer: Kummer
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 101--103
+[]|\TU/lmr/m/n/10.95 The $\OML/cmm/m/it/10.95 ^^[$\TU/lmr/m/n/10.95 -odd intera
+ction sec-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 101--103
+\TU/lmr/m/n/10.95 tor: asymmetric couplings
+ []
+
+[32]
+Underfull \hbox (badness 10000) in paragraph at lines 139--142
+[]$\OT1/cmr/m/n/10.95 [\OML/cmm/m/it/10.95 C; H[]\OT1/cmr/m/n/10.95 ] = 0$ \TU/
+lmr/m/it/10.95 and
+ []
+
+[33] [34]) (sec_philosophy [35]
+Underfull \hbox (badness 1067) in paragraph at lines 58--59
+[]|\TU/lmr/m/n/10.95 Growth of available multi-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 59--60
+[]|\TU/lmr/m/n/10.95 Conjecture (engine) + Theorem
+ []
+
+
+Underfull \hbox (badness 2343) in paragraph at lines 60--61
+[]|$\OML/cmm/m/it/10.95 S \OT1/cmr/m/n/10.95 = \OML/cmm/m/it/10.95 k[] [] \OT1/
+cmr/m/n/10.95 
+$ \TU/lmr/m/n/10.95 along the
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 60--61
+\TU/lmr/m/n/10.95 cascade; second law as
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 60--61
+\TU/lmr/m/n/10.95 overwhelming-multiplicity
+ []
+
+
+Underfull \hbox (badness 2573) in paragraph at lines 66--66
+[]|\TU/lmr/m/n/10.95 Memory as record-bearing
+ []
+
+
+Underfull \hbox (badness 1418) in paragraph at lines 66--66
+\TU/lmr/m/n/10.95 physical process; indexical
+ []
+
+
+Underfull \hbox (badness 1028) in paragraph at lines 68--69
+\TU/lmr/m/n/10.95 cade; alignment of arrows
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 70--71
+[]|$\OML/cmm/m/it/10.95 ^^[$\TU/lmr/m/n/10.95 -odd interaction sector
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 70--71
+\TU/lmr/m/n/10.95 (Proposition [][]8.5[][]); micro-
+ []
+
+[36] [37]) (sec_register [38]
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+[]|\TU/lmr/bx/n/10.95 Depends
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
+[]|\TU/lmr/bx/n/10.95 Depends
+ []
+
+
+Underfull \hbox (badness 1424) in paragraph at lines 32--35
+\TU/lmr/m/n/10.95 (and $\OML/cmm/m/it/10.95 ^^P[] \OT1/cmr/m/n/10.95 = \OML/cmm
+/m/it/10.95 ^^PL\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 ^^_[]\OT1/cmr/m/n/10.95
+ )$ \TU/lmr/m/n/10.95 in the
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--42
+[]|\TU/lmr/m/n/10.95 Derive $\OML/cmm/m/it/10.95 H[]$ \TU/lmr/m/n/10.95 from
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--42
+\TU/lmr/m/n/10.95 BKL/conformal reduc-
+ []
+
+
+Underfull \hbox (badness 3536) in paragraph at lines 38--42
+\TU/lmr/m/n/10.95 tion; compute its level
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--42
+\TU/lmr/m/n/10.95 if the near-singularity
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--42
+\TU/lmr/m/n/10.95 is thin—the structural
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--42
+\TU/lmr/m/n/10.95 Dedekind fit plus one
+ []
+
+
+Underfull \hbox (badness 3302) in paragraph at lines 38--42
+\TU/lmr/m/n/10.95 grade reflects testability,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 48--55
+[]|\TU/lmr/m/n/10.95 Fixes the return-time
+ []
+
+
+Underfull \hbox (badness 7522) in paragraph at lines 48--55
+\TU/lmr/m/n/10.95 ogy whose times grow
+ []
+
+
+Underfull \hbox (badness 1931) in paragraph at lines 48--55
+\TU/lmr/m/n/10.95 faster than every power
+ []
+
+
+Underfull \hbox (badness 2073) in paragraph at lines 48--55
+\TU/lmr/m/n/10.95 of the entropy at fixed
+ []
+
+
+Underfull \hbox (badness 2671) in paragraph at lines 48--55
+\TU/lmr/m/n/10.95 only polynomially in $\OML/cmm/m/it/10.95 S$\TU/lmr/m/n/10.95
+ ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 48--55
+\TU/lmr/m/n/10.95 so no cutoff-consistent
+ []
+
+
+Underfull \hbox (badness 6204) in paragraph at lines 48--55
+\TU/lmr/m/n/10.95 enlargement absorbs an
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 48--55
+\TU/lmr/m/n/10.95 exponential-in-$\OML/cmm/m/it/10.95 S$ \TU/lmr/m/n/10.95 recu
+r-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 56--59
+[]|\TU/lmr/m/it/10.95 Holographic arithmetic bound.
+ []
+
+
+Underfull \hbox (badness 2486) in paragraph at lines 56--59
+\OML/cmm/m/it/10.95 E[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 A\OT1/cmr/m/n/10
+.95 ) = []\OML/cmm/m/it/10.95 A \OT1/cmr/m/n/10.95 + \U/msb/m/n/10.95 ~\OML/cmm
+/m/it/10.95 ![]s\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 A\OT1/cmr/m/n/10.95 )$\
+TU/lmr/m/n/10.95 ,
+ []
+
+
+Underfull \hbox (badness 6236) in paragraph at lines 56--59
+\OML/cmm/m/it/10.95 s\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 A\OT1/cmr/m/n/10.9
+5 ) = \OML/cmm/m/it/10.95 O\OT1/cmr/m/n/10.95 ([] [])$ \TU/lmr/m/n/10.95 univer
+sal
+ []
+
+
+Underfull \hbox (badness 7064) in paragraph at lines 62--68
+[]|\TU/lmr/m/n/10.95 Positive evidence: the
+ []
+
+
+Underfull \hbox (badness 6380) in paragraph at lines 62--68
+\TU/lmr/m/n/10.95 proved conditional The-
+ []
+
+
+Underfull \hbox (badness 7064) in paragraph at lines 62--68
+\TU/lmr/m/n/10.95 orem [][]6.2[][] ($\OML/cmm/m/it/10.95 S[]$ \TU/lmr/m/n/10.95
+ follows
+ []
+
+
+Underfull \hbox (badness 2418) in paragraph at lines 62--68
+\TU/lmr/m/n/10.95 exactly once the bound
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 62--68
+\TU/lmr/m/n/10.95 is granted)—the grade
+ []
+
+
+Underfull \hbox (badness 1521) in paragraph at lines 62--68
+\TU/lmr/m/n/10.95 certifies that conditional,
+ []
+
+
+Underfull \hbox (badness 1097) in paragraph at lines 62--68
+\TU/lmr/m/n/10.95 not independent support.
+ []
+
+
+Underfull \hbox (badness 5939) in paragraph at lines 62--68
+\TU/lmr/m/n/10.95 The counting defect is
+ []
+
+
+Underfull \hbox (badness 2285) in paragraph at lines 62--68
+\TU/lmr/m/n/10.95 (Thm [][]6.1[][](iii)), so every
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 62--68
+\TU/lmr/m/n/10.95 log$\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 A\OT1/cmr/m/n/10.
+95 )$\TU/lmr/m/n/10.95 -class correction
+ []
+
+
+Underfull \hbox (badness 1616) in paragraph at lines 62--68
+\TU/lmr/m/n/10.95 must be carried by the
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 62--68
+\TU/lmr/m/n/10.95 known $\OMS/cmsy/m/n/10.95 ^^@[] [] \OML/cmm/m/it/10.95 A$ \T
+U/lmr/m/n/10.95 terms)
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--75
+[]|\TU/lmr/m/it/10.95 Cascade/ETH, interacting
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--75
+\TU/lmr/m/it/10.95 completion. \TU/lmr/m/n/10.95 The \TU/lmr/m/it/10.95 interac
+t-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--75
+\TU/lmr/m/it/10.95 ing \TU/lmr/m/n/10.95 completion $\OML/cmm/m/it/10.95 H[] \O
+T1/cmr/m/n/10.95 =
+ []
+
+
+Underfull \hbox (badness 3229) in paragraph at lines 69--75
+\TU/lmr/m/n/10.95 along truncation sequences at
+ []
+
+
+Underfull \hbox (badness 6510) in paragraph at lines 78--106
+\TU/lmr/m/n/10.95 — sparse eigen-windows
+ []
+
+
+Underfull \hbox (badness 2103) in paragraph at lines 78--106
+\TU/lmr/m/n/10.95 to $\OML/cmm/m/it/10.95 D \OT1/cmr/m/n/10.95 = 5\OML/cmm/m/it
+/10.95 :\OT1/cmr/m/n/10.95 9 \OMS/cmsy/m/n/10.95 ^^B \OT1/cmr/m/n/10.95 10[]$\T
+U/lmr/m/n/10.95 , a
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--106
+\TU/lmr/m/n/10.95 factorization-free Cheby-
+ []
+
+
+Underfull \hbox (badness 1348) in paragraph at lines 78--106
+\TU/lmr/m/n/10.95 in $\OML/cmm/m/it/10.95 d \OT1/cmr/m/n/10.95 = 4$\TU/lmr/m/n/
+10.95 , and Krylov
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--106
+\TU/lmr/m/n/10.95 fluctuation never ap-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--106
+\TU/lmr/m/n/10.95 is decided—structurally
+ []
+
+
+Underfull \hbox (badness 1237) in paragraph at lines 78--106
+\TU/lmr/m/n/10.95 non-ergodic at all scales
+ []
+
+
+Underfull \hbox (badness 3579) in paragraph at lines 78--106
+\TU/lmr/m/n/10.95 computed; the \TU/lmr/m/it/10.95 diagonal
+ []
+
+
+Underfull \hbox (badness 1348) in paragraph at lines 78--106
+\TU/lmr/m/n/10.95 ically ($[]\OML/cmm/m/it/10.95 =D \OMS/cmsy/m/n/10.95 ! \OT1/
+cmr/m/n/10.95 10[]$\TU/lmr/m/n/10.95 );
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--106
+\TU/lmr/m/n/10.95 the \TU/lmr/m/it/10.95 kinetic \TU/lmr/m/n/10.95 completion
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--106
+\TU/lmr/m/n/10.95 laxes (occupation falls
+ []
+
+
+Underfull \hbox (badness 3168) in paragraph at lines 78--106
+\TU/lmr/m/n/10.95 matched dose), and its
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--106
+\TU/lmr/m/n/10.95 the diagonal ensemble
+ []
+
+
+Underfull \hbox (badness 1424) in paragraph at lines 78--106
+\TU/lmr/m/n/10.95 exactly where the latter
+ []
+
+
+Underfull \hbox (badness 6236) in paragraph at lines 78--106
+\OMS/cmsy/m/n/10.95 j [] ^^@ [] j\OML/cmm/m/it/10.95 =K \OMS/cmsy/m/n/10.95 ^^T
+
+ []
+
+
+Underfull \hbox (badness 3250) in paragraph at lines 78--106
+\TU/lmr/m/n/10.95 leg closes: in absolute
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--106
+\TU/lmr/m/n/10.95 units the eigenstate
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--106
+\TU/lmr/m/n/10.95 fluctuation decays as
+ []
+
+
+Underfull \hbox (badness 3612) in paragraph at lines 78--106
+\TU/lmr/m/n/10.95 and $\OML/cmm/m/it/10.95 D[] \OMS/cmsy/m/n/10.95 ! \OML/cmm/m
+/it/10.95 D[]$
+ []
+
+
+Underfull \hbox (badness 1466) in paragraph at lines 78--106
+\TU/lmr/m/n/10.95 at $\OML/cmm/m/it/10.95 d \OT1/cmr/m/n/10.95 = 4$ \TU/lmr/m/n
+/10.95 (four points
+ []
+
+
+Underfull \hbox (badness 5302) in paragraph at lines 78--106
+\TU/lmr/m/n/10.95 against the strong-ETH
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--106
+\TU/lmr/m/n/10.95 the fixed-fraction ther-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--106
+\TU/lmr/m/n/10.95 mal benchmark grows
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--106
+\TU/lmr/m/n/10.95 mark [][]3.11[][](h)–(i)), and
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--106
+\TU/lmr/m/n/10.95 the diagonal ensemble
+ []
+
+
+Underfull \hbox (badness 8170) in paragraph at lines 78--106
+\TU/lmr/m/n/10.95 and positive (GOE at
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--106
+\TU/lmr/m/n/10.95 generic coupling, $[]$);
+ []
+
+
+Underfull \hbox (badness 1242) in paragraph at lines 78--106
+\TU/lmr/m/n/10.95 the weak-coupling $\OMS/cmsy/m/n/10.95 h\OML/cmm/m/it/10.95 r
+\OMS/cmsy/m/n/10.95 i$ \TU/lmr/m/n/10.95 is
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--106
+\TU/lmr/m/n/10.95 quantile- and direction-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--106
+\TU/lmr/m/n/10.95 dependent ($\OT1/cmr/m/n/10.95 0\OML/cmm/m/it/10.95 :\OT1/cmr
+/m/n/10.95 42$\TU/lmr/m/n/10.95 –$\OT1/cmr/m/n/10.95 0\OML/cmm/m/it/10.95 :\OT1
+/cmr/m/n/10.95 56$\TU/lmr/m/n/10.95 ;
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--106
+\TU/lmr/m/n/10.95 Remark [][]3.11[][](a)), the
+ []
+
+
+Underfull \hbox (badness 1642) in paragraph at lines 78--106
+\TU/lmr/m/n/10.95 generic band is window-
+ []
+
+
+Underfull \hbox (badness 2837) in paragraph at lines 78--106
+\TU/lmr/m/n/10.95 dependent at the edges
+ []
+
+
+Underfull \hbox (badness 5203) in paragraph at lines 78--106
+\TU/lmr/m/n/10.95 ($\OT1/cmr/m/n/10.95 0\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95
+ 46$\TU/lmr/m/n/10.95 –$\OT1/cmr/m/n/10.95 0\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/1
+0.95 54$ \TU/lmr/m/n/10.95 at the same
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--106
+\TU/lmr/m/n/10.95 platform), and $[]\OML/cmm/m/it/10.95 =D$
+ []
+
+
+Underfull \hbox (badness 1824) in paragraph at lines 78--106
+\TU/lmr/m/n/10.95 is the robust diagnostic.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--106
+\TU/lmr/m/n/10.95 Label-scrambled controls
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--106
+\TU/lmr/m/n/10.95 is graph-generic while
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--106
+\TU/lmr/m/n/10.95 the generic-family delo-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--106
+\TU/lmr/m/n/10.95 calization is arithmetic:
+ []
+
+
+Underfull \hbox (badness 4846) in paragraph at lines 78--106
+\TU/lmr/m/n/10.95 scrambling the diagonal
+ []
+
+
+Underfull \hbox (badness 2970) in paragraph at lines 107--110
+\TU/lmr/m/n/10.95 The spectral statistics of the
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 113--123
+\TU/lmr/m/n/10.95 of quantized cosmolog-
+ []
+
+
+Underfull \hbox (badness 3646) in paragraph at lines 113--123
+\TU/lmr/m/n/10.95 ical billiards; a proven
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 113--123
+\TU/lmr/m/n/10.95 non-GUE spectrum for
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 113--123
+\TU/lmr/m/n/10.95 the singularity sector
+ []
+
+
+Underfull \hbox (badness 2735) in paragraph at lines 113--123
+\TU/lmr/m/n/10.95 falsifies; conversely, any
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 113--123
+\TU/lmr/m/n/10.95 rigorous Hilbert–Pólya
+ []
+
+
+Underfull \hbox (badness 7558) in paragraph at lines 113--123
+\TU/lmr/m/n/10.95 operator would confirm
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 113--123
+\TU/lmr/m/n/10.95 the bridge (and RH’s
+ []
+
+
+Underfull \hbox (badness 1478) in paragraph at lines 113--123
+\TU/lmr/m/n/10.95 spectral side). On the
+ []
+
+
+Underfull \hbox (badness 1655) in paragraph at lines 113--123
+\OML/cmm/m/it/10.95 D \OT1/cmr/m/n/10.95 = 5\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/1
+0.95 9 \OMS/cmsy/m/n/10.95 ^^B \OT1/cmr/m/n/10.95 10[]$ \TU/lmr/m/n/10.95 (eige
+n-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 113--123
+\TU/lmr/m/n/10.95 windows; equilibration
+ []
+
+
+Underfull \hbox (badness 5726) in paragraph at lines 113--123
+\TU/lmr/m/n/10.95 with a Poisson control
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 113--123
+\TU/lmr/m/n/10.95 at weak coupling and
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 113--123
+\TU/lmr/m/n/10.95 label-scrambled controls
+ []
+
+
+Underfull \hbox (badness 5302) in paragraph at lines 113--123
+\TU/lmr/m/n/10.95 dose statistics scramble-
+ []
+
+
+Underfull \hbox (badness 1960) in paragraph at lines 113--123
+\TU/lmr/m/n/10.95 trend of $\OMS/cmsy/m/n/10.95 h\OML/cmm/m/it/10.95 r\OMS/cmsy
+/m/n/10.95 i ^^@ \OML/cmm/m/it/10.95 r[]$ \TU/lmr/m/n/10.95 in
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 113--123
+\OT1/cmr/m/n/10.95 1\OML/cmm/m/it/10.95 = [] D$ \TU/lmr/m/n/10.95 does not set-
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 113--123
+\TU/lmr/m/n/10.95 tle the limiting value
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 136--138
+[]|\TU/lmr/m/n/10.95 No direct route; con-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 136--138
+\TU/lmr/m/n/10.95 strained by $[]$, $[]$;
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 136--138
+\TU/lmr/m/n/10.95 (initial-state smoothness
+ []
+
+
+Underfull \hbox (badness 2875) in paragraph at lines 139--140
+[]|\TU/lmr/m/it/10.95 Two-sided entropy. \TU/lmr/m/n/10.95 The en-
+ []
+
+
+Underfull \hbox (badness 2181) in paragraph at lines 143--145
+[]|\TU/lmr/m/n/10.95 As for $[]$; additionally,
+ []
+
+
+Underfull \hbox (badness 2671) in paragraph at lines 143--145
+\TU/lmr/m/n/10.95 ing one-sided from two-
+ []
+
+
+Underfull \hbox (badness 1466) in paragraph at lines 146--148
+\TU/lmr/m/n/10.95 lattice $\OMS/cmsy/m/n/10.95 $$ \TU/lmr/m/n/10.95 splitting r
+estrictions;
+ []
+
+
+Underfull \hbox (badness 2799) in paragraph at lines 151--168
+\TU/lmr/m/it/10.95 tocol \TU/lmr/m/n/10.95 (restated): fit all
+ []
+
+
+Underfull \hbox (badness 1584) in paragraph at lines 151--168
+\TU/lmr/m/n/10.95 at precision $\OML/cmm/m/it/10.95 ^^[ \OMS/cmsy/m/n/10.95 ^^T
+ \OT1/cmr/m/n/10.95 0\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 3%$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 151--168
+\TU/lmr/m/n/10.95 (each $\OMS/cmsy/m/n/10.95 j\OML/cmm/m/it/10.95 C[]\OMS/cmsy/
+m/n/10.95 j$ \TU/lmr/m/n/10.95 divides $\OMS/cmsy/m/n/10.95 j\OML/cmm/m/it/10.9
+5 G\OMS/cmsy/m/n/10.95 j$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 151--168
+\TU/lmr/m/n/10.95 by orbit–stabilizer, so
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 151--168
+\TU/lmr/m/n/10.95 the Chebotarev densi-
+ []
+
+
+Underfull \hbox (badness 7030) in paragraph at lines 151--168
+\TU/lmr/m/n/10.95 ties are exactly $\OML/cmm/m/it/10.95 c[]=N$\TU/lmr/m/n/10.95
+ );
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 151--168
+\TU/lmr/m/n/10.95 Monte-Carlo-calibrated
+ []
+
+
+Underfull \hbox (badness 1014) in paragraph at lines 151--168
+\TU/lmr/m/n/10.95 data are examined: the
+ []
+
+
+Underfull \hbox (badness 1668) in paragraph at lines 151--168
+\TU/lmr/m/n/10.95 The frozen protocol has
+ []
+
+
+Underfull \hbox (badness 2368) in paragraph at lines 151--168
+\TU/lmr/m/n/10.95 been applied to the $\OML/cmm/m/it/10.95 Z$\TU/lmr/m/n/10.95 
+-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 151--168
+\TU/lmr/m/n/10.95 pole five-channel table:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 151--168
+\TU/lmr/m/n/10.95 detection power $\OT1/cmr/m/n/10.95 1\OML/cmm/m/it/10.95 :\OT
+1/cmr/m/n/10.95 000$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 151--168
+\TU/lmr/m/n/10.95 (each channel excludes
+ []
+
+
+Underfull \hbox (badness 1325) in paragraph at lines 151--168
+\TU/lmr/m/n/10.95 individually at $\OMS/cmsy/m/n/10.95 ^^U \OT1/cmr/m/n/10.95 2
+\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 8\OML/cmm/m/it/10.95 ^^[$\TU/lmr/m/n/10
+.95 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 151--168
+\TU/lmr/m/n/10.95 an under-powered null,
+ []
+
+
+Underfull \hbox (badness 6078) in paragraph at lines 151--168
+\TU/lmr/m/n/10.95 jecture’s unification-scale
+ []
+
+
+Underfull \hbox (badness 6758) in paragraph at lines 151--168
+\TU/lmr/m/n/10.95 placement and carrying
+ []
+
+
+Underfull \hbox (badness 2903) in paragraph at lines 151--168
+\TU/lmr/m/n/10.95 no confirmatory content.
+ []
+
+
+Underfull \hbox (badness 1527) in paragraph at lines 151--168
+\TU/lmr/m/n/10.95 resentative of the group
+ []
+
+
+Underfull \hbox (badness 1783) in paragraph at lines 151--168
+\TU/lmr/m/n/10.95 order). Cleanest dated
+ []
+
+
+Underfull \hbox (badness 1803) in paragraph at lines 151--168
+\TU/lmr/m/n/10.95 decay (Section [][]11[][], item
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 175--180
+[]|\TU/lmr/m/n/10.95 Structural constraint
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 175--180
+\TU/lmr/m/n/10.95 (one-sided, necessary
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 175--180
+\TU/lmr/m/n/10.95 observable must factor
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 175--180
+\TU/lmr/m/n/10.95 genuinely non-arithmetic
+ []
+
+
+Underfull \hbox (badness 2205) in paragraph at lines 175--180
+\TU/lmr/m/n/10.95 observable is derived at
+ []
+
+
+Underfull \hbox (badness 1383) in paragraph at lines 175--180
+\TU/lmr/m/n/10.95 ics (the ratchet lives in
+ []
+
+
+Underfull \hbox (badness 6380) in paragraph at lines 175--180
+\TU/lmr/m/n/10.95 the non-conserving $\OML/cmm/m/it/10.95 H[]$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 175--180
+\TU/lmr/m/n/10.95 through the arithmetic-
+ []
+
+
+Underfull \hbox (badness 3058) in paragraph at lines 175--180
+\TU/lmr/m/n/10.95 factorization requirement.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--183
+[]|\TU/lmr/m/it/10.95 Arithmetic hierarchy.
+ []
+
+
+Underfull \hbox (badness 4621) in paragraph at lines 181--183
+[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 M[]=M[]\OT1/cmr/m/n/10.95 ) \OMS/cmsy
+/m/n/10.95 ^^P \OML/cmm/m/it/10.95 E[]=\OT1/cmr/m/n/10.95 2\U/msb/m/n/10.95 ~\O
+ML/cmm/m/it/10.95 ![]$\TU/lmr/m/n/10.95 ,
+ []
+
+
+Underfull \hbox (badness 1158) in paragraph at lines 186--189
+\TU/lmr/m/n/10.95 closes or breaks the nu-
+ []
+
+
+Underfull \hbox (badness 2772) in paragraph at lines 186--189
+\TU/lmr/m/n/10.95 rived $\OT1/cmr/m/n/10.95 10[]$\TU/lmr/m/n/10.95 -state effec
+tive
+ []
+
+
+Underfull \hbox (badness 5161) in paragraph at lines 186--189
+\TU/lmr/m/n/10.95 arithmetic universe con-
+ []
+
+
+Underfull \hbox (badness 3364) in paragraph at lines 190--192
+[]|\TU/lmr/m/it/10.95 Perspectival Everett semantics.
+ []
+
+[39] [40] [41] [42] [43] [44] [45]
+Underfull \hbox (badness 2521) in paragraph at lines 294--294
+[]|\TU/lmr/m/n/10 recurrence growth vs. polynomial-in-$\OML/cmm/m/it/10 S$
+ []
+
+
+Underfull \hbox (badness 4132) in paragraph at lines 300--300
+[]|\TU/lmr/m/n/10 CMB one- vs. two-sided low-entropy
+ []
+
+
+Underfull \hbox (badness 5022) in paragraph at lines 302--302
+[]|\TU/lmr/m/n/10 derived CP observable not factoring
+ []
+
+[46] [47]) (sec_appendix) (main.bbl [48] [49] [50]) [51] (main.aux)
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: 2F3DF7C67E43A294DD1CF2CC940950E6;15596.
+ )
+Output written on main.xdv (51 pages, 1581516 bytes).

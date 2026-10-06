@@ -81,7 +81,16 @@ already divisible by $n$. The failure of unitarity of each individual $M_{n}$ is
 operator-theoretic fingerprint of the irreversibility that arithmetic carries:
 the semigroup $(\Nn,\times)$ is
 free, hence has cancellation but no inverses, and the quantum representation inherits exactly
-that structure.
+that structure. The commutator with the free Hamiltonian is exact and arithmetic: on the
+finite-support domain,
+\begin{equation}\label{eq:commMm}
+[H_{P},M_{m}]\;=\;\hbar\omega_{0}(\log m)\,M_{m},
+\end{equation}
+so each multiplicative shift is an eigenoperator of the derivation $[H_{P},\cdot]$ with
+eigenvalue exactly $\hbar\omega_{0}\log m$: multiplication by $m$ costs $\hbar\omega_{0}\log m$
+in energy, and nothing else. This identity is the resonance structure that the interaction
+sector must work with (and the origin of the Wannier--Stark suppression analyzed in
+Remark~\ref{rem:numerics}).
 
 \subsection{The walk Hamiltonian and the prime lattice}\label{sec:walk}
 
@@ -97,12 +106,14 @@ H_{\mathrm{hop}}(P_{f},h)\;=\;\sum_{p\neq q\in P_{f}}h_{pq}
 \end{equation}
 
 \begin{proposition}[Well-posed interacting dynamics]\label{prop:wellposed}
-For finite $P_{f}$, $H_{W}$ and $H_{\mathrm{hop}}$ are bounded and self-adjoint. The full
-Hamiltonian
+For finite $P_{f}$, $H_{W}$ is bounded and self-adjoint, and the number-conserving part
+$H_{P}+H_{\mathrm{hop}}$ is essentially self-adjoint on the finitely supported configurations
+(Proposition~\ref{prop:sector}). The full Hamiltonian
 \begin{equation}\label{eq:fullH}
 H_{\mathrm{tot}}=H_{P}+H_{W}+H_{\mathrm{hop}}
 \end{equation}
-is self-adjoint on the domain of $H_{P}$ (Kato--Rellich), and
+is self-adjoint on the domain of the closure of $H_{P}+H_{\mathrm{hop}}$ (Kato--Rellich, the
+bounded $H_{W}$ being a relative-bound-zero perturbation), and
 $[H_{\mathrm{tot}},\Nhat]\neq0$: the dynamics generates genuine transitions
 \begin{equation}
 \bra{m}H_{W}\ket{k}\neq 0 \iff m/k\in\{p,p^{-1}\}\ \text{for some }p\in P_{f},
@@ -112,9 +123,13 @@ i.e. precisely the edges of the \emph{divisibility graph} of $\Nn$ restricted to
 
 \begin{proof}
 Each $M_{p}$ is bounded with norm $1$ (Proposition~\ref{prop:monoidrep}); a finite sum of
-bounded self-adjoint operators is bounded self-adjoint. $a_{p}^{\dagger}a_{q}$ is bounded
-(particle-number preserving hop). $H_{\mathrm{tot}}$ is a bounded perturbation of the
-self-adjoint $H_{P}$, hence self-adjoint on $D(H_{P})$. Non-commutation:
+bounded self-adjoint operators is bounded self-adjoint, so $H_{W}$ is bounded. The hop
+$a_{p}^{\dagger}a_{q}$ is number-conserving but \emph{unbounded} on $\ell^{2}(\mathcal{F})$ (its
+matrix elements $\sqrt{(k_{p}+1)k_{q}}$ grow linearly with the occupation), so it is not a
+bounded perturbation of $H_{P}$; its self-adjointness is instead a consequence of the
+occupation-sector decomposition of Proposition~\ref{prop:sector}, which applies verbatim to
+$H_{P}+H_{\mathrm{hop}}$. $H_{\mathrm{tot}}$ is then a bounded perturbation of the self-adjoint
+closure of $H_{P}+H_{\mathrm{hop}}$, hence self-adjoint on its domain. Non-commutation:
 $M_{p}$ changes the eigenvalue of $\Nhat$ from $n$ to $np$, and a direct computation gives
 \begin{equation}
 [H_{W},\Nhat]\ket{n}=\sum_{p}g_{p}\,n\Bigl(-(p-1)\ket{np}+\bigl(1-\tfrac{1}{p}\bigr)\,\mathbf{1}_{p\mid n}\ket{n/p}\Bigr)\neq0
@@ -133,7 +148,15 @@ every interaction claim in the framework: interactions among prime modes are hop
 lattice; the chaotic sector conjectured in Conjecture~$\mathsf{C5}$ is a spectral-statistics
 statement about $H_{\mathrm{tot}}$ on the prime lattice; and the ``chemistry of the
 primes'' becomes the statement that the Standard Model's force sectors correspond
-to structured sub-lattices (Conjecture~$\mathsf{C9}$).
+to structured sub-lattices (Conjecture~$\mathsf{C9}$). A boundary note on provenance: the
+Hamiltonians \eqref{eq:walkH}--\eqref{eq:hopH} and the interacting completions of
+Conjecture~\ref{conj:cascade} are \emph{selected}, not derived. What the $M_{n}$ algebra
+supplies is the exact energy bookkeeping \eqref{eq:commMm} and the graph (the divisibility
+edges of $H_{W}$, the exponent-lattice edges of $H_{\mathrm{hop}}$); the choice of couplings
+and of the quartic completions is fixed by symmetry requirements---boundedness,
+self-adjointness, $\Nhat_{\mathrm{tot}}$-preservation, and the breaking of the free
+integrability---and each candidate is then a conjecture's object whose thermalization is an
+empirical question, decided numerically in Remark~\ref{rem:numerics}.
 \end{remark}
 
 \begin{remark}[Conservation structure]\label{rem:conservation}
@@ -175,8 +198,11 @@ however, it is a classical theorem. The dichotomy therefore splits the cascade i
 
 \begin{theorem}[Normal order and Erd\H{o}s--Kac for the primon ensemble]\label{thm:erdoskac}
 Fix $E>0$ and let $x=e^{E/\hbar\omega_{0}}$. Equip
-$\{n\leq x\}$ with the uniform measure, i.e. the microcanonical ensemble of $H_{P}$ at energy
-$E$. Let $\omega(n)$ be the number of distinct prime factors of $n$. Then:
+$\{n\leq x\}$ with the uniform measure---the \emph{cumulative} microcanonical ensemble of
+$H_{P}$ at energy $E$ (the shell ensemble on $\{x(1-\delta)<n\leq x\}$ has the same normal
+order for every fixed $\delta\in(0,1)$, since the normal-order bound holds on every dyadic
+range; the Gaussian limit is stated for the cumulative measure). Let $\omega(n)$ be the
+number of distinct prime factors of $n$. Then:
 \begin{enumerate}[leftmargin=1.6em]
 \item (Hardy--Ramanujan \cite{hardyramanujan1917}; Tur{\'a}n \cite{turan1934}.)
 $\omega(n)$ has normal order $\log\log n$: for every $\varepsilon>0$ the proportion of
@@ -230,59 +256,79 @@ test. The two completions in \eqref{eq:completions} are not equivalent and the
 difference matters: the $U$ term is a diagonal potential on the exponent lattice (a
 Wannier--Stark-type renderer, as the data confirm), while the $V$ term is the
 Bose--Hubbard-type \emph{density-assisted hopping} known from the interacting-boson
-literature---quartic yet kinetic. Before the numerical record, the conjecture's premise
-requires one piece of mathematics: the kinetic term is quartic in the occupations, hence
-unbounded, so the infinite-volume operator must be shown to exist before thermalization
-along truncation sequences can even be posed.
+literature---quartic yet kinetic. Before the numerical program, the well-posedness of the
+kinetic completion itself:
 
-\begin{proposition}[Infinite-volume self-adjointness of the completions]\label{prop:infinitevolume}
-Fix $d\geq1$ primes, real couplings, and let $H^{(K)}$ denote the box truncation of
-$H_{\mathrm{tot}}^{(U,V)}$ to occupations $k_{i}\leq K$ on $\ell^{2}(\Nn^{d})$. Then:
-(i) each $H^{(K)}$ is finite-dimensional and symmetric; (ii) $H_{\mathrm{tot}}^{(U,V)}$,
-defined on the finite-support core $C_{0}(\Nn^{d})$, is essentially self-adjoint, with closure
-self-adjoint and bounded below on the domain
-$D(\Lambda)=D(H_{P})\cap D(\Nhat_{\mathrm{tot}}^{2})$ of the confining diagonal
-$\Lambda=H_{P}+\lambda\Nhat_{\mathrm{tot}}^{2}$ for any
-$\lambda>2\,(C_{U}+C_{V}V\,d^{2})$; and (iii) $H^{(K)}\to H_{\mathrm{tot}}^{(U,V)}$ in the
-strong resolvent sense---indeed $H^{(K)}\psi=H\psi$ exactly once
-$K\geq1+\max\mathrm{supp}(\psi)$, so each fixed-occupation sector of the truncation ladder
-stabilizes and the thermodynamic limit is implemented without edge corrections.
+\begin{proposition}[Occupation sectors; self-adjointness of the completions]\label{prop:sector}
+Fix a finite active set $P_{f}$ ($d$ modes), real couplings $h$, $U$, $V$, and let
+$\Hil_{\mathcal{A}}=\ell^{2}(\mathcal{F})$.
+\begin{enumerate}[leftmargin=1.6em]
+\item The number-conserving part
+$H_{\mathrm{nc}}^{(U,V)}=H_{P}+U\sum_{p<q}\hat n_{p}\hat n_{q}+H_{\mathrm{hop}}+V\sum_{p<q}
+(\hat n_{p}+\hat n_{q})(a_{p}^{\dagger}a_{q}+a_{q}^{\dagger}a_{p})$
+commutes with $\Nhat_{\mathrm{tot}}$ and with $\hat n_{q}$ for every $q\notin P_{f}$: it
+decomposes as an orthogonal direct sum of finite-dimensional blocks $H^{(\kappa,S)}$, indexed
+by the occupations $\kappa$ outside $P_{f}$ and the total occupation $S$ inside $P_{f}$, of
+dimension $\binom{S+d-1}{d-1}$. Each block is Hermitian; for the kinetic term this is the
+bond-reversal invariance of its weight: a hop raises $k_{p}$ by one and lowers $k_{q}$ by
+one, so $(\hat n_{p}+\hat n_{q})$ commutes with $a_{p}^{\dagger}a_{q}$ and the matrix
+elements $V(k_{p}+k_{q})\sqrt{(k_{p}+1)k_{q}}$ are symmetric across every bond. The sector
+norms obey the row-sum bound
+$\|H_{\mathrm{kin}}^{(S)}\|\leq|V|(d-1)S(S+1)$.
+\item $H_{\mathrm{nc}}^{(U,V)}$ is essentially self-adjoint on the finitely supported
+configurations; its closure is the direct sum of the blocks with maximal domain
+$\{\psi:\sum_{\kappa,S}\|H^{(\kappa,S)}\psi_{\kappa,S}\|^{2}<\infty\}$. Since $H_{W}$ is
+bounded (Proposition~\ref{prop:wellposed}), the full interacting completion
+$H_{\mathrm{tot}}^{(U,V)}$ of \eqref{eq:completions} is self-adjoint on that domain for
+every $U,V\in\Rr$ (Kato--Rellich, relative bound zero): no smallness condition on the
+couplings is needed.
+\item \emph{Box truncations.} Let $H^{(K)}$ be the restriction of
+$H_{\mathrm{tot}}^{(U,V)}$ to the box $\{k_{p}\leq K\}$. Every sector with $S\leq K$ lies
+entirely inside the box, and the sectors are invariant under the number-conserving part, so
+for $H_{W}=0$ the truncated dynamics is \emph{exact} on each such sector,
+\begin{equation*}
+e^{-i\tau H^{(K)}}\psi=e^{-i\tau H_{\mathrm{nc}}^{(U,V)}}\psi ,
+\end{equation*}
+for every state $\psi$
+supported in a sector $S\leq K$ and all $\tau$. With $H_{W}\neq0$ the sectors mix through the
+walk, and the truncated propagators converge to the untruncated one strongly, uniformly on
+compact $\tau$-intervals: the finitely supported configurations are a core for
+$H_{\mathrm{tot}}^{(U,V)}$ on which the truncations stabilize, and Trotter--Kato transfers
+the convergence to the resolvents and hence to the propagators.
+\end{enumerate}
 \end{proposition}
 
-\begin{proof}
-Every term of $H_{\mathrm{tot}}^{(U,V)}$ changes each occupation by at most one, so
-$H^{(K)}\psi=H\psi$ on core vectors of support $\leq K-1$; this gives (iii) once (ii) is in
-hand, since $C_{0}$ is a core and the truncations converge on it. For (ii), write
-$M=\Nhat_{\mathrm{tot}}$ and note first that $H_{\mathrm{kin}}$ and the $U$ term commute with
-$M$, so both decompose along the $M$-sectors, which are finite
-($\dim=\binom{M+d-1}{d-1}$). On a sector, $|U\sum_{p<q}k_{p}k_{q}|\leq U\tbinom{d}{2}M^{2}/2$,
-and the kinetic term is a direct sum of finite Jacobi blocks in the coordinate of the hopping
-pair (each hop moves one primon from $q$ to $p$, conserving $k_{p}+k_{q}$), with weights
-$V(k_{p}+k_{q})\sqrt{(k_{p}+1)k_{q}}\leq V\,M(M+2)/2$; hence
-$\|H_{\mathrm{kin}}\psi\|\leq C_{V}V d^{2}\|M^{2}\psi\|$ and
-$\|H_{U}\psi\|\leq C_{U}\|M^{2}\psi\|$. For the remaining sectors,
-$\|H_{\mathrm{hop}}\psi\|\leq C_{h}d^{2}\|(M+1)\psi\|$ (each amplitude
-$h_{pq}\sqrt{(k_{p}+1)k_{q}}$ is linear in the occupations) and
-$\|H_{W}\psi\|^{2}\leq C_{g}d\,\langle\psi,(M+1)\psi\rangle$ (each $M_{p}$ is a partial
-isometry with $\|M_{p}\psi\|^{2}=\langle\psi,(\hat n_{p}+1)\psi\rangle$). Since
-$x\mapsto x$ and $x\mapsto x^{1/2}$ are dominated by $x\mapsto\varepsilon x^{2}+c_{\varepsilon}$
-with arbitrarily small $\varepsilon$, the last two terms are $\Lambda$-bounded with relative
-bound zero, where $\Lambda\geq\lambda M^{2}$ gives
-$\|\Lambda\psi\|\geq\lambda\|M^{2}\psi\|$; the first two terms therefore carry relative
-bounds $(C_{U}+C_{V}Vd^{2})/\lambda$. Choosing
-$\lambda>2(C_{U}+C_{V}Vd^{2})$ makes the total relative bound $<1$, and Kato--Rellich
-applied to $H_{\mathrm{tot}}=\Lambda+(H_{\mathrm{tot}}-\Lambda)$ on $D(\Lambda)$ gives a
-self-adjoint, bounded-below closure; essential self-adjointness on $C_{0}$ follows because
-$C_{0}$ is a core of the diagonal $\Lambda$ and the bounds extend.
+\begin{proof}[Proof sketch]
+(i) The conservation identities are immediate from the ladder algebra; finiteness of the
+sectors is the finiteness of $\{k\in\Nn^{d}:\sum k_{p}=S\}$; Hermiticity and the norm bound
+follow from the displayed matrix elements (each row of a sector block carries at most
+$2\binom{d}{2}$ bonds of weight at most $(k_{p}+k_{q})(k_{p}+k_{q}+1)/2\leq S(S+1)/2$, and
+$\sum_{p<q}(k_{p}+k_{q})\leq(d-1)S$). (ii) A direct sum of finite Hermitian blocks is
+self-adjoint on its maximal domain, and the algebraic direct sum of the block spaces---the
+finitely supported configurations---is a core. (iii) For $H_{W}=0$ the block containing
+$\psi$ is contained in the box, both propagators act as the same finite matrix on it, and
+the orthogonal blocks are untouched. For the general case, each term maps the finitely
+supported configurations into themselves, so $H^{(K)}\psi=H\psi$ once $K$ exceeds the
+support of $\psi$; Trotter--Kato (the sequence of self-adjoint truncations with uniformly
+bounded resolvents converging on a core) yields strong resolvent convergence and hence the
+uniform strong convergence of $e^{-i\tau H^{(K)}}$ on compact $\tau$-intervals.
 \end{proof}
 
-\begin{remark}[The $d\to\infty$ limit is open]
-The constants above grow with the pair count $d^{2}$: Proposition~\ref{prop:infinitevolume}
-covers the thermodynamic ($K\to\infty$) limit at fixed prime number $d$. The $d\to\infty$
-extension with unweighted couplings is not controlled by this argument; summable coupling
-families ($\sum_{p}|g_{p}|$, $\sum_{p\neq q}|h_{pq}|$, $\sum_{p<q}|V_{pq}|$ finite) would make
-the quadratic forms converge on the finite-occupation core, but we do not pursue this and
-flag it as the open side of the well-posedness program.
+The sector structure is corroborated numerically at the assembly level: every extracted
+sector block is Hermitian to machine precision and satisfies the norm bound for $S\leq12$
+at $d=3,4$; the box-exactness of sector-supported dynamics holds to $7\times10^{-15}$
+across truncations, while the walk control ($g\neq0$) leaks out of the sector exactly as
+$H_{W}$'s non-conservation requires (Remark~\ref{rem:conservation}).
+
+\begin{remark}[The mode-count limit is singular]\label{rem:modecount}
+For an infinite active set the interacting terms do not define operators on
+$\ell^{2}(\mathcal{F})$ at all: from any configuration with $k_{q}\geq1$, the hop
+$a_{p}^{\dagger}a_{q}$ reaches every unoccupied mode $p\notin\mathrm{supp}(k)$ with matrix
+element $\sqrt{k_{q}}\geq1$, so $a_{p}^{\dagger}a_{q}\psi\notin\ell^{2}$ for every nonzero
+finitely supported $\psi$ with occupation. The interacting theory therefore requires a
+finite mode cutoff $P_{f}$---an ingredient of the conjecture, not an optional
+regularization---and any $d\to\infty$ limit demands coupling decay across modes. The free
+$H_{P}$, in contrast, is defined for all primes simultaneously.
 \end{remark}
 
 The two completions are distinguished by computation:
@@ -292,23 +338,13 @@ Conjecture~\ref{conj:cascade} has been tested by dense diagonalization at $D\leq
 shift-invert Lanczos eigen-windows ($k=350$ interior eigenpairs placed at the median of the
 density of states, diagonal pivoting in the factorization, every window certified by
 eigenpair residuals $\leq6\times10^{-8}$) up to $D=59319$ in $d=3$ and $D=20736$ in $d=4$,
-beyond which the $LU$ fill exceeds the $3.4$\,GB address-space guard; by
+beyond which the $LU$ fill exceeds the 4\,GB address-space guard; and by
 restarted-Lanczos Krylov equilibration to $D\approx10^{5}$, with restart steps sized by a
 Lanczos-estimated spectral radius (validated against exact eigendecomposition propagation
-to $10^{-12}$, state-vector norm drift $\leq10^{-13}$); and by a Krylov-tier fluctuation
-window past the $LU$ ceiling: plain restarted Lanczos on $H$ itself (which='LM') returns the
-$k=350$ \emph{upper-edge} eigenpairs at every scale, certified to residuals
-$\leq1.3\times10^{-11}$, and these feed the same window diagnostics as the shift-invert tier
-($40$\,s at $D=20736$, $233$\,s at $D=104976$). The median-window Krylov routes were
-measured and closed: folded-operator restarted Lanczos ($-\,(H-\sigma)^{2}$, which='LA')
-stalls at subspace budgets $240$/$460$/$700$ ($0$ of $160$ wanted pairs after $60$--$121$
-restart cycles---the window boundary is a spectral continuum, so no factorization-free
-transform separates the $160$th from the $161$st level); LOBPCG preconditioned by a doubled
-incomplete $LU$ of the shifted system is numerically unstable (indefinite double solves
-overflow); unpreconditioned LOBPCG contracts at $\approx0.96$ per iteration; and a soft
-Gaussian-filter estimator requires polynomial degree $\sim\|H\|/\sigma_{\mathrm{filter}}\approx5\times10^{3}$ on this band. The kinetic family is examined at
+to $10^{-12}$, state-vector norm drift $\leq10^{-13}$). The kinetic family is examined at
 matched effective dose $VK^{2}\approx36$, the occupation-weighted coupling, so that the dose
-is fixed while the truncation widens; code and data accompany the paper. The evidence:
+is fixed while the truncation widens; code, seeds, parameter grids, and all result files
+accompany the paper (repository \texttt{MIKEAA2020/prime-numbers-in-physics}). The evidence:
 (a) \emph{Level statistics}: generic couplings give GOE ratio statistics
 $\langle r\rangle=0.45$--$0.58$ at every scale computed from $D=625$ to
 $5.9\times10^{4}$ (the upper end of the band is the $d=4$, $K=11$, $D=20736$ window; the
@@ -322,7 +358,11 @@ generic regime is not}: a $\sigma$-quantile sweep of the same weak configuration
 gives $0.42$--$0.56$, non-monotone (the dip at the $15\%$ quantile, $0.436$, is reproduced
 exactly in an independent repetition---density-of-states cluster structure, not solver
 noise),
-while the generic control is flat ($0.505$--$0.514$ at quantiles $0.05/0.5/0.95$); the
+while the generic coupling at the same platform is window-dependent too, with half the
+amplitude: the full eight-quantile sweep of the same generic configuration
+($g_{0}=1.5$, $d=3$, $K=28$, $D=24389$) gives $0.464$--$0.540$, the compression sitting at
+the band edges ($0.464$ at the $98\%$ quantile)---an earlier three-interior-quantile check
+($0.505$--$0.514$ at $0.05/0.5/0.95$) sampled only the flat middle of that band;
 weak median value is additionally direction-dependent ($0.53$ at $d=3$ versus $0.44$ at
 $d=4$, $D=20736$). Any protocol claim about weak-coupling statistics must therefore pin
 the quantile and the direction; the robust weak-coupling diagnostic is $\mathrm{PR}/D$,
@@ -359,18 +399,12 @@ $VK^{2}\approx235$, $\langle r\rangle=0.36$ with $\mathrm{PR}/D=0.016$).
 (e) \emph{Scaling at matched dose; the diagonal ensemble.} Two legs decide the conjecture.
 The eigenstate fluctuation ratio $\sigma_{\mathrm{ETH}}/\mathrm{std}(a_{j})$ is flat:
 $0.95$--$0.98$ along the $d=3$ ladder $D=3375\to59319$ (a factor $17.6$ in $D$) and
-$0.95$--$0.97$ along the $d=4$ median-window ladder $D=4096\to20736$, with exact full-spectrum values
-$0.68$--$0.83$ at $D\leq10^{4}$; the Krylov-tier upper-edge window extends the $d=4$
-measurement to $D=104976$ ($K=15$: $0.895$; $K=17$: $0.888$, against $0.871$--$0.886$ at
-$K=7$--$11$---flat across a factor $25.6$ in $D$), and the $d=3$ edge ladder
-($D=3375\to59319$) is flat at $0.835$--$0.839$. The bin-width control (eleven to one
-hundred sixteen levels per bin) moves the ratio by less than $0.05$ at every grid where it
-is computable, so the flatness is not a binning artifact. The edge windows carry their own
-sector physics: $\langle r\rangle_{\mathrm{edge}}=0.38$--$0.43$ (Poisson-like, versus $0.51$
-GOE at the median) and $\mathrm{PR}/D=0.054\to0.009$ (semi-localized), so the edge ladder is
-reported as a second fluctuation measurement, not a substitute for the median window.
-Leg (i) has no positive evidence at accessible scales. The
-diagonal ensemble
+$0.95$--$0.97$ along the $d=4$ ladder $D=4096\to20736$, with exact full-spectrum values
+$0.68$--$0.83$ at $D\leq10^{4}$; the ratio compares the fluctuation to the window's own
+spread, which contains the smooth energy dependence, so it is window-width-dependent and
+not by itself a scaling diagnostic---item (h) develops the absolute normalization, in which
+the fluctuation decays with exponent $0.19$ ($d=3$) and $0.22$ ($d=4$) against the thermal
+$1/2$, receding from the strong-ETH scaling. The diagonal ensemble
 $\langle a\rangle_{\mathrm{diag}}=\sum_{n}|\braket{n}{\psi_{0}}|^{2}\braket{n}{a}$
 is computed exactly at $D\leq10^{4}$: there the finite-time plateau equals it to
 $|\,\mathrm{plateau}-\mathrm{diag}\,|/K\leq0.005$ (the dephasing identity
@@ -389,12 +423,6 @@ is $3.35$ and the early transient ($\tau\leq22$) passes through $3.39$, close to
 finite-horizon coincidence with the microcanonical value is therefore not evidence of
 thermalization; leg (ii) is a statement about the $D\to\infty$ limit of the diagonal
 ensemble, and at accessible scales that limit shows no convergence (Figure~\ref{fig:ladder}).
-The matched-dose trajectories at the largest grids confirm the horizon structure: at
-$D=38416$ the running average climbs through the microcanonical value on the same slow
-secular tail ($3.96$ at $\tau=20$, $4.21$ at $\tau=39$, $4.43$ at $\tau=59$, microcanonical
-$3.96$), and at $D=65536$ and $D=104976$ the resumable trajectories reach only
-$\tau\lesssim50$ per day-scale compute, the dephasing horizon shrinking as the level spacing
-does.
 (The kinetic couplings destroy the diagonal dominance on which default partial pivoting
 relies in the shift-invert factorization; diagonal pivoting
 ($\mathrm{diag\_pivot\_thresh}=0$) restores tractability---the generic $d=3$, $K=28$
@@ -403,7 +431,161 @@ eigenpair residuals $\leq6\times10^{-8}$ and a pivoting cross-check at $D=14641$
 to $0.002$ in $\langle r\rangle$.) An $E\to\infty$ statement cannot be falsified by any
 finite-$D$ simulation; a \emph{scaling} criterion can be---and on the present evidence
 every scaling diagnostic is flat.
+(f) \emph{Label-scrambled controls: what is arithmetic and what is graph-generic.} The
+null hypothesis ``the diagonal's arithmetic arrangement is irrelevant once the density of
+states and the graph are fixed'' is tested directly: permute the on-site energies
+$\sum_{p}k_{p}\hbar\omega_{0}\log p$ among the vertices of the \emph{same} graph (same
+couplings, same adjacency and hop amplitudes, same eigenwindow seed), which preserves the
+exact multiset of diagonal energies and every off-diagonal matrix element and destroys only
+the step structure---the fixed increment $\hbar\omega_{0}\log p$ per occupation quantum
+along each axis, incommensurate across axes. Four window pairs at $D=20736$--$24389$ decide
+(Figure~\ref{fig:controls}). At matched kinetic dose the level statistics are
+\emph{scramble-insensitive} ($\langle r\rangle$ $0.518\to0.512$ at $V=0.3$;
+$0.509\to0.502$ at matched dose): the GOE band of item (a) is a property of the graph, not
+of the primes. The generic ($V=0$) family is not: scrambling moves $\langle r\rangle$ from
+$0.581$ (above GOE) to $0.510$ at $d=4$, $K=11$, and collapses the participation ratio by
+$2\times$ there and by $12\times$ at $d=3$, $K=28$ ($\mathrm{PR}/D$ $0.182\to0.015$,
+$\sigma_{\mathrm{ETH}}$ $1.8\to4.5$). The arithmetic diagonal is thus a \emph{transport
+organizer}: its fixed incommensurate steps support resonance manifolds---near-degenerate
+site families produced by multiplicative near-relations among the primes---that a random
+assignment of the same energies does not. What the diagonal's arithmetic structure buys, at
+these scales, is delocalization and eigenstate smoothness, not level repulsion.
+(g) \emph{Finite-size scaling and asymptotic distance.} Along the matched-dose ladders the
+deviation $\langle r\rangle-r_{\mathrm{GOE}}$ runs from $-0.082$ ($D=4096$; $-0.076$ at $D=3375$) to $-0.002$
+($D=19683$) with scatter, and linear fits in $1/\log D$ have large residuals: the computed
+range neither confirms nor excludes the GOE limit (Figure~\ref{fig:controls}(a)). The
+distance to the asymptotic regime is itself fixed and reportable: the largest truncation
+computed ($d=4$, $K=17$) has $E/\hbar\omega_{0}\leq17\log210\approx91$ and typical
+prime-factor counts near $\log n\approx91$ of $\approx4.5$, whereas the
+Erd\H{o}s--Kac statistics of the cascade require $\log\log x\to\infty$: every
+finite-$D$ diagnostic in this paper is a statement about a pre-asymptotic window.
+(h) \emph{Eigenstate fluctuation scaling in absolute units.} Normalize the same fluctuation
+by the a priori spread of the local occupation over the $(K+1)^{d}$ product basis,
+$\mathrm{std}_{\mathrm{basis}}=\sqrt{K(K+2)/12}$:
+$\kappa=\sigma_{\mathrm{ETH}}/\mathrm{std}_{\mathrm{basis}}$. Along the matched-dose
+ladders $\kappa$ is $O(1)$ and decays slowly: $0.50\to0.29$ at $d=3$
+($D=3375\to59319$), a fitted power law $\kappa\propto D^{-0.185\pm0.021}$ ($n=9$,
+$R^{2}=0.92$), and $D^{-0.222\pm0.003}$ at $d=4$ on the three $LU$ points
+($D=4096\to20736$), extended to a four-point fit $D^{-0.255}$ by the
+factorization-free tier at $D=3.84\times10^{4}$ (item (i); $\kappa=0.250$, $276$ certified
+pairs); exact full-spectrum
+diagonalizations reproduce the window protocol to $\leq11\%$ and give consistent
+fixed-fraction exponents ($-0.10$ at $d=3$, $D\leq9261$; $-0.21$ at $d=4$, $D\leq10^{4}$).
+Two calibrated benchmarks locate the decay (Figure~\ref{fig:strongeth}). Strong ETH predicts
+$\kappa\propto D^{-1/2}$ with the prefactor fixed by the shell statistics of the observable:
+the exact fixed-fraction benchmark $B_{\mathrm{frac}}$ (a $5\%$ quantile shell at the median)
+sits a factor $4.6\to11.3$ ($d=3$) and $4.6\to7.2$ ($d=4$) below the measured $\kappa$, and
+the distance grows along both ladders---the fluctuation recedes from the strong-ETH scaling
+as the truncation widens. The protocol-matched benchmark $B_{\mathrm{count}}$ (the basis shell
+spanned by the eigen-window itself, $N_{\mathrm{shell}}\approx10^{3}$ states) is approached
+more slowly ($\kappa/B_{\mathrm{count}}$ falls $15.0\to6.4$ at $d=3$); in effective-dimension
+terms the eigenstates behave as random combinations of
+$N_{\mathrm{eff}}=2\sigma_{A,\mathrm{shell}}^{2}/\sigma_{\mathrm{ETH}}^{2}\approx8\to23$ states,
+growing roughly as $D^{0.3}$---two orders of magnitude below both the shell and the
+dimension. The structure behind the number is visible directly: within a single
+median-energy window the eigenstate values $\langle E|\hat n_{1}|E\rangle$ span $[0.3K,\,0.94K]$,
+and $\kappa\sqrt{\mathrm{PR}}$ (the fluctuation against the support-uniform level $\sqrt{2}$)
+grows from $8.5$ to $28$ along the $d=3$ ladder: the eigenstate weight is correlated with the
+occupation it measures---the same slow mode that produces the secular drift of item (e). The
+decay itself is organized by the arithmetic diagonal: label-scrambled controls at matched
+dose hold $\kappa$ flat at $0.43$--$0.46$ while their participation ratio \emph{falls}
+($\mathrm{PR}/D$: $0.082\to0.035$ over the same ladder). The level statistics show no size
+trend (slope of $\langle r\rangle$ in $\log D$: $0.013\pm0.020$; mean $0.500$). At the scales
+computed, the strong-ETH leg of $\mathsf{C4}$ therefore carries quantitative negative evidence:
+the fluctuation decays two and a half times more slowly than the thermal scaling and its
+distance from the fixed-fraction benchmark grows by a factor $\approx2.5$; a pre-asymptotic
+crossover at larger $D$ cannot be excluded (item (g)), but no trend toward it is visible in
+the computed range.
+(i) \emph{A factorization-free window tier, and where its own ceiling sits.} The window
+diagnostic is bounded by $LU$ fill; the same $k=350$ median-energy eigenpairs can be
+computed without any factorization by block Chebyshev subspace iteration on
+$B=(H-c)^{2}$, where $c$ is the density-of-states median (the shift-invert target: the
+smallest eigenvalues of $B$ are the eigenvalues of $H$ nearest $c$). A low-pass Chebyshev
+$T_{M}(\xi(B))$, $\xi(b)=1+2(b_{w}-b)/(b_{\mathrm{high}}-b_{w})$, amplifies the passband
+$\pm t$ (holding the block, sized by stochastic Lanczos quadrature with $8$--$12$ probes
+of $360$ fully reorthogonalized Lanczos steps---the block itself cannot see past its own
+boundary) against a stopband bounded by $1$; Rayleigh--Ritz in float64 follows every
+sweep, filtering runs in float32 with a float64 polish, and every selected pair is
+certified by its residual. Validated against the $LU$ tier at four platforms: the
+eigenvalue sets agree to machine precision where both run ($\max|\Delta\lambda|\leq
+4\times10^{-11}$ at $D=9.3\times10^{3}$ and $10^{4}$; $\kappa$ within $0.6\%$ at
+$D=6.9\times10^{3}$), and at the near-ceiling platform $D=2.4\times10^{4}$ the tier
+certified $289$ of $350$ pairs within its sweep budget with $\kappa$ within $2.4\%$ (the
+certified subset is central, and its bias is measured, not assumed). Applied to the first
+$LU$-infeasible $d=4$ platform ($K=13$, $D=3.84\times10^{4}$, degree $M=3400$), it
+certifies $276$ pairs at residuals $\leq1.8\times10^{-6}$ with GOE statistics
+($\langle r\rangle=0.511$) and gives $\kappa=0.250$ (the subset bias of $2$--$3\%$ raises
+this to $\approx0.256$): the $d=4$ ladder now reads
+$0.449\to0.367\to0.313\to0.250$ over $D=4096\to38416$, a four-point fit
+$\kappa\propto D^{-0.255}$ against the thermal $D^{-1/2}$, with the distance from the
+fixed-fraction benchmark still growing ($\kappa/B_{\mathrm{frac}}$: $7.2\to7.8$) past
+the $LU$ ceiling. The tier's own ceiling is quantitative: its cost is governed by the
+Chebyshev degree $M\approx\ln(\varepsilon)\,R/(2t)$, and on this family $R$ is
+\emph{dose-pinned}---the fully occupied corners of the exponent lattice carry row sums
+proportional to $VK^{2}(d-1)$, so $R\approx570$ at $VK^{2}=36$ in $d=4$ against a
+physical band of $\approx70$---while $t\propto D^{-1}$ at fixed protocol. The degree
+requirement therefore grows linearly in $D$ along the ladder: the $LU$-fill ceiling at
+$D=2.1\times10^{4}$ is replaced by a compute-degree ceiling roughly one rung higher
+(hours per configuration at this platform), and the estimator, its passband calibration,
+and its certification machinery are in place for larger-scale resources.
+(j) \emph{The alternative factorization-free routes, measured; the upper-edge
+tier to $D\approx10^{5}$.} Three further factorization-free routes for the
+median window were implemented and measured on this family, and all stall
+below the Chebyshev tier's reach: restarted Lanczos (ARPACK, which='LA') on
+the folded operator $-(H-c)^{2}$ at subspace budgets $240$/$460$/$700$
+converges $0$ of $160$ wanted pairs after $60$--$121$ implicit-restart cycles
+(the window boundary is a spectral continuum, and single-vector implicitly
+restarted Lanczos cannot separate the cluster edge without solves; a first
+invocation with which='LM' silently returned the \emph{opposite} spectral
+end---far-edge eigenpairs, which certify like any others---caught only by a
+window-position check); LOBPCG preconditioned by a doubled incomplete $LU$ of
+the shifted system overflows on the indefinite factorizations; unpreconditioned
+LOBPCG contracts at $\approx0.96$ per iteration; and a soft Gaussian-filter
+estimator needs polynomial degree $\sim\|H\|/t\approx5\times10^{3}$ at this
+band. What \emph{does} converge at every scale without any factorization is the
+\emph{upper-edge} window: eigsh($H$, which='LM') returns the $k=350$
+largest-eigenvalue pairs at residuals $\leq1.3\times10^{-11}$
+($40$\,s at $D=20736$, $233$\,s at $D=104976$), and the same
+window diagnostics (30 bins) give a second fluctuation ladder: the
+\emph{ratio} $\sigma_{\mathrm{ETH}}/\mathrm{std}$ is flat at
+$0.871$--$0.895$ along $d=4$ ($D=4096\to104976$, a factor $25.6$) and
+$0.835$--$0.839$ along $d=3$ ($D=3375\to59319$), while in the absolute units
+of item (h) the edge $\kappa$ falls on the same slow track as the median. The
+edge is a different sector---$\langle r\rangle_{\mathrm{edge}}=0.38$--$0.43$
+(Poisson-like), $\mathrm{PR}/D=0.054\to0.009$ (semi-localized band-edge
+chains)---so the edge ladder is reported as a corroborating measurement of the
+fluctuation ratio's flatness past both ceilings, not as a substitute for the
+median window. The bin-width control (eleven to one hundred sixteen levels per
+bin) moves the ratio by less than $0.05$ at every grid where it is computable.
+(k) \emph{Matched-dose trajectories at the three largest grids.} The
+resumable Krylov trajectories extend the equilibration record to the grids
+past the $LU$ ceiling: at $D=38416$ ($K=13$) the running average climbs
+through the microcanonical value on the same slow secular tail as item (e)
+($3.96$ at $\tau=20$, $4.21$ at $39$, $4.43$ at $59$, $4.62$ at $78$, $4.79$
+at $96$; microcanonical $3.956$), and at $D=65536$ and $D=104976$ the
+trajectories reach $\tau=44$ and $36$ in wall-clock chunk sessions
+($\sim2.2$\,h across twelve resumable chunks)---the dephasing horizon
+shrinks with the level spacing, and the diagonal-ensemble saturation of item
+(e) is beyond day-scale compute at these dimensions; the records and
+checkpoints accompany the pilots.
 \end{remark}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{fig_c4_controls.png}
+\caption{Audit-response controls for the $\mathsf{C4}$/$\mathsf{C5}$ numerics
+(Remark~\ref{rem:numerics}(f)--(g)). (a)~Finite-size scaling of the level-statistics
+deviation $\langle r\rangle-r_{\mathrm{GOE}}$ against $1/\log D$ along the matched-dose
+ladders ($d=3$ circles, $d=4$ squares; fits as lines): deviations shrink with $D$ but the
+computed range does not settle the limiting value. (b)~Arithmetic versus label-scrambled
+diagonal at four platforms ($\langle r\rangle$ with standard errors; inset:
+$\mathrm{PR}/D$ on a log scale): matched-dose $\langle r\rangle$ is
+scramble-insensitive; the generic family is not, and the participation ratio collapses
+under scrambling. (c)~Window-placement sweeps at $d=3$, $K=28$: the weak-coupling band
+($0.42$--$0.56$) and the generic band ($0.46$--$0.54$) are both quantile-dependent; the
+generic compression sits at the band edges.}
+\label{fig:controls}
+\end{figure}
 
 \begin{figure}[t]
 \centering
@@ -420,6 +602,26 @@ averages (diagonal-ensemble estimate $\approx4.40$), microcanonical line, and th
 transient. (d)~Finite-$T$ plateau versus exact diagonal ensemble at $D\leq10^{4}$ (identity
 line).}
 \label{fig:ladder}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{fig_c4_strongeth.png}
+\caption{Absolute eigenstate-fluctuation scaling at matched dose
+(Remark~\ref{rem:numerics}(h)--(i)).
+(a)~$\kappa=\sigma_{\mathrm{ETH}}/\mathrm{std}_{\mathrm{basis}}$ versus truncation dimension
+(window values, exact $350$-state selections, label-scrambled controls, and the
+factorization-free Krylov-tier point at $D=3.84\times10^{4}$, open diamond: $276$ of
+$350$ pairs certified) against the
+calibrated benchmarks: the protocol-matched shell benchmark $B_{\mathrm{count}}$, the
+fixed-fraction $B_{\mathrm{frac}}\propto D^{-1/2}$ (the strong-ETH scaling), and the
+Haar-in-full-basis level $\sqrt{2/D}$. (b)~Distance from the benchmarks:
+$\kappa/B_{\mathrm{count}}$ (solid) falls slowly; $\kappa/B_{\mathrm{frac}}$ (dotted) grows.
+(c)~$\kappa\sqrt{\mathrm{PR}}$ versus eigenstate participation across all computed window
+configurations (matched dose: circles; scrambled: crosses; all others: dots), against the
+support-uniform level $\sqrt{2}$: the fluctuation sits $10$--$30$ times above it and grows
+with $D$. (d)~Energy-resolved within-window fluctuation at three scales.}
+\label{fig:strongeth}
 \end{figure}
 
 Falsifiers and test routes are listed in
@@ -471,7 +673,9 @@ boundary between them depends on.
 \subsection{Linear independence of the prime logarithms}
 
 \begin{lemma}[Fundamental-theorem independence]\label{lem:independence}
-The set $\{\log p:p\in\Pr\}$ is $\Qq$-linearly independent. In particular, for distinct primes
+Every \emph{finite} $\Qq$-linear relation among the $\log p$ is trivial: the set
+$\{\log p:p\in\Pr\}$ is $\Qq$-linearly independent in the finite-support sense. In
+particular, for distinct primes
 $p,q$, the ratio $\log p/\log q$ is irrational.
 \end{lemma}
 
@@ -513,7 +717,13 @@ $\tau$; by Lemma~\ref{lem:independence}, $\log 2/\log 3\notin\Qq$ etc.
 
 This is the rigorous core of the anti-cyclic verdict: \emph{eternal return in the exact sense
 requires the support of the universal state to lie in a single geometric progression of
-integers}, and no physically motivated state does.
+integers}, and no physically motivated state does. The ray version (periodicity up to a global
+phase, i.e.\ for physical states rather than vectors) relaxes the condition to: all ratios
+$n/m$ with $n,m\in S(\psi)$ are powers of a single rational---the support lies in one
+multiplicative coset $\{c\,a^{j}\}$. This too fails for any support with two
+multiplicatively independent ratios (e.g.\ $S=\{6,12,18\}$: the ratios $2$ and $\tfrac32$
+are independent by unique factorization), so the aperiodicity verdict is unchanged at the
+level of rays.
 
 \subsection{What is \emph{not} forbidden: three qualifications}
 
@@ -566,13 +776,73 @@ Taking $\delta$ small enough that all phases on $F$ deviate by less than $\varep
 in the $\ell^{2}$ sense (finitely many constraints), we obtain
 $\|U(\tau)\psi-\psi\|\leq\varepsilon/2+\varepsilon/2$ for every $\tau\in T(\delta)$, a
 relatively dense set. The non-uniformity in $\psi$ follows because $F$ must grow as the
-tails of $\psi$ shrink, and the Diophantine return times on $F$ are unbounded in $|F|$ (for
-supports with rationally independent generators, Kronecker's theorem gives relative density
-but no uniform bound: the minimal return time for $F=\{2,3,\dots,p_{|F|}\}$ grows at least
-exponentially in $|F|$, since the frequencies $\log n$ are rationally independent by
-Lemma~\ref{lem:independence} and simultaneous approximation of independent frequencies is
-slow).
+tails of $\psi$ shrink, and the Diophantine return times on $F$ are unbounded in $|F|$; the
+quantitative form is Proposition~\ref{prop:returnbound} below.
 \end{proof}
+
+\begin{proposition}[Quantitative return-time bound]\label{prop:returnbound}
+Let $\psi=\sum_{n}c_{n}\ket{n}$ be supported on a finite set $F\subset\Nn_{\geq1}$, let
+$m_{F}=\#\{p: p\mid n \text{ for some } n\in F\}$ be the number of distinct prime
+frequencies active in $F$, and let $K_{F}=\max_{n\in F}\max_{p}k_{p}(n)$. Then for every
+$\varepsilon>0$ there exists an $\varepsilon$-return time
+\begin{equation}\label{eq:returnbound}
+\tau\;\leq\;\Bigl(\frac{2\pi C_{F}}{\varepsilon}\Bigr)^{m_{F}}
+\qquad\text{with}\qquad C_{F}:=2+K_{F}m_{F},
+\end{equation}
+and the set of $\varepsilon$-return times is relatively dense with gaps of the same order
+(Bohr's theorem \cite{besicovitch1932}).
+\end{proposition}
+
+\begin{proof}
+Dirichlet's pigeonhole on the $m_{F}$-torus: with $N\geq2$, the $N^{m_{F}}+1$ points
+$\{k\alpha\bmod 2\pi\}_{k=0}^{N^{m_{F}}}$, where
+$\alpha=(\omega_{0}\log p)_{p\mid F}$, fall $N^{m_{F}}$-to-one into the $(2\pi/N)$-grid cells
+of $\mathbb{T}^{m_{F}}$; two of them share a cell, and their difference $q\leq N^{m_{F}}$
+satisfies $|q\,\omega_{0}\log p|_{\mathrm{mod}\ 2\pi}<2\pi/N$ for every $p\mid F$. Each phase of
+$n\in F$ is the integer combination $\sum_{p}k_{p}(n)\,\omega_{0}\log p$ with
+$\sum_{p}k_{p}(n)\leq K_{F}m_{F}$, so every phase on $F$ deviates by less than
+$2\pi K_{F}m_{F}/N\leq\varepsilon$ once $N\geq2\pi K_{F}m_{F}/\varepsilon$ (choose also
+$N\geq2$ so that the wrapped sum stays in $(-\pi,\pi]$). Then
+$\|e^{-i\tau H_{P}/\hbar}\psi-\psi\|^{2}\leq\sum_{n}|c_{n}|^{2}|e^{i\theta_{n}}-1|^{2}
+\leq\max_{n}|\theta_{n}|^{2}\leq\varepsilon^{2}$ with $\tau=q\leq N^{m_{F}}$. Relative
+density with gaps of the same order is the syndeticity statement of Bohr almost-periodicity
+\cite{besicovitch1932}.
+\end{proof}
+
+Proposition~\ref{prop:returnbound} is the quantitative content of ``Diophantine slowness'',
+and it separates two recurrence scales that the framework needs kept apart.
+
+\emph{Arithmetic} return. A typical integer near $x$ carries $\sim\log\log x$ distinct prime
+factors (Theorem~\ref{thm:erdoskac}), so a superposition of $M$ integers near $x$ has
+$m_{F}\lesssim M\log\log x$, and \eqref{eq:returnbound} gives
+\begin{equation}\label{eq:arithreturn}
+\tau_{\varepsilon}\;\lesssim\;(C/\varepsilon)^{M\log\log x}
+\;=\;(\log x)^{M\log(C/\varepsilon)}
+\;=\;(S/k_{B})^{O(1)},
+\end{equation}
+where $S(E)=k_{B}\log x=k_{B}E/\hbar\omega_{0}$ is the microcanonical entropy: for states
+of fixed or slowly growing support, arithmetic $\varepsilon$-returns occur on times
+\emph{polynomial in the entropy}. (The exponent $M\log(C/\varepsilon)$ is set by the support
+size and the resolution; the occupations $K_{F}$ enter only the constant $C_{F}$, not the
+exponent.)
+
+\emph{Generic} return. A quantum system with $D$ resolved incommensurate frequencies
+requires, by the same pigeonhole bound, $\tau_{\varepsilon}\gtrsim(\varepsilon^{-1})^{D}$. At
+energy $E$ the arithmetic Hilbert space has $D=N(E)=e^{S/k_{B}}$ levels; a \emph{generic}
+system on that many resolved frequencies needs
+$\tau_{\varepsilon}\gtrsim e^{\,e^{S/k_{B}}\log(1/\varepsilon)}$: \emph{exponential in the
+entropy} (doubly so). The primon gas occupies the extreme short-return end of this spectrum,
+and the mechanism is exactly arithmetic: unique factorization compresses $D$ level
+frequencies into the $m_{F}\ll D$ integer combinations of $\log p$.
+
+For Conjecture $\mathsf{C2}$ this converts the qualitative cutoff language into a scaling
+falsifier: recurrence phenomenology whose times grow faster than every power of the entropy
+at fixed resolution $\varepsilon$ is inconsistent with every effective arithmetic cutoff
+(upper bound \eqref{eq:arithreturn} changes only polynomially in $S$ when the cutoff $X$ or
+$K$ is enlarged), while recurrence times polynomial in $S$ are the arithmetic prediction.
+No cutoff-consistent adjustment absorbs an exponential-in-$S$ recurrence scale; conversely,
+observed $\varepsilon$-returns at polynomial-in-$S$ times, for states of bounded support,
+would be a signature of frequency compression of exactly the multiplicative kind.
 
 The third qualification concerns the \emph{classical} multiplicative walk, and it sharpens
 the boundary of the no-cycle verdict in an unexpected direction.

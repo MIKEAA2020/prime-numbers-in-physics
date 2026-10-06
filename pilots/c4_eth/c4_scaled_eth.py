@@ -28,16 +28,15 @@ Stages (one process each, so wall-clock chunks always fit):
   --stage dense  : full diagonalization at D <= 11000 -> EXACT diagonal
                    ensemble of the equilibration protocol, exact microcanonical
                    value, and full-spectrum (window-free) ETH fluctuation ratio
-  --stage kappa  : Krylov-tier eigen-window for the fluctuation ladder (the
-                   kappa estimator) beyond the LU fill ceiling: plain
+  --stage kappa  : Krylov-tier eigen-window for the fluctuation ladder: plain
                    restarted Lanczos eigsh(H, which='LM') gives the k=350
                    upper-edge eigenpairs at every scale (the median-window
-                   Krylov routes all stall on the window-edge continuum --
-                   folded-operator ARPACK at ncv<=700, ILU^2 LOBPCG, and
-                   degree-~5e3 polynomial filters are all measured out; see
-                   kappa_stage docstring). Same eth_window protocol (30 bins)
-                   and residual certification as the LU tier; the edge ladder
-                   is cross-calibrated against the median ladder on the
+                   factorization-free routes measured in this program all
+                   stall -- ARPACK-fold at ncv<=700, ILU^2 LOBPCG, degree-5e3
+                   filters; the Chebyshev block-iteration tier of
+                   c4_kappa_krylov.py holds the median window to D=3.8e4).
+                   Same eth_window protocol (30 bins) and residual
+                   certification as the LU tier; cross-calibrated on the
                    overlapping grids.
 
 Evolve tier supports long trajectories in wall-clock chunks:
@@ -93,7 +92,7 @@ def peak_rss_mb():
 # ----------------------------------------------------------------------------
 # sparse assembly (faithful replica of the pilot's dense build)
 # ----------------------------------------------------------------------------
-def build_sparse(d, K, g0, h0, U, seed, V=0.0):
+def build_sparse(d, K, g0, h0, U, seed, V=0.0, scramble=False):
     rng = np.random.default_rng(seed)
     shape = (K + 1,) * d
     D = (K + 1) ** d
@@ -168,6 +167,17 @@ def build_sparse(d, K, g0, h0, U, seed, V=0.0):
                 rows.append(tgt); cols.append(src); vals.append(v)
 
     # ---- H_P (+ U) diagonal ----
+    # Label-scrambled control: permute the on-site energies among the
+    # vertices of the SAME graph (same g, hmat, same adjacency and hop
+    # amplitudes, drawn from the same rng stream first).  The multiset of
+    # diagonal energies -- hence the unperturbed density of states -- is
+    # preserved exactly; what is destroyed is only the correlation between
+    # a vertex's occupation coordinates and its arithmetic energy
+    # sum_i k_i log p_i.  Diagnosing the difference isolates what the
+    # arithmetic structure of the diagonal contributes beyond a generic
+    # banded system on the same graph.
+    if scramble:
+        eps = eps[rng.permutation(D)]
     rows.append(np.arange(D)); cols.append(np.arange(D)); vals.append(eps)
 
     H = sp.coo_matrix(
@@ -735,13 +745,15 @@ def _load(tag):
 # ----------------------------------------------------------------------------
 def run(tag, d, K, g0, h0, U, seed, k, ncv, stage, no_window, deadline,
         selftest=False, sigma_quantile=0.5, V=0.0, pivot="auto",
-        tau_max=None, resume=False, norm_mode="lanczos", b_kappa=350):
+        tau_max=None, resume=False, norm_mode="lanczos", scramble=False,
+        b_kappa=350):
     os.makedirs(OUT, exist_ok=True)
     res = _load(tag) or dict(tag=tag, d=d, K=K, g0=g0, h0=h0, U=U, seed=seed,
-                             k=k, ncv=ncv, V=V)
+                             k=k, ncv=ncv, V=V, scramble=scramble)
 
     t0 = time.perf_counter()
-    H, eps, g, hmat, coords = build_sparse(d, K, g0, h0, U, seed, V=V)
+    H, eps, g, hmat, coords = build_sparse(d, K, g0, h0, U, seed, V=V,
+                                           scramble=scramble)
     D = H.shape[0]
     res.update(D=D, nnz_H=int(H.nnz), t_build=round(time.perf_counter() - t0, 2),
                g=[round(x, 4) for x in g])
@@ -831,6 +843,9 @@ def main():
                         "radius (default; Gershgorin row sums overestimate by "
                         "up to ~7x on the kinetic family) or the rigorous bound")
     p.add_argument("--selftest", action="store_true")
+    p.add_argument("--scramble", action="store_true",
+                   help="label-scrambled control: permute the diagonal (H_P)",
+                   default=False)
     p.add_argument("--kappa-b", type=int, default=350,
                    help="kappa stage: eigenpair count (protocol matches the "
                         "LU window tier: k=350, 30 bins)")
@@ -846,7 +861,7 @@ def main():
     run(a.tag, a.d, a.K, a.g0, a.h0, a.U, a.seed, k, ncv, a.stage,
         a.no_window, a.deadline, a.selftest, sigma_quantile=a.sigma_quantile,
         V=a.V, pivot=a.pivot, tau_max=a.tau_max, resume=a.resume,
-        norm_mode=a.norm, b_kappa=a.kappa_b)
+        norm_mode=a.norm, scramble=a.scramble)
 
 
 if __name__ == "__main__":

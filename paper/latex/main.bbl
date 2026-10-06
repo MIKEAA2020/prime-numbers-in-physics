@@ -1,0 +1,257 @@
+\begin{thebibliography}{45}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Julia(1990)]{julia1990}
+Bernard~L. Julia.
+\newblock Statistical theory of numbers.
+\newblock In \emph{Number Theory and Physics}, volume~47 of \emph{Springer
+  Proceedings in Physics}, pages 276--293. Springer, Berlin, 1990.
+
+\bibitem[Spector(1998)]{spector1998}
+Daniel Spector.
+\newblock Duality, partial supersymmetry, and arithmetic number theory.
+\newblock \emph{Journal of Mathematical Physics}, 39:\penalty0 1913--1928,
+  1998.
+
+\bibitem[Hartnoll et~al.(2026)Hartnoll, Yang, and De~Clerck]{hartnollyang2026}
+Sean~A. Hartnoll, Ming Yang, and Marine De~Clerck.
+\newblock Conformal primon gases and {G}aussian primes near black-hole
+  singularities, 2026.
+\newblock Work reported in 2025--2026 popular and research coverage; see the
+  source transcript for the chain of reports. Cited here as the physical
+  provenance of the primon--black-hole link.
+
+\bibitem[Carroll(2010)]{carroll2010}
+Sean Carroll.
+\newblock \emph{From Eternity to Here: The Quest for the Ultimate Theory of
+  Time}.
+\newblock Dutton/Penguin Group, New York, 2010.
+
+\bibitem[Wallace(2017)]{wallace2017}
+David Wallace.
+\newblock The nature of the past hypothesis.
+\newblock In Khalil Chamcham et~al., editors, \emph{The Philosophy of
+  Cosmology}, pages 486--499. Cambridge University Press, Cambridge, 2017.
+
+\bibitem[Price(1996)]{price1996}
+Huw Price.
+\newblock \emph{Time's Arrow and {A}rchimedes' Point: New Directions for the
+  Physics of Time}.
+\newblock Oxford University Press, 1996.
+
+\bibitem[Hellie(2013)]{hellie2013}
+Benj Hellie.
+\newblock The vertiginous question, 2013.
+\newblock Preprint, PhilPapers.
+
+\bibitem[Hare(2009)]{hare2009}
+Caspar Hare.
+\newblock Egocentric presentism and perspectival realism, 2009.
+\newblock Position papers as discussed in the source transcript.
+
+\bibitem[Conitzer(2019)]{conitzer2019}
+Vincent Conitzer.
+\newblock First-person perspectives and the {A}-theory of time, 2019.
+\newblock Argument referenced as source item [33] of the source transcript.
+
+\bibitem[Hagedorn(1965)]{hagedorn1965}
+Rolf Hagedorn.
+\newblock Statistical thermodynamics of strong interactions at high energies.
+\newblock \emph{Nuovo Cimento Supplemento}, 3:\penalty0 147--186, 1965.
+
+\bibitem[Titchmarsh(1986)]{titchmarsh1986}
+Edward~C. Titchmarsh.
+\newblock \emph{The Theory of the Riemann Zeta-function}.
+\newblock Oxford University Press, 2nd edition, 1986.
+\newblock Revised by D. R. Heath-Brown.
+
+\bibitem[Neukirch(1999)]{neukirch1999}
+J{\"u}rgen Neukirch.
+\newblock \emph{Algebraic Number Theory}.
+\newblock Springer, Berlin, 1999.
+
+\bibitem[Hardy and Ramanujan(1917)]{hardyramanujan1917}
+G.~H. Hardy and Srinivasa Ramanujan.
+\newblock The normal number of prime factors of a number $n$.
+\newblock \emph{Quarterly Journal of Mathematics}, 48:\penalty0 76--92, 1917.
+
+\bibitem[Tur{\'a}n(1934)]{turan1934}
+Paul Tur{\'a}n.
+\newblock On a theorem of hardy and ramanujan.
+\newblock \emph{Journal of the London Mathematical Society}, 9:\penalty0
+  274--276, 1934.
+
+\bibitem[Erd{\H o}s and Kac(1940)]{erdoskac1940}
+Paul Erd{\H o}s and Mark Kac.
+\newblock The gaussian law of errors in the theory of additive number theoretic
+  functions.
+\newblock \emph{American Journal of Mathematics}, 62:\penalty0 738--742, 1940.
+
+\bibitem[Hardy and Wright(2008)]{hardywright2008}
+G.~H. Hardy and E.~M. Wright.
+\newblock \emph{An Introduction to the Theory of Numbers}.
+\newblock Oxford University Press, 6th edition, 2008.
+
+\bibitem[Besicovitch(1932)]{besicovitch1932}
+Abram~S. Besicovitch.
+\newblock \emph{Almost Periodic Functions}.
+\newblock Cambridge University Press, 1932.
+
+\bibitem[P{\'o}lya(1921)]{polya1921}
+George P{\'o}lya.
+\newblock {\"U}ber eine aufgabe der wahrscheinlichkeitstheorie betreffend die
+  {I}rrfahrt im {S}tra{\ss}ennetz.
+\newblock \emph{Mathematische Annalen}, 84:\penalty0 149--160, 1921.
+
+\bibitem[Page and Wootters(1983)]{pagewootters1983}
+Don~N. Page and William~K. Wootters.
+\newblock Evolution without evolution: Dynamics described by stationary
+  observables.
+\newblock \emph{Physical Review D}, 27:\penalty0 2885--2892, 1983.
+
+\bibitem[von Koch(1901)]{vonkoch1901}
+Helge von Koch.
+\newblock Sur la distribution des nombres premiers.
+\newblock \emph{Acta Mathematica}, 24:\penalty0 159--182, 1901.
+
+\bibitem[Bekenstein(1973)]{bekenstein1973}
+Jacob~D. Bekenstein.
+\newblock Black holes and entropy.
+\newblock \emph{Physical Review D}, 7:\penalty0 2333--2346, 1973.
+
+\bibitem[Hawking(1975)]{hawking1975}
+Stephen~W. Hawking.
+\newblock Particle creation by black holes.
+\newblock \emph{Communications in Mathematical Physics}, 43:\penalty0 199--220,
+  1975.
+
+\bibitem[Jacobson(1995)]{jacobson1995}
+Ted Jacobson.
+\newblock Thermodynamics of spacetime: the {E}instein equation of state.
+\newblock \emph{Physical Review Letters}, 75:\penalty0 1260--1263, 1995.
+
+\bibitem[Verlinde(2011)]{verlinde2011}
+Erik Verlinde.
+\newblock On the origin of gravity and the laws of {N}ewton.
+\newblock \emph{Journal of High Energy Physics}, 2011:\penalty0 29, 2011.
+
+\bibitem['t~Hooft(1974)]{thooft1974}
+Gerard 't~Hooft.
+\newblock A planar diagram theory for strong interactions.
+\newblock \emph{Nuclear Physics B}, 72:\penalty0 461--473, 1974.
+
+\bibitem[Clauser et~al.(1969)Clauser, Horne, Shimony, and Holt]{chsh1969}
+John~F. Clauser, Michael~A. Horne, Abner Shimony, and Richard~A. Holt.
+\newblock Proposed experiment to test local hidden-variable theories.
+\newblock \emph{Physical Review Letters}, 23:\penalty0 880--884, 1969.
+
+\bibitem[Bell(1964)]{bell1964}
+John~S. Bell.
+\newblock On the {E}instein {P}odolsky {R}osen paradox.
+\newblock \emph{Physics}, 1:\penalty0 195--200, 1964.
+
+\bibitem[Zurek(2003)]{zurek2003}
+Wojciech~H. Zurek.
+\newblock Decoherence, einselection, and the quantum origins of the classical.
+\newblock \emph{Reviews of Modern Physics}, 75:\penalty0 715--775, 2003.
+
+\bibitem[Landauer(1961)]{landauer1961}
+Rolf Landauer.
+\newblock Irreversibility and heat generation in the computing process.
+\newblock \emph{IBM Journal of Research and Development}, 5:\penalty0 183--191,
+  1961.
+
+\bibitem[Wallace(2012)]{wallace2012}
+David Wallace.
+\newblock \emph{The Emergent Multiverse: Quantum Theory according to the
+  {E}verett Interpretation}.
+\newblock Oxford University Press, 2012.
+
+\bibitem[Lesovik et~al.(2019)]{lesovik2019}
+G.~B. Lesovik et~al.
+\newblock Arrow of time and its reversal on an {IBM} quantum computer.
+\newblock \emph{Scientific Reports}, 9:\penalty0 4396, 2019.
+
+\bibitem[Hensen et~al.(2015)]{hensen2015}
+B.~Hensen et~al.
+\newblock Loophole-free {B}ell inequality violation using electron spins
+  separated by 1.3 kilometres.
+\newblock \emph{Nature}, 526:\penalty0 682--686, 2015.
+
+\bibitem[Dirichlet(1837)]{dirichlet1837}
+Peter G.~L. Dirichlet.
+\newblock Beweis des {S}atzes, dass jede unbegrenzte arithmetische
+  {P}rogression, deren erstes {G}lied und {D}ifferenz ganze {Z}ahlen ohne
+  gemeinschaftlichen {T}heiler sind, unendlich viele {P}rimzahlen enth{\"a}lt.
+\newblock \emph{Abhandlungen der K{\"o}niglichen Akademie der Wissenschaften zu
+  Berlin}, pages 45--71, 1837.
+
+\bibitem[Chebotarev(1926)]{chebotarev1926}
+Nikolai~G. Chebotarev.
+\newblock Die {B}estimmung der {D}ichtigkeit einer {M}enge von {P}rimzahlen,
+  welche zu einer gegebenen {S}ubstitutionsklasse geh{\"o}ren.
+\newblock \emph{Mathematische Annalen}, 95:\penalty0 191--228, 1926.
+
+\bibitem[Lafforgue(2002)]{lafforgue2002}
+Laurent Lafforgue.
+\newblock Chtoucas de {D}rinfeld et correspondance de {L}anglands.
+\newblock \emph{Inventiones Mathematicae}, 147:\penalty0 57--462, 2002.
+
+\bibitem[Vaccaro(2016)]{vaccaro2016}
+Joan~A. Vaccaro.
+\newblock The arrow of time and the nature of spacetime, 2016.
+\newblock arXiv:1510.08727.
+
+\bibitem[Carroll and Chen(2004)]{carrollchen2005}
+Sean~M. Carroll and Jennifer Chen.
+\newblock Spontaneous inflation and the origin of the arrow of time.
+\newblock \emph{arXiv preprint hep-th/0410270}, 2004.
+
+\bibitem[Barbour et~al.(2016)Barbour, Koslowski, and Mercati]{barbour2016}
+Julian Barbour, Tim Koslowski, and Flavio Mercati.
+\newblock Janus points and arrows of time.
+\newblock \emph{arXiv preprint arXiv:1601.03243}, 2016.
+
+\bibitem[Barbour et~al.(2014)Barbour, Koslowski, and Mercati]{barbour2014}
+Julian Barbour, Tim Koslowski, and Flavio Mercati.
+\newblock Identification of a gravitational arrow of time.
+\newblock \emph{Physical Review Letters}, 112:\penalty0 101302, 2014.
+
+\bibitem[Malament(1977)]{malament1977}
+David Malament.
+\newblock Causal theories of time and the conventionality of simultaneity.
+\newblock \emph{No{\^u}s}, 11:\penalty0 293--300, 1977.
+
+\bibitem[Sorkin(2003)]{sorkin2003}
+Rafael~D. Sorkin.
+\newblock Causal sets: discrete gravity, 2003.
+\newblock arXiv:gr-qc/0309009.
+
+\bibitem[Kaplan(1989)]{kaplan1989}
+David Kaplan.
+\newblock Demonstratives.
+\newblock In \emph{Themes from Kaplan}, pages 481--563. Oxford University
+  Press, 1989.
+
+\bibitem[Berry and Keating(1999)]{berrykeating1999}
+Michael~V. Berry and Jonathan~P. Keating.
+\newblock The {R}iemann zeros and eigenvalue asymptotics.
+\newblock \emph{SIAM Review}, 41:\penalty0 236--266, 1999.
+
+\bibitem[Montgomery(1973)]{montgomery1973}
+Hugh~L. Montgomery.
+\newblock The pair correlation of zeros of the zeta function.
+\newblock In \emph{Analytic Number Theory}, volume~24 of \emph{Proceedings of
+  Symposia in Pure Mathematics}, pages 181--193. American Mathematical Society,
+  1973.
+
+\bibitem[Odlyzko(1987)]{odlyzko1987}
+Andrew~M. Odlyzko.
+\newblock On the distribution of spacings between zeros of the zeta function.
+\newblock \emph{Mathematics of Computation}, 48:\penalty0 273--308, 1987.
+
+\end{thebibliography}
