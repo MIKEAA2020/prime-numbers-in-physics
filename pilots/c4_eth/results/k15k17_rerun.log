@@ -151,3 +151,13 @@ L36d4K15kr: MAX_CHUNKS (1) reached without certification.
   sweep 13 phase 1: M=1500 count_in=416 count_est=228 conv_band=0 resid_q=[0.343 0.855 1.636] theta_near_c=[0.002 0.003 0.003 0.005 0.005]
   deadline: state saved (sweeps=13, chunks=3, phase=1) -- rerun with --resume
 L36d4K15kr: MAX_CHUNKS (1) reached without certification.
+=== L36d4K17kr (d=4 K=17 D=104976, V=0.1245675, dose 36) ===
+  note: addr-limit raise failed (not allowed to raise maximum limit)
+[L36d4K17kr] D=104976 nnz=2021760 c=45.450 edges=[-166.44,658.80] t=0.268 (eps-ratio 3.00) M=1500 s=416
+  deadline: state saved (sweeps=0, chunks=5, phase=0) -- rerun with --resume
+L36d4K17kr: MAX_CHUNKS (1) reached without certification.
+=== L36d4K17kr (d=4 K=17 D=104976, V=0.1245675, dose 36) ===
+  note: addr-limit raise failed (not allowed to raise maximum limit)
+[L36d4K17kr] resume: D=104976 sweeps=0 chunks=5 M=1500 t=0.268 phase=0
+  deadline: state saved (sweeps=0, chunks=12, phase=0) -- rerun with --resume
+L36d4K17kr: MAX_CHUNKS (1) reached without certification.

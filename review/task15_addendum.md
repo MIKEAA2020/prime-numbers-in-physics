@@ -108,7 +108,11 @@ abstract are bound to it.
   K13 partial-certification record (276/370 at degree 3400) marks the
   tier the cap lift restores. The resumable state `krs_L36d4K15kr.npz`
   (sweep 13, phase 1) and the run log accompany the pilots; continuation
-  is turnkey (the committed runner picks the state up).
+  is turnkey (the committed runner picks the state up). The K17 platform
+  state is initialized under the same loop (D=104976, nnz=2.02M, edges
+  [-166.44, 658.80], initial t=0.268 at the capped degree; the resumable
+  state `krs_L36d4K17kr.npz` at sweep 0, 12/17 filter chunks of sweep 1)
+  — both platforms carry live checkpoints for continuation.
 
 ## Paper
 

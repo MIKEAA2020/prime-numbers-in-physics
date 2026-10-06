@@ -508,8 +508,9 @@ K15/K17 rerun
   certification tier is priced at ~11 further f64 polish sweeps by the
   measured ~3x-per-sweep residual decay at the committed M <= 1500 cap.
   The resumable state `krs_L36d4K15kr.npz` (sweep 13, phase 1) and the
-  run log (`results/k15k17_rerun.log`) record the wall; continuation is
-  turnkey.
+  run log (`results/k15k17_rerun.log`) record the wall; the K17 platform
+  state is initialized and checkpointed (`krs_L36d4K17kr.npz`, sweep 0);
+  continuation of either platform is turnkey.
 
 Remaining: the K15/K17 certification tier (RAM/wall-clock gated, resumable
 state deployed); the obstruction lower bound's two completion routes

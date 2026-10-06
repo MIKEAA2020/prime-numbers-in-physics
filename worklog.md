@@ -350,3 +350,5 @@ Work Log:
 
 Stage Summary:
 - The K15 rerun's honest record: discovery completes on the same hardware class; the certification tier is priced, not stalled -- the committed degree cap bounds the polish decay at ~3x/sweep; the resumable state (sweep 13, phase 1) is turnkey for continuation or the cap lift
+
+K17 note (same task): the K17 platform state is initialized under the same loop (D=104976, edges [-166.44, 658.80], initial t=0.268, M capped at 1500; resumable state krs_L36d4K17kr.npz at sweep 0, 12/17 chunks of sweep 1) -- both platforms carry live checkpoints; continuation of either is turnkey with the committed runner.
