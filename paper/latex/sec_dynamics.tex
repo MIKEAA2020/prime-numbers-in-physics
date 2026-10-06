@@ -320,6 +320,88 @@ at $d=3,4$; the box-exactness of sector-supported dynamics holds to $7\times10^{
 across truncations, while the walk control ($g\neq0$) leaks out of the sector exactly as
 $H_{W}$'s non-conservation requires (Remark~\ref{rem:conservation}).
 
+\begin{proposition}[Sector Jacobi structure]\label{prop:jacobi}
+Fix $d\ge2$, total occupation $S$, $\kappa=0$, and let $H^{(S)}$ be the block of
+$H_{\mathrm{nc}}^{(U,V)}$ on the compositions of $S$ into $d$ parts.
+\begin{enumerate}[leftmargin=1.6em]
+\item \emph{Layer grading.} Order the compositions by the layer
+$\ell=S-k_{1}$, the hop distance from the corner $(S,0,\dots,0)$. Every
+number-conserving hop either transfers one quantum between modes $2,\dots,d$
+($\ell$ unchanged) or exchanges one quantum with mode $1$ ($\ell\to\ell\pm1$);
+in this grading $H^{(S)}$ is exactly block-tridiagonal, and the diagonal block
+at layer $\ell$ is the $(d-1,\ell)$ sector of the mode family
+$\{p_{2},\dots,p_{d}\}$ (same $h$, $V$), shifted by the affine term
+$(S-\ell)(\log p_{1}+U\ell)$. The recursion terminates at $d=2$, where the
+sector is the Jacobi matrix
+\begin{equation*}
+a_k=k\log p_{1}+(S-k)\log p_{2}+U\,k(S-k),\qquad
+b_k=\bigl(2h_{12}+VS\bigr)\sqrt{(k+1)(S-k)} ,
+\end{equation*}
+$k=0,\dots,S$.
+\item \emph{Two-mode solvability.} At $U=0$ the two-mode block is the
+rotated spin problem
+$\Delta\,\hat S_{z}+2C\,\hat S_{x}+\tfrac{S}{2}\log(p_{1}p_{2})$ with
+$\Delta=\log(p_{1}/p_{2})$, $C=2h_{12}+VS$, in the spin-$S/2$
+representation. Its spectrum is the picket fence
+$E_j=\tfrac{S}{2}\log(p_{1}p_{2})+\sqrt{\Delta^{2}+4C^{2}}\;(\tfrac{S}{2}-j)$,
+its eigenvectors are Krawtchouk polynomials in $k$, and the eigenstate
+occupation is exactly linear in the eigenvalue,
+$\langle k_{1}\rangle_j=\tfrac{S}{2}+(\tfrac{S}{2}-j)\Delta/\sqrt{\Delta^{2}+4C^{2}}$.
+Under the full-spectrum $30$-bin protocol the fluctuation ratio therefore
+converges to the $S$-independent floor
+$|\Delta|/\bigl(30\sqrt{\Delta^{2}+4C^{2}}\bigr)$, while the Haar benchmark
+decays as $n^{-1/2}$: the fluctuation floor does not decay. At fixed $V$ the
+floor itself decays as $1/S$; the picket ratio statistic $\langle
+r\rangle=1$ and the exact linearity survive at every scale.
+\item \emph{Free reduction and permutation covariance.} $H_{P}$ and
+$H_{\mathrm{hop}}$ are one-body operators: their sector blocks are the
+$S$-fold symmetric representations of a fixed $d\times d$ Hermitian matrix,
+diagonalizable once and for all at every $S$. The kinetic term is the only
+interaction in the sector problem. At matched dose $VS^{2}\approx36$ its
+share of the sector bandwidth decays as $1/S$ (the sector ladder approaches
+the free limit); at fixed $V$ it dominates the bandwidth, consistent with
+the row-sum bound of Proposition~\ref{prop:sector}. The kinetic interaction
+is exactly covariant under the full mode-permutation group: at $h=0$ its
+commutator with every mode transposition and cycle vanishes identically,
+and the prime-logarithm diagonal is the term that breaks the covariance, at
+relative strength $O(1/(VS))$ at fixed $V$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}[Proof sketch]
+(i) A hop $a_p^{\dagger}a_q$ moves one quantum from $q$ to $p$; if neither
+index is $1$ the occupation $k_{1}$ and hence $\ell$ are unchanged, and if
+one index is $1$ the layer changes by one, so the grading is
+block-tridiagonal; the diagonal blocks retain the $(d-1,\ell)$ sector of the
+remaining modes because the internal couplings and the kinetic bond weights
+$(k_p+k_q)\sqrt{(k_p+1)k_q}$ do not involve $k_1$ beyond the affine diagonal
+contribution $(S-\ell)\log p_{1}+U(S-\ell)\ell$. At $d=2$ the layers are
+singletons and the block is tridiagonal with the stated entries (the
+symmetrized hop contributes $2h_{12}$ per bond, the kinetic bond weight
+$(k_1+k_2)\sqrt{(k_1+1)k_2}=S\sqrt{(k+1)(S-k)}$). (ii) With $U=0$ the
+diagonal is affine in the spin magnetization and the off-diagonal is the
+$S_{+}$ matrix element, so a rotation of the spin quantization axis
+diagonalizes the block; the stated spectrum, eigenvectors, and occupation
+linearity follow, and the bin-width fluctuation of a linear
+observable--energy relation is $|d\langle k_1\rangle/dE|$ times the bin
+width over $\sqrt{12}$. (iii) The one-body algebra and the symmetric
+representation are standard; the covariance follows because the kinetic sum
+runs over unordered mode pairs with pair-independent coupling, and
+permutations relabel pairs; the diagonal distinguishes the primes.
+\end{proof}
+
+The proposition is validated numerically to roundoff: the assembly of
+$H^{(S)}$ from the compositions equals the full-grid extraction at
+$K=S$ (deviations $\leq4\times10^{-15}$ at $d=2,3,4$ in the $U,V$
+cross-checks), the block-tridiagonal pattern holds with no coupling beyond
+$|\Delta\ell|=1$ at every tested $(d,S)$, the diagonal-block recursion
+matches the shifted sub-sector to $3.6\times10^{-15}$, and the two-mode
+closed forms reproduce the tridiagonal eigensolve to
+$\leq4\times10^{-13}$ at $S\le512$ in both dose conventions. The sector
+ladders built on this structure, and the classical limits they select, are
+the mathematical falsifier program for $\mathsf{C4}$
+(Remark~\ref{rem:numerics}(l); Section~\ref{sec:mathprograms}, item 1).
+
 \begin{remark}[The mode-count limit is singular]\label{rem:modecount}
 For an infinite active set the interacting terms do not define operators on
 $\ell^{2}(\mathcal{F})$ at all: from any configuration with $k_{q}\geq1$, the hop
@@ -568,6 +650,54 @@ trajectories reach $\tau=44$ and $36$ in wall-clock chunk sessions
 shrinks with the level spacing, and the diagonal-ensemble saturation of item
 (e) is beyond day-scale compute at these dimensions; the records and
 checkpoints accompany the pilots.
+(l) \emph{The sector falsifier ladders and the classical limits.} The
+occupation sectors of Proposition~\ref{prop:jacobi} are one-parameter
+thermodynamic ladders in their own right (dimension
+$n=\binom{S+d-1}{d-1}$, no truncation active), and the strong-ETH question
+sharpens there into a joint decision object: the fluctuation ratio $\kappa$
+of the mode-$1$ occupation in absolute units
+$\sigma_{\mathrm{ETH}}/\sqrt{S(S+2)/12}$, the ratio statistic $\langle
+r\rangle$, and the Haar-in-shell benchmark. The two-mode sector is closed
+by the solvability of Proposition~\ref{prop:jacobi}(ii): at matched dose
+$VS^{2}=36$ the measured $\kappa$ converges to the analytic floor
+$1/30=0.0333$ ($\kappa=0.0333$ at $S=8192$) with $\langle r\rangle=1$ at
+every scale, and at fixed $V=0.3$ the floor decays as $1/S$ ($\kappa=
+1.0\times10^{-5}$ at $S=2048$) while the picket statistic persists---an
+obstruction by exact solvability, with the fluctuation ratio and the level
+statistic in overt disagreement, so neither diagnostic alone decides. The
+$U$-legs localize ($\kappa\to0.9999$, $\mathrm{PR}/n\to5\times10^{-4}$ at
+$U=2$, matched dose). In $d=3$ and $d=4$ the ladders separate by
+convention: at matched dose, $\kappa$ decays from $0.30$ to $0.043$
+($d=3$, $n=231\to2.0\times10^{4}$) with $\langle r\rangle\to0.386$--$0.396$
+(Poisson---the free-reduction limit), and in $d=4$ it turns around and
+rises ($0.115$ at $n=4495$ to $0.182$ at $n=2.3\times10^{4}$) with
+$\langle r\rangle$ in the $0.47$--$0.53$ band; at fixed $V=0.3$, $d=3$
+sits on a plateau $\kappa\approx0.196$ at $n=1.3\times10^{4}$ with
+clustered statistics $\langle r\rangle=0.148$, and $d=4$ decays slowly
+($\kappa\sim n^{-0.22}$, $\langle r\rangle\to0.40$--$0.42$), all with
+delocalized eigenstates ($\mathrm{PR}/n=0.12$--$0.25$) and $\kappa$ a
+factor $1.4$--$20$ above the Haar benchmark at the largest dimensions. A
+$\pm30\%$ anisotropic control ($V_{pq}$ per pair, one realization) leaves
+both signatures at the same level ($\kappa$ plateau $0.28$ in $d=3$,
+$0.15$ in $d=4$), so the permutation covariance of
+Proposition~\ref{prop:jacobi}(iii) is not the operative obstruction. The
+classical limits of the sector problem (the coherent-state flow on
+$\mathbb{C}P^{d-1}$, integrated with a validated fourth-order scheme and
+Benettin exponents) corroborate the split: the one-body flow of the
+matched-dose limit is exactly the linear flow
+$\alpha\mapsto e^{-iMt}\alpha$ ($\lambda_{\max}\le10^{-9}$, integrable at
+every $d$), while the kinetic flow of the fixed-$V$ limit is chaotic at
+$d\ge3$ ($\lambda_{\max}=0.03$--$0.11$ across initial conditions at $d=3$;
+$0.116$--$0.137$ uniformly at $d=4$; $0.003$--$0.004$, the integrator
+floor, at $d=2$). No tested convention exhibits the joint thermalization
+signature ($\langle r\rangle\to\mathrm{GOE}$ with $\kappa$ on the Haar
+line) at the accessible sector dimensions: classical chaos in the
+interaction-dominated limit coexists with non-thermal sector eigenstates,
+so the quantum-ergodicity route is open classically but not realized at
+the computed scales. Figure~\ref{fig:msector} shows the four panels
+(fluctuation ladders with benchmarks, level statistics, classical
+exponents, and the corner-state Krylov growth, whose $d=2$ sequence is the
+binomial $\beta_n=C\sqrt{n(S+1-n)}$ exactly, as the solvability requires).
 \end{remark}
 
 \begin{figure}[t]

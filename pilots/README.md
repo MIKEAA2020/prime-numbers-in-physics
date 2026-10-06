@@ -15,6 +15,8 @@ same truncations), so every number is reproducible from these scripts.
 | Pilot | `c4_eth_pilot.py`, `c4_eth_pilot2.py`, `c4_pilot3_pr.py` | D = 625–4096 | dense `eigh` |
 | **Scaled** | `c4_scaled_eth.py` (+ `run_c4_scaled.sh` driver) | **D ≈ 10⁴–10⁵** | sparse CSR assembly, shift-invert Lanczos interior windows (`splu` + `eigsh`), restarted-Lanczos Krylov time evolution |
 | **Kinetic completion** | same worker, `--V` flag (+ `run_c4_kinetic.sh`, `c4_kinetic_selftest.py`, `c4_kinetic_figures.py`) | D ≈ 10⁴–10⁵ | one-term density-assisted hopping; diagonal-pivot shift-invert (residual-certified) |
+| **M-sector falsifier** | `c4_msector_jacobi.py`, `c4_msector_classical.py`, `c4_msector_figures.py` | sector dim n ≈ 10⁵ (d = 2), 2.3·10⁴ (d = 4) | occupation-sector ladders in the layer grading (block-tridiagonal; d = 2 Jacobi closed form), dose/fixed-V/anisotropic legs, classical CP^{d−1} limits with Benettin Lyapunov |
+| **K15/K17 rerun** | `run_c4_median_k15k17.sh` (k15 / k17 / demo) | D = 65536 / 104976 | the committed Chebyshev tier in resumable deadline chunks; resume-cycle proven by the demo (350/350 certified) |
 
 Diagnostics: level-spacing ratio ⟨r⟩ (Poisson 0.3863 / GOE 0.5359 — the **C5 proxy**),
 ETH fluctuation σ_ETH of local occupation observables with microcanonical reference,
@@ -310,3 +312,93 @@ python3 c4_eth/c4_scaled_eth.py --tag L36d4K17 --d 4 --K 17 \
 - C9 k=7: `c9_freeze_pdg.py` (frozen 2024 extract, committed pre-fit) +
   `c9_k7_variant.py` (null -> injection -> fit): no common-N table at the Z
   scale at seven channels (chi2 = 1394.68 vs 14.07; p = 0.032).
+
+
+## M-sector Jacobi structure (the C4 mathematical falsifier, 2026-10-06)
+
+`c4_msector_jacobi.py` builds the occupation-sector blocks of the number-conserving
+core directly from the compositions of S into d parts (validated against the full-grid
+extraction to 4e-15; faithful seed-7 coupling draw). Established and measured:
+
+- **Layer grading (J1)**: in the order l = S − k_1 the sector block is exactly
+  block-tridiagonal (max |Δl| = 1 at every tested (d, S)); the diagonal block at layer
+  l equals the (d−1, l) sector of the mode family {p₂..p_d} (same h, V) shifted by
+  (S−l)(log p₁ + U l) — recursion validated to 3.6e-15. At d = 2: the explicit Jacobi
+  matrix with a_k = k log p₁ + (S−k) log p₂ + U k(S−k) and
+  b_k = (2 h₁₂ + V S)·sqrt((k+1)(S−k)).
+- **Two-mode solvability (J2)**: at U = 0 the block is the rotated spin problem
+  Δ S_z + 2C S_x + (S/2) log(p₁p₂), C = 2 h₁₂ + V S — picket-fence spectrum,
+  Krawtchouk eigenvectors, occupation exactly linear in energy; closed forms validated
+  against the tridiagonal eigensolve to ≤ 4e-13 (S ≤ 512, both dose conventions).
+  The 30-bin fluctuation ratio converges to the analytic floor
+  |Δ|/(30·sqrt(Δ² + 4C²)): at matched dose κ → 1/30 = 0.0333 (S = 8192), at fixed
+  V = 0.3 the floor decays as 1/S while ⟨r⟩ = 1 (picket) persists at every scale.
+  U-legs localize (κ → 0.9999, PR/n → 5e-4 at U = 2, matched dose).
+- **Free reduction (J3)**: H_P + H_hop are one-body (their sector blocks are S-fold
+  symmetric representations of a fixed d×d matrix); the kinetic term is the only
+  interaction. At matched dose V S² = 36 its bandwidth share decays as 1/S; at fixed
+  V it dominates. The kinetic off-diagonal is exactly permutation-covariant
+  (commutators 0.0 with every transposition and the 3-cycle at h = 0); the
+  prime-logarithm diagonal breaks the symmetry (commutator norms 10–37 at d = 3/4).
+- **Ladders (g0 = 0, h0 = 1, seed 7)**: d = 3 matched dose κ 0.305 → 0.043
+  (n = 231 → 2.0e4) with ⟨r⟩ → 0.386–0.396 (Poisson, the free limit); d = 4 matched
+  dose κ turns around and rises (0.115 → 0.182, n = 4.5e3 → 2.3e4); d = 3 fixed
+  V = 0.3 plateaus at κ ≈ 0.196 with clustered ⟨r⟩ = 0.148; d = 4 fixed V decays
+  κ ~ n^{−0.22}, ⟨r⟩ → 0.40–0.42; PR/n = 0.12–0.25 (delocalized) throughout, κ/B 1.4–20
+  above the Haar benchmark at the largest sizes. A ±30% anisotropic V_pq control
+  leaves both signatures (0.28 / 0.15) — the permutation covariance is not the
+  operative obstruction.
+- **Classical limits** (`c4_msector_classical.py`): the coherent-state flow on
+  CP^{d−1}. One-body (matched-dose leading part): exactly the linear flow
+  α ↦ exp(−iMt)α — integrator validated against expm to 1e-8, λ ≤ 1e-9 at every d.
+  Kinetic (fixed-V leading part): d = 2 at the integrator floor (0.003–0.004,
+  1 d.o.f.), d = 3 mixed (0.003–0.114 across initial conditions, dt-halving
+  stability check included), d = 4 uniformly chaotic (0.116–0.137). Full symbol at
+  the family couplings: d = 3 mixed, d = 4 chaotic (0.13–0.30).
+- **Corner-state Krylov**: the d = 2 β_n sequence is the binomial
+  C·sqrt(n(S+1−n)) exactly (β_max = C(S+1)/2 = 2476.84 at S = 128, V = 0.3).
+
+Outputs: `results/c4_msector_results.json`, `results/c4_msector_classical.json`,
+`figures/fig_c4_msector.png` (+ per-point `msec_*.npz` in the download mirror).
+
+## K15/K17 median-window rerun (turnkey)
+
+`run_c4_median_k15k17.sh {k15|k17|both|demo}` — the committed Chebyshev machinery at
+K15/K17 in resumable deadline chunks:
+
+```bash
+CHUNK_DEADLINE=3600 ./run_c4_median_k15k17.sh k15   # ~7 h projected at 2 cores
+CHUNK_DEADLINE=3600 ./run_c4_median_k15k17.sh k17   # ~19 h projected
+./run_c4_median_k15k17.sh demo                      # 3-minute resume-cycle proof
+```
+
+Budget (K13-calibrated: M = 3400, 14 sweeps, ~2.5 h chunked at D = 38416): working
+set < 1.5 GB (block V, count-probe Q, H); degree M grows ~ linearly in D (extrapolated
+5.5e3 at K15, 9e3 at K17); `--addr-limit` (GB) lifts the 3.4 GB laptop guard;
+`--t-scale` applies the K13-style passband correction (t/R ≈ 1/460; K13 used
+1.236 → 0.96) if the count probe overestimates. A platform is done when
+`res_krylov_<tag>.json` exists and `krs_<tag>.npz` (the resumable state) was removed
+on success. The demo (d = 3, K = 18, the calibrated platform) certified 350/350
+across six chunk boundaries with σ ratio 0.994 vs the committed platform
+(`results/res_krylov_L36d3K18demo.json`).
+
+## C9 table-agnostic dictionary (W and Higgs, 2026-10-06)
+
+`c9_freeze_pdg_wh.py` froze the PDG 2024 W-boson (k = 4, granularity amendment —
+only four channels measured) and Higgs (k = 7: bb, WW*, ZZ*, ττ, γγ, Zγ, μμ)
+extracts with the pre-registered protocol embedded; both extracts were committed
+BEFORE the fits. `c9_ktable_fit.py` (the table-agnostic runner: P1 matched-sigma
+null first, P2 injection, P3 data fit last):
+
+- **W**: null FPR 0.001 at χ²₀.₉₅(4); injection recovery 100/100 (full power);
+  data fit χ² = 4176 at N = 18, p = 0.80 — **no common-N table** at the W scale
+  (the fractions are non-rational at 1–2% precision).
+- **Higgs**: the pre-registered rule fires (χ² = 0.333 at N = 3672,
+  p < 1/3000 vs the structureless Dirichlet null), but the regime is
+  precision-starved and SM-coupled (σ_rel = 8–50%): injection recovery 0/100,
+  and an explicitly post-hoc bootstrap-around-data diagnostic lands at or below
+  the data value in 3.5% of draws — **flagged, not confirmed** (recorded in the
+  `exploratory_posthoc` section, outside the pre-registered decision).
+
+Outputs: `results/c9_ktable_{w,higgs}_results.json`; extracts
+`pdg_{w,higgs}_extract_2024.json` (sha256 of the source listings recorded).

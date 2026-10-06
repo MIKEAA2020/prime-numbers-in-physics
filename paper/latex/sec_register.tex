@@ -107,7 +107,22 @@ the edges ($0.46$--$0.54$ at the same platform), and $\mathrm{PR}/D$ is the robu
 diagnostic. Label-scrambled controls (Remark~\ref{rem:numerics}(f)) show the matched-dose
 GOE band is graph-generic while the generic-family delocalization is arithmetic:
 scrambling the diagonal at fixed density of states collapses $\mathrm{PR}/D$ by
-$2$--$12\times$. \textbf{M}\\
+$2$--$12\times$. The mathematical falsifier has a sharp sector form
+(Prop.~\ref{prop:jacobi}, Remark~\ref{rem:numerics}(l)): the number-conserving
+core decomposes into occupation-sector ladders that are exactly
+block-tridiagonal in the layer grading, the two-mode sector is solvable in
+closed form (picket-fence spectrum, non-decaying analytic fluctuation floor
+$|\Delta|/(30\sqrt{\Delta^{2}+4C^{2}})$), and the sector problem contains a
+single interaction (the kinetic term), exactly covariant under mode
+permutations with the prime-logarithm diagonal as the only symmetry-breaking
+term at relative strength $O(1/(VS))$. No tested sector convention
+(matched-dose free limit; fixed-$V$ interaction-dominated; $\pm30\%$
+anisotropic control) exhibits the joint thermalization signature at the
+accessible dimensions, while the classical sector limits split integrable
+(one-body, matched dose) from chaotic (kinetic, fixed $V$, $d\ge3$): the
+thermalization proof and the obstruction are both open, and the sector
+ladder---$\kappa(S)$ plateau versus crossing to the Haar line with GOE
+$\langle r\rangle$---is the decision object. \textbf{M}\\
 $\mathsf{C5}$ &
 \emph{Arithmetic--chaos correspondence.} The spectral statistics of the quantized
 near-singularity (BKL-type) Hamiltonian match GUE, and its spectral determinant is
@@ -172,7 +187,21 @@ $0/3000$ at the $\chi^{2}_{0.95}(7)$ threshold; injection power demonstrated at
 $3\times10^{5}$ events with the divisor-scan's highly-composite-$N$ bias documented)
 rejects every common-$N$ table ($\chi^{2}=1395$ against a threshold of $14.1$; the residual
 proximity to rational structure, at the $3.2$ percentile of the structureless null, traces
-to lepton universality, which any equal-class group reproduces). The fit identifies the class vector only up to common
+to lepton universality, which any equal-class group reproduces). The same frozen-table
+discipline extends to any precision branching table in minutes, and two further PDG 2024
+extracts are in the record: the $W$-boson four-channel table (a granularity amendment
+--- only four channels are measured; null calibration at $k=4$ with the table's own
+$\sigma$; injection recovery $100/100$, so the pipeline retains full power) rejects every
+common-$N$ table ($\chi^{2}=4176$ against a threshold of $9.5$; empirical $p=0.80$): the
+$W$ fractions are non-rational at their precision, an exclusion. The Higgs seven-channel
+table (bb, WW, ZZ, $\tau\tau$, $\gamma\gamma$, $Z\gamma$, $\mu\mu$; frozen and committed
+before the fit) fires the pre-registered decision rule ($\chi^{2}=0.333$ at $N=3672$,
+empirical $p<1/3000$ against the structureless null), but the channel uncertainties are
+$8$--$50\%$ with Standard-Model-coupled provenance, the injection recovery is $0/100$ at
+that precision, and a post-hoc bootstrap around the data vector lands at or below the
+data value in $3.5\%$ of draws: the anomaly is flagged, not confirmed---it requires a
+precision improvement and a shape-matched pre-registered null before any confirmatory
+reading. The fit identifies the class vector only up to common
 factors (the primitive representative of the group order). Cleanest dated falsifier:
 observed proton decay
 (Section~\ref{sec:falsify}, item 1); a single channel cannot fix a full splitting table, so
@@ -262,7 +291,15 @@ precision tables without modification (a $Z$ factory improves the statistical fl
 $\sim3\times10^{-3}$). The protocol is well-formed only when the channel
 set and the group-order range are fixed before the data are examined: the Monte-Carlo
 calibration prices the fit on random tables, not the analyst's freedom in choosing channels,
-identifications, or $N$.
+identifications, or $N$. Two 2024 PDG tables beyond the $Z$ pole are now on record under the
+same discipline (frozen extracts committed before their fits): the $W$-boson four-channel
+table excludes---no common-$N$ table fits its fractions at the $1$--$2\%$ precision, with
+the injection check at full power ($100/100$ recovery)---and the Higgs seven-channel table
+fires the decision rule ($\chi^{2}=0.333$, $p<1/3000$) in a regime where its channel
+uncertainties are two orders of magnitude coarser than the calibrated one and its values
+are Standard-Model-coupled evaluations: the anomaly is recorded as flagged, not
+confirmed, with the recovery power $0/100$ and a post-hoc bootstrap diagnostic ($3.5\%$)
+documented alongside it. Precision, not machinery, is what the dictionary now waits on.
 \item \emph{A single new scale.} The framework has exactly one dimensionful parameter,
 $\omega_{0}$, with $T_{H}=\hbar\omega_{0}/k_{B}$. Every other number in the physics layer
 is either an integer, a group order, or a value of an $L$-function. Any phenomenological
@@ -377,7 +414,16 @@ fixed-fraction thermal benchmark growing by a factor $\approx2.5$ along the ladd
 effective random-combination dimensions $N_{\mathrm{eff}}\approx8\to23$ versus shells of
 $\sim10^{3}$ states (Remark~\ref{rem:numerics}(h)); the equilibration leg requires the
 $D\to\infty$ limit of the diagonal ensemble, which shows no convergence at accessible
-scales.
+scales. The mathematical core of the question has since been reduced to the occupation
+sectors (Prop.~\ref{prop:jacobi}): the number-conserving core is a direct sum of
+finite sector ladders, exactly block-tridiagonal in the layer grading, with a single
+interaction (the kinetic term) whose relative strength is a control parameter---decaying
+as $1/S$ at matched dose, dominant at fixed $V$. The two-mode sector is closed in closed
+form (an obstruction by solvability, with an analytic fluctuation floor); in $d=3,4$ the
+sector ladders and the classical limits of the sector problem on
+$\mathbb{C}P^{d-1}$ (integrable one-body flow at matched dose; chaotic kinetic flow at
+fixed $V$) frame the remaining question, and the joint thermalization signature is
+absent at every accessible sector dimension (Remark~\ref{rem:numerics}(l)).
 \item \emph{Compute the level statistics of the interacting arithmetic Hamiltonian and
 compare with GUE} ($\mathsf{C5}$): the prime lattice with log-spaced on-site energies is a
 banded, incommensurate system; its statistics are accessible by dense-diagonalization
@@ -404,7 +450,12 @@ the five-channel scan and a seven-channel variant executed against a frozen, com
 2024 PDG extract (pre-registered null-first protocol; the seven-flavour $Z$-width
 decomposition; injection power at $3\times10^{5}$ events with the divisor scan's
 highly-composite-$N$ preference documented); both reject every common-$N$ table at the $Z$
-scale, as the conjecture requires.
+scale, as the conjecture requires. The runner is table-agnostic: a new precision table
+is frozen with the embedded protocol, committed, and fitted in minutes; the $W$ four-channel
+application (full injection power) rejects every common-$N$ table at the $W$ scale, and the
+Higgs seven-channel application flags a proximity anomaly at $\chi^{2}=0.333$ that the
+$8$--$50\%$ channel uncertainties and their Standard-Model-coupled provenance leave
+uninterpretable---the instrument is ready for the precision that would decide it.
 \end{enumerate}
 
 \subsection{Physical test programs}\label{sec:physical}

@@ -142,6 +142,53 @@ from the modular sources and verified to compile identically (47 pp).
   radius R ~ 570 (VK^2 = 36, d = 4), i.e. degree growing linearly in D at
   fixed protocol (`pilots/c4_eth/c4_kappa_krylov.py`).
 
+## The M-sector Jacobi falsifier, the turnkey K15/K17 rerun, and the table-agnostic dictionary (2026-10-06)
+
+- **The occupation-sector Jacobi structure (the C4 mathematical falsifier).**
+  The number-conserving core decomposes into occupation-sector ladders
+  (dimension C(S+d-1, d-1), box-inactive at K >= S). In the layer grading
+  l = S - k_1 every sector block is exactly block-tridiagonal, with the
+  diagonal block at layer l equal to the (d-1, l) sector of the shifted
+  mode family (validated to 3.6e-15); at d = 2 the sector is the explicit
+  Jacobi matrix a_k = k log p1 + (S-k) log p2 + U k(S-k),
+  b_k = (2 h12 + V S) sqrt((k+1)(S-k)), solvable in closed form at U = 0
+  (rotated spin: picket-fence spectrum, Krawtchouk eigenvectors, occupation
+  exactly linear in energy, analytic non-decaying kappa floor
+  |Delta| / (30 sqrt(Delta^2 + 4 C^2)); validated to 4e-13). H_P and H_hop
+  are one-body (free reduction); the kinetic term is the only sector
+  interaction, exactly permutation-covariant (commutators 0.0 at h=0), with
+  the prime-logarithm diagonal the sole symmetry-breaking term at relative
+  strength O(1/(V S)) at fixed V. Sector ladders measured in d = 2, 3, 4 at
+  matched dose (V = 36/S^2), fixed V = 0.3, U in {0, 2}, and a +-30%
+  anisotropic control; classical sector limits on CP^{d-1} (one-body flow
+  integrable -- validated against the exact linear flow; kinetic flow
+  chaotic at d >= 3, lambda = 0.12-0.14 at d = 4). No tested convention
+  shows the joint thermalization signature at accessible dimensions;
+  the two-mode sector is a proved obstruction. The sharpened decision
+  object: the fixed-V S-ladder in d >= 3 (kappa plateau vs Haar line with
+  GOE <r>).
+  (`pilots/c4_eth/c4_msector_jacobi.py`, `c4_msector_classical.py`,
+  `c4_msector_figures.py` -> fig_c4_msector.png; paper Prop. jacobi and
+  Remark numerics (l)).
+- **K15/K17 median-window rerun, turnkey.** `run_c4_median_k15k17.sh`
+  drives the committed Chebyshev machinery at K15 (D = 65536) and K17
+  (D = 104976) in resumable deadline chunks on any machine with >= 4 GB
+  RAM (~7 h / ~19 h projected at 2 cores from the K13 calibration;
+  working set < 1.5 GB; --addr-limit lifts the 3.4 GB laptop guard;
+  --t-scale applies the K13-style passband correction if the count probe
+  overestimates). The resume-cycle loop is proven end-to-end by the demo
+  mode (d=3 K18: 6 chunk boundaries, 350/350 certified, sigma ratio 0.994
+  vs the committed platform).
+- **Table-agnostic C9 dictionary.** The pre-registered protocol now runs on
+  any frozen precision table (freeze -> commit -> P1/P2/P3, minutes):
+  the W four-channel PDG 2024 extract (injection power 100/100) rejects
+  every common-N table (chi2 = 4176 vs 9.5, p = 0.80); the Higgs
+  seven-channel extract fires the pre-registered rule (chi2 = 0.333 at
+  N = 3672, p < 1/3000) in a precision-starved, SM-coupled regime
+  (recovery 0/100; post-hoc bootstrap 3.5%) -- flagged, not confirmed.
+  (`pilots/c9_chebotarev/c9_freeze_pdg_wh.py`, `c9_ktable_fit.py`;
+  extracts committed before the fits.)
+
 The single-file LaTeX manuscript (`paper/latex/manuscript.tex`) is
 regenerated from the modular sources and verified to compile identically
-(51 pp body).
+(53 pp body).

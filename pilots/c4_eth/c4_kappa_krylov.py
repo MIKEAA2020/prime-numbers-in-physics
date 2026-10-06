@@ -48,6 +48,7 @@ import argparse
 import json
 import math
 import os
+import resource
 import time
 
 import numpy as np
@@ -332,11 +333,26 @@ class DeadlineHit(Exception):
 
 
 def run(tag, d, K, g0, h0, U, seed, Vc, scramble, k, s, m_chunk,
-        max_sweeps, tol, deadline, resume, f32):
+        max_sweeps, tol, deadline, resume, f32, t_scale=1.0,
+        addr_limit_gb=None):
     t_start = time.perf_counter()
+    if addr_limit_gb:
+        try:
+            resource.setrlimit(resource.RLIMIT_AS,
+                               (int(addr_limit_gb * 1e9),
+                                int(addr_limit_gb * 1e9)))
+        except Exception as e:
+            print(f"  note: addr-limit raise failed ({e})", flush=True)
     D = (K + 1) ** d
     if resume and os.path.exists(state_path(tag)):
         V, state = load_state(tag)
+        if t_scale != 1.0:
+            state["t"] = float(state["t"]) * t_scale
+            state["M"] = degree_for(float(state["t"]), max(
+                float(state["c"]) - float(state["a"]),
+                float(state["b"]) - float(state["c"])))
+            print(f"  t-scale {t_scale}: t -> {state['t']:.4f}, "
+                  f"M -> {state['M']}", flush=True)
         c = float(state["c"]); t = float(state["t"])
         a = float(state["a"]); b = float(state["b"])
         M = int(state["M"]); sweeps = int(state["sweeps"])
@@ -586,6 +602,14 @@ def main():
     p.add_argument("--tol", type=float, default=2e-6)
     p.add_argument("--deadline", type=float, default=430.0)
     p.add_argument("--resume", action="store_true")
+    p.add_argument("--t-scale", type=float, default=1.0,
+                   help="rescale the resumed state's passband half-width "
+                        "by this factor (the K13-calibration route: the "
+                        "count probe overestimates at extreme narrowness, "
+                        "t/R ~ 1/460; the K13 correction was 1.236 -> 0.96)")
+    p.add_argument("--addr-limit", type=float, default=None,
+                   help="raise the address-space guard (GB) on machines "
+                        "with more RAM than the 3.4 GB laptop guard")
     p.add_argument("--f64", action="store_true",
                    help="filter in float64 throughout (reference precision)")
     p.add_argument("--validate", action="store_true")
@@ -598,7 +622,7 @@ def main():
     s = a.s or (a.k + 66)
     run(a.tag, a.d, a.K, a.g0, a.h0, a.U, a.seed, a.V, False, a.k, s,
         a.m_chunk, a.max_sweeps, a.tol, a.deadline, a.resume,
-        not a.f64)
+        not a.f64, t_scale=a.t_scale, addr_limit_gb=a.addr_limit)
 
 
 if __name__ == "__main__":

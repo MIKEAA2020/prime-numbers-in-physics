@@ -1,0 +1,86 @@
+{
+ "extract": "/home/z/my-project/repo-push/pilots/c9_chebotarev/pdg_higgs_extract_2024.json",
+ "frozen": "2026-10-06",
+ "k": 7,
+ "Nmax": 5000,
+ "labels": [
+  "bb",
+  "WW",
+  "ZZ",
+  "tautau",
+  "gammagamma",
+  "Zgamma",
+  "mumu"
+ ],
+ "f": [
+  0.53,
+  0.257,
+  0.028,
+  0.06,
+  0.0025,
+  0.0034,
+  0.00026
+ ],
+ "sigma": [
+  0.08,
+  0.025,
+  0.003,
+  0.0075,
+  0.0002,
+  0.0011,
+  0.00013
+ ],
+ "null": {
+  "trials": 3000,
+  "seed": 20261007,
+  "median": 1778.1389710335313,
+  "q95": 91317.13021488862,
+  "chi2_095_k": 14.067140449340169,
+  "FPR_at_chi2_095": 0.018,
+  "min": 1.474168080057254,
+  "n_below_data": 0
+ },
+ "injection": {
+  "N": 5040,
+  "c": [
+   2800,
+   1260,
+   140,
+   315,
+   12,
+   18,
+   1
+  ],
+  "reps": 100,
+  "rational_recovery": 0.0,
+  "median_chi2": 2.107816490680372,
+  "note": "divisor-nearest dictionary to the measured vector at N = 5040 (each c_i divides 5040; within every channel sigma)"
+ },
+ "fit": {
+  "min_chi2": 0.3325941206022329,
+  "best_N": 3672,
+  "best_c": [
+   1836,
+   918,
+   102,
+   216,
+   9,
+   12,
+   1
+  ],
+  "chi2_095": 14.067140449340169,
+  "empirical_p": 0.0,
+  "passes_threshold": true,
+  "passes_p": true,
+  "signature_present": true
+ },
+ "regime_note": "sigma_rel = 8-50%, two orders of magnitude above the calibrated sigma <= 0.3% regime: the channels are signal-strength-constrained evaluations with Standard Model theory input, not direct fraction measurements.  The null calibration carries the same weakness, so the false-positive rate is controlled but the power is minimal; the P2 injection quantifies the loss.  The seven measured channels sum to 0.881 of the width (gg, cc, and rare modes are unmeasured); the dictionary hypothesis constrains only the measured f_i = c_i/N with c_i | N, not the partition of the total.",
+ "exploratory_posthoc": {
+  "note": "NOT part of the pre-registered decision: bootstrap null around the data vector (200 draws, Gaussian noise at the table sigma, same scan). Measures the scan-selection effect at the data's channel hierarchy; the pre-registered null (structureless Dirichlet at matched sigma and total) does not match the 2000:1 channel-magnitude hierarchy of this table.",
+  "draws": 200,
+  "median": 1.5654148495341715,
+  "q05": 0.38432948170871145,
+  "min": 0.06016899351508023,
+  "P_below_data": 0.035
+ }
+}
