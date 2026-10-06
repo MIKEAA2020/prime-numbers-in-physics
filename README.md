@@ -214,6 +214,42 @@ from the modular sources and verified to compile identically (47 pp).
   (`pilots/c9_chebotarev/c9_freeze_pdg_wh.py`, `c9_ktable_fit.py`;
   extracts committed before the fits.)
 
+## The settled sector falsifier in the falsifier split, and a register rendering repair (2026-10-07)
+
+- **The settled decision object, slotted into the Section 11 mathematical/physical
+  falsifier split.** The falsifier-classes subsection records the third structural
+  fact: the mathematical class contains a settled verdict. The C4 sector
+  falsifier's adjudication is tabulated inside the split itself (per family:
+  decay-exponent interval, ratio-slope interval, realization-mean <r>, admitted
+  crossing scale; 95% t-intervals admitting the wider of the regression and
+  between-realization components), the class table's C4 decisive instance reads
+  "sector ladder kappa vs. the Haar line — settled, obstruction side", and the
+  mathematical test programs close with the dichotomy the settled object feeds:
+  an obstruction theorem (a rigorous lower bound kappa/B_count >= c_d > 1 along
+  the fixed-V ladders; the two-mode sector is the proved instance, the
+  block-tridiagonal Jacobi structure the venue) versus a thermalization proof
+  (which must operate beyond every trend the admitted intervals contain: no
+  admitted trend crosses at all in d=3/d=4, and the steepest d=5 trend crosses
+  only beyond n ~ 8e10). The register's C4 row binds to the slot (survival
+  range = the asymptotic reach beyond the crossing floor; residual-program
+  pointer), the Assessment records that one of the two numerically testable
+  entries is decided, and the abstract carries the residual-program clause.
+- **Register rendering repair.** The C4 and C9 register rows had grown past one
+  page in height, and longtable silently clipped their falsifier cells at the
+  page boundary: the C4 row lost everything from "Strong dose" onward (the
+  level-statistics and label-scrambled paragraphs, the sector form, the
+  extension, the amendment, the settled verdict) and the C9 row lost everything
+  from the k=7 record onward (the W and Higgs records, the proton-decay
+  pointer). Both rows are restructured as longtable continuation rows
+  (sentence-boundary splits; no text changed), every physical row now fits
+  within a page, and a PDF-level extraction audit verifies all row tails
+  render. The body grows by six pages, all of it previously clipped register
+  content.
+- **Open items.** The K15/K17 median-window Chebyshev rerun (turnkey,
+  RAM-gated) and new precision branching tables for the C9 dictionary
+  (data-gated) remain the only gated items; the sector falsifier program is
+  closed on the obstruction side.
+
 The single-file LaTeX manuscript (`paper/latex/manuscript.tex`) is
 regenerated from the modular sources and verified to compile identically
-(53 pp body).
+(61 pp body).

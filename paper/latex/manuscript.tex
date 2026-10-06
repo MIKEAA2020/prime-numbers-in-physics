@@ -117,7 +117,9 @@ from chaotic---their fixed-$V$ $d\ge3$ ladders, extended to $n=1.6\times10^{5}$ 
 pre-registered plateau-versus-crossing rule and its interval amendment, settle the
 sector falsifier on the obstruction side: no rung crosses the Haar line under any of
 five coupling realizations ($\kappa$ a factor $4$--$71$ above it, flat in $d=3$/$d=4$
-and separated from the Haar decay rate in $d=5$); and the
+and separated from the Haar decay rate in $d=5$), the residual program being a
+rigorous lower bound on the sector fluctuation ratio along the ladders or a crossing
+beyond $n\approx8\times10^{10}$; and the
 dictionary instrument runs table-agnostic on frozen extracts, excluding
 at the $W$ scale and flagging a precision-limited anomaly at the Higgs scale. The result is a
 framework whose theorems are proved or cited exactly, whose
@@ -942,9 +944,11 @@ $|\Delta\ell|=1$ at every tested $(d,S)$, the diagonal-block recursion
 matches the shifted sub-sector to $3.6\times10^{-15}$, and the two-mode
 closed forms reproduce the tridiagonal eigensolve to
 $\leq4\times10^{-13}$ at $S\le512$ in both dose conventions. The sector
-ladders built on this structure, and the classical limits they select, are
-the mathematical falsifier program for $\mathsf{C4}$
-(Remark~\ref{rem:numerics}(l); Section~\ref{sec:mathprograms}, item 1).
+ladders built on this structure, and the classical limits they select, are the
+mathematical falsifier for $\mathsf{C4}$: measured under the pre-registered rule,
+settled on the obstruction side (Remark~\ref{rem:numerics}(l)), and reduced by the
+settle to the lower-bound-or-crossing dichotomy of
+Section~\ref{sec:mathprograms}, item~1.
 
 \begin{remark}[The mode-count limit is singular]\label{rem:modecount}
 For an infinite active set the interacting terms do not define operators on
@@ -2784,24 +2788,28 @@ $d=4$, an upper-edge Krylov window to $D=1.05\times10^{5}$ (Remark~\ref{rem:nume
 and Krylov
 equilibration to $D\approx10^{5}$;
 falsified if the eigenstate fluctuation never approaches the thermal scaling and
-$|\mathrm{diag}-\mathrm{micro}|$ stays $O(1)$ for every interacting completion. Current evidence: the bare system is
+$|\mathrm{diag}-\mathrm{micro}|$ stays $O(1)$ for every interacting completion.\\
+ & & & & Current evidence: the bare system is
 decided---structurally non-ergodic at all scales computed; the \emph{diagonal} quartic
 localizes monotonically ($\mathrm{PR}/D\to10^{-3}$); the \emph{kinetic} completion is the
 only one that relaxes (occupation falls from $K$ to $\approx3.5$ within $\tau\approx20$, GOE
 statistics, delocalized eigenstates at matched dose), and its finite-time plateau equals the
 diagonal ensemble exactly where the latter is computable ($D\leq10^{4}$,
-$|\,\mathrm{plateau}-\mathrm{diag}\,|/K\leq0.005$); but neither scaling leg closes: in absolute
+$|\,\mathrm{plateau}-\mathrm{diag}\,|/K\leq0.005$);\\
+ & & & & but neither scaling leg closes: in absolute
 units the eigenstate fluctuation decays as $\kappa\propto D^{-0.185\pm0.021}$ at $d=3$ and
 $D^{-0.22}\to D^{-0.26}$ at $d=4$ (four points to $D=3.8\times10^{4}$, the last past the
 $LU$ ceiling) against the strong-ETH $D^{-1/2}$, its distance from the fixed-fraction
 thermal benchmark grows ($4.6\to11.3$ at $d=3$, $4.6\to7.8$ at $d=4$;
-Remark~\ref{rem:numerics}(h)--(i)), the fluctuation \emph{ratio} stays flat at the
+Remark~\ref{rem:numerics}(h)--(i)),\\
+ & & & & the fluctuation \emph{ratio} stays flat at the
 upper-edge window to $D=1.05\times10^{5}$ ($0.87$--$0.90$; Remark~\ref{rem:numerics}(j)),
 and the
 diagonal ensemble stays $0.04$--$0.09$ of $K$ away from microcanonical
 with no closing trend; at the three grids past the $LU$ ceiling the resumable
 trajectories track the same secular climb and are horizon-limited
-(Remark~\ref{rem:numerics}(k)). Strong dose ($VK^{2}\gtrsim80$) localizes. Level
+(Remark~\ref{rem:numerics}(k)).\\
+ & & & & Strong dose ($VK^{2}\gtrsim80$) localizes. Level
 statistics come free and positive (GOE at generic coupling, $\mathsf{C5}$); the
 weak-coupling $\langle r\rangle$ is quantile- and direction-dependent
 ($0.42$--$0.56$; Remark~\ref{rem:numerics}(a)), the generic band is window-dependent at
@@ -2809,7 +2817,8 @@ the edges ($0.46$--$0.54$ at the same platform), and $\mathrm{PR}/D$ is the robu
 diagnostic. Label-scrambled controls (Remark~\ref{rem:numerics}(f)) show the matched-dose
 GOE band is graph-generic while the generic-family delocalization is arithmetic:
 scrambling the diagonal at fixed density of states collapses $\mathrm{PR}/D$ by
-$2$--$12\times$. The mathematical falsifier has a sharp sector form
+$2$--$12\times$.\\
+ & & & & The mathematical falsifier has a sharp sector form
 (Prop.~\ref{prop:jacobi}, Remark~\ref{rem:numerics}(l)): the number-conserving
 core decomposes into occupation-sector ladders that are exactly
 block-tridiagonal in the layer grading, the two-mode sector is solvable in
@@ -2817,14 +2826,16 @@ closed form (picket-fence spectrum, non-decaying analytic fluctuation floor
 $|\Delta|/(30\sqrt{\Delta^{2}+4C^{2}})$), and the sector problem contains a
 single interaction (the kinetic term), exactly covariant under mode
 permutations with the prime-logarithm diagonal as the only symmetry-breaking
-term at relative strength $O(1/(VS))$. No tested sector convention
+term at relative strength $O(1/(VS))$.\\
+ & & & & No tested sector convention
 (matched-dose free limit; fixed-$V$ interaction-dominated; $\pm30\%$
 anisotropic control) exhibits the joint thermalization signature at the
 accessible dimensions, while the classical sector limits split integrable
 (one-body, matched dose) from chaotic (kinetic, fixed $V$, $d\ge3$): the
 thermalization proof and the obstruction are both open, and the sector
 ladder---$\kappa(S)$ plateau versus crossing to the Haar line with GOE
-$\langle r\rangle$---is the decision object. That object has since been
+$\langle r\rangle$---is the decision object.\\
+ & & & & That object has since been
 measured under a pre-registered extension (the classification rule frozen
 and committed before the runs): the fixed-$V$ ladders reach $n=115\,921$
 ($d=3$), $62\,196$ ($d=4$), and $35\,960$ (a new $d=5$ family), with
@@ -2833,14 +2844,17 @@ rung---$\kappa$ flat at $0.19$ in $d=3$ (all-rung slope
 $-0.0007\pm0.012$, rising tail), flat at $0.14$ in $d=4$, and separated
 from the Haar decay rate in $d=5$ ($\alpha=0.195\pm0.082$), with $\kappa$
 between $4$ and $71$ times the Haar benchmark across families and
-realizations; $\langle r\rangle$ stays off the GOE band in $d=3$/$d=4$
+realizations;\\
+ & & & & $\langle r\rangle$ stays off the GOE band in $d=3$/$d=4$
 and transits it downward in $d=5$ ($0.541\to0.499$) in the seed-$7$
-realization. The fine class labels are not stable under realization
+realization.\\
+ & & & & The fine class labels are not stable under realization
 substitution ($3$--$28\%$ scatter), so a pre-registered amendment
 replaced the point thresholds with interval containment on seed-mean
 tail statistics, replicated realizations at every tail rung (four per
 $d=3$/$d=4$ rung, five per $d=5$ rung), and added the admitted rungs
-($d=3\to n=157\,641$, $d=4\to n=76\,076$). The $d=3$ rising tail and
+($d=3\to n=157\,641$, $d=4\to n=76\,076$).\\
+ & & & & The $d=3$ rising tail and
 the $d=5$ downward $\langle r\rangle$ transit both fail to replicate
 (the realization-mean tail is flat at $0.188$--$0.191$; the mean
 $\langle r\rangle$ stays at GOE level $0.518$--$0.532$); no rung
@@ -2849,9 +2863,13 @@ $\kappa/B_{\mathrm{count}}=3.9$--$4.4$), every decay-exponent interval
 excludes the thermal-rate class ($d=5$ separated decay, $\alpha=+0.26$,
 interval $[+0.16,+0.37]$), and $\kappa/B_{\mathrm{count}}$ is
 non-decreasing in $d=3$/$d=4$ and flat within its interval in $d=5$
-(strongest admitted crossing scale $n\approx8\times10^{10}$). The
+(strongest admitted crossing scale $n\approx8\times10^{10}$).\\
+ & & & & The
 sector falsifier is settled on the obstruction side, the $d=3$/$d=4$
-sub-classes interval-reported. \textbf{M}\\
+sub-classes interval-reported (adjudication table in Section~\ref{sec:classes}); the
+entry stands on the asymptotic reach beyond the crossing floor, and the residual
+program is the promotion of the measured obstruction to a rigorous lower bound along
+the ladders (Section~\ref{sec:mathprograms}, item~1). \textbf{M}\\
 $\mathsf{C5}$ &
 \emph{Arithmetic--chaos correspondence.} The spectral statistics of the quantized
 near-singularity (BKL-type) Hamiltonian match GUE, and its spectral determinant is
@@ -2904,25 +2922,29 @@ $|G|$ by orbit--stabilizer, so the Chebotarev densities are exactly $c_{i}/N$);
 Monte-Carlo-calibrated false-positive rate $<1\%$ on random tables. The protocol is
 well-formed only when the channel set, the class-to-channel identification, and the
 group-order range are fixed before the data are examined: the calibration prices the fit,
-not the analyst's freedom. The frozen protocol has been applied to the $Z$-pole
+not the analyst's freedom.\\
+ & & & & The frozen protocol has been applied to the $Z$-pole
 five-channel table: $T=4.1\times10^{5}$ at the null's $59$th percentile---signature absent
 at the $Z$ scale with detection power $1.000$ over the whole registered range at current
 precision (each channel excludes individually at $\geq2.8\sigma$), an exclusion rather than
 an under-powered null, compatible with the conjecture's unification-scale placement and
-carrying no confirmatory content. A seven-channel granularity variant has been executed
+carrying no confirmatory content.\\
+ & & & & A seven-channel granularity variant has been executed
 under the same discipline: a frozen, committed 2024 PDG extract (seven-flavour $Z$-width
 decomposition; null calibration run before the fit; empirical false-positive rate
 $0/3000$ at the $\chi^{2}_{0.95}(7)$ threshold; injection power demonstrated at
 $3\times10^{5}$ events with the divisor-scan's highly-composite-$N$ bias documented)
 rejects every common-$N$ table ($\chi^{2}=1395$ against a threshold of $14.1$; the residual
 proximity to rational structure, at the $3.2$ percentile of the structureless null, traces
-to lepton universality, which any equal-class group reproduces). The same frozen-table
+to lepton universality, which any equal-class group reproduces).\\
+ & & & & The same frozen-table
 discipline extends to any precision branching table in minutes, and two further PDG 2024
 extracts are in the record: the $W$-boson four-channel table (a granularity amendment
 --- only four channels are measured; null calibration at $k=4$ with the table's own
 $\sigma$; injection recovery $100/100$, so the pipeline retains full power) rejects every
 common-$N$ table ($\chi^{2}=4176$ against a threshold of $9.5$; empirical $p=0.80$): the
-$W$ fractions are non-rational at their precision, an exclusion. The Higgs seven-channel
+$W$ fractions are non-rational at their precision, an exclusion.\\
+ & & & & The Higgs seven-channel
 table (bb, WW, ZZ, $\tau\tau$, $\gamma\gamma$, $Z\gamma$, $\mu\mu$; frozen and committed
 before the fit) fires the pre-registered decision rule ($\chi^{2}=0.333$ at $N=3672$,
 empirical $p<1/3000$ against the structureless null), but the channel uncertainties are
@@ -2930,7 +2952,8 @@ $8$--$50\%$ with Standard-Model-coupled provenance, the injection recovery is $0
 that precision, and a post-hoc bootstrap around the data vector lands at or below the
 data value in $3.5\%$ of draws: the anomaly is flagged, not confirmed---it requires a
 precision improvement and a shape-matched pre-registered null before any confirmatory
-reading. The fit identifies the class vector only up to common
+reading.\\
+ & & & & The fit identifies the class vector only up to common
 factors (the primitive representative of the group order). Cleanest dated falsifier:
 observed proton decay
 (Section~\ref{sec:falsify}, item 1); a single channel cannot fix a full splitting table, so
@@ -2981,6 +3004,8 @@ that survive any verdict on $\mathsf{C1}$---which is precisely why they carry th
 most economical tests. $\mathsf{C4}$'s listed dependency on $\mathsf{C1}$ is interpretive, not
 logical: the arithmetic sector and $H_{\mathrm{tot}}^{(U,V)}$ exist unconditionally, so the
 thermalization problem is well-posed even if the spectral-identification program collapses.
+One mathematical falsifier has been executed to a settled verdict
+($\mathsf{C4}$, obstruction side; Section~\ref{sec:classes}).
 Second, the falsifier column is typed (Section~\ref{sec:classes}): eight of the twelve
 entries ($\mathsf{C1}$--$\mathsf{C6}$, $\mathsf{C10}$, $\mathsf{C11}$) can be advanced or
 refuted without any experiment---by proof, or by finite computation with certified
@@ -3075,7 +3100,7 @@ classification:
 $\mathsf{C1}$ & M & derived $H_{\mathrm{sing}}$ spectrum not log-integer & proof\\
 $\mathsf{C2}$ & M & recurrence growth vs.\ polynomial-in-$S$ bound & truncation, quantified\\
 $\mathsf{C3}$ & M & $s(A)$ vs.\ computed $\log A$ corrections & literature-exact\\
-$\mathsf{C4}$ & M & ETH scaling along certified truncations & finite-size, residual-certified\\
+$\mathsf{C4}$ & M & sector ladder $\kappa$ vs.\ the Haar line---settled, obstruction side & finite-size, residual-certified\\
 $\mathsf{C5}$ & M & GUE pair correlations; Hilbert--P\'olya construction & finite-size\\
 $\mathsf{C6}$ & M & BKL-map analysis blocking critical behavior & model class\\
 $\mathsf{C7}$ & P & initial-state smoothness statistics & cosmological\\
@@ -3088,7 +3113,7 @@ $\mathsf{C12}$ & --- & interpretive; internal criteria only & ---\\
 \end{tabular}
 \end{center}
 
-Two structural facts follow. First, the framework's falsifier surface is predominantly
+Three structural facts follow. First, the framework's falsifier surface is predominantly
 mathematical: eight of the twelve entries are decidable without any experiment, which is
 unusual for a framework with cosmological ambitions and is a direct consequence of its
 arithmetical form---the physical claims compress into number-theoretic statements whose
@@ -3099,6 +3124,46 @@ branching ($\mathsf{C9}$), and the low-entropy statistics of the cosmic backgrou
 applied to measured tables---the mathematical side supplies the calibrated instrument and
 the physical side supplies the data, and the discipline on both is pre-registration on the
 physical side and certified error on the mathematical side.
+
+Third, the mathematical class contains a settled verdict. The $\mathsf{C4}$ falsifier in
+its sector form---the fixed-$V$ occupation-sector ladders of
+Proposition~\ref{prop:jacobi}, adjudicated under the committed classification rule and
+its interval amendment---has been carried through to a decision, and the adjudication
+of the decision object is part of the split:
+
+\begin{center}
+\small
+\begin{tabular}{@{}lllll@{}}
+\toprule
+\textbf{Ladder} & $\boldsymbol{\alpha}$ & $\boldsymbol{\gamma}$ &
+$\boldsymbol{\langle r\rangle}$ & \textbf{Crossing admitted}\\
+\midrule
+$d=3$ & $-0.02\;[-0.11,+0.07]$ & $+0.57\;[+0.46,+0.67]$ & $0.11$--$0.13$ & none\\
+$d=4$ & $+0.09\;[-0.17,+0.39]$ & $+0.18\;[+0.07,+0.28]$ & $0.40$--$0.41$ & none\\
+$d=5$ & $+0.26\;[+0.16,+0.37]$ & $-0.05\;[-0.15,+0.04]$ & $0.52$--$0.53$ & $n\gtrsim8\times10^{10}$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent The columns are the amendment-tail adjudication: $\alpha$ the decay exponent
+of $\kappa$ in the sector dimension $n$ (thermal rate $1/2$), $\gamma$ the slope of
+$\log(\kappa/B_{\mathrm{count}})$, and $\langle r\rangle$ the realization-mean level
+statistic at the tail rungs; the intervals are $95\%$ $t$-intervals admitting the wider
+of the regression and between-realization components. No rung of any family crosses
+the Haar benchmark under any coupling realization: $\kappa/B_{\mathrm{count}}$ lies
+between $3.9$ and $71$ over the $77$ rungs and realizations, every decay-exponent
+interval excludes the thermal rate, and the ratio slope is positive in $d=3$/$d=4$ and
+flat within its interval in $d=5$, where the steepest trend the interval admits crosses
+only beyond $n\approx8\times10^{10}$. The level statistic sits at GOE level in $d=5$
+while the fluctuation ratio stays a factor $\approx7$ above the line: wherever one
+diagnostic of the joint thermalization signature is met, the other fails. The
+adjudication also exhibits the class's operative advantage---the computation is
+noiseless and repeatable (certified eigenpair residuals, replicated coupling
+realizations, interval containment in place of point thresholds), so the residual
+uncertainty is the reach, quantified by the crossing floor, not the measurement---and
+the settled verdict feeds the residual program on this entry: a rigorous lower bound on
+$\kappa/B_{\mathrm{count}}$ along the ladders, or a crossing beyond the floor
+(Section~\ref{sec:mathprograms}, item~1).
 
 \subsection{Mathematical test programs}\label{sec:mathprograms}
 
@@ -3151,9 +3216,22 @@ as $1/S$ at matched dose, dominant at fixed $V$. The two-mode sector is closed i
 form (an obstruction by solvability, with an analytic fluctuation floor); in $d=3,4$ the
 sector ladders and the classical limits of the sector problem on
 $\mathbb{C}P^{d-1}$ (integrable one-body flow at matched dose; chaotic kinetic flow at
-fixed $V$) frame the remaining question, and the pre-registered sector rule settles on
-the obstruction side: the joint thermalization signature is excluded at every computed
-rung and under every fitted trend (Remark~\ref{rem:numerics}(l)).
+fixed $V$) frame the remaining question. The pre-registered sector rule has been
+executed to a settled verdict on the obstruction side
+(Remark~\ref{rem:numerics}(l); Section~\ref{sec:classes}), and the settled decision
+object converts the residual question into a dichotomy. An \emph{obstruction theorem}
+would promote the measured non-crossing into a rigorous lower bound
+$\kappa(S)/B_{\mathrm{count}}(S)\ge c_{d}>1$ along the fixed-$V$ ladders (measured
+minima $3.9$--$4.4$ at every rung and realization); the two-mode sector is the proved
+instance (picket level statistic, exactly linear occupation--energy relation), and the
+$d\ge3$ venue is the block-tridiagonal Jacobi structure with its single
+interaction---a well-posed problem in finite Jacobi theory whose natural tools are the
+layer-graded moment recursions and the trace formulas of the binned occupation
+observable. A \emph{thermalization proof}, conversely, must operate beyond every trend
+the admitted intervals contain---no admitted trend crosses at all in $d=3$/$d=4$, and
+the steepest $d=5$ trend crosses only beyond $n\approx8\times10^{10}$---or overturn the
+fitted decays. Both routes are statements about finite matrices; the obstruction bound
+is the route within reach of proof.
 \item \emph{Compute the level statistics of the interacting arithmetic Hamiltonian and
 compare with GUE} ($\mathsf{C5}$): the prime lattice with log-spaced on-site energies is a
 banded, incommensurate system; its statistics are accessible by dense-diagonalization
@@ -3238,7 +3316,10 @@ spectrum of spacetime itself---is stated in a form precise enough to be wrong:
 $\mathsf{C1}$ through $\mathsf{C12}$ name their evidence, their dependencies, and their
 falsifiers, the falsifier column is typed (Section~\ref{sec:classes}), and the two
 numerically testable entries ($\mathsf{C4}$, $\mathsf{C9}$) carry
-carried-out programs with stated uncertainties. A framework that can be wrong in stated
+carried-out programs with stated uncertainties; one of them is decided
+($\mathsf{C4}$: sector falsifier settled on the obstruction side at every certified
+scale, survival range bounded by the crossing floor, residual program stated as the
+lower-bound-or-crossing dichotomy of Section~\ref{sec:mathprograms}). A framework that can be wrong in stated
 ways is a research program; one that
 cannot is a metaphor.
 % =====================================================================

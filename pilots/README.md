@@ -442,3 +442,45 @@ null first, P2 injection, P3 data fit last):
 
 Outputs: `results/c9_ktable_{w,higgs}_results.json`; extracts
 `pdg_{w,higgs}_extract_2024.json` (sha256 of the source listings recorded).
+
+## Amendment A1 settle, the Section 11 slot, and the register rendering repair (2026-10-07)
+
+The pre-registered Amendment A1 (`c4_msector_extend2.py`, committed at 9ccba46
+before execution) replicated the tail rungs across coupling realizations (four
+per d=3/d=4 rung, five per d=5 rung) and replaced the point class thresholds
+with interval containment; `c4_msector_decision2.py` adjudicates:
+
+- **d=3**: alpha = -0.017 [-0.106, +0.071] — the rising tail does not replicate
+  (seed-mean flat at 0.188-0.191; per-realization slopes +0.034/+0.006/-0.033/
+  -0.076); the sub-class interval straddles the plateau boundary
+  (open-subclass, obstruction side).
+- **d=4**: alpha = +0.091 [-0.167, +0.392]; ratio slope gamma = +0.18
+  [+0.07, +0.28] (non-decreasing); open-subclass, obstruction side.
+- **d=5**: separated decay resolved (alpha = +0.263 [+0.158, +0.367]); the
+  downward GOE transit does not replicate (five-realization mean 0.518-0.532
+  at every rung — the seed-7 transit is a realization artifact; the level
+  statistic stays AT GOE level while kappa stays a factor ~7 above the line).
+- **Crossing**: zero rows over all 77 rungs/realizations (min kappa/B =
+  3.9 d3 / 4.2 d5 / 4.4 d4; max 71); ratio slope positive in d=3/d=4,
+  flat-within-interval in d=5 (steepest admitted crossing beyond n ~ 8e10).
+- **Verdict**: settled — obstruction side, robust under both readings of the
+  (A1f) gamma clause.
+
+Artifacts: `results/c4_msector_decision2.json`, the replicate npz files
+(`results/msec_*_seed*.npz`), the figure regenerated with realization-mean
+error bars (`figures/fig_c4_msector.png`).
+
+The settled decision object is slotted into the paper's Section 11
+mathematical/physical falsifier split: the adjudication table and third
+structural fact in the falsifier-classes subsection, the
+lower-bound-or-crossing dichotomy closing the mathematical test programs, the
+register C4 row bound to the slot, and the abstract clause. A PDF-level
+rendering audit found the C4 and C9 register rows taller than one page —
+longtable was silently clipping their falsifier cells at the page boundary
+(C4 lost everything from "Strong dose" onward; C9 lost everything from the
+k=7 record onward); both rows are repaired as longtable continuation rows
+(no text changed) and all row tails are verified in the deployed 62-page
+final.pdf.
+
+Remaining: the K15/K17 median-window rerun (RAM-gated, turnkey) and new frozen
+precision tables (data-gated).
