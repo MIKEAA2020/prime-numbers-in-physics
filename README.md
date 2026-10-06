@@ -250,6 +250,45 @@ from the modular sources and verified to compile identically (47 pp).
   (data-gated) remain the only gated items; the sector falsifier program is
   closed on the obstruction side.
 
+## The obstruction attack and the 2026 listing cycle
+
+Two records extend the line:
+
+- **Obstruction-bound attack (moment recursions on the layer-graded
+  blocks).** The registered venue is executed: the layer-content moments
+  Tr(H^m P_l) are computed exactly by block-column propagation (validated
+  to 3.4e-16 vs dense powers), the trace formulas split the window
+  occupation variance exactly (Tr(rho_W (Delta K)^2) = E[v_layer] +
+  Var_W(a), validated to 2e-13), the between-bin tier of a lower bound is
+  trace-computable, and the within-bin tier is identified as a pinching
+  (two-copy) loop object that single-copy traces cannot reach (the
+  surrogate overshoots the loop by the measured off-diagonal fraction).
+  The kinetic interaction is exactly S_d-invariant (all permutation
+  commutators vanish identically); the isotypic decomposition localizes
+  the d=3 occupation fluctuation entirely in the standard-isotypic
+  multiplets (trivial/sign components carry <K> = S/d exactly, verified to
+  1.4e-13; the eigenstate occupation is constant on the surviving
+  near-degenerate multiplet pairs). The obstruction theorem is reduced to
+  the profile-margin statement with two completion routes (the two-copy
+  replica bound or a multiplet-dipole control); the paper carries
+  Proposition 3.11, Remark 3.12, and the new Remark (m).
+- **C9 on the 2026 PDG listings.** The W and Higgs 2026 extracts are
+  frozen and committed before the fits (the Higgs mu mu channel improves
+  to (3.0 +- 0.9)e-4, the only change; the W fractions are unchanged and
+  the width average moves to 2.14 +- 0.05 GeV). The refits reproduce the
+  verdicts: W excludes identically (chi2 = 4176, injection power
+  100/100); Higgs fires the rule again (chi2 = 0.386 at N = 3168) with
+  the injection truth now a valid dictionary (the 2024 recorded truth was
+  not: 2800 does not divide 5040, confounding the power read) — recovery
+  0/100, post-hoc bootstrap P = 10.5%: flagged, not confirmed, with the
+  power starvation cleanly measured.
+- **K15/K17 median-window rerun.** Executed on the available hardware
+  with the checkpoint loop hardened to atomic saves: the loop mechanics
+  run cleanly end-to-end at K15 (D = 65536), and the certification tier
+  is degree-walled on the committed machinery (the M <= 1500 cap against
+  the ~7e3 the K15 band narrowness prices); the resumable state
+  accompanies the pilots for continuation. The body is 66 pp.
+
 The single-file LaTeX manuscript (`paper/latex/manuscript.tex`) is
 regenerated from the modular sources and verified to compile identically
-(61 pp body).
+(66 pp body).

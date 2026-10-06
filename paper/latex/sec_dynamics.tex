@@ -404,6 +404,179 @@ settled on the obstruction side (Remark~\ref{rem:numerics}(l)), and reduced by t
 settle to the lower-bound-or-crossing dichotomy of
 Section~\ref{sec:mathprograms}, item~1.
 
+\begin{proposition}[Layer-graded moment recursions and the obstruction
+architecture]\label{prop:moments}
+Fix $d\ge2$, $S$, $\kappa=0$, and let $H^{(S)}$ be the sector block of
+Proposition~\ref{prop:jacobi} in the layer grading, with layer projectors
+$P_{\ell}$, $\ell=0,\dots,S$, layer operator $L=\sum_{\ell}\ell
+P_{\ell}$, and mode-$1$ occupation $K=S-L$.
+\begin{enumerate}[leftmargin=1.6em]
+\item \emph{Moment recursion.} The layer-content moments
+$t_m(\ell)=\mathrm{Tr}\bigl(H^{m}P_{\ell}\bigr)
+=\sum_j E_j^{\,m}c_j(\ell)$---the moments of the joint
+(eigenvalue,~layer) measure
+$\nu(E,\ell)=\sum_j c_j(\ell)\,\delta(E-E_j)$, where
+$c_j(\ell)=\langle\psi_j|P_{\ell}|\psi_j\rangle$ is the layer content of
+eigenstate $j$---are computed exactly by block-column propagation in the
+layer grading: from each source layer $\ell_0$, the block
+$X_m=H^{m}P_{\ell_0}$ evolves by $X_{m+1}=HX_m$, and
+$\mathrm{Tr}(H^{m}P_{\ell})=\mathrm{Tr}(P_{\ell}H^{m}P_{\ell})$ (all
+cross-layer block traces vanish by cyclicity), so $t_m(\ell_0)$ is the
+trace of the $(\ell_0,\ell_0)$ block of $H^{m}$. The cost is one
+sparse--dense product per moment per source layer; the diagonal blocks
+recurse to lower mode counts by Proposition~\ref{prop:jacobi}(i), and at
+$d=2$ the corner layer terminates the ladder in the closed Jacobi form.
+\item \emph{Trace formulas and the variance splitting.} Every aggregate
+layer statistic of an energy window $W$ is a trace functional of the joint
+measure: the window layer masses
+$N_{W}(\ell)=\mathrm{Tr}\bigl(\mathbf{1}_{W}(H)P_{\ell}\bigr)$, the
+aggregate layer mean $\bar L(W)=\sum_{\ell}\ell N_{W}(\ell)/|W|$, and the
+aggregate layer variance
+$\sigma_L^{2}(W)=\mathrm{Tr}\bigl(\rho_W(\Delta L)^{2}\bigr)$ with
+$\rho_W=\mathbf{1}_{W}(H)/|W|$ the window's maximally mixed state. The
+occupation variance of $\rho_W$ splits exactly into a quantum and a
+classical part,
+\begin{equation*}
+\mathrm{Tr}\bigl(\rho_W(\Delta K)^{2}\bigr)
+=\mathbb{E}_{W}\bigl[v^{\ell}\bigr]+\mathrm{Var}_{W}(a),
+\qquad
+v^{\ell}_j=\bigl\langle\psi_j\bigl(L-\langle L\rangle_j\bigr)^{2}
+\bigr|\psi_j\bigr\rangle,
+\end{equation*}
+where $\mathbb{E}_W[v^{\ell}]$ is the mean intra-eigenstate layer variance
+and $\mathrm{Var}_{W}(a)$ the inter-eigenstate occupation variance---the
+numerator of the fluctuation ratio $\kappa$, up to binning. Consequently
+$\mathrm{Var}_{W}(a)=\sigma_L^{2}(W)-\mathbb{E}_{W}[v^{\ell}]$ exactly,
+and $\mathrm{Var}_{W}(a)$ dominates its between-bin part
+$\mathrm{Var}_{\mathrm{bins}}\bigl(\bar a_b\bigr)$, which is itself a
+trace functional (per-bin window masses and first moments).
+\item \emph{The pinching obstruction.} The within-bin part of
+$\mathrm{Var}_{W}(a)$ is not a single-copy trace functional of $H$. It is
+the loop sum $\sum_{j\in W}a_j^{2}$, the square of the eigenbasis diagonal
+of $K$, which equals
+$\mathrm{Tr}\bigl[\widetilde{\Pi}_{W}(K\otimes I)\widetilde{\Pi}_{W}
+(K\otimes I)\bigr]$ in the two-copy space, with
+$\widetilde{\Pi}_{W}=\sum_{j\in W}|\psi_j\rangle\langle\psi_j|\otimes
+|\psi_j^{*}\rangle\langle\psi_j^{*}|$ the pinching (commutant) projector.
+Every single-copy trace $\mathrm{Tr}\bigl(g(H)X\bigr)$ with
+$X=K^{p}H^{q}K^{r}\cdots$ reduces to eigenvalue-weighted sums
+$\sum_j g(E_j)\langle\psi_j|X|\psi_j\rangle$ carrying one eigenstate
+index; the loop carries two on the same index. The single-copy surrogate
+$\mathrm{Tr}(K\Pi_WK\Pi_W)$ equals the loop sum plus the window-internal
+off-diagonal matrix elements of $K$ in the eigenbasis.
+\item \emph{The permutation architecture.} The kinetic interaction is
+exactly invariant under the full mode-permutation group: its commutator
+with the permutation operator of every $\pi\in S_d$ vanishes identically,
+because the kinetic sum runs over unordered mode pairs with the
+pair-symmetric bond weight $\tfrac{V}{2}(k_p+k_q)\sqrt{(k_p+1)k_q}$. The
+sector representation of $S_d$ decomposes into isotypic components with
+Burnside multiplicities (at $d=3$: trivial, sign, and standard, the
+standard component carrying the $2$-dimensional irrep at
+two-thirds of the dimension). Every vector in a one-dimensional isotypic
+component satisfies $\langle K\rangle=S/d$ exactly, by averaging
+$\langle\psi|\pi K\pi^{-1}|\psi\rangle=\langle K\rangle$ over $\pi$: the
+occupation fluctuation is carried entirely by the standard-isotypic
+content. The standard multiplets of the kinetic term are exact
+$2$-fold degeneracies; in the full Hamiltonian a growing subfamily
+survives as numerically exact pairs whose refined splittings decay with
+$S$ and on which the eigenstate occupation is constant to the solver
+floor---the eigenstate occupation is a multiplet label, and the
+inter-eigenstate fluctuation is the inter-multiplet spread.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}[Proof sketch]
+(i) Insert the resolution $\sum_{\ell'}P_{\ell'}$ into
+$\mathrm{Tr}(H^{m}P_{\ell})$ and use
+$P_{\ell_0}P_{\ell}=0$ for $\ell_0\neq\ell$ with cyclicity:
+$\mathrm{Tr}(H^{m}P_{\ell})=\mathrm{Tr}(P_{\ell}H^{m}P_{\ell})$, the
+trace of the $(\ell,\ell)$ block of $H^{m}$; the block-column
+propagation produces exactly these blocks, and
+$t_0(\ell)=\dim P_{\ell}$. (ii) Expand
+$\mathrm{Tr}(\rho_WK^{2})$ in the eigenbasis:
+$\langle\psi_j|K^{2}|\psi_j\rangle=v^{\ell}_j+a_j^{2}$ because $K$ is
+layer-diagonal, so the intra-state layer variance is the quantum variance
+of $K$ in the eigenstate; subtracting
+$\bigl(\mathrm{Tr}\rho_WK\bigr)^{2}=\bar a^{2}$ leaves
+$\mathbb{E}[v]+\mathrm{Var}(a)$; the between-bin decomposition is the
+law of total variance over the eigenvalue bins. (iii) A single-copy trace
+$\mathrm{Tr}(g(H)X)$ is diagonal-weighted by the eigenvalues of $H$ alone;
+the loop $\sum_j\langle\psi_j|K|\psi_j\rangle^{2}$ is the Hilbert--Schmidt
+norm of the pinched operator $\sum_j a_j|\psi_j\rangle\langle\psi_j|$,
+and the pinching channel onto the eigenbasis diagonal is the group average
+over diagonal unitaries in that basis---not a function of $H$; the
+two-copy identity follows by expanding
+$\widetilde{\Pi}_{W}(K\otimes I)\widetilde{\Pi}_{W}$ in the product
+eigenbasis, and the surrogate identity by expanding
+$\mathrm{Tr}(K\Pi_WK\Pi_W)=\sum_{j,j'\in W}
+|\langle\psi_j|K|\psi_{j'}\rangle|^{2}$. (iv) The permutation invariance
+of the kinetic term is the pair-symmetry of its bond weights; the Burnside
+multiplicities are the character counts of the $S_d$-action on
+compositions; the isotypic identity is the averaging argument; the
+multiplet statements are the representation theory of the $2$-dimensional
+irrep together with the measured census.
+\end{proof}
+
+The second proposition is validated numerically to roundoff at both the
+$d=3$ and $d=4$ platforms. The moment recursion reproduces the dense-power
+layer moments to $3.4\times10^{-16}$ relative at $d=3$, $S=60$
+($n=1891$, $m\le24$) and $1.4\times10^{-19}$ at $d=4$, $S=16$
+($n=969$, $m\le16$), with trace sums $\sum_{\ell}t_m(\ell)=
+\mathrm{Tr}(H^{m})$ to $1.9\times10^{-16}$; the splitting identity holds
+to $2\times10^{-13}$, the $S=60$ window reading
+$226.8=211.8+15.0$ (the intra-eigenstate part $93.4\%$, the classical
+part $6.6\%$, of which the between-bin trace bound captures $4.0\%$); the
+aggregate layer statistics of the same window (mean $40.15$ against
+$S(d-1)/d=40$; standard deviation $0.251\,S$) reproduce the direct
+eigen-decomposition values; the single-copy surrogate exceeds the loop sum
+by the off-diagonal fraction $31.8\%$ ($35.4\%$ at the $d=4$ platform);
+the permutation commutators vanish identically for all five nontrivial
+permutations at $d=3$ and all twenty-three at $d=4$; the isotypic
+multiplicities match the Burnside counts at every $S$ tested; the
+trivial- and sign-restricted dipoles $\langle K\rangle-S/d$ are bounded
+by $1.4\times10^{-13}$ while the standard-restricted dipoles carry the
+full window spread (standard deviation $2.85$ against the window dipole
+standard deviation $3.88$ at $S=60$); and the multiplet census reads:
+the kinetic-only doublets equal the standard multiplicity exactly at
+$S=20$ ($77=77$), the surviving full-Hamiltonian pairs grow from $0$ to
+$725$ between $S=20$ and $S=120$ (fractions $0\to9.8\%$) with refined
+median splittings $2.1\times10^{-9}\to3.6\times10^{-12}$ and
+within-pair occupation gaps at the $10^{-9}$--$10^{-12}$ floor.
+
+\begin{remark}[What the obstruction bound reduces to]\label{rem:obstruction}
+Proposition~\ref{prop:moments} fixes the logical shape of the obstruction
+theorem of Section~\ref{sec:mathprograms}, item~1, and its limit. By item
+(ii) the claim $\kappa(S)\ge f_{d}\,S/\mathrm{std}_{\mathrm{basis}}$ along
+a fixed-$V$ ladder is equivalent, up to the binning inequality
+$\sigma_{\mathrm{ETH}}^{2}\le\mathrm{Var}_{W}(a)$, to the
+\emph{profile-margin statement}:
+the mean intra-eigenstate layer variance stays below the aggregate layer
+variance by a macroscopic margin,
+$\mathbb{E}_W[v^{\ell}]\le(1-f_{d}^{2}\,\mathrm{std}_{\mathrm{basis}}
+^{2}/\sigma_L^{2})\,\sigma_L^{2}$---the eigenstate layer profiles do not
+equilibrate to the window aggregate. The measured margins are $6.6\%$ of
+the variance at $S=60$ and $5.5\%$ at $S=120$ ($d=3$, fixed $V$), matching
+the ladder plateau. By item (iii) the single-copy tier cannot close the
+statement: the between-bin bound is the only trace-computable part (it
+captures $4\%$ of the classical variance, because the fluctuation lives
+within bins), and the within-bin tier is pinching-locked---a rigorous
+lower bound requires the two-copy replica operator
+$\widetilde{\Pi}_{W}$, whose matrix elements are long-time averages of
+$e^{it(H\otimes I-I\otimes H)}$-twists and are not polynomials in $H$. By
+item (iv) the $d=3$ mechanism is identified: the eigenstate occupation is
+constant on the surviving multiplets and the fluctuation is the
+inter-multiplet dipole spread, carried entirely by the standard-isotypic
+content (the window eigenstates distribute over the isotypic components
+at the dimension fractions $0.16/0.17/0.67$). Two completion routes
+remain: a replica (two-copy) bound on the within-bin loop, or a
+multiplet-dipole control---a statement that the inter-multiplet dipoles
+cannot collapse to zero, which no single-copy trace can force (the sum
+rule fixes only their mean). The registered dichotomy is thus sharpened,
+not closed: the obstruction side now has an exact decomposition, a
+mechanism, and a measured margin, and its missing step is a loop object
+by construction.
+\end{remark}
+
 \begin{remark}[The mode-count limit is singular]\label{rem:modecount}
 For an infinite active set the interacting terms do not define operators on
 $\ell^{2}(\mathcal{F})$ at all: from any configuration with $k_{q}\geq1$, the hop
@@ -639,7 +812,22 @@ edge is a different sector---$\langle r\rangle_{\mathrm{edge}}=0.38$--$0.43$
 (Poisson-like), $\mathrm{PR}/D=0.054\to0.009$ (semi-localized band-edge
 chains)---so the edge ladder is reported as a corroborating measurement of the
 fluctuation ratio's flatness past both ceilings, not as a substitute for the
-median window. The bin-width control (eleven to one hundred sixteen levels per
+median window. The turnkey rerun of the median window at the two grids past
+the $LU$ ceiling has been executed on the available hardware with the
+checkpoint loop hardened to atomic saves (write-then-rename, so an external
+kill cannot truncate the resumable state): the platform build, passband
+adaptation, sweep loop, and resume cycle run cleanly end-to-end at
+$K=15$ ($D=65536$), but the certification tier is degree-walled on the
+committed machinery at this band narrowness---the Chebyshev degree cap
+($M\le1500$) sits against the $\ln(10^{4})\,R/(2t)\approx7\times10^{3}$
+that the $K15$ median band ($t/R\approx1/1500$) prices, so the discovery
+phase advances sweep by sweep (passband widening at the calibrated
+$1.15$ rate per Rayleigh--Ritz pass) without reaching the $350$-pair
+certification in session-scale wall-clock; the resumable state accompanies
+the pilots for continuation, the partial-certification record at the
+$K13$ platform ($276/370$ at degree $3400$) marking the tier the lift
+restores.
+The bin-width control (eleven to one hundred sixteen levels per
 bin) moves the ratio by less than $0.05$ at every grid where it is computable.
 (k) \emph{Matched-dose trajectories at the three largest grids.} The
 resumable Krylov trajectories extend the equilibration record to the grids
@@ -757,6 +945,34 @@ extension rungs, level statistics with the GOE band, classical
 exponents, and the corner-state Krylov growth, whose $d=2$ sequence is
 the binomial $\beta_n=C\sqrt{n(S+1-n)}$ exactly, as the solvability
 requires).
+(m) \emph{The obstruction attack: architecture along the ladder.} The
+moment recursions, trace formulas, and the pinching and permutation
+structure of Proposition~\ref{prop:moments} were run against the settled
+ladders, and the architecture scales. The intra-eigenstate layer profiles
+are broad---each eigenstate's layer content has standard deviation
+$0.24\,S$ at $d=3$, $S=120$---yet they are \emph{shifted copies} of one
+another and of the window aggregate (profile-shape correlation $0.72$
+across the spectrum ends at a best shift of $\pm0.1\,S$): the classical
+occupation variance is exactly the spread of the shifts
+($\mathrm{Var}_{W}(a)=\sigma_L^{2}-\mathbb{E}_W[v^{\ell}]$,
+Remark~\ref{rem:obstruction}), with the measured margin
+$\sigma_L^{2}-\mathbb{E}_W[v^{\ell}]$ equal to $6.6\%$ of
+$\sigma_L^{2}$ at $S=60$ and $5.5\%$ at $S=120$---the ladder plateau in
+decomposed form. The multiplet census tracks the level statistic: the
+fraction of the median window in numerically exact pairs grows from
+$1.6\%$ at $S=60$ to $28\%$ at $S=480$ as $\langle r\rangle$ falls to
+$0.10$, and the within-pair occupation gaps stay at the solver floor
+while the inter-pair occupation jumps reach $0.2\,S$---the fluctuation is
+inter-multiplet at every scale where the pairs resolve. The window
+eigenstates distribute over the isotypic components at the dimension
+fractions (trivial/sign/standard $=0.16/0.17/0.67$ at $d=3$), so the
+permutation symmetry is fully broken in the eigenstates even as its
+multiplet skeleton organizes the spectrum. The attack's output is the
+sharpened dichotomy of Remark~\ref{rem:obstruction}: the obstruction
+side now carries an exact decomposition (trace tier), a mechanism
+(multiplet architecture), and a measured non-decaying margin, with the
+missing step identified as a two-copy loop object rather than an
+unavailable measurement.
 \end{remark}
 
 \begin{figure}[t]

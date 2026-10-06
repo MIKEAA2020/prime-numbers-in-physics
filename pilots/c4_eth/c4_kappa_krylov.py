@@ -258,7 +258,13 @@ def state_path(tag):
 
 
 def save_state(tag, V, meta):
-    np.savez_compressed(state_path(tag), V=V, **meta)
+    # atomic: write to a sibling temp file and rename over the checkpoint,
+    # so an external kill between write and rename leaves either the old
+    # checkpoint or the new one, never a truncated one (the temp name must
+    # end in .npz: np.savez_compressed appends .npz otherwise)
+    tmp = state_path(tag) + ".tmp.npz"
+    np.savez_compressed(tmp, V=V, **meta)
+    os.replace(tmp, state_path(tag))
 
 
 def load_state(tag):

@@ -482,5 +482,32 @@ k=7 record onward); both rows are repaired as longtable continuation rows
 (no text changed) and all row tails are verified in the deployed 62-page
 final.pdf.
 
-Remaining: the K15/K17 median-window rerun (RAM-gated, turnkey) and new frozen
-precision tables (data-gated).
+## The obstruction attack (moment recursions), the 2026 C9 cycle, the
+K15/K17 rerun
+
+- **`c4_msector_moments.py`** — the layer-graded moment recursions
+  (block-column propagation; validated to 3.4e-16 / 1.4e-19 vs dense
+  powers at d3 S60 / d4 S16), the trace formulas and the exact variance
+  splitting (quantum + classical; identity to 2e-13), the between-bin
+  bound, and the loop-vs-surrogate measurement (off-diagonal fraction
+  31.8% / 35.4%).
+- **`c4_msector_symmetry.py`** — the permutation architecture: kinetic
+  commutators vanish identically for every mode permutation at d=3/d=4;
+  the tau-split with the exact tau-even part; the Burnside isotypic
+  counts; the multiplet census with Rayleigh-refined pair splittings
+  (medians 2.1e-9 -> 3.6e-12 from S=40 to S=120) and the within-pair
+  occupation gaps at the solver floor.
+- **C9 2026** (`c9_freeze_pdg_2026.py`, `c9_ktable_fit_2026.py` in
+  `pilots/c9_chebotarev/`): the frozen 2026 extracts (committed at
+  f7100fe before the fits) and the refit records — W exclusion
+  reproduced, Higgs fires with a valid dictionary truth (0/100 power,
+  post-hoc P = 10.5%).
+- **K15/K17 rerun** (`run_c4_median_k15k17.sh` with the atomic-checkpoint
+  `c4_kappa_krylov.py`): executed at K15 on this hardware class; the
+  resumable state `krs_L36d4K15kr.npz` and the run log
+  (`results/k15k17_rerun.log`) record the degree wall at the committed
+  cap; continuation is turnkey.
+
+Remaining: the K15/K17 certification tier (RAM/wall-clock gated, resumable
+state deployed); the obstruction lower bound's two completion routes
+(two-copy replica bound; multiplet-dipole control).

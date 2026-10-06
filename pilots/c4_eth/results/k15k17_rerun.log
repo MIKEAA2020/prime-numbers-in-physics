@@ -1,0 +1,80 @@
+=== L36d4K15kr (d=4 K=15 D=65536, V=0.16, dose 36) ===
+  note: addr-limit raise failed (not allowed to raise maximum limit)
+[L36d4K15kr] resume: D=65536 sweeps=0 chunks=6 M=1500 t=0.380 phase=0
+Traceback (most recent call last):
+  File "/home/z/my-project/scripts/c4_kappa_krylov.py", line 413, in run
+    raise DeadlineHit()
+DeadlineHit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/z/my-project/scripts/c4_kappa_krylov.py", line 634, in <module>
+    main()
+  File "/home/z/my-project/scripts/c4_kappa_krylov.py", line 628, in main
+    run(a.tag, a.d, a.K, a.g0, a.h0, a.U, a.seed, a.V, False, a.k, s,
+  File "/home/z/my-project/scripts/c4_kappa_krylov.py", line 494, in run
+    save_state(tag, V, dict(c=c, t=float(state["t"]), a=float(state["a"]),
+  File "/home/z/my-project/scripts/c4_kappa_krylov.py", line 266, in save_state
+    os.replace(tmp, state_path(tag))
+FileNotFoundError: [Errno 2] No such file or directory: '/home/z/my-project/download/pilot_c4_eth_scaled/krs_L36d4K15kr.npz.tmp' -> '/home/z/my-project/download/pilot_c4_eth_scaled/krs_L36d4K15kr.npz'
+L36d4K15kr: MAX_CHUNKS (1) reached without certification.
+=== L36d4K17kr (d=4 K=17 D=104976, V=0.1245675, dose 36) ===
+  note: addr-limit raise failed (not allowed to raise maximum limit)
+[L36d4K17kr] D=104976 nnz=2021760 c=45.450 edges=[-166.44,658.80] t=0.268 (eps-ratio 3.00) M=1500 s=416
+=== L36d4K15kr (d=4 K=15 D=65536, V=0.16, dose 36) ===
+  note: addr-limit raise failed (not allowed to raise maximum limit)
+[L36d4K15kr] resume: D=65536 sweeps=0 chunks=6 M=1500 t=0.380 phase=0
+  deadline: state saved (sweeps=0, chunks=12, phase=0) -- rerun with --resume
+L36d4K15kr: MAX_CHUNKS (1) reached without certification.
+=== L36d4K15kr (d=4 K=15 D=65536, V=0.16, dose 36) ===
+  note: addr-limit raise failed (not allowed to raise maximum limit)
+[L36d4K15kr] resume: D=65536 sweeps=0 chunks=12 M=1500 t=0.380 phase=0
+  sweep 1 phase 0: M=1500 count_in=8 count_est=-- conv_band=0 resid_q=[70.638 74.231 88.849] theta_near_c=[0.035 0.046 0.148 0.151 0.194]
+  deadline: state saved (sweeps=1, chunks=0, phase=0) -- rerun with --resume
+L36d4K15kr: MAX_CHUNKS (1) reached without certification.
+=== L36d4K15kr (d=4 K=15 D=65536, V=0.16, dose 36) ===
+  note: addr-limit raise failed (not allowed to raise maximum limit)
+[L36d4K15kr] resume: D=65536 sweeps=1 chunks=0 M=1500 t=0.437 phase=0
+  deadline: state saved (sweeps=1, chunks=13, phase=0) -- rerun with --resume
+L36d4K15kr: MAX_CHUNKS (1) reached without certification.
+=== L36d4K15kr (d=4 K=15 D=65536, V=0.16, dose 36) ===
+  note: addr-limit raise failed (not allowed to raise maximum limit)
+[L36d4K15kr] resume: D=65536 sweeps=1 chunks=13 M=1500 t=0.437 phase=0
+  sweep 2 phase 0: M=1500 count_in=9 count_est=-- conv_band=0 resid_q=[68.1   72.158 88.327] theta_near_c=[0.028 0.108 0.135 0.215 0.242]
+  deadline: state saved (sweeps=2, chunks=7, phase=0) -- rerun with --resume
+L36d4K15kr: MAX_CHUNKS (1) reached without certification.
+=== L36d4K15kr (d=4 K=15 D=65536, V=0.16, dose 36) ===
+  note: addr-limit raise failed (not allowed to raise maximum limit)
+[L36d4K15kr] resume: D=65536 sweeps=2 chunks=7 M=1500 t=0.502 phase=0
+  sweep 3 phase 0: M=1500 count_in=10 count_est=-- conv_band=0 resid_q=[66.013 70.121 87.94 ] theta_near_c=[0.113 0.114 0.156 0.297 0.316]
+  deadline: state saved (sweeps=3, chunks=0, phase=0) -- rerun with --resume
+L36d4K15kr: MAX_CHUNKS (1) reached without certification.
+=== L36d4K15kr (d=4 K=15 D=65536, V=0.16, dose 36) ===
+  note: addr-limit raise failed (not allowed to raise maximum limit)
+[L36d4K15kr] resume: D=65536 sweeps=3 chunks=0 M=1500 t=0.578 phase=0
+  deadline: state saved (sweeps=3, chunks=12, phase=0) -- rerun with --resume
+L36d4K15kr: MAX_CHUNKS (1) reached without certification.
+=== L36d4K15kr (d=4 K=15 D=65536, V=0.16, dose 36) ===
+  note: addr-limit raise failed (not allowed to raise maximum limit)
+[L36d4K15kr] resume: D=65536 sweeps=3 chunks=12 M=1500 t=0.578 phase=0
+  sweep 4 phase 0: M=1500 count_in=10 count_est=-- conv_band=0 resid_q=[63.761 67.227 87.768] theta_near_c=[0.    0.142 0.164 0.209 0.265]
+  deadline: state saved (sweeps=4, chunks=6, phase=0) -- rerun with --resume
+L36d4K15kr: MAX_CHUNKS (1) reached without certification.
+=== L36d4K15kr (d=4 K=15 D=65536, V=0.16, dose 36) ===
+  note: addr-limit raise failed (not allowed to raise maximum limit)
+[L36d4K15kr] resume: D=65536 sweeps=4 chunks=6 M=1500 t=0.665 phase=0
+  sweep 5 phase 0: M=1500 count_in=13 count_est=-- conv_band=0 resid_q=[59.562 63.58  84.866] theta_near_c=[0.029 0.046 0.132 0.258 0.275]
+  deadline: state saved (sweeps=5, chunks=0, phase=0) -- rerun with --resume
+L36d4K15kr: MAX_CHUNKS (1) reached without certification.
+=== L36d4K15kr (d=4 K=15 D=65536, V=0.16, dose 36) ===
+  note: addr-limit raise failed (not allowed to raise maximum limit)
+[L36d4K15kr] resume: D=65536 sweeps=5 chunks=0 M=1500 t=0.764 phase=0
+  deadline: state saved (sweeps=5, chunks=13, phase=0) -- rerun with --resume
+L36d4K15kr: MAX_CHUNKS (1) reached without certification.
+=== L36d4K15kr (d=4 K=15 D=65536, V=0.16, dose 36) ===
+  note: addr-limit raise failed (not allowed to raise maximum limit)
+[L36d4K15kr] resume: D=65536 sweeps=5 chunks=13 M=1500 t=0.764 phase=0
+  sweep 6 phase 0: M=1500 count_in=21 count_est=-- conv_band=0 resid_q=[50.056 60.021 81.716] theta_near_c=[0.012 0.02  0.045 0.12  0.174]
+  deadline: state saved (sweeps=6, chunks=6, phase=0) -- rerun with --resume
+L36d4K15kr: MAX_CHUNKS (1) reached without certification.

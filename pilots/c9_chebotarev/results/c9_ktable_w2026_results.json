@@ -1,0 +1,63 @@
+{
+ "extract": "/home/z/my-project/repo-push/pilots/c9_chebotarev/pdg_w_extract_2026.json",
+ "frozen": "2026-10-07",
+ "k": 4,
+ "Nmax": 5000,
+ "labels": [
+  "e_nu",
+  "mu_nu",
+  "tau_nu",
+  "hadrons"
+ ],
+ "f": [
+  0.1071,
+  0.1063,
+  0.1138,
+  0.6741
+ ],
+ "sigma": [
+  0.0016,
+  0.0015,
+  0.0021,
+  0.0027
+ ],
+ "null": {
+  "trials": 3000,
+  "seed": 20261008,
+  "median": 1229.2685089767388,
+  "q95": 14025.010917572185,
+  "chi2_095_k": 9.487729036781154,
+  "FPR_at_chi2_095": 0.002,
+  "min": 3.96456493313694,
+  "n_below_data": 2411
+ },
+ "injection": {
+  "N": 24,
+  "c": [
+   3,
+   3,
+   6,
+   12
+  ],
+  "reps": 100,
+  "rational_recovery": 1.0,
+  "median_chi2": 2.928886347840934,
+  "note": "W-like shape; every c_i divides 24 (unchanged from the 2024 truth, which is a valid dictionary)"
+ },
+ "fit": {
+  "min_chi2": 4176.073170548313,
+  "best_N": 18,
+  "best_c": [
+   2,
+   2,
+   2,
+   9
+  ],
+  "chi2_095": 9.487729036781154,
+  "empirical_p": 0.8036666666666666,
+  "passes_threshold": false,
+  "passes_p": false,
+  "signature_present": false
+ },
+ "regime_note": "k = 4 granularity amendment: only four W channels are measured, so the k = 5/7 calibrated granularity does not exist for this table; the null calibration runs at k = 4 with the table's own sigma, so the false-positive rate is controlled.  sigma_rel = 1.4-1.8% on the leptonic channels and 0.4% on hadrons, above the Z-pole regime; the four-channel fit has three independent constraints, and the power is correspondingly limited (P2 quantifies it).  The 2026 listing carries the same OUR FIT fractions as 2024; the total-width OUR AVERAGE moves to 2.14 +- 0.05 GeV (ATLAS 24CJ enters the combination) and the dictionary statistic is unchanged because it uses the fractions only."
+}

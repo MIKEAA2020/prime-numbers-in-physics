@@ -163,7 +163,11 @@ sector falsifier is settled on the obstruction side, the $d=3$/$d=4$
 sub-classes interval-reported (adjudication table in Section~\ref{sec:classes}); the
 entry stands on the asymptotic reach beyond the crossing floor, and the residual
 program is the promotion of the measured obstruction to a rigorous lower bound along
-the ladders (Section~\ref{sec:mathprograms}, item~1). \textbf{M}\\
+the ladders (Section~\ref{sec:mathprograms}, item~1)---reduced by the
+moment-recursion attack to the profile-margin statement, with the within-bin tier
+identified as a two-copy loop object and the $d=3$ mechanism localized in the
+standard-isotypic multiplets (Proposition~\ref{prop:moments},
+Remark~\ref{rem:obstruction}). \textbf{M}\\
 $\mathsf{C5}$ &
 \emph{Arithmetic--chaos correspondence.} The spectral statistics of the quantized
 near-singularity (BKL-type) Hamiltonian match GUE, and its spectral determinant is
@@ -247,6 +251,25 @@ that precision, and a post-hoc bootstrap around the data vector lands at or belo
 data value in $3.5\%$ of draws: the anomaly is flagged, not confirmed---it requires a
 precision improvement and a shape-matched pre-registered null before any confirmatory
 reading.\\
+ & & & & The 2026 PDG listing extracts extend the record under the
+same discipline (frozen and committed before the fits). The $W$ fractions
+are unchanged from the 2024 listing (the total-width average moves to
+$2.14\pm0.05$\,GeV as the ATLAS result enters the combination) and the
+refit reproduces the exclusion identically ($\chi^{2}=4176$ at $N=18$,
+empirical $p=0.80$, injection recovery $100/100$). The Higgs $\mu\mu$
+channel improves to $(3.0\pm0.9)\times10^{-4}$ ($\sigma_{\mathrm{rel}}$
+$50\%\to30\%$, the only changed channel) and the refit fires the rule
+again ($\chi^{2}=0.386$ at $N=3168$, empirical $p<1/3000$), with the
+injection truth now a valid dictionary---the minimum-$\chi^{2}$
+common-$N$ table of the frozen vector, within one $\sigma$ in every
+channel; the 2024 recorded truth was not a valid dictionary ($2800$ does
+not divide $5040$), so its zero-recovery read was confounded---measuring
+the power cleanly: recovery is again $0/100$ at the table's own
+$\sigma$, and the post-hoc bootstrap around the data vector moves to
+$P=10.5\%$. The verdict is unchanged in form: the rule fires in a
+regime where the pipeline cannot recover a known dictionary, so the
+anomaly stays flagged, not confirmed, with the power starvation now a
+clean measurement rather than a confounded one.\\
  & & & & The fit identifies the class vector only up to common
 factors (the primitive representative of the group order). Cleanest dated falsifier:
 observed proton decay
@@ -457,7 +480,20 @@ realizations, interval containment in place of point thresholds), so the residua
 uncertainty is the reach, quantified by the crossing floor, not the measurement---and
 the settled verdict feeds the residual program on this entry: a rigorous lower bound on
 $\kappa/B_{\mathrm{count}}$ along the ladders, or a crossing beyond the floor
-(Section~\ref{sec:mathprograms}, item~1).
+(Section~\ref{sec:mathprograms}, item~1). That route has now been attacked through its
+registered venue: the layer-graded moment recursions are implemented and validated to
+roundoff, the trace formulas split the window occupation variance exactly into its
+intra- and inter-eigenstate parts with the between-bin tier of the bound
+trace-computable, the within-bin tier is identified as a pinching (two-copy) object
+that single-copy traces cannot reach, and the $d=3$ mechanism is the standard-isotypic
+multiplet skeleton of the exactly permutation-invariant kinetic term, on which the
+eigenstate occupation is constant
+(Proposition~\ref{prop:moments}, Remark~\ref{rem:obstruction}). The obstruction side
+of the settled entry therefore carries an exact decomposition, a mechanism, and a
+measured non-decaying margin (the profile margin, $5$--$7\%$ of the window layer
+variance at the $d=3$ rungs); the missing step of the lower bound is a loop object by
+construction, and the completion routes---the two-copy replica bound or the
+multiplet-dipole control---are the registered form of what remains.
 
 \subsection{Mathematical test programs}\label{sec:mathprograms}
 
@@ -521,7 +557,24 @@ instance (picket level statistic, exactly linear occupation--energy relation), a
 $d\ge3$ venue is the block-tridiagonal Jacobi structure with its single
 interaction---a well-posed problem in finite Jacobi theory whose natural tools are the
 layer-graded moment recursions and the trace formulas of the binned occupation
-observable. A \emph{thermalization proof}, conversely, must operate beyond every trend
+observable. That venue has since been executed
+(Proposition~\ref{prop:moments}): the moment recursions are implemented and
+validated to roundoff, the trace formulas deliver the exact variance
+splitting
+$\mathrm{Tr}(\rho_W(\Delta K)^{2})=\mathbb{E}_W[v^{\ell}]
++\mathrm{Var}_{W}(a)$ with the between-bin lower bound trace-computable,
+and the attack fixes two structural facts---the within-bin tier of the
+bound is a pinching (two-copy) object that no single-copy trace functional
+of $H$ reaches, and the kinetic term's exact $S_d$-invariance localizes
+the $d=3$ fluctuation in the standard-isotypic multiplets (the eigenstate
+occupation is constant on them; the one-dimensional isotypic components
+carry $\langle K\rangle=S/d$ exactly). The obstruction theorem is thereby
+reduced to the profile-margin statement---the intra-eigenstate layer
+variance stays below the window aggregate by the measured non-decaying
+margin---with two completion routes: a two-copy replica bound on the
+within-bin loop, or a multiplet-dipole control
+(Remark~\ref{rem:obstruction}). A \emph{thermalization proof}, conversely,
+must operate beyond every trend
 the admitted intervals contain---no admitted trend crosses at all in $d=3$/$d=4$, and
 the steepest $d=5$ trend crosses only beyond $n\approx8\times10^{10}$---or overturn the
 fitted decays. Both routes are statements about finite matrices; the obstruction bound
@@ -557,7 +610,13 @@ is frozen with the embedded protocol, committed, and fitted in minutes; the $W$ 
 application (full injection power) rejects every common-$N$ table at the $W$ scale, and the
 Higgs seven-channel application flags a proximity anomaly at $\chi^{2}=0.333$ that the
 $8$--$50\%$ channel uncertainties and their Standard-Model-coupled provenance leave
-uninterpretable---the instrument is ready for the precision that would decide it.
+uninterpretable---the instrument is ready for the precision that would decide it. The
+2026 listing cycle has since run through the instrument unchanged: the $W$ refit
+reproduces the exclusion (the fractions are unchanged in the 2026 listing), and the
+Higgs refit fires again at the improved $\mu\mu$ precision with the injection truth now
+a valid dictionary (recovery $0/100$ at the table's own $\sigma$; the earlier recorded
+truth was not a valid dictionary, confounding its power read)---the verdict stands
+(flagged, not confirmed), and the power starvation is now a clean measurement.
 \end{enumerate}
 
 \subsection{Physical test programs}\label{sec:physical}

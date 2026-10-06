@@ -1,0 +1,86 @@
+{
+ "extract": "/home/z/my-project/repo-push/pilots/c9_chebotarev/pdg_higgs_extract_2026.json",
+ "frozen": "2026-10-07",
+ "k": 7,
+ "Nmax": 5000,
+ "labels": [
+  "bb",
+  "WW",
+  "ZZ",
+  "tautau",
+  "gammagamma",
+  "Zgamma",
+  "mumu"
+ ],
+ "f": [
+  0.53,
+  0.257,
+  0.028,
+  0.06,
+  0.0025,
+  0.0034,
+  0.0003
+ ],
+ "sigma": [
+  0.08,
+  0.025,
+  0.003,
+  0.0075,
+  0.0002,
+  0.0011,
+  9e-05
+ ],
+ "null": {
+  "trials": 3000,
+  "seed": 20261009,
+  "median": 2719.053817310762,
+  "q95": 138243.02350022978,
+  "chi2_095_k": 14.067140449340169,
+  "FPR_at_chi2_095": 0.019333333333333334,
+  "min": 1.5149508625494237,
+  "n_below_data": 0
+ },
+ "injection": {
+  "N": 3168,
+  "c": [
+   1584,
+   792,
+   88,
+   198,
+   8,
+   11,
+   1
+  ],
+  "reps": 100,
+  "rational_recovery": 0.0,
+  "median_chi2": 1.2939533663962997,
+  "note": "minimum-chi2 common-N dictionary of this frozen vector (N = 3168, chi2 = 0.386), within one sigma in every channel; rule amended from the 2024 extract, whose recorded truth was not a valid dictionary (2800 does not divide 5040)"
+ },
+ "fit": {
+  "min_chi2": 0.3861388369604523,
+  "best_N": 3168,
+  "best_c": [
+   1584,
+   792,
+   88,
+   198,
+   8,
+   11,
+   1
+  ],
+  "chi2_095": 14.067140449340169,
+  "empirical_p": 0.0,
+  "passes_threshold": true,
+  "passes_p": true,
+  "signature_present": true
+ },
+ "regime_note": "sigma_rel = 8-30% (the mu mu channel improves from 50% to 30% in the 2026 listing), two orders of magnitude above the calibrated sigma <= 0.3% regime: the channels are signal-strength-constrained evaluations with Standard Model theory input, not direct fraction measurements.  The null calibration carries the same weakness, so the false-positive rate is controlled but the power is minimal; the P2 injection (a valid dictionary truth, amended per the note above) quantifies the loss.  The seven measured channels sum to 0.8813 of the width (gg, cc, and rare modes are unmeasured); the dictionary hypothesis constrains only the measured f_i = c_i/N with c_i | N, not the partition of the total.",
+ "exploratory_posthoc": {
+  "note": "NOT part of the pre-registered decision: bootstrap null around the data vector (Gaussian noise at the table sigma, same scan).  The pre-registered null (structureless Dirichlet at matched sigma and total) does not match the channel-magnitude hierarchy of this table.",
+  "draws": 200,
+  "median": 1.4054064740595855,
+  "q05": 0.2920796968709949,
+  "min": 0.17374562899534768,
+  "P_below_data": 0.105
+ }
+}
