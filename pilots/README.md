@@ -153,3 +153,58 @@ widens, so the ETH scaling diagnostics are not confounded by the dose:
 
 Artifacts: `figures/fig_c4_ladder.png`, `results/c4_ladder_results.json`,
 `results/ladder_scan.log`, per-configuration `results/scaled/` files.
+
+## Krylov tier: edge-window kappa estimator + large-grid trajectories
+
+The LU (shift-invert) window tier hits the SuperLU fill wall at 4D D>=38416
+(3.4 GB address-space guard; MemoryError or a SuperLU internal error). The
+Krylov tier replaces it with factorization-free measurements:
+
+- **Median-window routes, measured and closed** (kept for the record):
+  folded-operator -(H-sigma)^2 with ARPACK which='LA' stalls at ncv
+  240/460/700 (0/160 wanted pairs; the window boundary is a spectral
+  continuum); LOBPCG with an ILU^2 preconditioner overflows on the indefinite
+  shifted system; unpreconditioned LOBPCG contracts at ~0.96/iteration; soft
+  Gaussian filters need polynomial degree ~ ||H||/sigma_f ~ 5e3 on this band.
+- **Edge-window estimator** (executed): eigsh(H, which='LM'), k=350
+  upper-edge eigenpairs, identical eth_window protocol (30 bins),
+  residual certification <= 1.3e-11. d=4 ladder D=4,096-104,976:
+  sigma_rel = 0.871/0.887/0.886/0.894/0.895/0.888 (FLAT); d=3 ladder:
+  0.839/0.835/0.838 (FLAT). Edge sector: <r>_edge 0.38-0.43 (Poisson-like),
+  PR/D 0.054->0.009.
+- **Matched-dose trajectories at the largest grids** (resumable chunks):
+  L36d4K13 climbs through microcanonical on the secular tail (running
+  average 3.96 -> 4.62 at tau=20->78, micro 3.956); K15/K17 reach
+  tau~25-35 per cluster session, horizon-limited as the level spacing
+  shrinks.
+
+```bash
+# kappa stage at any grid (minutes; single process)
+python3 c4_eth/c4_scaled_eth.py --tag L36d4K17 --d 4 --K 17 \
+    --V 0.1245675 --stage kappa
+# trajectory chunk (repeat with --resume; checkpoints in evol_{tag}.npz)
+python3 c4_eth/c4_scaled_eth.py --tag L36d4K17 --d 4 --K 17 \
+    --V 0.1245675 --stage evolve --tau-max 100 --resume
+```
+
+Artifacts: `results/scaled/win_kappa_{tag}.npz` (eigenvalues, eigenstate
+diagonals, residuals), the `kappa` block of `res_{tag}.json`, and the
+extended `fig_c4_ladder.png` / `c4_ladder_results.json`.
+
+## C9 k=7 dictionary variant (frozen PDG 2024 extract)
+
+Seven-flavour Z-width decomposition frozen and committed BEFORE the fit
+(`pdg_z_extract_2024.json`, with the pre-registered protocol embedded);
+null calibration (3000 matched-sigma Dirichlet draws) runs first, injection
+second, the data fit last. Verdict: no common-N table (best chi2 = 1394.68
+against a 14.07 threshold; empirical p = 0.032, tracing to lepton
+universality). The injection amendment (the pre-registered truth table had
+c=7 not dividing N=60) is recorded in the results file.
+
+```bash
+python3 c9_chebotarev/c9_freeze_pdg.py     # writes the frozen extract
+python3 c9_chebotarev/c9_k7_variant.py     # null -> injection -> fit
+```
+
+Artifacts: `pdg_z_extract_2024.json`, `results/c9_k7_results.json` (also
+mirrored in the analysis download directory).

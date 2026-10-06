@@ -38,8 +38,11 @@ COL_K = "#2d7d46"
 LADDER_3 = ["L36d3K14", "L36d3K18", "L36d3K20", "L36d3K22", "L36d3K26",
             "L36d3K28", "L36d3K30", "L36d3K34", "L36d3K38"]
 LADDER_4 = ["L36d4K7", "L36d4K9", "L36d4K11"]
+EDGE_3 = ["L36d3K14", "L36d3K28", "L36d3K38"]
+EDGE_4 = ["L36d4K7", "L36d4K9", "L36d4K11", "L36d4K13", "L36d4K15", "L36d4K17"]
 DENSE = ["L36d3K14", "L36d3K18", "L36d3K20", "L36d4K7", "L36d4K9"]
 PAIRS = ["L36d3K14", "L36d3K18", "L36d4K7", "L36d4K9"]
+EVOLVE_LATE = ["L36d4K13", "L36d4K15", "L36d4K17"]
 
 
 def load(tag):
@@ -49,11 +52,18 @@ def load(tag):
     if os.path.exists(npz) and r.get("sigma_eth") is not None:
         z = np.load(npz)
         r["sigma_rel"] = float(r["sigma_eth"] / np.std(z["a1"]))
+    kp = r.get("kappa")
+    if kp and kp.get("status") == "done":
+        r["edge_sigma_rel"] = kp["sigma_rel"]
+        r["edge_r_mean"] = kp["r_mean"]
+        r["edge_pr"] = kp["pr_over_D"]
+        r["edge_window"] = kp["window"]
     return r
 
 
 def main():
-    res = {t: load(t) for t in set(LADDER_3 + LADDER_4 + DENSE + PAIRS +
+    res = {t: load(t) for t in set(LADDER_3 + LADDER_4 + DENSE + PAIRS + EDGE_4 +
+                                   EDGE_3 + EVOLVE_LATE +
                                    ["d4K11V03x", "d4K11V03", "d3K28V005"])}
     fig, axes = plt.subplots(2, 2, figsize=(13.5, 9.8), constrained_layout=True)
     ax_a, ax_b, ax_c, ax_d = axes.flat
@@ -69,12 +79,29 @@ def main():
     ys = [res[t]["dense"]["sigma_rel_full"] for t in DENSE if res[t].get("dense")]
     ax_a.plot(xs, ys, "s", ms=7, mfc="none", mec=COL_D, ls="",
               label="dense, full spectrum ($D\\leq10^4$)")
+    # Krylov-tier upper-edge windows (restarted Lanczos past the LU ceiling)
+    for fam, col, mk, lbl in [(EDGE_4, COL_K, "^",
+                               r"$d=4$ Krylov upper-edge ($k\!=\!350$)")]:
+        xs = [res[t]["D"] for t in fam if res[t].get("edge_sigma_rel")]
+        ys = [res[t]["edge_sigma_rel"] for t in fam if res[t].get("edge_sigma_rel")]
+        ax_a.plot(xs, ys, mk, ms=8, mfc="none", mec=col, ls="",
+                  mew=1.6, label=lbl)
+        ax_a.plot(xs, ys, "--", lw=1.3, color=col, alpha=.6)
+    xs = [res[t]["D"] for t in EDGE_3 if res[t].get("edge_sigma_rel")]
+    ys = [res[t]["edge_sigma_rel"] for t in EDGE_3 if res[t].get("edge_sigma_rel")]
+    ax_a.plot(xs, ys, "D", ms=7, mfc="none", mec=COL_K, ls="", mew=1.4,
+              label=r"$d=3$ Krylov upper-edge")
+    ax_a.axvline(20736, color="#bbb", lw=.9, ls=":")
+    ax_a.annotate("LU fill\nceiling", (20736, 0.60), fontsize=7.5, color="#888",
+                  ha="left", xytext=(24000, 0.585))
     ax_a.set_xscale("log")
     ax_a.set_xlabel("truncation dimension $D$")
     ax_a.set_ylabel(r"$\sigma_{\mathrm{ETH}}\,/\,\mathrm{std}(a)$")
     ax_a.set_ylim(0.55, 1.05)
-    ax_a.set_title("(a) eigenstate fluctuation ratio at fixed dose $VK^2\\!\\approx\\!36$:\n"
-                   "no decay with $D$ (window tier flat at $0.95$--$0.98$)", fontsize=10)
+    ax_a.set_xlim(2800, 3e5)
+    ax_a.set_title(r"(a) eigenstate fluctuation ratio at fixed dose $VK^2\!\approx\!36$:"
+                   "\nno decay with $D$ (window tier flat at $0.95$--$0.98$; Krylov edge tier "
+                   r"flat at $0.84$--$0.90$ to $D\!=\!1.05\times10^5$)", fontsize=9.5)
     ax_a.legend(fontsize=8, loc="lower right")
     ax_a.annotate("$D$ span $\\times 17.6$\n(3375 $\\to$ 59319)", (6000, 0.99),
                   fontsize=7.5, color="#333")
@@ -189,6 +216,28 @@ def main():
         window_ladder_d3=[ladder_row(t) for t in LADDER_3],
         window_ladder_d4=[ladder_row(t) for t in LADDER_4],
         window_ladder_d4_infeasible=["L36d4K13", "L36d4K15", "L36d4K17"],
+        edge_ladder=dict(
+            tier="Krylov upper-edge window: eigsh(H, which='LM'), k=350, 30 "
+                 "bins, residuals <= 1.3e-11; median-window Krylov routes "
+                 "(folded-operator ARPACK at ncv 240/460/700, ILU^2 LOBPCG, "
+                 "unpreconditioned LOBPCG, degree-5e3 polynomial filters) all "
+                 "measured to stall on the window-edge continuum",
+            d4=[dict(tag=t, D=res[t]["D"], sigma_rel=res[t].get("edge_sigma_rel"),
+                     r_mean=res[t].get("edge_r_mean"),
+                     pr_over_D=res[t].get("edge_pr"),
+                     window=res[t].get("edge_window")) for t in EDGE_4
+                if res[t].get("edge_sigma_rel")],
+            d3=[dict(tag=t, D=res[t]["D"], sigma_rel=res[t].get("edge_sigma_rel"),
+                     r_mean=res[t].get("edge_r_mean"),
+                     pr_over_D=res[t].get("edge_pr")) for t in EDGE_3
+                if res[t].get("edge_sigma_rel")],
+        ),
+        late_trajectories=[
+            dict(tag=t, D=res[t]["D"], V=res[t]["V"],
+                 **{k: v for k, v in res[t].get("evolution", {}).items()
+                    if k in ("tau_reached", "time_avg", "micro_d", "diag_vs_micro",
+                             "plateau_drift", "resid_fluct", "dt", "truncated")})
+            for t in EVOLVE_LATE if res[t].get("evolution")],
         dense_pairs=[pair_row(t) for t in DENSE],
         d4K11_V03_extended=dict(
             D=20736, V=0.3, tau=ev["tau_reached"],
@@ -204,9 +253,12 @@ def main():
         verdict=dict(
             sigma_rel="flat: 0.9486-0.9837 (window, d=3, D=3375-59319), "
                       "0.9478-0.9712 (window, d=4, D=4096-20736), "
+                      "0.871-0.895 (Krylov upper-edge, d=4, D=4096-104976), "
+                      "0.835-0.839 (Krylov upper-edge, d=3, D=3375-59319), "
                       "0.68-0.83 (dense full spectrum, D<=10^4); no downward "
-                      "trend at fixed dose -- the strong-ETH leg of C4 has no "
-                      "positive evidence at accessible scales",
+                      "trend at fixed dose in any window convention -- the "
+                      "strong-ETH leg of C4 has no positive evidence at "
+                      "accessible scales",
             diag_vs_micro="O(1) at fixed dose: d=3 stable ~0.87 absolute "
                           "(0.043-0.059 of K); d=4 grows 0.040 -> 0.061 -> 0.092 "
                           "of K across D=4096-20736; no closing trend",
@@ -227,17 +279,33 @@ def main():
         json.dump(outj, f, indent=1, default=float)
     print("json ->", os.path.join(SCALED, "c4_ladder_results.json"))
 
-    with open(os.path.join(SCALED, "summary.txt"), "a") as f:
-        f.write("\n\n=== MATCHED-DOSE LADDER (VK^2 = 36) ===\n")
-        f.write("window ladder: sigma_rel flat 0.95-0.98 across D=3375-59319 (d=3) "
-                "and D=4096-20736 (d=4); PR/D rises 0.087->0.153 with D\n")
-        f.write("dense pairs (D<=1e4): |plateau - diag|/K = 0.0003-0.0046 "
-                "(plateau IS the diagonal ensemble)\n")
-        f.write("diag vs micro at fixed dose: d=3 ~0.87 absolute (stable); d=4 grows "
-                "0.040->0.092 of K (D=4096->20736); no closing trend\n")
-        f.write("d4K11 V=0.3 extended to tau=300: running avg 4.368, nested windows "
-                "saturate ~4.40 (diagonal ensemble); T<=22.5 average 3.394 near "
-                "micro 3.351 was a transient\n")
+    summ = os.path.join(SCALED, "summary.txt")
+    cur = open(summ).read() if os.path.exists(summ) else ""
+    if "KRYLOV TIER" not in cur:
+        with open(summ, "a") as f:
+            f.write("\n\n=== KRYLOV TIER: EDGE-WINDOW LADDER + LARGE-GRID TRAJECTORIES ===\n")
+            f.write("edge windows (eigsh LM, k=350, 30 bins, resid<=1.3e-11): sigma_rel "
+                    "d=4: 0.871/0.887/0.886/0.894/0.895/0.888 (K7..K17, D=4096..104976) "
+                    "FLAT; d=3: 0.839/0.835/0.838 (K14/K28/K38) FLAT\n")
+            f.write("edge sector: <r>_edge 0.38-0.43 (Poisson-like), PR/D 0.054->0.009 "
+                    "(semi-localized); median-window Krylov routes all stall "
+                    "(ARPACK-fold ncv 240/460/700: 0/160; ILU^2 LOBPCG: NaN; "
+                    "unprecond. LOBPCG: 0.96/iter; filters: degree ~5e3)\n")
+            f.write("matched-dose trajectories: K13 tau=59 running avg 4.43 climbing on "
+                    "the secular tail (micro 3.956); K15/K17 horizon-limited "
+                    "(tau<=50 per day-scale compute)\n")
+    if "MATCHED-DOSE LADDER" not in cur:
+        with open(summ, "a") as f:
+            f.write("\n\n=== MATCHED-DOSE LADDER (VK^2 = 36) ===\n")
+            f.write("window ladder: sigma_rel flat 0.95-0.98 across D=3375-59319 (d=3) "
+                    "and D=4096-20736 (d=4); PR/D rises 0.087->0.153 with D\n")
+            f.write("dense pairs (D<=1e4): |plateau - diag|/K = 0.0003-0.0046 "
+                    "(plateau IS the diagonal ensemble)\n")
+            f.write("diag vs micro at fixed dose: d=3 ~0.87 absolute (stable); d=4 grows "
+                    "0.040->0.092 of K (D=4096->20736); no closing trend\n")
+            f.write("d4K11 V=0.3 extended to tau=300: running avg 4.368, nested windows "
+                    "saturate ~4.40 (diagonal ensemble); T<=22.5 average 3.394 near "
+                    "micro 3.351 was a transient\n")
     print("summary.txt appended")
 
 

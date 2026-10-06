@@ -11,7 +11,7 @@
  "V": 0.16,
  "D": 65536,
  "nnz_H": 1248256,
- "t_build": 0.15,
+ "t_build": 0.17,
  "g": [
   1.6126,
   1.8575,
@@ -22,5 +22,59 @@
  "sigma_quantile": 0.5,
  "tier": "evolve-only (LU fill exceeded RAM guard)",
  "window": null,
- "peak_rss_mb": 2377.2
+ "peak_rss_mb": 238.6,
+ "kappa": {
+  "status": "done",
+  "solver": "lanczos-edge",
+  "k_eff": 350,
+  "n_bins": 30,
+  "window": [
+   360.05045860500815,
+   617.8553054318199
+  ],
+  "window_note": "upper spectral edge (largest |lambda|), Krylov tier; LU median-window tier is fill-capped at D=20736 on 4D",
+  "resid_max": 1.252852464554103e-11,
+  "resid_med": 3.0607794868801044e-12,
+  "r_mean": 0.41568701302676725,
+  "r_sem": 0.01835452348063267,
+  "sigma_eth": 1.2516640924993707,
+  "sigma_eth_d": 1.2730626848043414,
+  "sigma_rel": 0.8950538895381142,
+  "std_a1": 1.3984231643809544,
+  "micro_rmse": 3.5156253482985935,
+  "micro_rmse_d": 2.976466258727095,
+  "pr_over_D": 0.011738237944979772,
+  "t_eigsh": 151.64
+ },
+ "evolution": {
+  "E0": 29.1886522358297,
+  "delta": 0.5,
+  "n_micro_states": 1419,
+  "micro_d": 4.577167019027484,
+  "time_avg": 4.911231808367619,
+  "resid_fluct": 0.12780153464308677,
+  "plateau_windows": {
+   "T2": 4.911231808367619,
+   "T4": 5.0192461429028,
+   "T8": 5.071090007601003,
+   "T16": 5.102200852759721
+  },
+  "plateau_drift": 0.10801433453518072,
+  "norm_drift": 3.432809592140984e-13,
+  "t_evolve": 521.5,
+  "diag_vs_micro": 0.33406478934013517,
+  "m": 40,
+  "dt": 0.013597002789435394,
+  "hnorm": 676.9666511753973,
+  "hnorm_info": {
+   "method": "lanczos",
+   "gershgorin": 814.753375093334,
+   "ritz_est": 588.6666531959977,
+   "safety": 1.15
+  },
+  "tau_reached": 43.51040892619326,
+  "tau_max": 100.0,
+  "truncated": true,
+  "n_samples": 3201
+ }
 }

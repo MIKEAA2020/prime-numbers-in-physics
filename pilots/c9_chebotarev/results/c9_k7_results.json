@@ -1,0 +1,116 @@
+{
+ "extract": "/home/z/my-project/repo-push/pilots/c9_chebotarev/pdg_z_extract_2024.json",
+ "frozen": "2026-10-05",
+ "k": 7,
+ "Nmax": 5000,
+ "labels": [
+  "ee",
+  "mumu",
+  "tautau",
+  "invisible",
+  "cc",
+  "bb",
+  "light_uds"
+ ],
+ "f": [
+  0.03362452414345822,
+  0.03365658184732518,
+  0.033692646764175514,
+  0.2,
+  0.1203,
+  0.1512,
+  0.42761000000000005
+ ],
+ "sigma": [
+  5.720767712114647e-05,
+  7.851717362309739e-05,
+  9.346791308473861e-05,
+  0.00055,
+  0.0021,
+  0.0005,
+  0.002230156945149825
+ ],
+ "null": {
+  "trials": 3000,
+  "seed": 20261005,
+  "median": 40439.56681620865,
+  "q95": 1013568.1183310031,
+  "chi2_095_k": 14.067140449340169,
+  "FPR_at_chi2_095": 0.0,
+  "min": 85.01468699755242,
+  "n_below_data": 96
+ },
+ "injection": [
+  {
+   "n_events": 3000,
+   "chi2": 1.1911853864151822,
+   "N": 4620,
+   "c": [
+    462,
+    385,
+    770,
+    1540,
+    220,
+    770,
+    420
+   ],
+   "rational_match": false,
+   "N_minimal": 4620,
+   "recovered": false
+  },
+  {
+   "n_events": 30000,
+   "chi2": 3.681604472681802,
+   "N": 420,
+   "c": [
+    42,
+    35,
+    70,
+    140,
+    20,
+    70,
+    42
+   ],
+   "rational_match": false,
+   "N_minimal": 420,
+   "recovered": false
+  },
+  {
+   "n_events": 300000,
+   "chi2": 3.577239154852013,
+   "N": 60,
+   "c": [
+    6,
+    5,
+    10,
+    20,
+    3,
+    10,
+    6
+   ],
+   "rational_match": false,
+   "N_minimal": 60,
+   "recovered": true
+  }
+ ],
+ "injection_amendment": "pre-registered c={6,5,10,20,3,7,4} at N=60 is infeasible (7 does not divide 60); executed with the valid table c={6,5,10,20,3,10,4}; criterion = rational identity of proportions",
+ "fit": {
+  "min_chi2": 1394.68365553235,
+  "best_N": 840,
+  "best_c": [
+   28,
+   28,
+   28,
+   168,
+   105,
+   120,
+   420
+  ],
+  "chi2_095": 14.067140449340169,
+  "empirical_p": 0.032,
+  "passes_threshold": false,
+  "passes_p": true,
+  "signature_present": false
+ },
+ "regime_note": "cc (1.7%) and light (0.5%) sigma_rel exceed the 0.3% validity regime; power concentrated in the five precise channels"
+}

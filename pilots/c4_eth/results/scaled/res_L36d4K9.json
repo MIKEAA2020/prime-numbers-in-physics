@@ -11,7 +11,7 @@
  "V": 0.4444444,
  "D": 10000,
  "nnz_H": 179200,
- "t_build": 0.03,
+ "t_build": 0.04,
  "g": [
   1.6126,
   1.8575,
@@ -23,7 +23,7 @@
  "tier": "window",
  "nnz_LU": 13668224,
  "t_splu": 8.01,
- "peak_rss_mb": 102.4,
+ "peak_rss_mb": 220.9,
  "t_eigsh": 50.09,
  "window": [
   20.55747114809792,
@@ -90,5 +90,28 @@
   "truncated": false,
   "n_samples": 12039,
   "plateau_vs_diag": 0.04133494644551661
+ },
+ "kappa": {
+  "status": "done",
+  "solver": "lanczos-edge",
+  "k_eff": 350,
+  "n_bins": 30,
+  "window": [
+   211.28931997041272,
+   517.7258289937284
+  ],
+  "window_note": "upper spectral edge (largest |lambda|), Krylov tier; LU median-window tier is fill-capped at D=20736 on 4D",
+  "resid_max": 8.361395848257787e-12,
+  "resid_med": 1.788346181443171e-12,
+  "r_mean": 0.4140857255159649,
+  "r_sem": 0.019880359815047082,
+  "sigma_eth": 0.9409578303635252,
+  "sigma_eth_d": 0.9998298387797218,
+  "sigma_rel": 0.8871318522306826,
+  "std_a1": 1.0606741579591554,
+  "micro_rmse": 0.645779700029026,
+  "micro_rmse_d": 0.6289467867912295,
+  "pr_over_D": 0.03486123436235803,
+  "t_eigsh": 15.14
  }
 }

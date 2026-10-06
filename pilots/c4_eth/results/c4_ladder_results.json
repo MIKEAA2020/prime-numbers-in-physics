@@ -142,6 +142,141 @@
   "L36d4K15",
   "L36d4K17"
  ],
+ "edge_ladder": {
+  "tier": "Krylov upper-edge window: eigsh(H, which='LM'), k=350, 30 bins, residuals <= 1.3e-11; median-window Krylov routes (folded-operator ARPACK at ncv 240/460/700, ILU^2 LOBPCG, unpreconditioned LOBPCG, degree-5e3 polynomial filters) all measured to stall on the window-edge continuum",
+  "d4": [
+   {
+    "tag": "L36d4K7",
+    "D": 4096,
+    "sigma_rel": 0.8711454409463724,
+    "r_mean": 0.4188355722143199,
+    "pr_over_D": 0.05377857162749061,
+    "window": [
+     -141.67014216785142,
+     469.3461364487434
+    ]
+   },
+   {
+    "tag": "L36d4K9",
+    "D": 10000,
+    "sigma_rel": 0.8871318522306826,
+    "r_mean": 0.4140857255159649,
+    "pr_over_D": 0.03486123436235803,
+    "window": [
+     211.28931997041272,
+     517.7258289937284
+    ]
+   },
+   {
+    "tag": "L36d4K11",
+    "D": 20736,
+    "sigma_rel": 0.8859066388816064,
+    "r_mean": 0.403174791208228,
+    "pr_over_D": 0.023155743764565265,
+    "window": [
+     268.8872881893148,
+     556.7675621226645
+    ]
+   },
+   {
+    "tag": "L36d4K13",
+    "D": 38416,
+    "sigma_rel": 0.8934506223697474,
+    "r_mean": 0.4082779727817049,
+    "pr_over_D": 0.016058350125953264,
+    "window": [
+     317.9936678730465,
+     589.5179706468518
+    ]
+   },
+   {
+    "tag": "L36d4K15",
+    "D": 65536,
+    "sigma_rel": 0.8950538895381142,
+    "r_mean": 0.41568701302676725,
+    "pr_over_D": 0.011738237944979772,
+    "window": [
+     360.05045860500815,
+     617.8553054318199
+    ]
+   },
+   {
+    "tag": "L36d4K17",
+    "D": 104976,
+    "sigma_rel": 0.8884334226762491,
+    "r_mean": 0.42864578861127706,
+    "pr_over_D": 0.009086775757611316,
+    "window": [
+     398.2336646946444,
+     642.9256115716782
+    ]
+   }
+  ],
+  "d3": [
+   {
+    "tag": "L36d3K14",
+    "D": 3375,
+    "sigma_rel": 0.8390789236155087,
+    "r_mean": 0.39943402423610413,
+    "pr_over_D": 0.05186948146234053
+   },
+   {
+    "tag": "L36d3K28",
+    "D": 24389,
+    "sigma_rel": 0.8352454696219268,
+    "r_mean": 0.42579630750440955,
+    "pr_over_D": 0.015721176415087232
+   },
+   {
+    "tag": "L36d3K38",
+    "D": 59319,
+    "sigma_rel": 0.838323956817615,
+    "r_mean": 0.37936526614759114,
+    "pr_over_D": 0.008635416261423267
+   }
+  ]
+ },
+ "late_trajectories": [
+  {
+   "tag": "L36d4K13",
+   "D": 38416,
+   "V": 0.2130178,
+   "micro_d": 3.9562043795620436,
+   "time_avg": 4.78959689170991,
+   "resid_fluct": 0.1746510817056399,
+   "plateau_drift": 0.15285129140682052,
+   "diag_vs_micro": 0.8333925121478662,
+   "dt": 0.014186108205491751,
+   "tau_reached": 96.46553579734392,
+   "truncated": true
+  },
+  {
+   "tag": "L36d4K15",
+   "D": 65536,
+   "V": 0.16,
+   "micro_d": 4.577167019027484,
+   "time_avg": 4.911231808367619,
+   "resid_fluct": 0.12780153464308677,
+   "plateau_drift": 0.10801433453518072,
+   "diag_vs_micro": 0.33406478934013517,
+   "dt": 0.013597002789435394,
+   "tau_reached": 43.51040892619326,
+   "truncated": true
+  },
+  {
+   "tag": "L36d4K17",
+   "D": 104976,
+   "V": 0.1245675,
+   "micro_d": 5.194126431060229,
+   "time_avg": 5.453726345192416,
+   "resid_fluct": 0.10597824658370072,
+   "plateau_drift": 0.09241884456015192,
+   "diag_vs_micro": 0.2595999141321865,
+   "dt": 0.01312481089573498,
+   "tau_reached": 36.0932299632712,
+   "truncated": true
+  }
+ ],
  "dense_pairs": [
   {
    "tag": "L36d3K14",
@@ -248,7 +383,7 @@
   }
  },
  "verdict": {
-  "sigma_rel": "flat: 0.9486-0.9837 (window, d=3, D=3375-59319), 0.9478-0.9712 (window, d=4, D=4096-20736), 0.68-0.83 (dense full spectrum, D<=10^4); no downward trend at fixed dose -- the strong-ETH leg of C4 has no positive evidence at accessible scales",
+  "sigma_rel": "flat: 0.9486-0.9837 (window, d=3, D=3375-59319), 0.9478-0.9712 (window, d=4, D=4096-20736), 0.871-0.895 (Krylov upper-edge, d=4, D=4096-104976), 0.835-0.839 (Krylov upper-edge, d=3, D=3375-59319), 0.68-0.83 (dense full spectrum, D<=10^4); no downward trend at fixed dose in any window convention -- the strong-ETH leg of C4 has no positive evidence at accessible scales",
   "diag_vs_micro": "O(1) at fixed dose: d=3 stable ~0.87 absolute (0.043-0.059 of K); d=4 grows 0.040 -> 0.061 -> 0.092 of K across D=4096-20736; no closing trend",
   "plateau_is_diag": "verified exactly at D<=10^4 (|plateau-diag|/K = 0.0003-0.0046, within the nested-window drift); at D=20736 the T<=22.5 average (3.394) was a transient that coincides with the microcanonical value (3.351); the extended trajectory's nested averages saturate at 4.40 +/- 0.03, which is the diagonal ensemble",
   "relaxation": "fast initial decay (11 -> 3.5 by tau~20) followed by a slow secular tail (still +0.03 per 35 tau at tau=300); the relaxation spectrum is broad, consistent with the occupation-weighted coupling structure"

@@ -230,17 +230,83 @@ test. The two completions in \eqref{eq:completions} are not equivalent and the
 difference matters: the $U$ term is a diagonal potential on the exponent lattice (a
 Wannier--Stark-type renderer, as the data confirm), while the $V$ term is the
 Bose--Hubbard-type \emph{density-assisted hopping} known from the interacting-boson
-literature---quartic yet kinetic. The two are distinguished by computation:
+literature---quartic yet kinetic. Before the numerical record, the conjecture's premise
+requires one piece of mathematics: the kinetic term is quartic in the occupations, hence
+unbounded, so the infinite-volume operator must be shown to exist before thermalization
+along truncation sequences can even be posed.
+
+\begin{proposition}[Infinite-volume self-adjointness of the completions]\label{prop:infinitevolume}
+Fix $d\geq1$ primes, real couplings, and let $H^{(K)}$ denote the box truncation of
+$H_{\mathrm{tot}}^{(U,V)}$ to occupations $k_{i}\leq K$ on $\ell^{2}(\Nn^{d})$. Then:
+(i) each $H^{(K)}$ is finite-dimensional and symmetric; (ii) $H_{\mathrm{tot}}^{(U,V)}$,
+defined on the finite-support core $C_{0}(\Nn^{d})$, is essentially self-adjoint, with closure
+self-adjoint and bounded below on the domain
+$D(\Lambda)=D(H_{P})\cap D(\Nhat_{\mathrm{tot}}^{2})$ of the confining diagonal
+$\Lambda=H_{P}+\lambda\Nhat_{\mathrm{tot}}^{2}$ for any
+$\lambda>2\,(C_{U}+C_{V}V\,d^{2})$; and (iii) $H^{(K)}\to H_{\mathrm{tot}}^{(U,V)}$ in the
+strong resolvent sense---indeed $H^{(K)}\psi=H\psi$ exactly once
+$K\geq1+\max\mathrm{supp}(\psi)$, so each fixed-occupation sector of the truncation ladder
+stabilizes and the thermodynamic limit is implemented without edge corrections.
+\end{proposition}
+
+\begin{proof}
+Every term of $H_{\mathrm{tot}}^{(U,V)}$ changes each occupation by at most one, so
+$H^{(K)}\psi=H\psi$ on core vectors of support $\leq K-1$; this gives (iii) once (ii) is in
+hand, since $C_{0}$ is a core and the truncations converge on it. For (ii), write
+$M=\Nhat_{\mathrm{tot}}$ and note first that $H_{\mathrm{kin}}$ and the $U$ term commute with
+$M$, so both decompose along the $M$-sectors, which are finite
+($\dim=\binom{M+d-1}{d-1}$). On a sector, $|U\sum_{p<q}k_{p}k_{q}|\leq U\tbinom{d}{2}M^{2}/2$,
+and the kinetic term is a direct sum of finite Jacobi blocks in the coordinate of the hopping
+pair (each hop moves one primon from $q$ to $p$, conserving $k_{p}+k_{q}$), with weights
+$V(k_{p}+k_{q})\sqrt{(k_{p}+1)k_{q}}\leq V\,M(M+2)/2$; hence
+$\|H_{\mathrm{kin}}\psi\|\leq C_{V}V d^{2}\|M^{2}\psi\|$ and
+$\|H_{U}\psi\|\leq C_{U}\|M^{2}\psi\|$. For the remaining sectors,
+$\|H_{\mathrm{hop}}\psi\|\leq C_{h}d^{2}\|(M+1)\psi\|$ (each amplitude
+$h_{pq}\sqrt{(k_{p}+1)k_{q}}$ is linear in the occupations) and
+$\|H_{W}\psi\|^{2}\leq C_{g}d\,\langle\psi,(M+1)\psi\rangle$ (each $M_{p}$ is a partial
+isometry with $\|M_{p}\psi\|^{2}=\langle\psi,(\hat n_{p}+1)\psi\rangle$). Since
+$x\mapsto x$ and $x\mapsto x^{1/2}$ are dominated by $x\mapsto\varepsilon x^{2}+c_{\varepsilon}$
+with arbitrarily small $\varepsilon$, the last two terms are $\Lambda$-bounded with relative
+bound zero, where $\Lambda\geq\lambda M^{2}$ gives
+$\|\Lambda\psi\|\geq\lambda\|M^{2}\psi\|$; the first two terms therefore carry relative
+bounds $(C_{U}+C_{V}Vd^{2})/\lambda$. Choosing
+$\lambda>2(C_{U}+C_{V}Vd^{2})$ makes the total relative bound $<1$, and Kato--Rellich
+applied to $H_{\mathrm{tot}}=\Lambda+(H_{\mathrm{tot}}-\Lambda)$ on $D(\Lambda)$ gives a
+self-adjoint, bounded-below closure; essential self-adjointness on $C_{0}$ follows because
+$C_{0}$ is a core of the diagonal $\Lambda$ and the bounds extend.
+\end{proof}
+
+\begin{remark}[The $d\to\infty$ limit is open]
+The constants above grow with the pair count $d^{2}$: Proposition~\ref{prop:infinitevolume}
+covers the thermodynamic ($K\to\infty$) limit at fixed prime number $d$. The $d\to\infty$
+extension with unweighted couplings is not controlled by this argument; summable coupling
+families ($\sum_{p}|g_{p}|$, $\sum_{p\neq q}|h_{pq}|$, $\sum_{p<q}|V_{pq}|$ finite) would make
+the quadratic forms converge on the finite-occupation core, but we do not pursue this and
+flag it as the open side of the well-posedness program.
+\end{remark}
+
+The two completions are distinguished by computation:
 
 \begin{remark}[Numerical status of the cascade conjecture]\label{rem:numerics}
 Conjecture~\ref{conj:cascade} has been tested by dense diagonalization at $D\leq4096$; by
 shift-invert Lanczos eigen-windows ($k=350$ interior eigenpairs placed at the median of the
 density of states, diagonal pivoting in the factorization, every window certified by
 eigenpair residuals $\leq6\times10^{-8}$) up to $D=59319$ in $d=3$ and $D=20736$ in $d=4$,
-beyond which the $LU$ fill exceeds the 4\,GB address-space guard; and by
+beyond which the $LU$ fill exceeds the $3.4$\,GB address-space guard; by
 restarted-Lanczos Krylov equilibration to $D\approx10^{5}$, with restart steps sized by a
 Lanczos-estimated spectral radius (validated against exact eigendecomposition propagation
-to $10^{-12}$, state-vector norm drift $\leq10^{-13}$). The kinetic family is examined at
+to $10^{-12}$, state-vector norm drift $\leq10^{-13}$); and by a Krylov-tier fluctuation
+window past the $LU$ ceiling: plain restarted Lanczos on $H$ itself (which='LM') returns the
+$k=350$ \emph{upper-edge} eigenpairs at every scale, certified to residuals
+$\leq1.3\times10^{-11}$, and these feed the same window diagnostics as the shift-invert tier
+($40$\,s at $D=20736$, $233$\,s at $D=104976$). The median-window Krylov routes were
+measured and closed: folded-operator restarted Lanczos ($-\,(H-\sigma)^{2}$, which='LA')
+stalls at subspace budgets $240$/$460$/$700$ ($0$ of $160$ wanted pairs after $60$--$121$
+restart cycles---the window boundary is a spectral continuum, so no factorization-free
+transform separates the $160$th from the $161$st level); LOBPCG preconditioned by a doubled
+incomplete $LU$ of the shifted system is numerically unstable (indefinite double solves
+overflow); unpreconditioned LOBPCG contracts at $\approx0.96$ per iteration; and a soft
+Gaussian-filter estimator requires polynomial degree $\sim\|H\|/\sigma_{\mathrm{filter}}\approx5\times10^{3}$ on this band. The kinetic family is examined at
 matched effective dose $VK^{2}\approx36$, the occupation-weighted coupling, so that the dose
 is fixed while the truncation widens; code and data accompany the paper. The evidence:
 (a) \emph{Level statistics}: generic couplings give GOE ratio statistics
@@ -293,8 +359,17 @@ $VK^{2}\approx235$, $\langle r\rangle=0.36$ with $\mathrm{PR}/D=0.016$).
 (e) \emph{Scaling at matched dose; the diagonal ensemble.} Two legs decide the conjecture.
 The eigenstate fluctuation ratio $\sigma_{\mathrm{ETH}}/\mathrm{std}(a_{j})$ is flat:
 $0.95$--$0.98$ along the $d=3$ ladder $D=3375\to59319$ (a factor $17.6$ in $D$) and
-$0.95$--$0.97$ along the $d=4$ ladder $D=4096\to20736$, with exact full-spectrum values
-$0.68$--$0.83$ at $D\leq10^{4}$; leg (i) has no positive evidence at accessible scales. The
+$0.95$--$0.97$ along the $d=4$ median-window ladder $D=4096\to20736$, with exact full-spectrum values
+$0.68$--$0.83$ at $D\leq10^{4}$; the Krylov-tier upper-edge window extends the $d=4$
+measurement to $D=104976$ ($K=15$: $0.895$; $K=17$: $0.888$, against $0.871$--$0.886$ at
+$K=7$--$11$---flat across a factor $25.6$ in $D$), and the $d=3$ edge ladder
+($D=3375\to59319$) is flat at $0.835$--$0.839$. The bin-width control (eleven to one
+hundred sixteen levels per bin) moves the ratio by less than $0.05$ at every grid where it
+is computable, so the flatness is not a binning artifact. The edge windows carry their own
+sector physics: $\langle r\rangle_{\mathrm{edge}}=0.38$--$0.43$ (Poisson-like, versus $0.51$
+GOE at the median) and $\mathrm{PR}/D=0.054\to0.009$ (semi-localized), so the edge ladder is
+reported as a second fluctuation measurement, not a substitute for the median window.
+Leg (i) has no positive evidence at accessible scales. The
 diagonal ensemble
 $\langle a\rangle_{\mathrm{diag}}=\sum_{n}|\braket{n}{\psi_{0}}|^{2}\braket{n}{a}$
 is computed exactly at $D\leq10^{4}$: there the finite-time plateau equals it to
@@ -314,6 +389,12 @@ is $3.35$ and the early transient ($\tau\leq22$) passes through $3.39$, close to
 finite-horizon coincidence with the microcanonical value is therefore not evidence of
 thermalization; leg (ii) is a statement about the $D\to\infty$ limit of the diagonal
 ensemble, and at accessible scales that limit shows no convergence (Figure~\ref{fig:ladder}).
+The matched-dose trajectories at the largest grids confirm the horizon structure: at
+$D=38416$ the running average climbs through the microcanonical value on the same slow
+secular tail ($3.96$ at $\tau=20$, $4.21$ at $\tau=39$, $4.43$ at $\tau=59$, microcanonical
+$3.96$), and at $D=65536$ and $D=104976$ the resumable trajectories reach only
+$\tau\lesssim50$ per day-scale compute, the dephasing horizon shrinking as the level spacing
+does.
 (The kinetic couplings destroy the diagonal dominance on which default partial pivoting
 relies in the shift-invert factorization; diagonal pivoting
 ($\mathrm{diag\_pivot\_thresh}=0$) restores tractability---the generic $d=3$, $K=28$

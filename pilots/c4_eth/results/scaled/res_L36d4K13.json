@@ -23,5 +23,59 @@
  "tier": "evolve-only (splu failed: SystemError)",
  "window": null,
  "splu_error": "gstrf was called with invalid arguments",
- "peak_rss_mb": 2470.3
+ "peak_rss_mb": 164.3,
+ "kappa": {
+  "status": "done",
+  "solver": "lanczos-edge",
+  "k_eff": 350,
+  "n_bins": 30,
+  "window": [
+   317.9936678730465,
+   589.5179706468518
+  ],
+  "window_note": "upper spectral edge (largest |lambda|), Krylov tier; LU median-window tier is fill-capped at D=20736 on 4D",
+  "resid_max": 9.05392980389194e-12,
+  "resid_med": 2.705986442019395e-12,
+  "r_mean": 0.4082779727817049,
+  "r_sem": 0.018047366869431637,
+  "sigma_eth": 1.1594916583202546,
+  "sigma_eth_d": 1.195732745184454,
+  "sigma_rel": 0.8934506223697474,
+  "std_a1": 1.2977680347290734,
+  "micro_rmse": 3.069012797791002,
+  "micro_rmse_d": 2.805393852791079,
+  "pr_over_D": 0.016058350125953264,
+  "t_eigsh": 73.2
+ },
+ "evolution": {
+  "E0": 25.296831937719073,
+  "delta": 0.5,
+  "n_micro_states": 959,
+  "micro_d": 3.9562043795620436,
+  "time_avg": 4.78959689170991,
+  "resid_fluct": 0.1746510817056399,
+  "plateau_windows": {
+   "T2": 4.78959689170991,
+   "T4": 4.94244818311673,
+   "T8": 4.995203203966344,
+   "T16": 5.012624340867669
+  },
+  "plateau_drift": 0.15285129140682052,
+  "norm_drift": 1.4166445794216997e-13,
+  "t_evolve": 524.3,
+  "diag_vs_micro": 0.8333925121478662,
+  "m": 40,
+  "dt": 0.014186108205491751,
+  "hnorm": 648.8543095155067,
+  "hnorm_info": {
+   "method": "lanczos",
+   "gershgorin": 798.3097539922277,
+   "ritz_est": 564.2211387091363,
+   "safety": 1.15
+  },
+  "tau_reached": 96.46553579734392,
+  "tau_max": 150.0,
+  "truncated": true,
+  "n_samples": 6801
+ }
 }

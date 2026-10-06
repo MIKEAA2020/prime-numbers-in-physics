@@ -46,3 +46,16 @@ d3K28q005          24389    window  0.5105    0.945   0.0649       -        -   
 d3K28q095          24389    window  0.5050    0.969   0.0660       -        -       -     -      51     83
 d4K11              20736    evolve       -        -        -   1.131    0.103  0.0335   202     436     90
 d5K6               16807    evolve       -        -        -   1.198    0.200  0.0220   178     434     92
+
+
+=== KRYLOV TIER: EDGE-WINDOW LADDER + LARGE-GRID TRAJECTORIES ===
+edge windows (eigsh LM, k=350, 30 bins, resid<=1.3e-11): sigma_rel d=4: 0.871/0.887/0.886/0.894/0.895/0.888 (K7..K17, D=4096..104976) FLAT; d=3: 0.839/0.835/0.838 (K14/K28/K38) FLAT
+edge sector: <r>_edge 0.38-0.43 (Poisson-like), PR/D 0.054->0.009 (semi-localized); median-window Krylov routes all stall (ARPACK-fold ncv 240/460/700: 0/160; ILU^2 LOBPCG: NaN; unprecond. LOBPCG: 0.96/iter; filters: degree ~5e3)
+matched-dose trajectories: K13 tau=59 running avg 4.43 climbing on the secular tail (micro 3.956); K15/K17 horizon-limited (tau<=50 per day-scale compute)
+
+
+=== MATCHED-DOSE LADDER (VK^2 = 36) ===
+window ladder: sigma_rel flat 0.95-0.98 across D=3375-59319 (d=3) and D=4096-20736 (d=4); PR/D rises 0.087->0.153 with D
+dense pairs (D<=1e4): |plateau - diag|/K = 0.0003-0.0046 (plateau IS the diagonal ensemble)
+diag vs micro at fixed dose: d=3 ~0.87 absolute (stable); d=4 grows 0.040->0.092 of K (D=4096->20736); no closing trend
+d4K11 V=0.3 extended to tau=300: running avg 4.368, nested windows saturate ~4.40 (diagonal ensemble); T<=22.5 average 3.394 near micro 3.351 was a transient

@@ -28,6 +28,17 @@ Stages (one process each, so wall-clock chunks always fit):
   --stage dense  : full diagonalization at D <= 11000 -> EXACT diagonal
                    ensemble of the equilibration protocol, exact microcanonical
                    value, and full-spectrum (window-free) ETH fluctuation ratio
+  --stage kappa  : Krylov-tier eigen-window for the fluctuation ladder (the
+                   kappa estimator) beyond the LU fill ceiling: plain
+                   restarted Lanczos eigsh(H, which='LM') gives the k=350
+                   upper-edge eigenpairs at every scale (the median-window
+                   Krylov routes all stall on the window-edge continuum --
+                   folded-operator ARPACK at ncv<=700, ILU^2 LOBPCG, and
+                   degree-~5e3 polynomial filters are all measured out; see
+                   kappa_stage docstring). Same eth_window protocol (30 bins)
+                   and residual certification as the LU tier; the edge ladder
+                   is cross-calibrated against the median ladder on the
+                   overlapping grids.
 
 Evolve tier supports long trajectories in wall-clock chunks:
   --tau-max T    : total trajectory length (default: D-based table)
@@ -600,6 +611,115 @@ def dense_stage(res, H, eps, coords, d, K, D, tag):
                         w=w, a1=a_1, ad=a_d)
 
 
+# ----------------------------------------------------------------------------
+# kappa stage: Krylov-tier fluctuation window (upper-edge eigenpairs via plain
+# restarted Lanczos -- matvecs only, no factorization)
+# ----------------------------------------------------------------------------
+def kappa_stage(res, H, eps, coords, d, K, D, tag, b, seed, deadline,
+                solver="edge", sigma_quantile=0.5, tol=1e-7, **_):
+    """Krylov-tier eigen-window for the fluctuation ladder (the kappa
+    estimator) at grids beyond the LU (shift-invert) fill ceiling.
+
+    Design history (all measured, this program):
+      * The LU window tier places k=350 interior eigenpairs at the DOS median
+        via exact shift-invert; its SuperLU fill grows past the 3.4 GB
+        address-space guard on 4D grids at D >= 38416 (K13/K15/K17: MemoryError
+        / SuperLU internal error), so the median-window fluctuation ratio
+        sigma_rel cannot be extended by factorization on this machine.
+      * Folded-operator Krylov routes for the MEDIAN window were tried and
+        measured: A = (H-sigma)^2 with ARPACK which='LA' at ncv = 240 / 460 /
+        700 all stall (0/160 pairs after 60-121 restart cycles; the window
+        boundary is a continuum -- no transform separates the 160th from the
+        161st level without solves); LOBPCG with an ILU^2 preconditioner
+        overflows (double ILU solves of the indefinite shifted system are
+        unstable); unpreconditioned LOBPCG contracts at ~0.96/iteration
+        (hours); a soft Gaussian-filter estimator needs polynomial degree
+        ~ ||H||/sigma_filter ~ 5e3 on this band (||H|| ~ 1e3 from the kinetic
+        edge states).  The median-window Krylov extension is therefore closed
+        on this hardware; the attempts are archived in the pilot scripts.
+      * What plain restarted Lanczos DOES converge at every scale (seconds
+        of matvecs): the EXTREMAL eigenpairs.  eigsh(H, which='LM') returns
+        the k=350 largest-|lambda| pairs = the upper spectral edge, at
+        residual ~1e-12, at every D tested (D=20736: 41 s; scaling ~ nnz).
+
+    This stage therefore measures the SAME eth_window protocol (k=350
+    eigenpairs, 30 quantile bins, obs1/obsd diagonals, micro reference,
+    participation ratio) on the UPPER-EDGE window, and records the window
+    position so the two ladders (LU median window; Krylov edge window) can be
+    compared on the overlapping grids (D <= 20736, where both exist) and the
+    edge ladder extended to the K15/K17 grids past the LU ceiling.
+    """
+    obs1 = coords[0].ravel().astype(float)
+    obsd = coords[d - 1].ravel().astype(float)
+    v0 = np.random.default_rng(seed + 2).standard_normal(D)
+    t1 = time.perf_counter()
+    try:
+        w, V = spl.eigsh(H, k=b, which="LM", ncv=b + 80, v0=v0,
+                         maxiter=10000, tol=0)
+    except Exception as e:
+        print(f"  eigsh(LM) failed: {type(e).__name__}: {str(e)[:200]}",
+              flush=True)
+        res["kappa"] = dict(status=f"arpack-error: {str(e)[:120]}", b=b)
+        _save(tag, res)
+        return False
+    t_eig = time.perf_counter() - t1
+    order = np.argsort(w)
+    w = w[order]
+    V = V[:, order]
+    # certification: max column residual of H v - w v
+    HV = H @ V
+    rj = np.linalg.norm(HV - V * w[None, :], axis=0)
+    scale = max(abs(w[0]), abs(w[-1]), 1.0)
+    cert = rj <= 1e-6 * scale
+    kc = int(cert.sum())
+    print(f"  eigsh(LM) {t_eig:.1f}s (k={b}) | certified {kc}/{b} "
+          f"(resid max={rj.max():.2e})", flush=True)
+    if kc < 100:
+        res["kappa"] = dict(status=f"insufficient ({kc} certified)",
+                            k_eff=kc, resid_max=float(rj.max()))
+        _save(tag, res)
+        return False
+    wc = w[cert]
+    Vc = V[:, cert]
+    n_bins = 30 if kc >= 240 else max(kc // 12, 4)
+    r_mean, r_err = ratio_statistic(wc)
+    eth1 = eth_window(wc, Vc, obs1, n_bins=n_bins)
+    ethd = eth_window(wc, Vc, obsd, n_bins=n_bins)
+    micro1 = micro_reference(eps, obs1, eth1["edges"])
+    microd = micro_reference(eps, obsd, ethd["edges"])
+    v1 = np.isfinite(micro1) & np.isfinite(eth1["smooth"])
+    vd = np.isfinite(microd) & np.isfinite(ethd["smooth"])
+    sigma_rel = float(eth1["sigma_eth"] / np.std(eth1["a"]))
+    res["kappa"] = dict(
+        status="done", solver="lanczos-edge", k_eff=kc, n_bins=n_bins,
+        window=[float(wc[0]), float(wc[-1])],
+        window_note="upper spectral edge (largest |lambda|), Krylov tier; "
+                    "LU median-window tier is fill-capped at D=20736 on 4D",
+        resid_max=float(rj.max()), resid_med=float(np.median(rj)),
+        r_mean=r_mean, r_sem=r_err,
+        sigma_eth=eth1["sigma_eth"], sigma_eth_d=ethd["sigma_eth"],
+        sigma_rel=sigma_rel, std_a1=float(np.std(eth1["a"])),
+        micro_rmse=float(np.sqrt(np.mean(
+            (eth1["smooth"][v1] - micro1[v1]) ** 2))) if v1.sum() else None,
+        micro_rmse_d=float(np.sqrt(np.mean(
+            (ethd["smooth"][vd] - microd[vd]) ** 2))) if vd.sum() else None,
+        pr_over_D=participation(Vc),
+        t_eigsh=round(t_eig, 2),
+    )
+    print(f"  kappa: k_eff={kc} edge-window=[{wc[0]:.1f},{wc[-1]:.1f}] "
+          f"<r>={r_mean:.4f}+-{r_err:.4f} | sigma_ETH={eth1['sigma_eth']:.3f} "
+          f"sigma_rel={sigma_rel:.4f} | PR/D={res['kappa']['pr_over_D']:.4f}",
+          flush=True)
+    np.savez_compressed(
+        os.path.join(OUT, f"win_kappa_{tag}.npz"),
+        w=wc, a1=eth1["a"], ad=ethd["a"],
+        centers=eth1["centers"], smooth1=eth1["smooth"], micro1=micro1,
+        smoothd=ethd["smooth"], microd=microd, resid=rj[cert],
+    )
+    _save(tag, res)
+    return True
+
+
 def _save(tag, res):
     with open(os.path.join(OUT, f"res_{tag}.json"), "w") as f:
         json.dump(res, f, indent=1)
@@ -615,7 +735,7 @@ def _load(tag):
 # ----------------------------------------------------------------------------
 def run(tag, d, K, g0, h0, U, seed, k, ncv, stage, no_window, deadline,
         selftest=False, sigma_quantile=0.5, V=0.0, pivot="auto",
-        tau_max=None, resume=False, norm_mode="lanczos"):
+        tau_max=None, resume=False, norm_mode="lanczos", b_kappa=350):
     os.makedirs(OUT, exist_ok=True)
     res = _load(tag) or dict(tag=tag, d=d, K=K, g0=g0, h0=h0, U=U, seed=seed,
                              k=k, ncv=ncv, V=V)
@@ -637,6 +757,17 @@ def run(tag, d, K, g0, h0, U, seed, k, ncv, stage, no_window, deadline,
 
     if stage == "dense":
         dense_stage(res, H, eps, coords, d, K, D, tag)
+        _save(tag, res)
+        return
+
+    if stage == "kappa":
+        kp = res.get("kappa")
+        if kp and kp.get("status") == "done":
+            print("  kappa stage already done", flush=True)
+            return
+        kappa_stage(res, H, eps, coords, d, K, D, tag, b_kappa, seed,
+                    deadline, sigma_quantile=sigma_quantile)
+        res["peak_rss_mb"] = round(peak_rss_mb(), 1)
         _save(tag, res)
         return
 
@@ -680,7 +811,8 @@ def main():
                         "V sum_{p<q} (n_p+n_q)(a_p^dag a_q + h.c.)")
     p.add_argument("--seed", type=int, default=7)
     p.add_argument("--k", type=int, default=0)
-    p.add_argument("--stage", choices=("window", "evolve", "both", "dense"),
+    p.add_argument("--stage", choices=("window", "evolve", "both", "dense",
+                                      "kappa"),
                    default="both")
     p.add_argument("--no-window", action="store_true")
     p.add_argument("--sigma-quantile", type=float, default=0.5)
@@ -699,6 +831,9 @@ def main():
                         "radius (default; Gershgorin row sums overestimate by "
                         "up to ~7x on the kinetic family) or the rigorous bound")
     p.add_argument("--selftest", action="store_true")
+    p.add_argument("--kappa-b", type=int, default=350,
+                   help="kappa stage: eigenpair count (protocol matches the "
+                        "LU window tier: k=350, 30 bins)")
     a = p.parse_args()
     D = (a.K + 1) ** a.d
     if a.k == 0:
@@ -711,7 +846,7 @@ def main():
     run(a.tag, a.d, a.K, a.g0, a.h0, a.U, a.seed, k, ncv, a.stage,
         a.no_window, a.deadline, a.selftest, sigma_quantile=a.sigma_quantile,
         V=a.V, pivot=a.pivot, tau_max=a.tau_max, resume=a.resume,
-        norm_mode=a.norm)
+        norm_mode=a.norm, b_kappa=a.kappa_b)
 
 
 if __name__ == "__main__":
