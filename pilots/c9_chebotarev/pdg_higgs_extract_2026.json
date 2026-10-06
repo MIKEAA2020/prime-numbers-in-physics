@@ -1,0 +1,66 @@
+{
+ "frozen": "2026-10-07",
+ "source": {
+  "citation": "F. Takahashi et al. (Particle Data Group), Int. J. Mod. Phys. A 41, 2630011 (2026)",
+  "url": "https://pdg.lbl.gov/2026/listings/rpp2026-list-higgs-boson.pdf",
+  "downloaded": "2026-10-07",
+  "pdf_sha256": "2ed8ad25e6f5b69bd61687ba9ec21fa65e12d57ea82ee27065cba5ef7bd3a280",
+  "note": "decay-mode table of the 2026 Higgs listing: signal-strength-constrained evaluations with SM theory input; tau tau error symmetrized (6.0 +0.8/-0.7)%; mu mu updated to (3.0 +- 0.9)e-4"
+ },
+ "k": 7,
+ "labels": [
+  "bb",
+  "WW",
+  "ZZ",
+  "tautau",
+  "gammagamma",
+  "Zgamma",
+  "mumu"
+ ],
+ "f": [
+  0.53,
+  0.257,
+  0.028,
+  0.06,
+  0.0025,
+  0.0034,
+  0.0003
+ ],
+ "sigma": [
+  0.08,
+  0.025,
+  0.003,
+  0.0075,
+  0.0002,
+  0.0011,
+  9e-05
+ ],
+ "sigma_rel": [
+  0.15094,
+  0.09728,
+  0.10714,
+  0.125,
+  0.08,
+  0.32353,
+  0.3
+ ],
+ "injection": {
+  "N": 3168,
+  "c": [
+   1584,
+   792,
+   88,
+   198,
+   8,
+   11,
+   1
+  ],
+  "note": "minimum-chi2 common-N dictionary of this frozen vector (N = 3168, chi2 = 0.386), within one sigma in every channel; rule amended from the 2024 extract, whose recorded truth was not a valid dictionary (2800 does not divide 5040)"
+ },
+ "protocol": {
+  "P1_null_first": "3000 Dirichlet(k) draws, matched sigma pattern and total mass, common-N scan N in [2,5000]; threshold chi2_0.95(k)",
+  "P2_injection": "truth frozen in this file (valid dictionary, every c_i divides N), Gaussian noise at the table sigma, 100 repetitions, recovery = rational identity of proportions",
+  "P3_decision": "signature present iff min-chi2 < chi2_0.95(k) AND empirical p < 0.05 vs the P1 null",
+  "P4_regime": "sigma_rel = 8-30% (the mu mu channel improves from 50% to 30% in the 2026 listing), two orders of magnitude above the calibrated sigma <= 0.3% regime: the channels are signal-strength-constrained evaluations with Standard Model theory input, not direct fraction measurements.  The null calibration carries the same weakness, so the false-positive rate is controlled but the power is minimal; the P2 injection (a valid dictionary truth, amended per the note above) quantifies the loss.  The seven measured channels sum to 0.8813 of the width (gg, cc, and rare modes are unmeasured); the dictionary hypothesis constrains only the measured f_i = c_i/N with c_i | N, not the partition of the total."
+ }
+}
