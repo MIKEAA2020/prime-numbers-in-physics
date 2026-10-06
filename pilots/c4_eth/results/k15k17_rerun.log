@@ -78,3 +78,76 @@ L36d4K15kr: MAX_CHUNKS (1) reached without certification.
   sweep 6 phase 0: M=1500 count_in=21 count_est=-- conv_band=0 resid_q=[50.056 60.021 81.716] theta_near_c=[0.012 0.02  0.045 0.12  0.174]
   deadline: state saved (sweeps=6, chunks=6, phase=0) -- rerun with --resume
 L36d4K15kr: MAX_CHUNKS (1) reached without certification.
+=== L36d4K15kr (d=4 K=15 D=65536, V=0.16, dose 36) ===
+  note: addr-limit raise failed (not allowed to raise maximum limit)
+[L36d4K15kr] resume: D=65536 sweeps=6 chunks=6 M=1500 t=0.879 phase=0
+  sweep 7 phase 0: M=1500 count_in=50 count_est=-- conv_band=0 resid_q=[34.233 53.823 77.753] theta_near_c=[0.    0.012 0.023 0.045 0.099]
+  deadline: state saved (sweeps=7, chunks=0, phase=0) -- rerun with --resume
+L36d4K15kr: MAX_CHUNKS (1) reached without certification.
+=== L36d4K15kr (d=4 K=15 D=65536, V=0.16, dose 36) ===
+  note: addr-limit raise failed (not allowed to raise maximum limit)
+[L36d4K15kr] resume: D=65536 sweeps=7 chunks=0 M=1500 t=1.011 phase=0
+  deadline: state saved (sweeps=7, chunks=13, phase=0) -- rerun with --resume
+L36d4K15kr: MAX_CHUNKS (1) reached without certification.
+=== L36d4K15kr (d=4 K=15 D=65536, V=0.16, dose 36) ===
+  note: addr-limit raise failed (not allowed to raise maximum limit)
+[L36d4K15kr] resume: D=65536 sweeps=7 chunks=13 M=1500 t=1.011 phase=0
+  sweep 8 phase 0: M=1500 count_in=132 count_est=-- conv_band=0 resid_q=[17.513 41.271 71.731] theta_near_c=[0.003 0.007 0.013 0.014 0.019]
+  deadline: state saved (sweeps=8, chunks=7, phase=0) -- rerun with --resume
+L36d4K15kr: MAX_CHUNKS (1) reached without certification.
+=== L36d4K15kr (d=4 K=15 D=65536, V=0.16, dose 36) ===
+  note: addr-limit raise failed (not allowed to raise maximum limit)
+[L36d4K15kr] resume: D=65536 sweeps=8 chunks=7 M=1500 t=1.162 phase=0
+  sweep 9 phase 0: M=1500 count_in=246 count_est=17 conv_band=0 resid_q=[ 8.795 20.321 64.773] theta_near_c=[0.001 0.003 0.003 0.007 0.008]
+  deadline: state saved (sweeps=9, chunks=0, phase=0) -- rerun with --resume
+L36d4K15kr: MAX_CHUNKS (1) reached without certification.
+=== L36d4K15kr (d=4 K=15 D=65536, V=0.16, dose 36) ===
+  note: addr-limit raise failed (not allowed to raise maximum limit)
+[L36d4K15kr] resume: D=65536 sweeps=9 chunks=0 M=1500 t=1.302 phase=0
+  deadline: state saved (sweeps=9, chunks=12, phase=0) -- rerun with --resume
+L36d4K15kr: MAX_CHUNKS (1) reached without certification.
+=== L36d4K15kr (d=4 K=15 D=65536, V=0.16, dose 36) ===
+  note: addr-limit raise failed (not allowed to raise maximum limit)
+[L36d4K15kr] resume: D=65536 sweeps=9 chunks=12 M=1500 t=1.302 phase=0
+  sweep 10 phase 0: M=1500 count_in=336 count_est=85 conv_band=0 resid_q=[ 5.97   7.609 50.369] theta_near_c=[0.001 0.001 0.005 0.006 0.007]
+  deadline: state saved (sweeps=10, chunks=6, phase=0) -- rerun with --resume
+L36d4K15kr: MAX_CHUNKS (1) reached without certification.
+=== L36d4K15kr (d=4 K=15 D=65536, V=0.16, dose 36) ===
+  note: addr-limit raise failed (not allowed to raise maximum limit)
+[L36d4K15kr] resume: D=65536 sweeps=10 chunks=6 M=1500 t=1.458 phase=0
+  sweep 11 phase 0: M=1500 count_in=391 count_est=228 conv_band=0 resid_q=[ 3.539  5.039 18.185] theta_near_c=[0.    0.003 0.003 0.005 0.006]
+  discovery complete (count_in=391) -> f64 polish (M=1500)
+  deadline: state saved (sweeps=11, chunks=0, phase=1) -- rerun with --resume
+L36d4K15kr: MAX_CHUNKS (1) reached without certification.
+=== L36d4K15kr (d=4 K=15 D=65536, V=0.16, dose 36) ===
+  note: addr-limit raise failed (not allowed to raise maximum limit)
+[L36d4K15kr] resume: D=65536 sweeps=11 chunks=0 M=1500 t=1.458 phase=1
+  deadline: state saved (sweeps=11, chunks=7, phase=1) -- rerun with --resume
+L36d4K15kr: MAX_CHUNKS (1) reached without certification.
+=== L36d4K15kr (d=4 K=15 D=65536, V=0.16, dose 36) ===
+  note: addr-limit raise failed (not allowed to raise maximum limit)
+[L36d4K15kr] resume: D=65536 sweeps=11 chunks=7 M=1500 t=1.458 phase=1
+  deadline: state saved (sweeps=11, chunks=13, phase=1) -- rerun with --resume
+L36d4K15kr: MAX_CHUNKS (1) reached without certification.
+=== L36d4K15kr (d=4 K=15 D=65536, V=0.16, dose 36) ===
+  note: addr-limit raise failed (not allowed to raise maximum limit)
+[L36d4K15kr] resume: D=65536 sweeps=11 chunks=13 M=1500 t=1.458 phase=1
+  sweep 12 phase 1: M=1500 count_in=416 count_est=228 conv_band=0 resid_q=[1.528 2.848 4.716] theta_near_c=[0.002 0.002 0.003 0.004 0.005]
+  deadline: state saved (sweeps=12, chunks=1, phase=1) -- rerun with --resume
+L36d4K15kr: MAX_CHUNKS (1) reached without certification.
+=== L36d4K15kr (d=4 K=15 D=65536, V=0.16, dose 36) ===
+  note: addr-limit raise failed (not allowed to raise maximum limit)
+[L36d4K15kr] resume: D=65536 sweeps=12 chunks=1 M=1500 t=1.458 phase=1
+  deadline: state saved (sweeps=12, chunks=8, phase=1) -- rerun with --resume
+L36d4K15kr: MAX_CHUNKS (1) reached without certification.
+=== L36d4K15kr (d=4 K=15 D=65536, V=0.16, dose 36) ===
+  note: addr-limit raise failed (not allowed to raise maximum limit)
+[L36d4K15kr] resume: D=65536 sweeps=12 chunks=8 M=1500 t=1.458 phase=1
+  deadline: state saved (sweeps=12, chunks=15, phase=1) -- rerun with --resume
+L36d4K15kr: MAX_CHUNKS (1) reached without certification.
+=== L36d4K15kr (d=4 K=15 D=65536, V=0.16, dose 36) ===
+  note: addr-limit raise failed (not allowed to raise maximum limit)
+[L36d4K15kr] resume: D=65536 sweeps=12 chunks=15 M=1500 t=1.458 phase=1
+  sweep 13 phase 1: M=1500 count_in=416 count_est=228 conv_band=0 resid_q=[0.343 0.855 1.636] theta_near_c=[0.002 0.003 0.003 0.005 0.005]
+  deadline: state saved (sweeps=13, chunks=3, phase=1) -- rerun with --resume
+L36d4K15kr: MAX_CHUNKS (1) reached without certification.

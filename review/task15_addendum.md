@@ -90,18 +90,25 @@ abstract are bound to it.
   longer truncate the resumable state; the first save attempt exposed
   and fixed an np.savez extension pitfall en route).
 - The rerun was executed on the available hardware (3.9 GB / 2 cores —
-  the same class as the original platform): at K15 (D=65536) the platform
-  build, spectral edges, passband discovery, sweep loop, and resume cycle
-  run cleanly end-to-end (sweeps 1-6+, passband widening at the
-  calibrated 1.15 rate per Rayleigh-Ritz pass, count_in 8 -> 21), with
+  the same class as the original platform): 25 resumable chunks at K15
+  (D=65536). The platform build, spectral edges, passband discovery,
+  sweep loop, and resume cycle run cleanly end-to-end, and the DISCOVERY
+  PHASE COMPLETES on this hardware class: the passband fills at the
+  calibrated 1.15 rate per Rayleigh-Ritz pass (count_in 8 -> 21 -> 50 ->
+  132 -> 246 -> 336 -> 391 over sweeps 5-11), the block reaching full
+  coverage at sweep 11 (count 391 -> 416 of 416 at sweeps 12-13), with
   the state checkpointed atomically after every chunk.
-- The certification tier is degree-walled on the committed machinery at
-  this band narrowness: the committed Chebyshev degree cap (M <= 1500)
-  sits against the ln(1e4) R/(2t) ~ 7e3 that the K15 median band
-  (t/R ~ 1/1500) prices. The K13 partial-certification record (276/370
-  at degree 3400) marks the tier the cap lift restores. The resumable
-  state `krs_L36d4K15kr.npz` and the run log accompany the pilots;
-  continuation is turnkey (the committed runner picks the state up).
+- The certification tier is what the committed degree cap walls: the cap
+  (M <= 1500, against the ln(1e4) R/(2t) ~ 7e3 the initial band
+  narrowness t/R ~ 1/1500 prices) holds after the passband adaptation,
+  and the f64 polish decays the Ritz residuals at only ~3x per sweep at
+  the capped degree (sweep 12: [1.5, 2.8, 4.7]; sweep 13: [0.34, 0.86,
+  1.6] at the 10/50/90 percentiles) — pricing the 2e-6 certification at
+  roughly eleven further polish sweeps, overnight-class wall-clock. The
+  K13 partial-certification record (276/370 at degree 3400) marks the
+  tier the cap lift restores. The resumable state `krs_L36d4K15kr.npz`
+  (sweep 13, phase 1) and the run log accompany the pilots; continuation
+  is turnkey (the committed runner picks the state up).
 
 ## Paper
 

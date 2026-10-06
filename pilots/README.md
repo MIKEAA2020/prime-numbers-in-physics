@@ -503,10 +503,13 @@ K15/K17 rerun
   reproduced, Higgs fires with a valid dictionary truth (0/100 power,
   post-hoc P = 10.5%).
 - **K15/K17 rerun** (`run_c4_median_k15k17.sh` with the atomic-checkpoint
-  `c4_kappa_krylov.py`): executed at K15 on this hardware class; the
-  resumable state `krs_L36d4K15kr.npz` and the run log
-  (`results/k15k17_rerun.log`) record the degree wall at the committed
-  cap; continuation is turnkey.
+  `c4_kappa_krylov.py`): 25 resumable chunks at K15 — the discovery phase
+  completes on this hardware class (full block coverage at sweep 11); the
+  certification tier is priced at ~11 further f64 polish sweeps by the
+  measured ~3x-per-sweep residual decay at the committed M <= 1500 cap.
+  The resumable state `krs_L36d4K15kr.npz` (sweep 13, phase 1) and the
+  run log (`results/k15k17_rerun.log`) record the wall; continuation is
+  turnkey.
 
 Remaining: the K15/K17 certification tier (RAM/wall-clock gated, resumable
 state deployed); the obstruction lower bound's two completion routes

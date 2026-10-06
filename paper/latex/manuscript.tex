@@ -1368,16 +1368,20 @@ the $LU$ ceiling has been executed on the available hardware with the
 checkpoint loop hardened to atomic saves (write-then-rename, so an external
 kill cannot truncate the resumable state): the platform build, passband
 adaptation, sweep loop, and resume cycle run cleanly end-to-end at
-$K=15$ ($D=65536$), but the certification tier is degree-walled on the
-committed machinery at this band narrowness---the Chebyshev degree cap
-($M\le1500$) sits against the $\ln(10^{4})\,R/(2t)\approx7\times10^{3}$
-that the $K15$ median band ($t/R\approx1/1500$) prices, so the discovery
-phase advances sweep by sweep (passband widening at the calibrated
-$1.15$ rate per Rayleigh--Ritz pass) without reaching the $350$-pair
-certification in session-scale wall-clock; the resumable state accompanies
-the pilots for continuation, the partial-certification record at the
-$K13$ platform ($276/370$ at degree $3400$) marking the tier the lift
-restores.
+$K=15$ ($D=65536$), and the discovery phase completes on this hardware
+(the passband fills at the calibrated $1.15$ rate per Rayleigh--Ritz pass,
+the block reaching full coverage at sweep $11$, the in-band count rising
+$391\to416$ of $416$). What the committed degree cap walls is the
+certification tier: the Chebyshev degree cap ($M\le1500$, against the
+$\ln(10^{4})\,R/(2t)\approx7\times10^{3}$ that the initial $K15$ band
+narrowness $t/R\approx1/1500$ prices) holds after the passband adaptation,
+and the $f64$ polish decays the Ritz residuals at only
+$\approx3\times$ per sweep at the capped degree, pricing the
+$2\times10^{-6}$ certification at roughly eleven further polish
+sweeps---overnight-class wall-clock on this hardware class. The resumable
+state accompanies the pilots for continuation, and the degree lift
+restores the tier the $K13$ platform marked ($276/370$ certified at
+degree $3400$).
 The bin-width control (eleven to one hundred sixteen levels per
 bin) moves the ratio by less than $0.05$ at every grid where it is computable.
 (k) \emph{Matched-dose trajectories at the three largest grids.} The

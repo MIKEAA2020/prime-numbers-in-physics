@@ -337,3 +337,16 @@ Stage Summary:
 - The K15 median-window rerun executes cleanly on this hardware class but is degree-walled at the committed cap; the atomic-checkpoint resumable state is deployed for continuation
 - Paper: 67 pp final; repo carries the new proposition/remark/item (m), the register bindings, the 2026 records, and the addendum
 - Remaining: the K15/K17 certification tier (resumable, turnkey); the obstruction lower bound's two completion routes
+---
+Task ID: 15 (continuation)
+Agent: Main agent (Super Z)
+Task: K15 rerun grind to the session end.
+
+Work Log:
+- Continued the K15 median-window grind to 25 resumable chunks / 13 sweeps
+- DISCOVERY COMPLETES on this hardware class: count_in 8 -> 21 -> 50 -> 132 -> 246 -> 336 -> 391 (sweeps 5-11), phase 0 -> 1 at sweep 11; full block coverage at sweeps 12-13 (count_in 416 of 416)
+- The f64 polish decay measured: Ritz residual percentiles [1.5, 2.8, 4.7] (sweep 12) -> [0.34, 0.86, 1.6] (sweep 13) -- ~3.3x per sweep at the committed M<=1500 cap; the 2e-6 certification prices at ~11 further polish sweeps (overnight-class wall-clock at the cap)
+- Paper item (j) updated to the precise record (discovery complete; certification priced; degree lift restores the K13 276/370 tier); READMEs and the addendum updated; recompiled, redeployed, recommitted
+
+Stage Summary:
+- The K15 rerun's honest record: discovery completes on the same hardware class; the certification tier is priced, not stalled -- the committed degree cap bounds the polish decay at ~3x/sweep; the resumable state (sweep 13, phase 1) is turnkey for continuation or the cap lift

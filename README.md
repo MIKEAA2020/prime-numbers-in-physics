@@ -283,11 +283,16 @@ Two records extend the line:
   0/100, post-hoc bootstrap P = 10.5%: flagged, not confirmed, with the
   power starvation cleanly measured.
 - **K15/K17 median-window rerun.** Executed on the available hardware
-  with the checkpoint loop hardened to atomic saves: the loop mechanics
-  run cleanly end-to-end at K15 (D = 65536), and the certification tier
-  is degree-walled on the committed machinery (the M <= 1500 cap against
-  the ~7e3 the K15 band narrowness prices); the resumable state
-  accompanies the pilots for continuation. The body is 66 pp.
+  with the checkpoint loop hardened to atomic saves: 25 resumable chunks
+  at K15 (D = 65536) complete the DISCOVERY phase on this hardware class
+  (the block reaches full passband coverage at sweep 11, count 391 -> 416
+  of 416); what the committed degree cap (M <= 1500) walls is the
+  certification tier: the f64 polish decays the Ritz residuals at only
+  ~3x per sweep at the capped degree, pricing the 2e-6 certification at
+  roughly eleven further polish sweeps (overnight-class wall-clock). The
+  resumable state accompanies the pilots for continuation; the degree
+  lift restores the tier the K13 platform marked (276/370 at degree
+  3400). The body is 66 pp.
 
 The single-file LaTeX manuscript (`paper/latex/manuscript.tex`) is
 regenerated from the modular sources and verified to compile identically
