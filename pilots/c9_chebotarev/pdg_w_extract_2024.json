@@ -1,0 +1,55 @@
+{
+ "frozen": "2026-10-06",
+ "source": {
+  "citation": "S. Navas et al. (Particle Data Group), Phys. Rev. D 110, 030001 (2024)",
+  "url": "https://pdg.lbl.gov/2024/listings/rpp2024-list-w-boson.pdf",
+  "downloaded": "2026-10-06",
+  "pdf_sha256": "91cb466bfea8fa49b53ae53d2168797189c14a5a114f30d7cc926f64c4c1e772",
+  "total_width_GeV": [
+   2.085,
+   0.042
+  ],
+  "note": "OUR FIT branching fractions for e/mu/tau and hadrons; width from OUR FIT"
+ },
+ "k": 4,
+ "labels": [
+  "e_nu",
+  "mu_nu",
+  "tau_nu",
+  "hadrons"
+ ],
+ "f": [
+  0.1071,
+  0.1063,
+  0.1138,
+  0.6741
+ ],
+ "sigma": [
+  0.0016,
+  0.0015,
+  0.0021,
+  0.0027
+ ],
+ "sigma_rel": [
+  0.01494,
+  0.01411,
+  0.01845,
+  0.00401
+ ],
+ "injection": {
+  "N": 24,
+  "c": [
+   3,
+   3,
+   6,
+   12
+  ],
+  "note": "W-like shape; every c_i divides 24"
+ },
+ "protocol": {
+  "P1_null_first": "3000 Dirichlet(k) draws, matched sigma pattern and total mass, common-N scan N in [2,5000]; threshold chi2_0.95(k)",
+  "P2_injection": "table-specific truth (frozen in this file), Gaussian noise at the table sigma, 100 repetitions, recovery = rational identity of proportions",
+  "P3_decision": "signature present iff min-chi2 < chi2_0.95(k) AND empirical p < 0.05 vs the P1 null",
+  "P4_regime": "k = 4 granularity amendment: only four W channels are measured, so the k = 5/7 calibrated granularity does not exist for this table; the null calibration runs at k = 4 with the table's own sigma, so the false-positive rate is controlled.  sigma_rel = 1.4-1.8% on the leptonic channels and 0.4% on hadrons, above the Z-pole regime; the four-channel fit has three independent constraints, and the power is correspondingly limited (P2 quantifies it)."
+ }
+}
