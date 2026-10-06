@@ -113,7 +113,10 @@ excludes the signature at the $Z$ pole with unit detection power over the regist
 group orders. The mathematical core of the $\mathsf{C4}$ question is reduced to occupation
 sectors that are exactly block-tridiagonal in a layer grading, solvable in closed form at two
 modes, and governed by a single interaction whose classical sector limits split integrable
-from chaotic; and the dictionary instrument runs table-agnostic on frozen extracts, excluding
+from chaotic---their fixed-$V$ $d\ge3$ ladders, extended to $n=1.2\times10^{5}$ under a
+pre-registered plateau-versus-crossing rule, exclude the crossing branch at every rung
+($\kappa$ flat at $0.14$--$0.20$, five to fifty-nine times the Haar benchmark); and the
+dictionary instrument runs table-agnostic on frozen extracts, excluding
 at the $W$ scale and flagging a precision-limited anomaly at the Higgs scale. The result is a
 framework whose theorems are proved or cited exactly, whose
 analogies are tightened to citable results, and whose remaining ambitions are stated with
@@ -1213,6 +1216,7 @@ rises ($0.115$ at $n=4495$ to $0.182$ at $n=2.3\times10^{4}$) with
 $\langle r\rangle$ in the $0.47$--$0.53$ band; at fixed $V=0.3$, $d=3$
 sits on a plateau $\kappa\approx0.196$ at $n=1.3\times10^{4}$ with
 clustered statistics $\langle r\rangle=0.148$, and $d=4$ decays slowly
+under a fit spanning the dense-to-window protocol change
 ($\kappa\sim n^{-0.22}$, $\langle r\rangle\to0.40$--$0.42$), all with
 delocalized eigenstates ($\mathrm{PR}/n=0.12$--$0.25$) and $\kappa$ a
 factor $1.4$--$20$ above the Haar benchmark at the largest dimensions. A
@@ -1233,11 +1237,62 @@ signature ($\langle r\rangle\to\mathrm{GOE}$ with $\kappa$ on the Haar
 line) at the accessible sector dimensions: classical chaos in the
 interaction-dominated limit coexists with non-thermal sector eigenstates,
 so the quantum-ergodicity route is open classically but not realized at
-the computed scales. Figure~\ref{fig:msector} shows the four panels
-(fluctuation ladders with benchmarks, level statistics, classical
-exponents, and the corner-state Krylov growth, whose $d=2$ sequence is the
-binomial $\beta_n=C\sqrt{n(S+1-n)}$ exactly, as the solvability requires).
+the computed scales. The registered decision object was then measured as
+a pre-registered extension of the fixed-$V$ ladders (the classification
+rule frozen and committed before the runs): $d=3$ to $S=480$
+($n=115\,921$), $d=4$ to $S=70$ ($n=62\,196$), a new $d=5$ family to
+$S=28$ ($n=35\,960$), and a second coupling realization at two rungs per
+family. The crossing branch is excluded at every rung of every family. In
+$d=3$ the window ladder is flat ($\kappa=0.185$--$0.201$ over a factor
+$13.4$ in $n$; all-rung slope $-0.0007\pm0.012$, the last four rungs
+rising at $+0.065$), with $\kappa/B_{\mathrm{count}}$ growing from $16$
+to $59$ and $\langle r\rangle$ clustered at $0.10$--$0.15$. In $d=4$ the
+window ladder is a plateau ($\kappa=0.137$--$0.151$ over a factor $6.8$;
+tail slope $-0.009$, $\kappa/B_{\mathrm{count}}\to32$) with $\langle
+r\rangle=0.40$--$0.42$: the protocol-homogeneous window fit is flat, the
+steeper $n^{-0.22}$ being the mixed-protocol reading. In $d=5$ the decay
+is slow and separated from the Haar rate ($\alpha=0.195\pm0.082$
+against $1/2$), $\kappa/B_{\mathrm{count}}$ stays flat at $7$--$8$, and
+$\langle r\rangle$ transits the GOE band downward ($0.541\to0.499$, the
+last value below the band edge): GOE-compatible level statistics
+coexist with super-Haar eigenstate fluctuations at a fixed factor
+$\sim7$ and do not persist as $n$ grows. The replicate controls move
+$\kappa$ by $3$--$28\%$ and $\langle r\rangle$ by at most $0.02$, with
+no crossing in either realization; the fine class labels (plateau versus
+separated decay) sit within the realization scatter and are not stable
+under substitution, so the rule reports the fixed-$V$ ladders as
+obstruction-consistent at the computed scales rather than closed: the
+joint thermalization signature is absent from every sector ladder up to
+$n=1.2\times10^{5}$, with delocalized eigenstates
+($\mathrm{PR}/n=0.20$--$0.29$) throughout. Figure~\ref{fig:msector}
+shows the four panels (fluctuation ladders with benchmarks and the
+extension rungs, level statistics with the GOE band, classical
+exponents, and the corner-state Krylov growth, whose $d=2$ sequence is
+the binomial $\beta_n=C\sqrt{n(S+1-n)}$ exactly, as the solvability
+requires).
 \end{remark}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{fig_c4_msector.png}
+\caption{Occupation-sector falsifier ladders
+(Remark~\ref{rem:numerics}(l)). (a)~The fluctuation ratio
+$\kappa=\sigma_{\mathrm{ETH}}/\mathrm{std}_{\mathrm{basis}}$ of the
+mode-$1$ occupation against the sector dimension
+$n=\binom{S+d-1}{d-1}$: matched-dose and fixed-$V$ families at $d=2$
+(closed form, with the analytic floor $|\Delta|/(30\Omega)$), $d=3$,
+$d=4$, the $d=5$ fixed-$V$ family, and $\pm30\%$ anisotropic controls,
+against the Haar benchmark $\sqrt{2/n}$ (filled points: the seed-$7$
+ladders; open circles: seed-$8$ replicate controls). (b)~Level statistics
+$\langle r\rangle$ against $n$ with the Poisson and GOE references and
+the GOE band; the $d=2$ picket fence sits at $\langle r\rangle=1$ at
+every scale. (c)~Benettin exponents of the classical sector limits on
+$\mathbb{C}P^{d-1}$: the one-body (matched-dose) flow is integrable at
+every $d$, the kinetic (fixed-$V$) flow is chaotic for $d\ge3$.
+(d)~Corner-state Lanczos coefficients $\beta_n$; the $d=2$ sequence is
+the binomial law exactly.}
+\label{fig:msector}
+\end{figure}
 
 \begin{figure}[t]
 \centering
@@ -2738,7 +2793,20 @@ accessible dimensions, while the classical sector limits split integrable
 (one-body, matched dose) from chaotic (kinetic, fixed $V$, $d\ge3$): the
 thermalization proof and the obstruction are both open, and the sector
 ladder---$\kappa(S)$ plateau versus crossing to the Haar line with GOE
-$\langle r\rangle$---is the decision object. \textbf{M}\\
+$\langle r\rangle$---is the decision object. That object has since been
+measured under a pre-registered extension (the classification rule frozen
+and committed before the runs): the fixed-$V$ ladders reach $n=115\,921$
+($d=3$), $62\,196$ ($d=4$), and $35\,960$ (a new $d=5$ family), with
+replicate controls, and the crossing branch is excluded at every
+rung---$\kappa$ flat at $0.19$ in $d=3$ (all-rung slope
+$-0.0007\pm0.012$, rising tail), flat at $0.14$ in $d=4$, and separated
+from the Haar decay rate in $d=5$ ($\alpha=0.195\pm0.082$), with $\kappa$
+between $5$ and $59$ times the Haar benchmark across families and
+realizations; $\langle r\rangle$ stays off the GOE band in $d=3$/$d=4$
+and transits it downward in $d=5$ ($0.541\to0.499$). The fine class
+labels are not stable under realization substitution ($3$--$28\%$
+scatter), so the obstruction side is favored at the computed scales
+without a closed verdict. \textbf{M}\\
 $\mathsf{C5}$ &
 \emph{Arithmetic--chaos correspondence.} The spectral statistics of the quantized
 near-singularity (BKL-type) Hamiltonian match GUE, and its spectral determinant is

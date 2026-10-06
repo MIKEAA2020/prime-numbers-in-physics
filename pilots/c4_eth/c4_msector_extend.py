@@ -34,11 +34,16 @@ Rungs (fixed V=0.3, U=0):
   seed-8 controls: d3 {200, 280}, d4 {55, 60}, d5 {20, 24}
 
 Each rung is checkpointed (JSON save per rung; msec_<tag>.npz per point);
-reruns skip rungs already recorded in the JSON.  RAM guard: address-space
-cap 3.4 GB (proven on this platform), per-rung peak-RSS monitor, adaptive
-fill-factor estimate per family (gamma = peak_RSS / (16 n bw_est)); a rung
-is skipped and recorded when the estimated peak exceeds 2.7 GB or
-MemAvailable < 1.0 GB.
+reruns skip rungs already recorded in the JSON.  RAM guard (two-term model,
+refined after the first rungs showed the workspace overhead dominating the
+d3 fill estimate): address-space cap 3.4 GB (proven on this platform),
+per-rung peak-RSS monitor, and a per-family estimate
+    est = fill_d * 16 n bw_est + WS_PER_N * n + base + margin
+with fill_d the running max of (peak - base - WS*n)/(16 n bw) over the
+family's completed window rungs (prior 0.35); a rung is skipped and
+recorded when est exceeds 2.7 GB or MemAvailable < 1.0 GB.  (The guard is
+execution scaffolding; the pre-registered decision rule above is
+untouched by the refinement.)
 
 Outputs -> /home/z/my-project/download/pilot_c4_eth_scaled/
            c4_msector_results.json (+ per-rung msec_*.npz, ext_guard log)
@@ -60,7 +65,9 @@ V_FIXED = 0.3
 ADDR_LIMIT = 3.4e9          # proven address-space cap on this platform
 RSS_TARGET = 2.7e9          # skip if the estimated per-rung peak exceeds this
 MEMAVAIL_MIN = 1.0e9        # skip if /proc/meminfo MemAvailable below this
-GAMMA0 = 1.0                # pessimistic full-band fill prior
+WS_PER_N = 350 * 8          # eigsh k=350 workspace bytes per row
+FILL_PRIOR = 0.35           # LU band-fill fraction prior (calibrated per family)
+MARGIN = 250e6
 
 RUNGS = [
     # (d, S, seed) -- execution order: cheap first, guard-risky last
@@ -180,7 +187,7 @@ def validate_d5_assembly(res):
     return checks
 
 
-def run_rung(d, S, seed, gamma):
+def run_rung(d, S, seed):
     """Build and solve one rung; returns (res_dict, peak_rss)."""
     n = math.comb(S + d - 1, d - 1)
     tag = rung_tag(d, S, seed)
@@ -223,8 +230,7 @@ def main():
     validate_d5_assembly(res)
 
     base_rss = current_rss()
-    gamma = {d: GAMMA0 for d in (3, 4, 5)}
-    # calibrate gamma from any window rungs measured in this process
+    fill = {d: FILL_PRIOR for d in (3, 4, 5)}
     for d, S, seed in RUNGS:
         n = math.comb(S + d - 1, d - 1)
         tag = rung_tag(d, S, seed)
@@ -236,11 +242,11 @@ def main():
             continue
         bw = layer_bw_est(d, S)
         if n <= mj.N_DENSE:
-            est = 24.0 * n * n          # dense eigh workspace
+            est = 24.0 * n * n + base_rss          # dense eigh workspace
         else:
-            est = gamma[d] * 16.0 * n * bw
+            est = fill[d] * 16.0 * n * bw + WS_PER_N * n + base_rss + MARGIN
         avail = mem_available()
-        if est + 300e6 > rss_target or avail < MEMAVAIL_MIN:
+        if est > rss_target or avail < MEMAVAIL_MIN:
             rec = dict(d=d, S=S, seed=seed, tag=tag, n=n, bw_est=bw,
                        est_bytes=round(est), mem_avail=round(avail),
                        reason="RAM guard (adaptive fill estimate)")
@@ -250,9 +256,9 @@ def main():
                   f"est={est/1e9:.2f}GB avail={avail/1e9:.2f}GB", flush=True)
             continue
         print(f"  run {tag}: n={n} bw_est={bw} est={est/1e9:.2f}GB "
-              f"(gamma[{d}]={gamma[d]:.3f})", flush=True)
+              f"(fill[{d}]={fill[d]:.3f})", flush=True)
         try:
-            out, peak = run_rung(d, S, seed, gamma[d])
+            out, peak = run_rung(d, S, seed)
             out["peak_rss_mb"] = round(peak / 1e6, 1)
             print(f"  {tag}: n={n} kappa={out['kappa']:.4f} "
                   f"<r>={out['r_mean']:.4f} PR/n={out['pr_over_n']:.4f} "
@@ -260,9 +266,12 @@ def main():
                   f"peak={peak/1e9:.2f}GB "
                   f"({out.get('t_win', out.get('t_diag'))}s)", flush=True)
             if n > mj.N_DENSE and 16.0 * n * bw > 0:
-                g_meas = max(0.05, (peak - base_rss) / (16.0 * n * bw))
-                gamma[d] = max(gamma[d], g_meas)
-                print(f"    gamma[{d}] -> {gamma[d]:.3f}", flush=True)
+                f_meas = (peak - base_rss - WS_PER_N * n) / (16.0 * n * bw)
+                if f_meas > 0:
+                    fill[d] = min(4.0, max(fill[d], f_meas, 0.05))
+                print(f"    fill[{d}] -> {fill[d]:.3f} "
+                      f"(peak {peak/1e9:.2f}GB, ws "
+                      f"{WS_PER_N*n/1e9:.2f}GB)", flush=True)
             if seed == 7:
                 res.setdefault(family_key(d), []).append(out)
             else:
@@ -274,7 +283,7 @@ def main():
             res["ext_guard"].append(rec)
             _save(res, res_path)
             print(f"  MEMORY-SKIP {tag} (n={n})", flush=True)
-            gamma[d] = min(4.0, gamma[d] * 2)   # stay conservative
+            fill[d] = min(4.0, fill[d] * 2)   # stay conservative
         except Exception as exc:
             rec = dict(d=d, S=S, seed=seed, tag=tag, n=n,
                        reason=f"{type(exc).__name__}: {exc}",

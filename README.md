@@ -170,6 +170,31 @@ from the modular sources and verified to compile identically (47 pp).
   (`pilots/c4_eth/c4_msector_jacobi.py`, `c4_msector_classical.py`,
   `c4_msector_figures.py` -> fig_c4_msector.png; paper Prop. jacobi and
   Remark numerics (l)).
+- **The fixed-V d>=3 ladder extension (the decision object, executed).**
+  Pre-registered (classification rule committed at c3d55fb before the
+  runs): plateau if the last-four window-rung log-log slope is within
+  +-0.05; separated decay if 0.05 < alpha < 0.45 (kappa/B grows as
+  n^(1/2-alpha)); crossing if kappa <= B_count at any rung (thermal
+  verdict additionally requires <r> in the GOE band 0.5359 +- 0.03).
+  Executed rungs: d = 3 to S = 480 (n = 115921), d = 4 to S = 70
+  (n = 62196), a new d = 5 family (n = 1820 -> 35960), and seed-8
+  replicate controls at two rungs per family; every planned rung ran
+  (zero guard skips; peak RSS 2.26 GB). Outcome: the crossing branch is
+  excluded at every rung of every family -- d = 3 flat (kappa =
+  0.185-0.201 over a factor 13.4 in n; all-rung slope -0.0007 +- 0.012,
+  rising tail +0.065; kappa/B 16 -> 59; <r> 0.10-0.15), d = 4 a
+  plateau (0.137-0.151 over 6.8x; tail slope -0.009; kappa/B -> 32;
+  <r> 0.40-0.42; the protocol-homogeneous window fit is flat -- the
+  earlier n^-0.22 mixed dense and window rungs), d = 5 separated
+  (alpha = 0.195 +- 0.082 vs 1/2; kappa/B flat at 7-8; <r> transits
+  the GOE band downward 0.541 -> 0.499). Replicates move kappa by
+  3-28% and <r> by <= 0.02 with no crossing in either realization;
+  the fine class labels sit inside the realization scatter (not
+  substitution-stable), so the registered verdict is
+  obstruction-consistent at the computed scales rather than closed.
+  (`pilots/c4_eth/c4_msector_extend.py`, `c4_msector_decision.py` ->
+  c4_msector_decision.json; paper Remark numerics (l) extension,
+  register C4 row, abstract).
 - **K15/K17 median-window rerun, turnkey.** `run_c4_median_k15k17.sh`
   drives the committed Chebyshev machinery at K15 (D = 65536) and K17
   (D = 104976) in resumable deadline chunks on any machine with >= 4 GB

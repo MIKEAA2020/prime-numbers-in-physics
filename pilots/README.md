@@ -361,6 +361,46 @@ extraction to 4e-15; faithful seed-7 coupling draw). Established and measured:
 Outputs: `results/c4_msector_results.json`, `results/c4_msector_classical.json`,
 `figures/fig_c4_msector.png` (+ per-point `msec_*.npz` in the download mirror).
 
+## Fixed-V d>=3 sector-ladder extension (the decision object, 2026-10-06)
+
+`c4_msector_extend.py` extends the fixed-V = 0.3 ladders (U = 0, h0 = 1, seed 7,
+k = 350 median window, 30-bin protocol unchanged): d = 3 to S = 480 (n = 115921),
+d = 4 to S = 70 (n = 62196), a new d = 5 family (dense S = 12/16, window S = 20-28,
+n to 35960; d = 5 assembly validated against the full grid to 8.9e-16), and seed-8
+replicate controls at two rungs per family. The classification rule was frozen and
+committed before the runs (pre-registration commit c3d55fb). Execution: per-rung npz
+checkpoints + JSON save (fully resumable), address-space cap 3.4 GB, per-rung
+peak-RSS monitor with an adaptive two-term guard (LU band fill + eigsh workspace) —
+all 21 rungs + 5 controls ran, zero guard skips, peak RSS 2.26 GB (d = 5, S = 28).
+
+`c4_msector_decision.py` adjudicates under the registered rule
+(`results/c4_msector_decision.json`):
+
+- **Crossing excluded**: no rung of any family (either seed) has kappa <= B_count;
+  the minimum separation is 5.1x (d = 5 seed-8, S = 20); the registered thermal
+  branch never fires.
+- **d = 3**: window ladder flat — kappa = 0.185-0.201 over a factor 13.4 in n,
+  all-rung slope -0.0007 ± 0.012, last-four slope +0.065 (rising; formally the
+  non-monotone/open case of the rule); kappa/B_count 15.9 -> 59.4; <r> clustered
+  0.10-0.15; PR/n 0.20-0.25.
+- **d = 4**: plateau per (D2) — kappa = 0.137-0.151 over a factor 6.8, tail slope
+  -0.009, alpha = 0.037 ± 0.017; kappa/B -> 31.8; <r> 0.40-0.42. The
+  protocol-homogeneous window fit is flat; the committed n^-0.22 reading spans the
+  dense-to-window protocol change at S = 36.
+- **d = 5**: separated slow decay — alpha = 0.195 ± 0.082 (vs the Haar rate 1/2),
+  kappa/B flat at 6.9-7.9, <r> transits the GOE band downward (0.541 -> 0.526 ->
+  0.512 -> 0.499, the last value below the 0.506 band edge): GOE-compatible level
+  statistics coexist with super-Haar eigenstate fluctuations at a fixed factor ~7
+  and do not persist as n grows.
+- **Replicate controls**: kappa moves 3.2-28.4%, <r> <= 0.02, no crossing in either
+  realization; the fine class labels flip under seed substitution (plateau <->
+  open <-> separated) — the registered class-stability requirement fails at the
+  realization-scatter level, so the overall verdict is obstruction-consistent at
+  the computed scales, not closed.
+
+Figure panels (a)/(b) extended (`c4_msector_figures.py`): d = 5 family, extension
+rungs, seed-8 open markers, GOE band shading, Haar line to n ~ 1.2e5.
+
 ## K15/K17 median-window rerun (turnkey)
 
 `run_c4_median_k15k17.sh {k15|k17|both|demo}` — the committed Chebyshev machinery at
