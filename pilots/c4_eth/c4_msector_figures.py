@@ -54,6 +54,25 @@ def main():
         if col and ctr.get("kappa") is not None:
             ax.loglog([ctr["n"]], [ctr["kappa"]], marker="o", ls="none",
                       mfc="none", mec=col, ms=6, mew=1.1, alpha=0.9)
+    # A1 seed-mean tail points (between-seed spread as error bars)
+    tail_thr = {"d3_fixed": 400, "d4_fixed": 55, "d5_fixed": 0}
+    for key, col in (("d3_fixed", "#dd8452"), ("d4_fixed", "#55a868"),
+                     ("d5_fixed", "#8172b2")):
+        d = int(key[1])
+        rows = [r for r in res.get(key, [])
+                if r.get("kappa") is not None
+                and r.get("protocol") == "median-window-k350"
+                and r["S"] >= tail_thr[key]]
+        ctrls = res.get("seed_controls", [])
+        xs, ys, ye = [], [], []
+        for r in rows:
+            vals = [r["kappa"]] + [c["kappa"] for c in ctrls
+                     if c.get("d") == d and c["S"] == r["S"]]
+            xs.append(r["n"]); ys.append(float(np.mean(vals)))
+            ye.append(float(np.std(vals, ddof=1)) if len(vals) > 1 else 0.0)
+        if xs:
+            ax.errorbar(xs, ys, yerr=ye, fmt="none", elinewidth=1.6,
+                        capsize=4, color=col, alpha=0.95, zorder=5)
     # d=2 analytic floor
     d2d = res.get("d2_dose", [])
     if d2d:
@@ -62,13 +81,13 @@ def main():
               if r.get("kappa_floor") is not None]
         ax.loglog(xs, ys, "--", color="#4c72b0", lw=1.2,
                   label=r"d=2 floor $|\Delta|/(30\,\Omega)$")
-    nn = np.logspace(2, 5.1, 40)
+    nn = np.logspace(2, 5.35, 40)
     ax.loglog(nn, np.sqrt(2.0 / nn), "k-.", lw=0.9,
               label=r"Haar $\sqrt{2/n}$")
     ax.set_xlabel(r"sector dimension $n=\binom{S+d-1}{d-1}$")
     ax.set_ylabel(r"$\kappa = \sigma_{\rm ETH}/\mathrm{std}_{\rm basis}$")
     ax.set_title("(a) Sector fluctuation ladders")
-    ax.set_xlim(1e2, 1.5e5)
+    ax.set_xlim(1e2, 2.6e5)
     ax.set_ylim(2e-5, 3)
     ax.legend(fontsize=6.5, loc="lower left", ncol=1)
 
@@ -84,6 +103,25 @@ def main():
         if col and ctr.get("r_mean") is not None:
             ax.semilogx([ctr["n"]], [ctr["r_mean"]], marker="o",
                         ls="none", mfc="none", mec=col, ms=6, mew=1.1)
+    # A1 seed-mean <r> with between-seed SEM
+    for key, col in (("d3_fixed", "#dd8452"), ("d4_fixed", "#55a868"),
+                     ("d5_fixed", "#8172b2")):
+        d = int(key[1])
+        rows = [r for r in res.get(key, [])
+                if r.get("r_mean") is not None
+                and r.get("protocol") == "median-window-k350"
+                and r["S"] >= {3: 400, 4: 55, 5: 0}[d]]
+        ctrls = res.get("seed_controls", [])
+        xs, ys, ye = [], [], []
+        for r in rows:
+            vals = [r["r_mean"]] + [c["r_mean"] for c in ctrls
+                     if c.get("d") == d and c["S"] == r["S"]]
+            xs.append(r["n"]); ys.append(float(np.mean(vals)))
+            ye.append(float(np.std(vals, ddof=1) / np.sqrt(len(vals)))
+                      if len(vals) > 1 else 0.0)
+        if xs:
+            ax.errorbar(xs, ys, yerr=ye, fmt="none", elinewidth=1.6,
+                        capsize=4, color=col, alpha=0.95, zorder=5)
     ax.axhline(2 * np.log(2) - 1, color="k", ls="--", lw=0.9)
     ax.annotate("Poisson", xy=(200, 0.395), fontsize=7)
     ax.axhspan(0.5359 - 0.03, 0.5359 + 0.03, color="k", alpha=0.10)
@@ -92,7 +130,7 @@ def main():
     ax.annotate("picket fence ($d=2$)", xy=(200, 1.02), fontsize=7)
     ax.set_xlabel(r"sector dimension $n$")
     ax.set_ylabel(r"$\langle r\rangle$")
-    ax.set_xlim(1e2, 1.5e5)
+    ax.set_xlim(1e2, 2.6e5)
     ax.set_ylim(0.0, 1.12)
     ax.set_title("(b) Sector level statistics")
     ax.legend(fontsize=6.5, loc="center left")

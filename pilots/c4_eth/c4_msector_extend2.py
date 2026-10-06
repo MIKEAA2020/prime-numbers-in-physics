@@ -194,8 +194,10 @@ def main():
             print(f"  skip (done): {tag} n={n}", flush=True)
             continue
         if a.deadline_s is not None:
+            elapsed = time.perf_counter() - t_start
             t_est = est_time_s(res, d, S)
-            if time.perf_counter() - t_start + 1.5 * t_est > a.deadline_s:
+            # a fresh chunk can absorb one big rung (outer timeout covers it)
+            if elapsed > 30.0 and elapsed + 1.15 * t_est > a.deadline_s:
                 print(f"  deadline exit before {tag} "
                       f"(est {t_est:.0f}s)", flush=True)
                 break

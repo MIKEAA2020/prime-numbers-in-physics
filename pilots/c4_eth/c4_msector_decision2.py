@@ -169,19 +169,38 @@ def adjudicate_family(res, d):
                   for r in rows if r["kappa"] <= r["B_count"]]
     ratio_min = min(float(r["kappa"] / r["B_count"]) for r in rows)
 
-    # (A1f) ratio extrapolation
-    n_star, gamma_ok = None, None
+    # (A1f) ratio extrapolation.  The committed text branches on
+    # "gamma_ci entirely < 0" vs "gamma_ci >= 0"; the second branch is the
+    # complement (the CI admits non-decay).  The n* alternative of (A1h) is
+    # evaluated under both readings so the verdict is reading-robust.
+    #   n*(g): scale at which the fitted power law rho(n) = rho_top
+    #   (n/n_hi)^g reaches 1 (only finite for g < 0).
+    n_hi = tab[-1]["n"]
+    rho_top = tab[-1]["ratio_bar"]
+    reach = 1e6 * n_hi
+
+    def nstar(g):
+        return float("inf") if g >= 0 else n_hi * rho_top ** (1.0 / (-g))
+
+    n_star, n_star_lo, gamma_ok, gamma_ok_strict = \
+        None, None, None, None
     if ci_g is not None:
-        if ci_g[0] >= 0:
-            gamma_ok = True
-        else:
-            gamma_ok = False
-            if s_g < 0 and s_k - s_g != 0:
-                # ln n* = (i_k - i_g) / (s_g - s_k): kappa = B crossing of
-                # the two fitted power laws
-                ln_ns = (i_k - i_g) / (s_g - s_k)
-                if ln_ns > math.log(max(e["n"] for e in tab)):
-                    n_star = float(math.exp(ln_ns))
+        # complement reading: CI admits gamma >= 0
+        gamma_ok = ci_g[1] >= 0
+        # strict reading: CI entirely non-negative
+        gamma_ok_strict = ci_g[0] >= 0
+        if ci_g[1] < 0:                 # entirely negative: n* interval
+            n_star_lo, n_star = nstar(ci_g[0]), nstar(ci_g[1])
+            ok_nstar = n_star_lo > reach
+            gamma_ok = gamma_ok_strict = ok_nstar
+        elif ci_g[0] < 0:               # spans zero: worst admitted decay
+            n_star_lo = nstar(ci_g[0])
+            n_star = float("inf")
+            if n_star_lo <= reach:
+                gamma_ok_strict = False   # strict reading rescued only by
+                # an n* beyond the reach bound; here it is not
+            else:
+                gamma_ok_strict = True    # rescued by the (A1h) n* clause
 
     # (A1g) transit (applies to d5; reported for all)
     transit = None
@@ -203,7 +222,7 @@ def adjudicate_family(res, d):
 
     return dict(klass=cls, side=side, sub_class_resolved=sub_ok,
                 tail=dict(spec=f"S>={TAIL_SPEC[d]}", rungs=len(tab),
-                          n_lo=int(tab[0]["n"]), n_hi=int(tab[-1]["n"])),
+                          n_lo=int(tab[0]["n"]), n_hi=int(n_hi)),
                 alpha=dict(point=alpha, wls_point=-s_k,
                            ci=ci_a, **{k: intervals["alpha"][k]
                                        for k in ("hw_wls", "hw_seed",
@@ -212,7 +231,11 @@ def adjudicate_family(res, d):
                            hw_wls=intervals["gamma"]["hw_wls"],
                            hw_seed=intervals["gamma"]["hw_seed"]),
                 crossing_rows=cross_rows, ratio_min=ratio_min,
-                n_star=n_star, gamma_ok=gamma_ok,
+                n_star=(None if n_star == float("inf") else n_star),
+                n_star_lo=(None if n_star_lo in (None, float("inf"))
+                           else n_star_lo),
+                reach_bound=float(reach),
+                gamma_ok=gamma_ok, gamma_ok_strict=gamma_ok_strict,
                 r_slope=float(s_r), r_slope_ci=(float(s_r - t95(kr - 2) * se_r),
                                                 float(s_r + t95(kr - 2) * se_r))
                 if se_r is not None else None,
@@ -233,8 +256,10 @@ def main():
                  if report[f].get("tail")), default=1)
     gamma_ok = all(report[f]["gamma_ok"] for f in FAMILIES
                    if report[f]["gamma_ok"] is not None)
+    gamma_ok_strict = all(report[f]["gamma_ok_strict"] for f in FAMILIES
+                          if report[f]["gamma_ok_strict"] is not None)
     ratio_min = min(report[f]["ratio_min"] for f in FAMILIES)
-    settled = (not any_cross) and alpha_ok and gamma_ok
+    settled = (not any_cross) and alpha_ok and gamma_ok and gamma_ok_strict
     overall = ("settled: obstruction side" if settled
                else "open (see branches)")
 
@@ -267,6 +292,9 @@ def main():
                   f"[{g['ci'][0]:+.4f}, {g['ci'][1]:+.4f}]")
         print(f"   kappa/B min over all seeds/rungs: {rp['ratio_min']:.2f}"
               f"   crossing rows: {len(rp['crossing_rows'])}")
+        if rp.get("n_star_lo"):
+            print(f"   n* (worst admitted decay): {rp['n_star_lo']:.2e} "
+                  f"(reach bound {rp['reach_bound']:.2e})")
         if rp.get("transit"):
             print(f"   <r> slope {rp['r_slope']:+.4f} "
                   f"CI {['%.4f' % v for v in rp['r_slope_ci']]}; "
@@ -280,6 +308,7 @@ def main():
                   f"r_bar={e['r_bar']:.4f}")
     print(f"OVERALL: {overall} (any_crossing={any_cross}, "
           f"alpha_ok={alpha_ok}, gamma_ok={gamma_ok}, "
+          f"gamma_ok_strict={gamma_ok_strict}, "
           f"ratio_min={ratio_min:.2f})")
     print("saved", path)
 
