@@ -527,7 +527,23 @@ K15/K17 rerun
   in `results/c4_msector_replica.json`; the propagation checkpoints
   `krs_replica_prop_r*.npz`.
 
+- **`c4_msector_dipole.py`** — the multiplet-dipole control, executed: the
+  operator-isotypic selection rule (K - (S/d)I is rho_d-isotypic as an
+  operator; blocks P_l KP_m vanish unless l \subseteq m \otimes rho_d; the
+  occupation identity extends to every non-self-coupled isotypic, [22] at
+  d=4 included; the d=4 vanishing blocks at 1e-17), the Parseval-exact
+  channel decomposition of the window K-matrix and the fluctuation operator
+  (corrected projectors with the dimension factors; the earlier
+  `c4_msector_symmetry.py` standard projector was missing the factor and
+  had swapped 1-D characters — repaired), the budget obstruction measured
+  at every rung (the affine family exactly fluctuation-free to 1e-11; the
+  channel Gram budget vacuous by positive semidefiniteness, exceeding the
+  mass by <= 0.6% vs the 7-15% fluctuation; the moment family overshooting
+  by 3.3-4.0 at the optimal threshold), and the multiplet census (pairs
+  0 -> 665 over S=20-116, pair dipoles at 1e-16 of the off-diagonal,
+  splittings decaying to 2.4e-12, the paired subpopulation
+  fluctuation-silent). Results in `results/c4_msector_dipole.json`.
+
 Remaining: the K15/K17 certification tier (RAM/wall-clock gated, resumable
 state deployed); the extension of the certified replica constants beyond
-the dense tier (the propagation machinery, priced); the multiplet-dipole
-control.
+the dense tier (the propagation machinery, priced).

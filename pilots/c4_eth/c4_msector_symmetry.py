@@ -126,25 +126,30 @@ def isotypic_content(d, S, comp):
 
 def projectors_s3(d, S, comp, n):
     """Isotypic projectors P_triv, P_sign, P_std (d=3) as index
-    permutations: P_lambda = (f_lambda/d!) sum_pi chi_lambda(pi) P_pi."""
+    permutations: P_lambda = (dim_lambda/d!) sum_pi chi_lambda(pi) P_pi.
+    (Corrected: the dimension factor dim_lambda for the 2-dimensional
+    standard irrep, and the trivial/sign characters by class.)"""
+    # tuples: (permutation, chi_trivial, chi_sign, chi_standard) by class
+    # e: (1,1,1,2); transpositions: (1,-1,1,0); 3-cycles: (1,1,1,-1)
     perms = [
-        ((0, 1, 2), 1.0, 1.0, 2.0),        # identity: class, chi_t, chi_s,
-        ((1, 0, 2), -1.0, 1.0, 0.0),       # transpositions
-        ((0, 2, 1), -1.0, 1.0, 0.0),
-        ((2, 1, 0), -1.0, 1.0, 0.0),
+        ((0, 1, 2), 1.0, 1.0, 2.0),        # identity
+        ((1, 0, 2), 1.0, -1.0, 0.0),       # transpositions
+        ((0, 2, 1), 1.0, -1.0, 0.0),
+        ((2, 1, 0), 1.0, -1.0, 0.0),
         ((1, 2, 0), 1.0, 1.0, -1.0),       # 3-cycles
         ((2, 0, 1), 1.0, 1.0, -1.0),
     ]
     idxs = [perm_index(comp, S, d, p) for p, _, _, _ in perms]
     P = {}
-    for name, col in (("trivial", 1), ("sign", 2), ("standard", 3)):
+    for name, col, dim in (("trivial", 1, 1), ("sign", 2, 1),
+                           ("standard", 3, 2)):
         # accumulate as dense (small n only)
         M = np.zeros((n, n))
         for (p, ct, cs, cstd), idx in zip(perms, idxs):
             chi = (ct if col == 1 else cs if col == 2 else cstd)
             # permutation matrix Pi: (Pi)_{i, idx[i]} = 1  (row i maps to
             # column idx[i]); as an operator Pi e_i = e_{idx[i]}
-            M[np.arange(n), idx] += chi / 6.0
+            M[np.arange(n), idx] += chi * (dim / 6.0)
         P[name] = M
     return P
 

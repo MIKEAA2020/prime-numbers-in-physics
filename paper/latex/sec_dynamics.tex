@@ -569,7 +569,13 @@ two completion routes: the two-copy replica bound, executed as
 Proposition~\ref{prop:replica} below, and a multiplet-dipole
 control---a statement that the inter-multiplet dipoles cannot collapse to
 zero, which no single-copy trace can force (the sum rule fixes only their
-mean) and which remains the complementary route.
+mean). The control is executed as Proposition~\ref{prop:dipole}: the
+dipole architecture is exact and scale-invariant, the selection rule
+extends the occupation identity beyond the one-dimensional isotypics, and
+the budget obstruction shows that the natural single-copy inequality
+families (affine, channel, moment) cannot certify the dipole spread at
+all---the certified control rides the two-copy data, and the replica route
+is necessary rather than merely convenient.
 \end{remark}
 
 \begin{proposition}[Two-copy replica bound on the within-bin loop]\label{prop:replica}
@@ -692,6 +698,117 @@ against the exact discrete-kernel value $143{,}113$ at $S=60$, with the
 folded tail at $5.1$; the closing statistical precision (a probe budget
 $s\!\cdot\!R\approx256$) is priced at the overnight wall-clock class.
 
+\begin{proposition}[Dipole architecture and the necessity of the two-copy
+route]\label{prop:dipole}
+Fix the sector block $H^{(S)}$, the window $W$, the occupation $K$, and
+$X=\mathbf{1}_WK\mathbf{1}_W$ as in Proposition~\ref{prop:replica}, and let
+$P_{\lambda}$ be the isotypic projectors of the mode-permutation action on
+the sector ($\lambda$ over the irreps of $S_d$).
+\begin{enumerate}[leftmargin=1.6em]
+\item \emph{Selection rule.} $K-\tfrac{S}{d}I$ lies in the
+$\rho_d$-isotypic component of the operator space under conjugation, where
+$\rho_d$ is the $(d-1)$-dimensional simplex irrep (the standard irrep at
+$d=3$, the $[31]$ irrep at $d=4$): the conjugation orbit of the diagonal
+operator $k_1$ is $\{k_{\pi(1)}\}_{\pi\in S_d}$, spanning the hyperplane
+$\sum_ik_i=S$ with its mean removed. Consequently the isotypic block
+$P_{\lambda}KP_{\mu}$ vanishes unless $\lambda\subseteq\mu\otimes\rho_d$,
+and in particular the diagonal block
+$P_{\lambda}\bigl(K-\tfrac{S}{d}I\bigr)P_{\lambda}$ vanishes on every
+\emph{non-self-coupled} isotypic ($\lambda\not\subseteq\lambda\otimes
+\rho_d$): the trivial and sign components at $d=3$, and additionally $[22]$
+at $d=4$---the occupation identity $\langle K\rangle=S/d$ of
+Proposition~\ref{prop:moments}(iv) extends to all of them, and the
+trivial$\leftrightarrow$sign block vanishes identically.
+\item \emph{Channel decomposition.} With $Y_{\lambda}=P_{\lambda}\Psi_W$
+($\Psi_W$ the window eigenbasis), the window $K$-matrix and the
+fluctuation operator $\widetilde X=X-\tfrac{S}{d}\mathbf{1}_W$ decompose
+exactly over the selection-rule channels,
+$KW=\sum_{\lambda,\mu}Y_{\lambda}^{T}KY_{\mu}$ and
+$\widetilde X=\sum_c\widetilde C_c$, the sum over the blocks surviving
+item~(i); the eigenstate occupations decompose correspondingly,
+\begin{equation*}
+a_j=\tfrac{S}{d}\,w^{\mathrm{1d}}_j+\textstyle\sum_{\lambda\ \mathrm{multi}}
+\langle\psi_j^{\lambda}|K|\psi_j^{\lambda}\rangle
++2\,\mathrm{Re}\sum_{\lambda<\mu}\langle\psi_j^{\lambda}|K|
+\psi_j^{\mu}\rangle,
+\end{equation*}
+with $w^{\mathrm{1d}}_j$ the one-dimensional-isotypic content of
+$\psi_j$ (every term of the sum obeying the selection rule).
+\item \emph{The budget obstruction.} (a)~\emph{Affine family:}
+$\sum_{j\in W}a_j^{2}\ge|W|\bigl(\tfrac{S}{d}\bigr)^{2}
++2\tfrac{S}{d}\bigl(\mathrm{Tr}\,\mathbf{1}_WK-|W|\tfrac{S}{d}\bigr)$,
+with equality iff $a_j=S/d$ identically: the slack is exactly
+$\sum_j(a_j-S/d)^{2}$, the fluctuation itself---the family certifies the
+bulk and never the margin. (b)~\emph{Channel family:} for
+\emph{every} decomposition $\widetilde X=\sum_cC_c$ into finitely many
+channels, the Gram budget $\sum_{c,c'}\bigl|
+\mathrm{Tr}\bigl(C_c^{\dagger}C_{c'}\bigr)\bigr|$ bounds the off-diagonal
+mass but is vacuous for the fluctuation: the Gram matrix is positive
+semidefinite, so the budget is at least
+$\|\widetilde X\|_{\mathrm{HS}}^{2}
+=\sum_j(a_j-S/d)^{2}+\text{off-diagonal}$---it always subsumes the
+fluctuation. (c)~\emph{Moment family:} the off-diagonal mass above
+threshold $\delta$ is bounded by $M_p/g(\delta)^{2p}$ with the difference
+moments of Proposition~\ref{prop:replica}(i); the dipoles are
+frequency-spread rather than gap-concentrated, and the bound overshoots.
+A certified lower bound on the inter-multiplet dipole spread therefore
+requires data outside all three families; the two-copy Fej\'er kernel of
+Proposition~\ref{prop:replica} is such data and closes.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}[Proof sketch]
+(i) The conjugation orbit of $k_1$ spans $\{k_1,\dots,k_d\}$, whose
+mean-free span $\sum_i(k_i-S/d)=0$ is the simplex representation
+$\rho_d$; the operator space $\mathrm{End}(V)\cong V\otimes V^{*}$ graded
+by the two-sided permutation action carries an operator of
+$\rho$-isotypic type exactly on the blocks with
+$\lambda\subseteq\mu\otimes\rho$, all other blocks vanishing; the
+non-self-coupled diagonal blocks then give the extended occupation
+identity by the averaging argument of Proposition~\ref{prop:moments}(iv).
+(ii) is the resolution $\sum_{\lambda}P_{\lambda}=I$ inserted into
+$KW$; the Parseval defect is the cross-Gram
+$\mathrm{Tr}(C_{\lambda\mu}^{\dagger}C_{\lambda'\mu'})$ with
+$\mu\neq\lambda'$. (iii)(a) expands $\sum_j(\tfrac{S}{d}+\beta_j)^{2}$
+with $\beta_j=a_j-S/d$; (b) the channel Gram matrix is positive
+semidefinite, whence $\sum_{c,c'}|G_{cc'}|\ge\operatorname{trace}G$;
+(c) is the measured frequency census (the mass-weighted decile
+frequency at $7.7$ against the gap $g$; item~(n)).
+\end{proof}
+
+The proposition is validated and executed at every rung of the replica
+platforms ($d=3$, $S=20\to116$; $d=4$, $S=16$; the loop and surrogate
+reproduce the replica values identically at each rung). The projector
+construction $P_{\lambda}=\tfrac{\dim\lambda}{d!}\sum_{\pi}
+\chi_{\lambda}(\pi)P_{\pi}$ validates to $10^{-15}$ (idempotence,
+orthogonality, resolution of the identity); the channel sum equals $KW$
+to $6\times10^{-14}$ and the occupation decomposition to
+$2\times10^{-13}$ at every rung; the block identities hold to
+$5\times10^{-14}$, the $d=4$ blocks $[1111]\leftrightarrow[4]$,
+$[1111]\leftrightarrow[22]$, $[1111]\leftrightarrow[31]$,
+$[22]\leftrightarrow[4]$, $[211]\leftrightarrow[4]$, and the diagonal
+$[22]$ block vanishing at the $10^{-17}$ level---the selection rule
+exactly. The measured dipole architecture is scale-invariant along the
+ladder: the fluctuation operator's Hilbert--Schmidt mass splits at
+$33\%$ standard-internal and $67\%$ mixed
+one-dimensional$\leftrightarrow$standard dipoles at \emph{every} $d=3$
+rung ($S=20\to116$), and the window's aggregate isotypic content tracks
+the dimension fractions at every rung. The budget obstruction is
+measured: the affine bound's slack equals the fluctuation to
+$10^{-11}$; the Gram budget exceeds the fluctuation-operator mass by at
+most $0.6\%$ (the cross-channel interference) at every rung while the
+fluctuation is $7$--$15\%$ of that mass; the moment bound overshoots by
+factors $3.3$--$4.0$ at the optimal threshold ($\delta$ at the
+mass-weighted decile) and up to $10^{18}$ across the grid. The
+multiplet census at the same rungs: the surviving pairs grow $0\to665$
+over $S=20\to116$ ($9.6\%$ of the spectrum), the within-window pair
+dipoles carry $10^{-16}$--$10^{-15}$ of the off-diagonal mass, the
+refined splittings decay $1.4\times10^{-9}\to2.4\times10^{-12}$, and
+the paired subpopulation is fluctuation-silent (its occupation variance
+at $10^{-4}$--$10^{-5}$ of the unpaired variance): the inter-multiplet
+dipole spread is the unpaired spread, carried by the self-coupled
+isotypic content.
+
 \begin{remark}[The replica route executed]\label{rem:replica}
 The completion route named in Proposition~\ref{prop:moments}(iii) is now
 executed: the within-bin loop, the pinching-locked two-copy object that
@@ -706,8 +823,12 @@ ladder, and the profile-margin statement holds with the certified
 margins above.  What remains is reach, not mechanism: beyond the dense
 tier the exact evaluation of $A_T$ requires the window eigenvectors, the
 eigensolver-free propagation tier carries the extension at the priced
-wall-clock, and the multiplet-dipole control of
-Remark~\ref{rem:obstruction} remains the complementary route.  A
+wall-clock, and the multiplet-dipole control is executed as
+Proposition~\ref{prop:dipole}---the dipole architecture is exact and
+scale-invariant, and the control resolves as a necessity theorem: the
+channel, moment, and affine families that could have carried it are
+obstructed by the budget theorem, so the two-copy data this proposition uses
+is the only closing mechanism among those measured. A
 thermalization proof, conversely, must now overturn a certified constant
 at a computed rung or operate beyond every certified trend---the
 dichotomy has moved from measured to certified on the obstruction side.
@@ -1134,6 +1255,34 @@ below $10^{-59}$; the closing statistical precision is priced at the
 overnight wall-clock class. The certified constants are the obstruction
 theorem's finite-dimensional instances at the computed rungs
 (Remark~\ref{rem:replica}).
+(o) \emph{The multiplet-dipole control, executed.}
+Proposition~\ref{prop:dipole} is validated at every rung of the replica
+platforms plus the census low end ($d=3$, $S\in\{20,40,60,80,100,116\}$;
+$d=4$, $S=16$): the loop and surrogate reproduce the replica values
+identically; the projector, channel, occupation-decomposition, and block
+identities hold to $10^{-13}$ or better; and the selection rule is
+confirmed block by block (the $d=4$ vanishing blocks at the
+$10^{-17}$ level, the extended occupation identity on $[22]$ included).
+The architecture is scale-invariant: the fluctuation-operator mass splits
+at $33\%$ standard-internal to $67\%$ mixed
+one-dimensional$\leftrightarrow$standard dipoles at every $d=3$ rung.
+The budget obstruction is measured at the same rungs: the affine
+single-copy bound is exactly fluctuation-free (slack equal to
+$\sum_j(a_j-S/d)^{2}$ to $10^{-11}$); the channel Gram budget exceeds
+the fluctuation-operator mass by at most $0.6\%$ while the fluctuation
+is $7$--$15\%$ of that mass (and the per-entry Cauchy--Schwarz variant
+by factors $5$--$6$ at $d=3$, $21$ at $d=4$); the moment bound
+overshoots the far mass by $3.3$--$4.0$ at the optimal threshold and
+$10^{2}$--$10^{18}$ across the pre-registered grid. The multiplet
+census: the surviving pairs grow $0\to665$ over $S=20\to116$ ($9.6\%$ of
+the spectrum, $64$ of the $350$ window states at $S=116$), the
+within-window pair dipoles carry $10^{-16}$--$10^{-15}$ of the
+off-diagonal mass, the refined splittings decay
+$1.4\times10^{-9}\to2.4\times10^{-12}$ with within-pair occupation gaps
+at the same floor, and the paired subpopulation is
+fluctuation-silent (occupation variance $10^{-4}$--$10^{-5}$ of the
+unpaired): the fluctuation is the unpaired inter-multiplet spread, and
+its certified control necessarily rides the two-copy route.
 \end{remark}
 
 \begin{figure}[t]

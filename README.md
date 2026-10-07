@@ -288,8 +288,63 @@ certified constants. 68 pp body / 69 pp final, 0 overfull, 0 undefined,
 0 '??', clean-dir flatten identical.
 
 Remaining on this line: the extension of the certified constants beyond the
-dense tier (the propagation machinery, priced); the multiplet-dipole
-control; the crossing beyond n ~ 8e10.
+dense tier (the propagation machinery, priced); the crossing beyond
+n ~ 8e10. The multiplet-dipole control is executed in the next section.
+
+## The multiplet-dipole control, executed (2026-10-07)
+
+The complementary completion route of the obstruction theorem is resolved.
+`c4_msector_dipole.py` (results `c4_msector_dipole.json`) executes it at
+every replica rung plus the census low end (d=3 S=20-116, d=4 S=16; the
+loop and surrogate reproduce the replica values identically):
+
+- **The operator-isotypic selection rule (exact, new).**
+  K - (S/d)I lies in the rho_d-isotypic component of the operator space
+  under conjugation (rho_d = the (d-1)-dim simplex irrep: standard at d=3,
+  [31] at d=4 — the conjugation orbit of k_1 spans the mean-free simplex).
+  The isotypic block P_l KP_m vanishes unless l \subseteq m \otimes rho_d;
+  the occupation identity <K> = S/d therefore extends beyond the 1-D
+  isotypics to every non-self-coupled isotypic (at d=4: [22] as well), and
+  the trivial<->sign block vanishes identically. Confirmed block by block:
+  the d=4 vanishing blocks at the 1e-17 level, all identities to 5e-14.
+- **The channel decomposition (Parseval-exact).** With the corrected
+  projectors P_l = (dim l/d!) sum chi_l(pi) P_pi (the earlier symmetry
+  script's standard projector was missing the dimension factor and carried
+  swapped 1-D characters — repaired in c4_msector_symmetry.py), the window
+  K-matrix and the fluctuation operator X~ = KW - (S/d)I decompose exactly
+  over the selection-rule channels (5 at d=3, 10 at d=4); the a_j decompose
+  correspondingly (validated to 2e-13 at every rung). The measured
+  architecture is scale-invariant along the ladder: X~'s mass splits at 33%
+  standard-internal / 67% mixed 1-D<->standard dipoles at every d=3 rung.
+- **The budget obstruction (the no-go theorem).** Three natural
+  single-copy/inequality families are decided: (a) the affine family's
+  slack is exactly sum_j (a_j - S/d)^2 — the fluctuation itself (validated
+  to 1e-11): it certifies the bulk, never the margin; (b) the channel
+  family is vacuous for EVERY channel decomposition of X~ — the Gram
+  budget sum|Tr(C_c^dagger C_c')| >= ||X~||_HS^2 by positive semidefiniteness,
+  measured to exceed the mass by at most 0.6% (cross-channel interference)
+  while the fluctuation is 7-15% of it; the per-entry Cauchy-Schwarz
+  variant by factors 5-6 (d=3) and 21 (d=4); (c) the moment family
+  offdiag_far <= M_p/g(delta)^{2p} overshoots by 3.3-4.0 at the optimal
+  threshold and up to 1e18 across the grid (the dipoles are
+  frequency-spread, not gap-concentrated). Consequence: a certified lower
+  bound on the inter-multiplet dipole spread requires data outside all
+  three families — the two-copy Fejer kernel is such data and closes: the
+  replica route is necessary, not merely convenient.
+- **The multiplet census (every rung).** The surviving pairs grow
+  0 -> 4 -> 48 -> 184 -> 412 -> 665 over S=20-116 (9.6% of the spectrum;
+  64 of the 350 window states at S=116); within-window pair dipoles carry
+  1e-16-1e-15 of the off-diagonal mass; refined splittings decay
+  1.4e-9 -> 2.4e-12 with occupation gaps at the same floor; the paired
+  subpopulation is fluctuation-silent (occupation variance 1e-4-1e-5 of
+  the unpaired): the fluctuation is the unpaired inter-multiplet spread,
+  carried by the self-coupled isotypic content.
+
+The paper carries Proposition (prop:dipole) with the proof sketch and the
+validation paragraph, the rewritten rem:obstruction and rem:replica,
+rem:numerics item (o), and the register bindings (the C4 row, the classes
+subsection, mathprograms item 1, the Assessment, the abstract). 70 pp body /
+71 pp final, 0 overfull, 0 undefined, 0 '??', clean-dir flatten identical.
 
 ## The obstruction attack and the 2026 listing cycle
 
