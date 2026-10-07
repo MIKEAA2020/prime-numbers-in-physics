@@ -559,22 +559,158 @@ the variance at $S=60$ and $5.5\%$ at $S=120$ ($d=3$, fixed $V$), matching
 the ladder plateau. By item (iii) the single-copy tier cannot close the
 statement: the between-bin bound is the only trace-computable part (it
 captures $4\%$ of the classical variance, because the fluctuation lives
-within bins), and the within-bin tier is pinching-locked---a rigorous
-lower bound requires the two-copy replica operator
-$\widetilde{\Pi}_{W}$, whose matrix elements are long-time averages of
-$e^{it(H\otimes I-I\otimes H)}$-twists and are not polynomials in $H$. By
-item (iv) the $d=3$ mechanism is identified: the eigenstate occupation is
+within bins), and the within-bin tier is pinching-locked. By item (iv) the
+$d=3$ mechanism is identified: the eigenstate occupation is
 constant on the surviving multiplets and the fluctuation is the
 inter-multiplet dipole spread, carried entirely by the standard-isotypic
 content (the window eigenstates distribute over the isotypic components
-at the dimension fractions $0.16/0.17/0.67$). Two completion routes
-remain: a replica (two-copy) bound on the within-bin loop, or a
-multiplet-dipole control---a statement that the inter-multiplet dipoles
-cannot collapse to zero, which no single-copy trace can force (the sum
-rule fixes only their mean). The registered dichotomy is thus sharpened,
-not closed: the obstruction side now has an exact decomposition, a
-mechanism, and a measured margin, and its missing step is a loop object
-by construction.
+at the dimension fractions $0.16/0.17/0.67$). The within-bin tier admits
+two completion routes: the two-copy replica bound, executed as
+Proposition~\ref{prop:replica} below, and a multiplet-dipole
+control---a statement that the inter-multiplet dipoles cannot collapse to
+zero, which no single-copy trace can force (the sum rule fixes only their
+mean) and which remains the complementary route.
+\end{remark}
+
+\begin{proposition}[Two-copy replica bound on the within-bin loop]\label{prop:replica}
+Fix the sector block $H^{(S)}$, a nondegenerate energy window $W$
+(projector $\mathbf{1}_W$, $|W|$ states), the occupation $K$, and
+$X=\mathbf{1}_WK\mathbf{1}_W$.
+\begin{enumerate}[leftmargin=1.6em]
+\item \emph{Replica identities.} The loop of
+Proposition~\ref{prop:moments}(iii) is the zero-frequency mass of the
+window two-point measure and the Fej\'er limit of the exchange-twist
+autocorrelation,
+\begin{equation*}
+\sum_{j\in W}a_j^{2}=\mu(\{0\}),\qquad
+\mu=\sum_{j,k\in W}|X_{jk}|^{2}\,\delta_{E_k-E_j},
+\end{equation*}
+\begin{equation*}
+\frac{A_T}{T}=\sum_{j,k\in W}|X_{jk}|^{2}\,
+\frac{F_T(E_k-E_j)}{T}\;\xrightarrow[T\to\infty]{}\;\mu(\{0\})
++ \mu\bigl(0<|d|<\tfrac{c}{T}\bigr),
+\end{equation*}
+\begin{equation*}
+A_T=\int_0^T\Bigl(1-\frac{t}{T}\Bigr)
+\mathrm{Tr}\bigl[Xe^{iHt}Xe^{-iHt}\bigr]dt,
+\end{equation*}
+with $F_T(d)=\tfrac{1}{T}\bigl(\sin(Td/2)/(d/2)\bigr)^{2}\ge0$ the
+Fej\'er kernel, $F_T(0)=T$.  The commutant projector of item (iii) is the
+dephased twist-exchange:
+\begin{equation*}
+\widetilde{\Pi}_W=(\mathbf{1}_W\otimes\mathbf{1}_W)
+\Bigl[\lim_{T\to\infty}\tfrac{1}{T}\textstyle\int_0^T
+e^{i(H\otimes I-I\otimes H)t}\,\mathrm{SWAP}\;dt\Bigr]
+(\mathbf{1}_W\otimes\mathbf{1}_W),
+\end{equation*}
+the twist $e^{i(H\otimes I-I\otimes H)t}$ carrying each product-vector
+$|\psi_a\rangle|\psi_b\rangle$ to $e^{i(E_b-E_a)t}|\psi_a\rangle|\psi_b
+\rangle$ under conjugation by the exchange, so that the time average
+selects the energy-matched subspace.  The difference moments
+$M_p=\int d^{2p}\,d\mu(d)=\|(\mathrm{ad}_H)^{p}X\|^{2}_{\mathrm{HS}}$
+($p\ge0$) are single-copy traces of products of $H$-powers with
+layer-graded insertions, computed exactly by the block-column propagation
+of Proposition~\ref{prop:moments}(i) extended to operator insertions.
+\item \emph{The replica sandwich.} For every threshold $\delta>0$ and
+averaging time $T>0$, with $m(\delta)=\mu(0<|d|\le\delta)$ the
+near-diagonal mass, $g(\delta)=\min\{|E_j-E_k|>\delta\}$ the frequency
+floor, and $M_0=\mathrm{Tr}\,X^{2}$ the surrogate,
+\begin{equation*}
+\frac{A_T}{T}-m(\delta)-\frac{4M_0}{T^{2}g(\delta)^{2}}
+\;\le\;\sum_{j\in W}a_j^{2}\;\le\;\frac{A_T}{T},
+\end{equation*}
+the tail term from $F_T(d)/T\le\min\{1,\,4/(T^{2}d^{2})\}$ for $d\neq0$;
+and the near-diagonal mass is capped a priori by the quantum variances,
+$|X_{jk}|^{2}\le\sum_{m\neq j}|X_{mj}|^{2}=\langle\psi_j|K^{2}|\psi_j
+\rangle-a_j^{2}$, so $m(\delta)$ is bounded by censused
+intra-eigenstate variances.
+\item \emph{The frequency gap.} On the fixed-$V$ ladders the off-diagonal
+mass is separated from the pinching scale: at $d=3$, $S=60$ the
+near-degenerate (multiplet) off-diagonal mass is at the $10^{-20}$ level
+of the surrogate, and $99.9\%$ of the off-diagonal mass lies above
+frequency $0.1$ against a pair scale of $10^{-8}$---seven orders of
+magnitude of separation, which is what the sandwich exploits.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}[Proof sketch]
+(i) Expand $\mathrm{Tr}[Xe^{iHt}Xe^{-iHt}]=\sum_{j,k}|X_{jk}|^{2}
+e^{i(E_j-E_k)t}$; the Fej\'er average multiplies each term by
+$F_T(E_k-E_j)$, and $F_T(d)/T\to\mathbf{1}_{d=0}$ pointwise with the
+mass below $|d|<c/T$ retained.  For the twist-exchange: conjugation gives
+$e^{iGt}\,\mathrm{SWAP}=\sum_{a,b}e^{i(E_b-E_a)t}|\psi_b\rangle\langle
+\psi_a|\otimes|\psi_a\rangle\langle\psi_b|$, whose time average keeps
+$E_a=E_b$---for the nondegenerate window exactly the commutant projector
+$\widetilde{\Pi}_W$, whose trace with $K\otimes K$ is the loop (the
+exchange-trace identity $\mathrm{Tr}[\mathrm{SWAP}(A\otimes B)]=
+\mathrm{Tr}[AB]$ with $A=Xe^{iHt}$, $B=Xe^{-iHt}$ yields the
+autocorrelation).  The moment identity is the eigenbasis expansion of
+$\|(\mathrm{ad}_H)^pX\|^2_{\mathrm{HS}}$: each matrix unit
+$|\psi_j\rangle\langle\psi_k|$ is an eigenvector of $\mathrm{ad}_H$ with
+eigenvalue $E_j-E_k$.  (ii) The diagonal terms of $A_T/T$ are
+$|X_{jj}|^{2}$ (the kernel value at $d=0$); the off-diagonal terms at
+$|d|\le\delta$ are bounded by their mass (the normalized kernel is
+$\le1$); the terms at $|d|>g(\delta)$ by $4M_0/(T^{2}g^{2})$; the
+$v$-cap is the triangle inequality on the off-diagonal row sums.  (iii)
+is the measured census.
+\end{proof}
+
+The proposition is validated to roundoff and executed at every
+dense-reachable rung of the fixed-$V$ ladders ($d=3$, $S\in\{40,60,80,
+100,116\}$; $d=4$, $S=16$; the rungs whose full spectrum is dense-computable
+on the platform).  The difference-moment identity holds to
+$4\times10^{-16}$ ($d=3$, $S=60$) and $2\times10^{-16}$ ($d=4$) for
+$p\le2$; the insertion recursion reproduces the dense traces
+$\mathrm{Tr}[H^{m}K\,H^{m'}K]$, $\mathrm{Tr}[H^{m}K^{2}]$, and
+$\mathrm{Tr}[H^{m}[H,K]\,H^{m'}[H,K]]$ to $\le2.1\times10^{-16}$, with
+$[H,K]$ equal to the layer off-diagonal difference of $H$ entry by entry
+(the block-tridiagonal grading in operator form).  The census at
+$S=60$: the near-degenerate off-diagonal mass at the $10^{-20}$ level of
+the surrogate, the off-diagonal mass $99.9\%$ above frequency $0.1$
+(the $10$th percentile of the mass-weighted frequency distribution sits
+at $7.7$), and the pair mass capped by the quantum-variance budget at
+$1\%$ of the classical variance.  On the pre-registered
+$(\delta,c_T)$ grid with $T=c_T/g(\delta)$, the sandwich certifies the
+loop at the $6.3$--$6.9\times10^{-5}$ relative level at every rung
+(the budget is the tail bound $4M_0/c_T^{2}$; the censused near-diagonal
+mass contributes at the $10^{-4}$ level or below), and the certified
+fluctuation ratio against the Haar benchmark reads
+$\kappa_{\mathrm{lb}}/B_{\mathrm{count}}\ge6.0$, $8.1$, $9.9$, $12.5$,
+$14.4$ at $d=3$ $S=40\to116$ and $\ge5.2$ at $d=4$ $S=16$, against the
+measured $6.1$, $8.1$, $10.0$, $12.5$, $14.4$ and $5.2$ (the certified
+value is stated at the population level of the binning, the mean
+within-bin variance, which is conservative for the committed
+sample-binned protocol); the certified profile margins are
+$8.1\%$, $6.6\%$, $5.6\%$, $5.7\%$, $5.7\%$ and $6.2\%$ of
+$\sigma_L^{2}$ against the measured $8.2\%$, $6.6\%$, $5.6\%$, $5.7\%$,
+$5.7\%$, $6.2\%$.  The eigensolver-free tier is validated alongside: the
+discrete-Fej\'er time correlator evaluated by stepwise Chebyshev
+propagation with the bipartite Hutchinson estimator (resumable
+checkpoints; Bessel truncation below $10^{-59}$; the aliasing budget
+carried by the folded-distance census) returns $142{,}044\pm4{,}127$
+against the exact discrete-kernel value $143{,}113$ at $S=60$, with the
+folded tail at $5.1$; the closing statistical precision (a probe budget
+$s\!\cdot\!R\approx256$) is priced at the overnight wall-clock class.
+
+\begin{remark}[The replica route executed]\label{rem:replica}
+The completion route named in Proposition~\ref{prop:moments}(iii) is now
+executed: the within-bin loop, the pinching-locked two-copy object that
+single-copy traces cannot reach, is certified to four significant digits
+at every dense-reachable rung by computable two-copy data---the Fej\'er
+autocorrelation, the censused near-diagonal mass, and the rigorous
+tail.  The obstruction theorem of Section~\ref{sec:mathprograms}, item~1,
+therefore holds as a finite-dimensional statement at the computed rungs:
+$\kappa(S)/B_{\mathrm{count}}(S)\ge c_{d}$ with $c_{3}\ge6.0$ over
+$S=40\to116$ and $c_{4}\ge5.2$, the certified constants growing along the
+ladder, and the profile-margin statement holds with the certified
+margins above.  What remains is reach, not mechanism: beyond the dense
+tier the exact evaluation of $A_T$ requires the window eigenvectors, the
+eigensolver-free propagation tier carries the extension at the priced
+wall-clock, and the multiplet-dipole control of
+Remark~\ref{rem:obstruction} remains the complementary route.  A
+thermalization proof, conversely, must now overturn a certified constant
+at a computed rung or operate beyond every certified trend---the
+dichotomy has moved from measured to certified on the obstruction side.
 \end{remark}
 
 \begin{remark}[The mode-count limit is singular]\label{rem:modecount}
@@ -974,9 +1110,30 @@ permutation symmetry is fully broken in the eigenstates even as its
 multiplet skeleton organizes the spectrum. The attack's output is the
 sharpened dichotomy of Remark~\ref{rem:obstruction}: the obstruction
 side now carries an exact decomposition (trace tier), a mechanism
-(multiplet architecture), and a measured non-decaying margin, with the
-missing step identified as a two-copy loop object rather than an
-unavailable measurement.
+(multiplet architecture), and a measured non-decaying margin.
+(n) \emph{The two-copy replica bound, executed.} The within-bin loop is
+certified by Proposition~\ref{prop:replica} at every dense-reachable
+rung: on the pre-registered $(\delta,c_T)$ grid the sandwich budget
+consumes $6.3$--$6.9\times10^{-5}$ of the loop, the certified ratio
+$\kappa_{\mathrm{lb}}/B_{\mathrm{count}}$ reads $6.0\to14.4$ over $d=3$
+$S=40\to116$ and $5.2$ at $d=4$ $S=16$ against the measured $6.1\to14.4$
+and $5.2$, and the certified profile margins track the measured ones to
+$10^{-3}$ relative. The frequency census that makes the sandwich close:
+the off-diagonal mass is either at the multiplet scale ($\le10^{-8}$,
+carrying $10^{-20}$ of the surrogate---the occupation-constant pairs are
+also $K$-decoupled, the sharpest form of the multiplet protection) or
+above frequency $0.1$ ($99.9\%$ of the mass, the window-level spacing
+scale). The eigensolver-free evaluation of the Fej\'er autocorrelation
+(stepwise Chebyshev propagation of the two probe families with the
+bipartite Hutchinson estimator, the aliasing budget from the
+folded-distance census, resumable checkpoints after every chunk) agrees
+with the exact discrete-kernel value within the resample spread
+($142{,}044\pm4{,}127$ vs $143{,}113$ at $S=60$, four resamples at
+sixteen probes), with the folded tail at $5.1$ and the Bessel truncation
+below $10^{-59}$; the closing statistical precision is priced at the
+overnight wall-clock class. The certified constants are the obstruction
+theorem's finite-dimensional instances at the computed rungs
+(Remark~\ref{rem:replica}).
 \end{remark}
 
 \begin{figure}[t]

@@ -512,6 +512,22 @@ K15/K17 rerun
   state is initialized and checkpointed (`krs_L36d4K17kr.npz`, sweep 0);
   continuation of either platform is turnkey.
 
+- **`c4_msector_replica.py`** (with `run_replica_stages.py`) — the
+  two-copy replica bound, executed: the replica identities (the loop as the
+  zero-frequency mass; the commutant projector as the dephased
+  twist-exchange; the difference moments as single-copy traces via the
+  insertion recursion, validated to 2e-16), the Fejer sandwich, the
+  frequency census (the off-diagonal mass at >= 0.1 to 99.9%, the pair
+  off-diagonal at 1e-20 of the surrogate), the closure at every
+  dense-reachable rung (certified kappa/B_count >= 6.0 (d3, S=40-116,
+  growing) and >= 5.2 (d4); profile margin certified at 5.6-8.1%), and the
+  eigensolver-free propagation tier (Chebyshev time correlator, bipartite
+  Hutchinson, folded-distance aliasing census, resumable checkpoints;
+  142,044 +- 4,127 vs the exact 143,113; closing precision priced). Results
+  in `results/c4_msector_replica.json`; the propagation checkpoints
+  `krs_replica_prop_r*.npz`.
+
 Remaining: the K15/K17 certification tier (RAM/wall-clock gated, resumable
-state deployed); the obstruction lower bound's two completion routes
-(two-copy replica bound; multiplet-dipole control).
+state deployed); the extension of the certified replica constants beyond
+the dense tier (the propagation machinery, priced); the multiplet-dipole
+control.

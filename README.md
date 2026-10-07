@@ -250,6 +250,47 @@ from the modular sources and verified to compile identically (47 pp).
   (data-gated) remain the only gated items; the sector falsifier program is
   closed on the obstruction side.
 
+## The two-copy replica bound, executed (2026-10-07)
+
+The decisive step of the obstruction attack is closed. `c4_msector_replica.py`
+(with the staged driver `run_replica_stages.py`) executes the replica route:
+
+- **Replica identities (exact).** The within-bin loop is the zero-frequency
+  mass of the window two-point measure; the commutant (pinching) projector is
+  the dephased twist-exchange (the long-time average of
+  e^{i(H(x)I - I(x)H)t} SWAP); the difference moments
+  ||(ad_H)^p X||^2 are single-copy traces computed exactly by the
+  layer-graded insertion recursion (validated to 2e-16 vs dense).
+- **The replica sandwich.** A_T/T - m(delta) - 4 M_0/(T^2 g(delta)^2) <=
+  loop <= A_T/T (the positive Fejer kernel; the near-diagonal mass censused
+  and capped a priori by the quantum variances).
+- **The frequency gap.** The off-diagonal mass is either at the multiplet
+  scale (carrying 1e-20 of the surrogate — the occupation-constant pairs
+  are also K-decoupled) or above frequency 0.1 (99.9% of the mass): seven
+  orders of magnitude of separation, which is what the sandwich exploits.
+- **The closure (every dense-reachable rung).** The budget consumes
+  6.3-6.9e-5 of the loop; the certified constants:
+  kappa/B_count >= c_3 >= 6.0 (d=3, S=40 -> 116, growing) and >= c_4 >= 5.2
+  (d=4) — the obstruction theorem's finite-dimensional instances; the
+  profile-margin statement certified at 5.6-8.1% of sigma_L^2.
+- **The propagation tier (eigensolver-free, validated and priced).** The
+  discrete-Fejer time correlator by stepwise Chebyshev propagation with the
+  bipartite Hutchinson estimator (resumable checkpoints; folded-distance
+  aliasing census): 142,044 +- 4,127 vs the exact 143,113 at S=60; the
+  closing statistical precision (s*R ~ 256) priced at overnight wall-clock.
+  The extension of the certified constants beyond the dense tier rides this
+  machinery.
+
+The paper carries Proposition 3.12 (prop:replica), the validation paragraph,
+Remark 3.14 (rem:replica), the rewritten Remark 3.13 (rem:obstruction), and
+rem:numerics item (n); the register bindings and the abstract carry the
+certified constants. 68 pp body / 69 pp final, 0 overfull, 0 undefined,
+0 '??', clean-dir flatten identical.
+
+Remaining on this line: the extension of the certified constants beyond the
+dense tier (the propagation machinery, priced); the multiplet-dipole
+control; the crossing beyond n ~ 8e10.
+
 ## The obstruction attack and the 2026 listing cycle
 
 Two records extend the line:

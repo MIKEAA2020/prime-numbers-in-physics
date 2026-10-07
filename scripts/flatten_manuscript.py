@@ -9,7 +9,7 @@ import os
 import re
 
 LATEX = os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                     "..", "repo-push", "paper", "latex")
+                     "..", "paper", "latex")
 
 
 def flatten():
